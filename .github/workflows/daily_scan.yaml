@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout Repository Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6  # 👈 Upgraded to v6 for Node 24 support
 
     - name: Set Up Python Environment
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6  # 👈 Upgraded to v6 for Node 24 support
       with:
         python-version: '3.10'
         cache: 'pip'
@@ -26,7 +26,6 @@ jobs:
         pip install -r requirements.txt
 
     - name: Execute Breakout Scanner
-      # Inject the secure repository credentials dynamically into the runtime pipeline
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
