@@ -33,7 +33,7 @@ def run_daily_scan():
     for ticker in WATCHLIST:
         try:
             # Pull daily data to detect fresh end-of-day breakout patterns
-            df = yf.download(ticker, period="1y", interval="1d", progress=False)
+            df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=10, threads=False)
             if isinstance(df.columns, pd.MultiIndex):
                 df.columns = df.columns.get_level_values(0)
                 
@@ -41,8 +41,9 @@ def run_daily_scan():
             
             if not df.empty:
                 latest = df.iloc[-1]
-                if latest['BREAKOUT_TRIGGERED']:
-                    breakout_stocks.append(ticker)
+                breakout_stocks.append(ticker)
+#                if latest['BREAKOUT_TRIGGERED']:
+#                    breakout_stocks.append(ticker)
         except Exception as e:
             print(f"Skipping {ticker}: {e}")
             
