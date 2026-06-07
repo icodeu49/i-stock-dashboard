@@ -204,12 +204,21 @@ with tab1:
             else: st.warning(summary_text)
             
             # --- THE 6-PANE CHART MATRIX VISUAL GRID ---
+# --- UPDATED NATIVE FRAME RENDERING ENGINE ---
             st.markdown("### 📊 Master Interactive Chart")
             tv_interval = "W" if timeframe == "Weekly" else "M"
             
+            # Reusable frame generator utilizing the modern native iframe API
+            def render_tv_widget(html_payload, height=310):
+                # Encodes raw HTML code dynamically into a compliant inline data URI
+                import b64encode from base64
+                encoded_html = b64encode(html_payload.encode('utf-8')).decode('utf-8')
+                data_uri = f"data:text/html;base64,{encoded_html}"
+                return st.iframe(src=data_uri, height=height, use_container_width=True)
+
             master_chart_html = f"""
-            <div class="tradingview-widget-container" style="height:500px;width:100%;">
-              <div id="tv_master_chart" style="height:460px;"></div>
+            <body style="margin:0;background:#0e1117;">
+              <div id="tv_master_chart" style="height:460px;width:100%;"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
               <script type="text/javascript">
               new TradingView.widget({{
@@ -219,108 +228,58 @@ with tab1:
                 "container_id": "tv_master_chart"
               }});
               </script>
-            </div>
+             body>
             """
-            import streamlit.components.v1 as components
-            components.html(master_chart_html, height=480)
+            render_tv_widget(master_chart_html, height=480)
 
             st.markdown("### 🔍 Dedicated Institutional Checklist Windows")
             ind_col1, ind_col2 = st.columns(2)
             
             with ind_col1:
                 st.caption("📈 Core Speed EMAs (10 & 30 Stack Focus)")
-                ema_fast_html = f"""
-                <div id="tv_ema_fast" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": [
-                    {{ "id": "MAExp@tv-basicstudies", "inputs": {{ "length": 10 }} }},
-                    {{ "id": "MAExp@tv-basicstudies", "inputs": {{ "length": 30 }} }}
-                  ], "container_id": "tv_ema_fast"
-                }});
-                </script>
-                """
-                components.html(ema_fast_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_ema_fast" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
+                  {{ "id": "MAExp@tv-basicstudies", "inputs": {{ "length": 10 }} }}, {{ "id": "MAExp@tv-basicstudies", "inputs": {{ "length": 30 }} }}
+                ], "container_id": "tv_ema_fast"}});
+                </script></body>""")
 
                 st.caption("🛡️ Volatility Stop (VSTOP Proxy - Chandelier Core 20 / 2.5 Parameters)")
-                vstop_html = f"""
-                <div id="tv_vstop" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": [
-                    {{ "id": "ChandelierExit@tv-basicstudies", "inputs": {{ "ATR Period": 20, "Multiplier": 2.5 }} }}
-                  ], "container_id": "tv_vstop"
-                }});
-                </script>
-                """
-                components.html(vstop_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_vstop" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
+                  {{ "id": "ChandelierExit@tv-basicstudies", "inputs": {{ "ATR Period": 20, "Multiplier": 2.5 }} }}
+                ], "container_id": "tv_vstop"}});
+                </script></body>""")
 
                 st.caption("🎯 Parabolic SAR (Step Acceleration Matrix: 0.02, 0.05, 0.2)")
-                sar_chart_html = f"""
-                <div id="tv_sar_chart" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": [
-                    {{ "id": "SAR@tv-basicstudies", "inputs": {{ "start": 0.02, "increment": 0.05, "maximum": 0.2 }} }}
-                  ], "container_id": "tv_sar_chart"
-                }});
-                </script>
-                """
-                components.html(sar_chart_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_sar_chart" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
+                  {{ "id": "SAR@tv-basicstudies", "inputs": {{ "start": 0.02, "increment": 0.05, "maximum": 0.2 }} }}
+                ], "container_id": "tv_sar_chart"}});
+                </script></body>""")
 
             with ind_col2:
                 st.caption("🌊 Indicator 3 Check: Stage 2 Moving Average Anchor Waves (20 / 50 / 100 / 200)")
-                ema_macro_html = f"""
-                <div id="tv_ema_macro" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": ["MA_Ribbon@tv-basicstudies"], "container_id": "tv_ema_macro"
-                }});
-                </script>
-                """
-                components.html(ema_macro_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_ema_macro" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": ["MA_Ribbon@tv-basicstudies"], "container_id": "tv_ema_macro"}});
+                </script></body>""")
 
                 st.caption("💪 Average Directional Index (DMI Analysis Engine Frame Length: 14)")
-                adx_chart_html = f"""
-                <div id="tv_adx_chart" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": [
-                    {{ "id": "DX@tv-basicstudies", "inputs": {{ "ADX Smoothing": 14, "DI Length": 14 }} }}
-                  ], "container_id": "tv_adx_chart"
-                }});
-                </script>
-                """
-                components.html(adx_chart_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_adx_chart" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
+                  {{ "id": "DX@tv-basicstudies", "inputs": {{ "ADX Smoothing": 14, "DI Length": 14 }} }}
+                ], "container_id": "tv_adx_chart"}});
+                </script></body>""")
 
                 st.caption("📈 Relative Strength Index Momentum Filter (RSI 14)")
-                rsi_chart_html = f"""
-                <div id="tv_rsi_window" style="height:300px;"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                <script type="text/javascript">
-                new TradingView.widget({{
-                  "autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}",
-                  "theme": "dark", "style": "1", "locale": "en", "hide_top_toolbar": true, "hide_side_toolbar": true,
-                  "studies": ["RSI@tv-basicstudies"], "container_id": "tv_rsi_window"
-                }});
-                </script>
-                """
-                components.html(rsi_chart_html, height=310)
+                render_tv_widget(f"""
+                <body style="margin:0;"><div id="tv_rsi_window" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
+                new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": ["RSI@tv-basicstudies"], "container_id": "tv_rsi_window"}});
+                </script></body>""")
 
             with st.expander("🔍 Audit Raw Mathematical Data Engine Metrics"):
                 st.write("Below are the real-time calculations matching your requested institutional setups:")

@@ -1,3 +1,10 @@
+import warnings
+import logging
+
+# Instantly suppress headless framework context logging alerts
+warnings.filterwarnings("ignore", message="missing ScriptRunContext")
+logging.getLogger("streamlit").setLevel(logging.ERROR)
+
 import os
 import yfinance as yf
 import pandas as pd
