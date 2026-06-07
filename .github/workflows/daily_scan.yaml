@@ -3,7 +3,7 @@ name: Daily Institutional Stock Scan
 on:
   schedule:
     # Trigger automatically daily at 14:00 UTC (Which is 3:00 PM UK British Summer Time)
-    - cron: '0 14 * * *'
+    - cron: '0 14,19 * * *'
   workflow_dispatch: # Allows you to manually trigger the scan from GitHub whenever you want
 
 jobs:

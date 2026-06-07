@@ -53,8 +53,14 @@ def run_daily_scan():
             df = calculate_technicals(df)
             
             # FORCED TEST TRIGGER: Appends every successfully parsed stock to ensure verification
+            #if not df.empty:
+            #    breakout_stocks.append(ticker)
+
+            # RESTORED: Only triggers when all 3 elite institutional volume rules are met
             if not df.empty:
-                breakout_stocks.append(ticker)
+                latest = df.iloc[-1]
+                if 'BREAKOUT_TRIGGERED' in latest and latest['BREAKOUT_TRIGGERED']:
+                    breakout_stocks.append(ticker)                
                 
         except Exception as e:
             print(f"Skipping {ticker} due to calculation error: {e}")
