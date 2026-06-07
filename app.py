@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
+import sys
 
 # --- CONSTANTS & CONFIG ---
 WATCHLIST_FILE = "watchlist.json"
@@ -27,8 +28,9 @@ def save_watchlist(tickers):
     with open(WATCHLIST_FILE, "w") as f:
         json.dump(tickers, f)
 
-if "tickers" not in st.session_state:
-    st.session_state.tickers = load_watchlist()
+if __name__ == "__main__" or "streamlit" in sys.modules:
+    if "tickers" not in st.session_state:
+        st.session_state.tickers = load_watchlist()
 
 # --- THE INSTITUTIONAL ENGINE ---
 def calculate_technicals(df, spy_df=None):

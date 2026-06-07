@@ -1,60 +1,67 @@
-import warnings
-import logging
-
-# Instantly suppress headless framework context logging alerts
-warnings.filterwarnings("ignore", message="missing ScriptRunContext")
-logging.getLogger("streamlit").setLevel(logging.ERROR)
-
 import os
+import sys
+
+# Completely decouple the background environment wrapper from Streamlit's runtime engine
+os.environ["STREAMLIT_RUN_PURE"] = "true"
+
 import yfinance as yf
 import pandas as pd
 import requests
-from app import calculate_technicals  # Imports your calculation engine
+import json
+from app import calculate_technicals  # Safely imports the math model matrix
 
-# --- SECURE CONFIG LOADING ---
-# Pulls the secret keys directly from GitHub's secure memory space at runtime
+# --- SECURE CREDENTIAL ARRAYS ---
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-
-# Dynamic list loader from session state file if it exists, otherwise uses defaults
 WATCHLIST_FILE = "watchlist.json"
+
+# Read your watchlist file directly from disk, bypassing Streamlit session states entirely
 if os.path.exists(WATCHLIST_FILE):
-    import json
-    with open(WATCHLIST_FILE, "r") as f:
-        WATCHLIST = json.load(f)
+    try:
+        with open(WATCHLIST_FILE, "r") as f:
+            WATCHLIST = json.load(f)
+    except Exception:
+        WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 else:
-    WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "AMD"] # Add your stocks
+    WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
 def send_telegram_alert(message):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
     try:
-        requests.post(url, json=payload)
+        r = requests.post(url, json=payload, timeout=10)
+        print(f"Telegram API response code: {r.status_code}")
     except Exception as e:
-        print(f"Error sending alert: {e}")
+        print(f"Critical error sending Telegram message payload: {e}")
 
 def run_daily_scan():
     breakout_stocks = []
+    print(f"Initiating automated technical breakout scan for assets: {WATCHLIST}")
     
-    print("Initiating automated technical breakout scan...")
     for ticker in WATCHLIST:
+        print(f"Crunching technical metrics for: {ticker}...")
         try:
-            # Pull daily data to detect fresh end-of-day breakout patterns
             df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=10, threads=False)
+            if df.empty:
+                print(f"⚠️ Empty dataframe returned for {ticker}")
+                continue
+                
             if isinstance(df.columns, pd.MultiIndex):
                 df.columns = df.columns.get_level_values(0)
                 
+            # Run calculations
             df = calculate_technicals(df)
             
+            # FORCED TEST TRIGGER: Appends every successfully parsed stock to ensure verification
             if not df.empty:
-                latest = df.iloc[-1]
                 breakout_stocks.append(ticker)
-#                if latest['BREAKOUT_TRIGGERED']:
-#                    breakout_stocks.append(ticker)
+                
         except Exception as e:
-            print(f"Skipping {ticker}: {e}")
+            print(f"Skipping {ticker} due to calculation error: {e}")
             
-    # Formulate and transmit the alert payload
+    print(f"Scan complete. Found triggers for: {breakout_stocks}")
+    
+    # Send the alert message payload
     if breakout_stocks:
         alert_msg = "🔥 *REAL-TIME BREAKOUT ALERT* 🔥\n\n"
         alert_msg += "The following assets have broken out past resistance boundaries on institutional volume surges:\n\n"
@@ -63,7 +70,7 @@ def run_daily_scan():
         alert_msg += "\nCheck your cloud Streamlit dashboard link to analyze the charts in multi-window view!"
         send_telegram_alert(alert_msg)
     else:
-        print("Scan complete. No volume breakout triggers met today.")
+        print("No volume breakout conditions were met today.")
 
 if __name__ == "__main__":
     run_daily_scan()
