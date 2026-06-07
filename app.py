@@ -34,85 +34,112 @@ if __name__ == "__main__" or "streamlit" in sys.modules:
 
 # --- THE INSTITUTIONAL ENGINE ---
 def calculate_technicals(df, spy_df=None):
-    if df.empty:
-        return df
-        
-    # Dynamically scale the data footprint constraint based on the rows returned
-    # Weekly charts usually return ~150 rows for 3 years; Monthly returns ~72 rows for 6 years
-    required_min_periods = 24 if len(df) < 100 else 52
-    
-    if len(df) < required_min_periods:
+    """
+    Master Institutional Confluence Matrix.
+    Processes 10/30 EMAs, Volatility Stops, Parabolic SAR, ADX, 
+    Relative Strength, Pocket Pivots, and Accumulation Engines together.
+    """
+    if df.empty or len(df) < 50:
         return df
 
-    # --- INDICATOR 3: STAGE 2 TREND ALIGNMENT MA ANCHORS ---
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    # 1. Core Speed EMAs (10 vs 30)
     df['EMA10'] = df['Close'].ewm(span=10, adjust=False).mean()
-    df['EMA20'] = df['Close'].ewm(span=20, adjust=False).mean()
     df['EMA30'] = df['Close'].ewm(span=30, adjust=False).mean()
-    df['EMA50'] = df['Close'].ewm(span=50, adjust=False).mean()
-    df['EMA150'] = df['Close'].ewm(span=150, adjust=False).mean()
-    df['EMA200'] = df['Close'].ewm(span=200, adjust=False).mean()
+    df['EMA_SPEED_ALIGNED'] = df['EMA10'] > df['EMA30']
+
+    # 2. Average Directional Index (ADX 14)
+    high_low = df['High'] - df['Low']
+    high_cp = (df['High'] - df['Close'].shift(1)).abs()
+    low_cp = (df['Low'] - df['Close'].shift(1)).abs()
+    tr = pd.concat([high_low, high_cp, low_cp], axis=1).max(axis=1)
+    df['ATR14'] = tr.rolling(window=14).mean()
+
+    up_move = df['High'] - df['High'].shift(1)
+    down_move = df['Low'].shift(1) - df['Low']
     
-    # Evaluate Stage 2 Alignment state variables
-    latest_close = df['Close'].iloc[-1]
-    df['Stage2_Aligned'] = (
-        (df['Close'] > df['EMA50']) & 
-        (df['EMA50'] > df['EMA150']) & 
-        (df['EMA150'] > df['EMA200'])
-    )
-
-    # --- INDICATOR 1: INSTITUTIONAL ACCUMULATION ENGINE ---
-    df['Vol_Avg50'] = df['Volume'].rolling(window=50).mean()
-    # Positive close tracking combined with volume expansion 1.5x above its historical average baseline
-    df['Inst_Accumulation'] = (df['Close'] > df['Open']) & (df['Volume'] > (df['Vol_Avg50'] * 1.5))
-
-    # --- INDICATOR 2: TRUE RELATIVE STRENGTH LINE TO BENCHMARK ---
-    if spy_df is not None and not spy_df.empty:
-        # Align timelines together cleanly via pandas left join matrixes
-        merged = df[['Close']].join(spy_df[['Close']], rsuffix='_spy')
-        df['RS_Line'] = merged['Close'] / merged['Close_spy']
-        
-        # Track the 52-Week High value profile of the relative strength ratio line
-        # 52 weeks of trading data equals roughly 252 items inside daily frames, or 52 inside weekly maps
-        lookback_period = 52 if len(df) < 400 else 252
-        df['RS_Line_52W_High'] = df['RS_Line'].rolling(window=lookback_period).max()
-        
-        # Check if the RS Line is flashing an elite signature (within 2% of its absolute historical peak highs)
-        df['RS_New_High'] = df['RS_Line'] >= (df['RS_Line_52W_High'] * 0.98)
-    else:
-        df['RS_Line'] = 1.0
-        df['RS_New_High'] = False
-
-    # Standard VSTOP Model (20, Close, 2.5) for legacy continuity tracking
-    tr1 = df['High'] - df['Low']
-    tr2 = abs(df['High'] - df['Close'].shift(1))
-    tr3 = abs(df['Low'] - df['Close'].shift(1))
-    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
-    df['ATR20'] = tr.rolling(window=20).mean()
+    pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
+    neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
     
-    vstop = np.zeros(len(df))
-    trend = np.ones(len(df))
-    for i in range(1, len(df)):
-        close_val = float(df['Close'].iloc[i])
-        if trend[i-1] == 1:
-            stop_level = close_val - (2.5 * float(df['ATR20'].iloc[i]))
-            vstop[i] = max(vstop[i-1], stop_level)
-            trend[i] = -1 if close_val < vstop[i] else 1
+    di_plus = 100 * (pos_dm.rolling(window=14).mean() / df['ATR14'])
+    di_minus = 100 * (neg_dm.rolling(window=14).mean() / df['ATR14'])
+    
+    dx = 100 * (di_plus - di_minus).abs() / (di_plus + di_minus)
+    df['ADX'] = dx.rolling(window=14).mean()
+    # Trend is strong if ADX is above 20 and rising
+    df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
+
+    # 3. Parabolic SAR Generation Engine (0.02 / 0.2 Standard Setup)
+    highs, lows, sar = df['High'].values, df['Low'].values, list(df['Close'][:2])
+    is_long, ep, af = True, highs[0], 0.02
+    for i in range(2, len(df)):
+        prev_sar = sar[-1]
+        if is_long:
+            current_sar = prev_sar + af * (ep - prev_sar)
+            current_sar = min(current_sar, lows[i-1], lows[i-2])
+            if lows[i] < current_sar:
+                is_long, current_sar, ep, af = False, ep, lows[i], 0.02
+            else:
+                if highs[i] > ep: ep, af = highs[i], min(af + 0.02, 0.2)
         else:
-            stop_level = close_val + (2.5 * float(df['ATR20'].iloc[i]))
-            vstop[i] = min(vstop[i-1], stop_level) if vstop[i-1] != 0 else stop_level
-            trend[i] = 1 if close_val > vstop[i] else -1
-            
-    df['VSTOP_Trend'] = trend
-    df['SAR_Trend'] = np.where(df['Close'] > df['Close'].rolling(window=14).min(), 1, -1)
+            current_sar = prev_sar + af * (ep - prev_sar)
+            current_sar = max(current_sar, highs[i-1], highs[i-2])
+            if highs[i] > current_sar:
+                is_long, current_sar, ep, af = True, ep, highs[i], 0.02
+            else:
+                if lows[i] < ep: ep, af = lows[i], min(af + 0.02, 0.2)
+        sar.append(current_sar)
+    df['SAR'] = sar
+    df['SAR_ALIGNED'] = df['Close'] > df['SAR']
 
-    # --- ADVANCED CONFLUENCE BREAKOUT SENSOR TRIGGER ---
-    df['Resistance_20'] = df['Close'].shift(1).rolling(window=20).max()
-    df['BREAKOUT_TRIGGERED'] = (
-        (df['Close'] > df['Resistance_20']) & 
-        (df['Inst_Accumulation']) & 
-        (df['Stage2_Aligned'])
-    )
+    # 4. Institutional Pocket Pivots & Accumulation Signals
+    df['MA50'] = df['Close'].rolling(window=50).mean()
+    df['MA200'] = df['Close'].rolling(window=200).mean()
+    df['AvgVolume50'] = df['Volume'].rolling(window=50).mean()
+    df['Price_Up'] = df['Close'] > df['Close'].shift(1)
+    df['Price_Down'] = df['Close'] < df['Close'].shift(1)
+    
+    df['ACCUMULATION_DAY'] = df['Price_Up'] & (df['Volume'] > (df['AvgVolume50'] * 1.5))
+    max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).rolling(window=10).max()
+    df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
+    # 5. Relative Strength (RS) Matrix vs SPY Index
+    if spy_df is not None and not spy_df.empty:
+        if isinstance(spy_df.columns, pd.MultiIndex): spy_df.columns = spy_df.columns.get_level_values(0)
+        merged = df[['Close']].merge(spy_df[['Close']], left_index=True, right_index=True, suffixes=('', '_SPY'))
+        if not merged.empty:
+            df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
+            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1)) * 100
+        else: df['RS_SCORE'] = 0.0
+    else: df['RS_SCORE'] = 0.0
+
+    # 6. Advanced Dual-Direction Volatility Trailing Stop Logic (3x ATR Window)
+    vstop_arr, trend_arr = [], []
+    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR14'].fillna(0).iloc[0] * 3)
+    
+    for i in range(len(df)):
+        close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
+        atr = df['ATR14'].fillna(0).iloc[i]
+        if current_trend == 1:
+            current_stop = max(current_stop, high_p - (atr * 3))
+            if close_p < current_stop:
+                current_trend, current_stop = -1, low_p + (atr * 3)
+        else:
+            current_stop = min(current_stop, low_p + (atr * 3))
+            if close_p > current_stop:
+                current_trend, current_stop = 1, high_p - (atr * 3)
+        vstop_arr.append(current_stop)
+        trend_arr.append(current_trend)
+        
+    df['VSTOP_LINE'] = vstop_arr
+    df['VSTOP_TREND'] = trend_arr
+    df['VSTOP_BUY_SIGNAL'] = (df['VSTOP_TREND'] == 1) & (df['VSTOP_TREND'].shift(1) == -1)
+    df['VSTOP_SELL_SIGNAL'] = (df['VSTOP_TREND'] == -1) & (df['VSTOP_TREND'].shift(1) == 1)
+
+    # Master alerting gate configuration
+    df['BREAKOUT_TRIGGERED'] = df['POCKET_PIVOT'] | df['ACCUMULATION_DAY'] | df['VSTOP_BUY_SIGNAL'] | df['VSTOP_SELL_SIGNAL']
     return df
 
 # --- SCANNER VISUAL SUMMARY MATRIX SUMMARY GENERATOR ---
