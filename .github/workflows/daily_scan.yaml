@@ -2,12 +2,12 @@ name: Daily Institutional Stock Scan
 
 on:
   push:
-      branches:
-        - main  # Triggers automatically every time you push code to the main branch
-    schedule:
-      # Triggers at 14:00 (3 PM UK) and 19:00 (8 PM UK) every single day
-      - cron: '0 14,19 * * *'
-    workflow_dispatch: # Keeps manual testing button enabled
+    branches:
+      - main  # Triggers automatically every time you push code to the main branch
+  schedule:
+    # Triggers at 14:00 (3 PM UK) and 19:00 (8 PM UK) every single day
+    - cron: '0 14,19 * * *'
+  workflow_dispatch: # Keeps manual testing button enabled
 
 jobs:
   scan_and_notify:
