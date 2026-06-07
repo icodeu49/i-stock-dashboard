@@ -26,21 +26,36 @@ def send_telegram_alert(message):
     except Exception as e: print(f"Telegram connection error: {e}")
 
 def run_daily_scan():
-    print("Downloading global SPY index benchmark details...")
-    spy_df = yf.download("SPY", period="1y", interval="1d", progress=False, timeout=10)
+    print("📥 Step 1: Downloading global SPY index benchmark details...")
+    try:
+        spy_df = yf.download("SPY", period="1y", interval="1d", progress=False, timeout=15)
+        if isinstance(spy_df.columns, pd.MultiIndex):
+            spy_df.columns = spy_df.columns.get_level_values(0)
+        print(f"✅ SPY downloaded successfully. Total historical data rows: {len(spy_df)}")
+    except Exception as e:
+        print(f"❌ Failed downloading SPY reference baseline matrix: {e}")
+        spy_df = None
+
     triggered_reports = []
     
     for ticker in WATCHLIST:
+        print(f"🔍 Step 2: Fetching data frames for target asset: {ticker}...")
         try:
-            df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=10, threads=False)
-            if df.empty: continue
+            df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=15, threads=False)
+            if df.empty: 
+                print(f"⚠️ Warning: Asset {ticker} returned empty dataset.")
+                continue
             
+            if isinstance(df.columns, pd.MultiIndex): 
+                df.columns = df.columns.get_level_values(0)
+            
+            print(f"🧮 Step 3: Crunching calculations engine matrix for {ticker}...")
             df = calculate_technicals(df, spy_df=spy_df)
             if df.empty: continue
             
             latest = df.iloc[-1]
             
-            # Extract values from the full indicator stack
+            # Extract indicators safely
             is_pocket = latest.get('POCKET_PIVOT', False)
             is_accum = latest.get('ACCUMULATION_DAY', False)
             is_ema = latest.get('EMA_SPEED_ALIGNED', False)
@@ -49,38 +64,42 @@ def run_daily_scan():
             buy_alert = latest.get('VSTOP_BUY_SIGNAL', False)
             sell_alert = latest.get('VSTOP_SELL_SIGNAL', False)
             
-            trend_state = "🟢 BULLISH UP-TREND" if latest.get('VSTOP_TREND', 1) == 1 else "🔴 BEARISH DOWN-TREND"
+            trend_state = "🟢 BULLISH" if latest.get('VSTOP_TREND', 1) == 1 else "🔴 BEARISH"
             rs_score = latest.get('RS_SCORE', 0.0)
             adx_val = latest.get('ADX', 0.0)
 
-            # FORCED LIVE CHECK LIST VERIFICATION SELECTION:
-            # Change 'True' to 'is_pocket or is_accum or buy_alert or sell_alert' for live tracking
+            # FORCED FORGE LIVE MESSAGING OVERRIDE SWITCH:
             SHOULD_REPORT = True
             
             if SHOULD_REPORT:
-                report = f"• *{ticker}* | Structural Trend: `{trend_state}`\n"
+                print(f"📝 Step 4: Compiling metric scorecard string block for {ticker}...")
+                report = f"• *{ticker}* | Trend Matrix: `{trend_state}`\n"
                 report += f"   ├── 📊 RS Score: `{rs_score:+.2f}%` vs SPY\n"
                 report += f"   ├── ⚡ Pocket Pivot Matrix: {'✅ TRIGGERED' if is_pocket else '❌ No Surge'}\n"
                 report += f"   ├── 📈 Vol Accumulation Day: {'✅ DETECTED' if is_accum else '❌ Normal Vol'}\n"
                 report += f"   ├── 🚀 Speed EMAs (10 > 30): {'✅ BULLISH' if is_ema else '❌ BEARISH'}\n"
                 report += f"   ├── 🎯 Parabolic SAR Support: {'✅ ABOVE SAR' if is_sar else '❌ BELOW SAR'}\n"
-                report += f"   └── 🌊 Trend Strength (ADX): `{adx_val:.1f}` {'🔥 (Strong Rising)' if is_adx else '⏳ (Weak/Sideways)'}\n"
+                report += f"   └── 🌊 Trend Strength (ADX): `{adx_val:.1f}` {'🔥 (Strong)' if is_adx else '⏳ (Weak)'}\n"
                 
                 if buy_alert:
-                    report += f"   ⚠️ *ALERT: VOLATILITY STOP FLIPPED GREEN (BUY SIGNAL)* 🚀\n"
+                    report += f"   ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED GREEN (BUY)* 🚀\n"
                 elif sell_alert:
-                    report += f"   ⚠️ *ALERT: VOLATILITY STOP FLIPPED RED (SELL SIGNAL)* 🚨\n"
+                    report += f"   ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED RED (SELL)* 🚨\n"
                 
                 triggered_reports.append(report)
                 
         except Exception as e:
-            print(f"Skipping asset loop processing error for {ticker}: {e}")
+            print(f"❌ Error while running metrics calculations loop for {ticker}: {e}")
             
     if triggered_reports:
+        print(f"📤 Step 5: Transmitting payload string data directly to your Telegram Chat ID...")
         msg = "🎯 *INSTITUTIONAL METRIC SCORECARD* 🎯\n\n"
         msg += "\n".join(triggered_reports)
         msg += "\n\nOpen your cloud workspace terminal configuration to verify visual matrices!"
         send_telegram_alert(msg)
+        print("🚀 Success! Telegram payload delivered cleanly.")
+    else:
+        print("Scan finished. Zero reports matched formatting criteria loops.")
 
 if __name__ == "__main__":
     run_daily_scan()
