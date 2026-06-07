@@ -211,7 +211,7 @@ with tab1:
             # Reusable frame generator utilizing the modern native iframe API
             def render_tv_widget(html_payload, height=310):
                 # Encodes raw HTML code dynamically into a compliant inline data URI
-                import b64encode from base64
+                from base64 import b64encode
                 encoded_html = b64encode(html_payload.encode('utf-8')).decode('utf-8')
                 data_uri = f"data:text/html;base64,{encoded_html}"
                 return st.iframe(src=data_uri, height=height, use_container_width=True)
