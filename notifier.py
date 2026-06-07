@@ -69,6 +69,7 @@ def run_daily_scan():
             adx_val = latest.get('ADX', 0.0)
 
             # FORCED FORGE LIVE MESSAGING OVERRIDE SWITCH:
+            #SHOULD_REPORT = is_pocket or is_accum or buy_alert or sell_alert
             SHOULD_REPORT = True
             
             if SHOULD_REPORT:
