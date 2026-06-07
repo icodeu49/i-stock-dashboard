@@ -106,14 +106,24 @@ def calculate_technicals(df, spy_df=None):
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
     # 5. Relative Strength (RS) Matrix vs SPY Index
+# 5. Relative Strength (RS) Matrix vs SPY Index (FIXED COLUMN STRIPPING)
     if spy_df is not None and not spy_df.empty:
-        if isinstance(spy_df.columns, pd.MultiIndex): spy_df.columns = spy_df.columns.get_level_values(0)
-        merged = df[['Close']].merge(spy_df[['Close']], left_index=True, right_index=True, suffixes=('', '_SPY'))
-        if not merged.empty:
+        # Copy to avoid modifying original dataframe out of scope
+        spy_ref = spy_df.copy()
+        if isinstance(spy_ref.columns, pd.MultiIndex): 
+            spy_ref.columns = spy_ref.columns.get_level_values(0)
+            
+        # Select strictly the 'Close' column series cleanly
+        spy_close = spy_ref[['Close']].rename(columns={'Close': 'Close_SPY'})
+        
+        merged = df[['Close']].merge(spy_close, left_index=True, right_index=True, how='left')
+        if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
             df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1)) * 100
-        else: df['RS_SCORE'] = 0.0
-    else: df['RS_SCORE'] = 0.0
+        else: 
+            df['RS_SCORE'] = 0.0
+    else: 
+        df['RS_SCORE'] = 0.0
 
     # 6. Advanced Dual-Direction Volatility Trailing Stop Logic (3x ATR Window)
     vstop_arr, trend_arr = [], []
