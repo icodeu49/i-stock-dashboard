@@ -5,6 +5,7 @@ import requests
 import yfinance as yf
 import pandas as pd
 
+# Suppress Streamlit's internal execution triggers during background cron runs
 os.environ["STREAMLIT_RUN_PURE"] = "true"
 from app import calculate_technicals
 
@@ -28,13 +29,14 @@ def send_telegram_alert(message):
         res = requests.post(url, json=payload, timeout=10)
         if not res.ok:
             print(f"❌ Telegram API Error Response: {res.text}")
+        else:
+            print("✨ Message chunk transmitted successfully to handset.")
     except Exception as e: 
         print(f"Telegram connection error: {e}")
 
 def run_daily_scan():
     print("📥 Step 1: Downloading global SPY index benchmark details...")
     try:
-        # Enforce clean single-level columns from the start
         spy_df = yf.download("SPY", period="1y", interval="1d", progress=False, timeout=15, multi_level_index=False)
         if isinstance(spy_df.columns, pd.MultiIndex):
             spy_df.columns = spy_df.columns.get_level_values(0)
@@ -48,7 +50,6 @@ def run_daily_scan():
     for ticker in WATCHLIST:
         print(f"🔍 Step 2: Fetching data frames for target asset: {ticker}...")
         try:
-            # Added multi_level_index=False to protect baseline structure integrity
             df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=15, threads=False, multi_level_index=False)
             if df.empty: 
                 print(f"⚠️ Warning: Asset {ticker} returned empty dataset.")
@@ -60,14 +61,12 @@ def run_daily_scan():
             print(f"🧮 Step 3: Crunching calculations engine matrix for {ticker}...")
             df = calculate_technicals(df, spy_df=spy_df)
             
-            # Double check our calculation boundary safety limits
             if df.empty or len(df) < 50:
                 print(f"⚠️ Warning: Dataframe for {ticker} has insufficient rows ({len(df)}) after metrics run.")
                 continue
             
             latest = df.iloc[-1]
             
-            # Extract indicators safely
             is_pocket = latest.get('POCKET_PIVOT', False)
             is_accum = latest.get('ACCUMULATION_DAY', False)
             is_ema = latest.get('EMA_SPEED_ALIGNED', False)
@@ -81,8 +80,7 @@ def run_daily_scan():
             adx_val = latest.get('ADX', 0.0)
 
             # FORCED FORGE LIVE MESSAGING OVERRIDE SWITCH:
-            # Once you confirm this works, you can uncomment the line below to filter for breakouts only:
-            # SHOULD_REPORT = is_pocket or is_accum or buy_alert or sell_alert
+            # For testing, we leave this as True. Once confirmed, you can toggle back to filtering breakouts.
             SHOULD_REPORT = True
             
             if SHOULD_REPORT:
@@ -105,13 +103,25 @@ def run_daily_scan():
         except Exception as e:
             print(f"❌ Error while running metrics calculations loop for {ticker}: {e}")
             
+    # --- SMART TELEGRAM CHUNKING ENGINE ---
     if triggered_reports:
-        print(f"📤 Step 5: Transmitting payload string data directly to your Telegram Chat ID...")
-        msg = "🎯 *INSTITUTIONAL METRIC SCORECARD* 🎯\n\n"
-        msg += "\n".join(triggered_reports)
-        msg += "\n\nOpen your cloud workspace terminal configuration to verify visual matrices!"
-        send_telegram_alert(msg)
-        print("🚀 Success! Telegram payload delivered cleanly.")
+        print(f"📤 Step 5: Transmitting payloads directly to your Telegram Chat ID...")
+        
+        current_chunk = "🎯 *INSTITUTIONAL METRIC SCORECARD* 🎯\n\n"
+        
+        for report in triggered_reports:
+            # If adding this report exceeds 3500 characters, send the current chunk and start a new one
+            if len(current_chunk) + len(report) > 3500:
+                send_telegram_alert(current_chunk)
+                current_chunk = "🎯 *INSTITUTIONAL METRIC SCORECARD (CONTINUED)* 🎯\n\n"
+            
+            current_chunk += report + "\n"
+        
+        # Send any remaining reports left in the final chunk
+        if current_chunk:
+            send_telegram_alert(current_chunk)
+            
+        print("🚀 Success! All Telegram payload chunks delivered cleanly.")
     else:
         print("Scan finished. Zero reports matched formatting criteria loops.")
 
