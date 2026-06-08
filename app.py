@@ -251,7 +251,7 @@ with tab1:
                 from base64 import b64encode
                 encoded_html = b64encode(html_payload.encode('utf-8')).decode('utf-8')
                 data_uri = f"data:text/html;base64,{encoded_html}"
-                return st.iframe(src=data_uri, height=height)
+                return st.components.v1.iframe(src=data_uri, height=height)
 
             master_chart_html = f"""
             <body style="margin:0;background:#0e1117;">
