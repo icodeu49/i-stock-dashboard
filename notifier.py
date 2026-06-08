@@ -81,8 +81,9 @@ def run_daily_scan():
 
             # FORCED FORGE LIVE MESSAGING OVERRIDE SWITCH:
             # For testing, we leave this as True. Once confirmed, you can toggle back to filtering breakouts.
-            SHOULD_REPORT = True
-            
+            #SHOULD_REPORT = True
+            SHOULD_REPORT = is_pocket or is_accum or buy_alert or sell_alert
+
             if SHOULD_REPORT:
                 print(f"📝 Step 4: Compiling metric scorecard string block for {ticker}...")
                 report = f"• *{ticker}* | Trend Matrix: `{trend_state}`\n"
