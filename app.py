@@ -1,4 +1,4 @@
-import streamlit as st
+streamlit as st
 import yfinance as yf
 import pandas as pd
 import numpy as np
@@ -199,8 +199,8 @@ if st.sidebar.button("Remove Selected") and remove_ticker:
     st.sidebar.error(f"Removed {remove_ticker}")
 
 # --- GLOBAL BENCHMARK DATA PRE-FETCH (S&P 500 reference mapping required for RS indicators) ---
-spy_weekly = yf.download("SPY", period="3y", interval="1wk", progress=False)
-spy_monthly = yf.download("SPY", period="6y", interval="1mo", progress=False)
+spy_weekly = yf.download("SPY", period="3y", interval="1wk", progress=False, multi_level_index=False)
+spy_monthly = yf.download("SPY", period="6y", interval="1mo", progress=False, multi_level_index=False)
 if isinstance(spy_weekly.columns, pd.MultiIndex): spy_weekly.columns = spy_weekly.columns.get_level_values(0)
 if isinstance(spy_monthly.columns, pd.MultiIndex): spy_monthly.columns = spy_monthly.columns.get_level_values(0)
 
@@ -344,7 +344,7 @@ with tab2:
         with st.spinner("Scanning assets for Stage 2 configurations and breakout patterns..."):
             for ticker in st.session_state.tickers:
                 try:
-                    t_df = yf.download(ticker, period=m_period, interval=m_interval, progress=False)
+                    t_df = yf.download(ticker, period=m_period, interval=m_interval, progress=False, multi_level_index=False)
                     if isinstance(t_df.columns, pd.MultiIndex):
                         t_df.columns = t_df.columns.get_level_values(0)
                         
