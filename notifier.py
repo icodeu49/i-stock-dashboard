@@ -14,21 +14,28 @@ WATCHLIST_FILE = "watchlist.json"
 
 if os.path.exists(WATCHLIST_FILE):
     try:
-        with open(WATCHLIST_FILE, "r") as f: WATCHLIST = json.load(f)
-    except Exception: WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+        with open(WATCHLIST_FILE, "r") as f: 
+            WATCHLIST = json.load(f)
+    except Exception: 
+        WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 else:
     WATCHLIST = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
 def send_telegram_alert(message):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
-    try: requests.post(url, json=payload, timeout=10)
-    except Exception as e: print(f"Telegram connection error: {e}")
+    try: 
+        res = requests.post(url, json=payload, timeout=10)
+        if not res.ok:
+            print(f"❌ Telegram API Error Response: {res.text}")
+    except Exception as e: 
+        print(f"Telegram connection error: {e}")
 
 def run_daily_scan():
     print("📥 Step 1: Downloading global SPY index benchmark details...")
     try:
-        spy_df = yf.download("SPY", period="1y", interval="1d", progress=False, timeout=15)
+        # Enforce clean single-level columns from the start
+        spy_df = yf.download("SPY", period="1y", interval="1d", progress=False, timeout=15, multi_level_index=False)
         if isinstance(spy_df.columns, pd.MultiIndex):
             spy_df.columns = spy_df.columns.get_level_values(0)
         print(f"✅ SPY downloaded successfully. Total historical data rows: {len(spy_df)}")
@@ -41,7 +48,8 @@ def run_daily_scan():
     for ticker in WATCHLIST:
         print(f"🔍 Step 2: Fetching data frames for target asset: {ticker}...")
         try:
-            df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=15, threads=False)
+            # Added multi_level_index=False to protect baseline structure integrity
+            df = yf.download(ticker, period="1y", interval="1d", progress=False, timeout=15, threads=False, multi_level_index=False)
             if df.empty: 
                 print(f"⚠️ Warning: Asset {ticker} returned empty dataset.")
                 continue
@@ -51,7 +59,11 @@ def run_daily_scan():
             
             print(f"🧮 Step 3: Crunching calculations engine matrix for {ticker}...")
             df = calculate_technicals(df, spy_df=spy_df)
-            if df.empty: continue
+            
+            # Double check our calculation boundary safety limits
+            if df.empty or len(df) < 50:
+                print(f"⚠️ Warning: Dataframe for {ticker} has insufficient rows ({len(df)}) after metrics run.")
+                continue
             
             latest = df.iloc[-1]
             
@@ -69,23 +81,24 @@ def run_daily_scan():
             adx_val = latest.get('ADX', 0.0)
 
             # FORCED FORGE LIVE MESSAGING OVERRIDE SWITCH:
-            #SHOULD_REPORT = is_pocket or is_accum or buy_alert or sell_alert
+            # Once you confirm this works, you can uncomment the line below to filter for breakouts only:
+            # SHOULD_REPORT = is_pocket or is_accum or buy_alert or sell_alert
             SHOULD_REPORT = True
             
             if SHOULD_REPORT:
                 print(f"📝 Step 4: Compiling metric scorecard string block for {ticker}...")
                 report = f"• *{ticker}* | Trend Matrix: `{trend_state}`\n"
-                report += f"   ├── 📊 RS Score: `{rs_score:+.2f}%` vs SPY\n"
-                report += f"   ├── ⚡ Pocket Pivot Matrix: {'✅ TRIGGERED' if is_pocket else '❌ No Surge'}\n"
-                report += f"   ├── 📈 Vol Accumulation Day: {'✅ DETECTED' if is_accum else '❌ Normal Vol'}\n"
-                report += f"   ├── 🚀 Speed EMAs (10 > 30): {'✅ BULLISH' if is_ema else '❌ BEARISH'}\n"
-                report += f"   ├── 🎯 Parabolic SAR Support: {'✅ ABOVE SAR' if is_sar else '❌ BELOW SAR'}\n"
-                report += f"   └── 🌊 Trend Strength (ADX): `{adx_val:.1f}` {'🔥 (Strong)' if is_adx else '⏳ (Weak)'}\n"
+                report += f"    ├── 📊 RS Score: `{rs_score:+.2f}%` vs SPY\n"
+                report += f"    ├── ⚡ Pocket Pivot Matrix: {'✅ TRIGGERED' if is_pocket else '❌ No Surge'}\n"
+                report += f"    ├── 📈 Vol Accumulation Day: {'✅ DETECTED' if is_accum else '❌ Normal Vol'}\n"
+                report += f"    ├── 🚀 Speed EMAs (10 > 30): {'✅ BULLISH' if is_ema else '❌ BEARISH'}\n"
+                report += f"    ├── 🎯 Parabolic SAR Support: {'✅ ABOVE SAR' if is_sar else '❌ BELOW SAR'}\n"
+                report += f"    └── 🌊 Trend Strength (ADX): `{adx_val:.1f}` {'🔥 (Strong)' if is_adx else '⏳ (Weak)'}\n"
                 
                 if buy_alert:
-                    report += f"   ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED GREEN (BUY)* 🚀\n"
+                    report += f"    ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED GREEN (BUY)* 🚀\n"
                 elif sell_alert:
-                    report += f"   ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED RED (SELL)* 🚨\n"
+                    report += f"    ⚠️ *ALERT: TRAILING VOLATILITY STOP FLIPPED RED (SELL)* 🚨\n"
                 
                 triggered_reports.append(report)
                 
