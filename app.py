@@ -21,16 +21,18 @@ target_ticker = query_params.get("ticker", None)
 def load_watchlist():
     if os.path.exists(WATCHLIST_FILE):
         with open(WATCHLIST_FILE, "r") as f:
-            return json.load(f)
+            try:
+                return json.load(f)
+            except Exception:
+                return DEFAULT_TICKERS
     return DEFAULT_TICKERS
 
 def save_watchlist(tickers):
     with open(WATCHLIST_FILE, "w") as f:
         json.dump(tickers, f)
 
-if __name__ == "__main__" or "streamlit" in sys.modules:
-    if "tickers" not in st.session_state:
-        st.session_state.tickers = load_watchlist()
+if "tickers" not in st.session_state:
+    st.session_state.tickers = load_watchlist()
 
 # --- THE INSTITUTIONAL ENGINE ---
 def calculate_technicals(df, spy_df=None):
@@ -63,12 +65,15 @@ def calculate_technicals(df, spy_df=None):
     pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
     neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
     
-    di_plus = 100 * (pos_dm.rolling(window=14).mean() / df['ATR14'])
-    di_minus = 100 * (neg_dm.rolling(window=14).mean() / df['ATR14'])
+    # Fill division zeroes safely
+    atr_filled = df['ATR14'].replace(0, np.nan)
+    di_plus = 100 * (pos_dm.rolling(window=14).mean() / atr_filled).fillna(0)
+    di_minus = 100 * (neg_dm.rolling(window=14).mean() / atr_filled).fillna(0)
     
-    dx = 100 * (di_plus - di_minus).abs() / (di_plus + di_minus)
-    df['ADX'] = dx.rolling(window=14).mean()
-    # Trend is strong if ADX is above 20 and rising
+    dm_sum = di_plus + di_minus
+    dm_sum = dm_sum.replace(0, np.nan)
+    dx = 100 * (di_plus - di_minus).abs() / dm_sum
+    df['ADX'] = dx.rolling(window=14).mean().fillna(0)
     df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
 
     # 3. Parabolic SAR Generation Engine (0.02 / 0.2 Standard Setup)
@@ -106,17 +111,14 @@ def calculate_technicals(df, spy_df=None):
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
     # 5. Relative Strength (RS) Matrix vs SPY Index
-# 5. Relative Strength (RS) Matrix vs SPY Index (FIXED COLUMN STRIPPING)
     if spy_df is not None and not spy_df.empty:
-        # Copy to avoid modifying original dataframe out of scope
         spy_ref = spy_df.copy()
         if isinstance(spy_ref.columns, pd.MultiIndex): 
             spy_ref.columns = spy_ref.columns.get_level_values(0)
             
-        # Select strictly the 'Close' column series cleanly
         spy_close = spy_ref[['Close']].rename(columns={'Close': 'Close_SPY'})
-        
         merged = df[['Close']].merge(spy_close, left_index=True, right_index=True, how='left')
+        
         if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
             df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1)) * 100
@@ -152,19 +154,19 @@ def calculate_technicals(df, spy_df=None):
     df['BREAKOUT_TRIGGERED'] = df['POCKET_PIVOT'] | df['ACCUMULATION_DAY'] | df['VSTOP_BUY_SIGNAL'] | df['VSTOP_SELL_SIGNAL']
     return df
 
-# --- SCANNER VISUAL SUMMARY MATRIX SUMMARY GENERATOR ---
+# --- SCANNER VISUAL SUMMARY MATRIX GENERATOR ---
 def generate_summary(df):
-    if df.empty or 'Stage2_Aligned' not in df.columns:
+    if df.empty or 'VSTOP_TREND' not in df.columns:
         return "Awaiting complete data arrays...", "orange"
         
     latest = df.iloc[-1]
     
     conditions = {
-        "Stage 2 Trend Guardrail (Close > 50 > 150 > 200 EMA)": latest['Stage2_Aligned'],
-        "Institutional Volume Accumulation Trigger (+50% Spike)": latest['Inst_Accumulation'],
-        "Relative Strength Line Nearing 52-Week High Leaderships": latest['RS_New_High'],
-        "VSTOP Support Structural Integrity Positive": latest['VSTOP_Trend'] == 1,
-        "Parabolic Acceleration Status Positive": latest['SAR_Trend'] == 1
+        "Institutional Trend Guardrail (Close > 50MA)": latest['Close'] > latest['MA50'] if 'MA50' in latest else False,
+        "Institutional Volume Accumulation Trigger (+50% Spike)": latest['ACCUMULATION_DAY'],
+        "Institutional Pivot Matrix (Pocket Pivot Spark)": latest['POCKET_PIVOT'],
+        "VSTOP Support Structural Integrity Positive": latest['VSTOP_TREND'] == 1,
+        "Parabolic Acceleration Status Positive (SAR)": latest['SAR_ALIGNED']
     }
     
     passed_count = sum(1 for status in conditions.values() if status)
@@ -198,9 +200,9 @@ if st.sidebar.button("Remove Selected") and remove_ticker:
     save_watchlist(st.session_state.tickers)
     st.sidebar.error(f"Removed {remove_ticker}")
 
-# --- GLOBAL BENCHMARK DATA PRE-FETCH (S&P 500 reference mapping required for RS indicators) ---
-spy_weekly = yf.download("SPY", period="3y", interval="1wk", progress=False, multi_level_index=False)
-spy_monthly = yf.download("SPY", period="6y", interval="1mo", progress=False, multi_level_index=False)
+# --- GLOBAL BENCHMARK DATA PRE-FETCH ---
+spy_weekly = yf.download("SPY", period="5y", interval="1wk", progress=False, multi_level_index=False)
+spy_monthly = yf.download("SPY", period="10y", interval="1mo", progress=False, multi_level_index=False)
 if isinstance(spy_weekly.columns, pd.MultiIndex): spy_weekly.columns = spy_weekly.columns.get_level_values(0)
 if isinstance(spy_monthly.columns, pd.MultiIndex): spy_monthly.columns = spy_monthly.columns.get_level_values(0)
 
@@ -210,7 +212,7 @@ tab1, tab2 = st.tabs(["🎯 Single Stock Analysis", "📊 Multi-Stock Overview"]
 initial_index = st.session_state.tickers.index(target_ticker) if target_ticker in st.session_state.tickers else 0
 
 # ==============================================================================
-# TAB 1: ONE STOCK ONLY (Institutional Overrides Blueprint View)
+# TAB 1: ONE STOCK ONLY
 # ==============================================================================
 with tab1:
     st.header("Single Ticker Deep Dive")
@@ -221,20 +223,20 @@ with tab1:
         timeframe = st.selectbox("Select Interval", ["Weekly", "Monthly"])
     
     interval_map = {"Weekly": "1wk", "Monthly": "1mo"}
-    period_map = {"Weekly": "3y", "Monthly": "6y"} # Expanded period range history tracking
+    period_map = {"Weekly": "5y", "Monthly": "10y"}  # Expanded buffer to preserve index sizing bounds
     spy_ref = spy_weekly if timeframe == "Weekly" else spy_monthly
     
     if selected_stock:
         if target_ticker and selected_stock != target_ticker:
             st.query_params.clear()
 
-        raw_df = yf.download(selected_stock, period=period_map[timeframe], interval=interval_map[timeframe], progress=False)
+        raw_df = yf.download(selected_stock, period=period_map[timeframe], interval=interval_map[timeframe], progress=False, multi_level_index=False)
         if isinstance(raw_df.columns, pd.MultiIndex):
             raw_df.columns = raw_df.columns.get_level_values(0)
             
         df = calculate_technicals(raw_df.copy(), spy_df=spy_ref)
         
-        if not df.empty and 'Stage2_Aligned' in df.columns:
+        if not df.empty and len(df) >= 50:
             summary_text, color = generate_summary(df)
             st.markdown(f"### 📋 Technical Summary Confluence Matrix ({timeframe} View)")
             
@@ -242,14 +244,10 @@ with tab1:
             elif color == "red": st.error(summary_text)
             else: st.warning(summary_text)
             
-            # --- THE 6-PANE CHART MATRIX VISUAL GRID ---
-# --- UPDATED NATIVE FRAME RENDERING ENGINE ---
             st.markdown("### 📊 Master Interactive Chart")
             tv_interval = "W" if timeframe == "Weekly" else "M"
             
-            # Reusable frame generator utilizing the modern native iframe API
             def render_tv_widget(html_payload, height=310):
-                # Encodes raw HTML code dynamically into a compliant inline data URI
                 from base64 import b64encode
                 encoded_html = b64encode(html_payload.encode('utf-8')).decode('utf-8')
                 data_uri = f"data:text/html;base64,{encoded_html}"
@@ -267,7 +265,7 @@ with tab1:
                 "container_id": "tv_master_chart"
               }});
               </script>
-             body>
+            </body>
             """
             render_tv_widget(master_chart_html, height=480)
 
@@ -283,7 +281,7 @@ with tab1:
                 ], "container_id": "tv_ema_fast"}});
                 </script></body>""")
 
-                st.caption("🛡️ Volatility Stop (VSTOP Proxy - Chandelier Core 20 / 2.5 Parameters)")
+                st.caption("🛡️ Volatility Stop Line Matrix (Chandelier Core 20 / 2.5 Multiplier Lookbacks)")
                 render_tv_widget(f"""
                 <body style="margin:0;"><div id="tv_vstop" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
                 new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
@@ -300,7 +298,7 @@ with tab1:
                 </script></body>""")
 
             with ind_col2:
-                st.caption("🌊 Indicator 3 Check: Stage 2 Moving Average Anchor Waves (20 / 50 / 100 / 200)")
+                st.caption("🌊 Moving Average Anchor Waves (20 / 50 / 100 / 200)")
                 render_tv_widget(f"""
                 <body style="margin:0;"><div id="tv_ema_macro" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
                 new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": ["MA_Ribbon@tv-basicstudies"], "container_id": "tv_ema_macro"}});
@@ -322,8 +320,10 @@ with tab1:
 
             with st.expander("🔍 Audit Raw Mathematical Data Engine Metrics"):
                 st.write("Below are the real-time calculations matching your requested institutional setups:")
-                audit_cols = ['Close', 'Volume', 'Vol_Avg50', 'Inst_Accumulation', 'EMA50', 'EMA200', 'Stage2_Aligned', 'RS_New_High']
-                st.dataframe(df[audit_cols].tail(5))
+                audit_cols = ['Close', 'Volume', 'AvgVolume50', 'ACCUMULATION_DAY', 'POCKET_PIVOT', 'RS_SCORE', 'VSTOP_LINE', 'VSTOP_TREND']
+                # Render safely ensuring available columns exist
+                available_cols = [c for c in audit_cols if c in df.columns]
+                st.dataframe(df[available_cols].tail(5))
         else:
             st.error("Historical data footprint bounds not met for calculations. Please wait.")
 
@@ -335,7 +335,7 @@ with tab2:
     multi_timeframe = st.radio("Screener Timeframe Target", ["Weekly", "Monthly"], horizontal=True)
     
     m_interval = "1wk" if multi_timeframe == "Weekly" else "1mo"
-    m_period = "3y" if multi_timeframe == "Weekly" else "6y"
+    m_period = "5y" if multi_timeframe == "Weekly" else "10y"
     spy_m_ref = spy_weekly if multi_timeframe == "Weekly" else spy_monthly
     
     summary_data = []
@@ -350,18 +350,21 @@ with tab2:
                         
                     t_df = calculate_technicals(t_df, spy_df=spy_m_ref)
                     
-                    if not t_df.empty and 'Stage2_Aligned' in t_df.columns:
+                    if not t_df.empty and len(t_df) >= 50:
                         latest = t_df.iloc[-1]
                         summary_msg, _ = generate_summary(t_df)
                         link_url = f"?ticker={ticker}"
+                        
+                        is_aligned = latest['Close'] > latest['MA50'] if 'MA50' in latest else False
                         
                         summary_data.append({
                             "Link View": f'<a href="{link_url}" target="_self">🔍 Deep Dive {ticker}</a>',
                             "Ticker": ticker,
                             "Last Close": round(float(latest['Close']), 2),
-                            "Stage 2 Structural Alignment": "🔥 Aligned" if latest['Stage2_Aligned'] else "❌ Under 200MA",
-                            "Inst. Accumulation Active": "✅ Vol Spike" if latest['Inst_Accumulation'] else "❌ Standard Vol",
-                            "RS Line 52W Standing": "👑 Market Leader" if latest['RS_New_High'] else "⚖️ Index Tracker",
+                            "Trend Guardrail (Close > 50MA)": "🔥 Aligned" if is_aligned else "❌ Below 50MA",
+                            "Inst. Accumulation Active": "✅ Vol Spike" if latest['ACCUMULATION_DAY'] else "❌ Standard Vol",
+                            "Pocket Pivot Triggered": "⚡ Pivot Active" if latest['POCKET_PIVOT'] else "❌ No Pivot",
+                            "RS Matrix Score": f"{latest['RS_SCORE']:+.2f}%",
                             "Overall Filter Metric Verdict": summary_msg.split("-")[0].strip()
                         })
                 except Exception:
@@ -373,11 +376,11 @@ with tab2:
             st.markdown("<br>", unsafe_allow_html=True)
             
             breakouts = sum(1 for x in summary_data if "BREAKOUT" in x["Overall Filter Metric Verdict"])
-            stage2_count = sum(1 for x in summary_data if "Aligned" in x["Stage 2 Structural Alignment"])
+            stage2_count = sum(1 for x in summary_data if "Aligned" in x["Trend Guardrail (Close > 50MA)"])
             
             c1, c2, c3 = st.columns(3)
             c1.metric("Total Screener Assets Count", len(summary_data))
             c2.metric("Active High-Volume Breakouts Running", breakouts)
-            c3.metric("Assets Holding Stage 2 Alignment Structures", stage2_count)
+            c3.metric("Assets Holding Bullish Trend Alignment Structures", stage2_count)
     else:
         st.info("Watchlist is empty. Populate items inside the sidebar engine panel menu.")
