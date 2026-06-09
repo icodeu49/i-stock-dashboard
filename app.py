@@ -388,44 +388,99 @@ with tab2:
     else:
         st.info("Watchlist is empty. Populate items inside the sidebar engine panel menu.")
 
+
 # ====================================================================
-# TAB 3: SECTOR HEATMAP (Only runs if NOT imported by a background cron)
+# TAB 3: SECTOR HEATMAP (Fully aligned with the 3-step Scoring Engine)
 # ====================================================================
 
 if os.environ.get("STREAMLIT_RUN_PURE") != "true":
 
-    def get_sector_heatmap_data():
-        sectors = {
-            "XLK": "Technology", "XLF": "Financials", "XLY": "Consumer Disc.", 
-            "XLC": "Communications", "XLI": "Industrials", "XLP": "Consumer Staples", 
-            "XLV": "Healthcare", "XLE": "Energy", "XLU": "Utilities", "XLRE": "Real Estate"
+    def get_advanced_heatmap_matrix():
+        # Master structural map linking Sector ETFs to their liquid components
+        sectors_map = {
+            "XLK": {"name": "Technology", "stocks": ["MSFT", "AAPL", "NVDA", "AVGO", "ORCL", "CSCO", "AMD", "QCOM", "NOW", "INTU"]},
+            "XLF": {"name": "Financials", "stocks": ["JPM", "BAC", "WFC", "MS", "GS", "BRK-B", "AXP", "V", "MA", "BLK"]},
+            "XLY": {"name": "Consumer Disc.", "stocks": ["AMZN", "TSLA", "HD", "MCD", "NKE", "LOW", "SBUX", "TJX", "BKNG", "CMG"]},
+            "XLC": {"name": "Communications", "stocks": ["META", "GOOGL", "NFLX", "TMUS", "DIS", "CHTR", "CMCSA", "VZ", "T", "PINS"]},
+            "XLI": {"name": "Industrials", "stocks": ["CAT", "GE", "UNP", "HON", "ETN", "URI", "WM", "UPS", "DE", "LMT"]},
+            "XLP": {"name": "Consumer Staples", "stocks": ["PG", "COST", "KO", "PEP", "WMT", "PM", "MDLZ", "EL", "MO", "CL"]},
+            "XLV": {"name": "Healthcare", "stocks": ["LLY", "UNH", "JNJ", "ABBV", "MRK", "TMO", "ISRG", "PFE", "AMGN", "REGN"]},
+            "XLE": {"name": "Energy", "stocks": ["XOM", "CVX", "COP", "SLB", "EOG", "MPC", "PSX", "VLO", "WMB", "HAL"]},
+            "XLU": {"name": "Utilities", "stocks": ["NEE", "SO", "DUK", "CEG", "AEP", "SRE", "D", "FE", "EXC", "PCG"]},
+            "XLRE": {"name": "Real Estate", "stocks": ["PLD", "AMT", "EQIX", "CCI", "WY", "PSA", "O", "IRM", "DLR", "AVB"]}
         }
-        heatmap_rows = []
-        for etf, name in sectors.items():
-            try:
-                df = yf.download(etf, period="3mo", interval="1d", progress=False, multi_level_index=False)
-                if isinstance(df.columns, pd.MultiIndex): 
-                    df.columns = df.columns.get_level_values(0)
-                if not df.empty:
-                    r1w = float(((df['Close'].iloc[-1] - df['Close'].iloc[-5]) / df['Close'].iloc[-5]) * 100)
-                    r1m = float(((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100)
-                    heatmap_rows.append({"Sector": name, "Ticker": etf, "1-Week Return %": round(r1w, 2), "1-Month Return %": round(r1m, 2)})
-            except Exception: 
-                continue
-        return pd.DataFrame(heatmap_rows)
-
-    # Put JUST Tab 3 inside this protected block
-    with tab3:
-        st.subheader("Institutional Sector Rotation Performance Leaderboard")
-        st.write("Calculated multi-timeframe price acceleration footprinting across structural index groups.")
         
-        with st.spinner("Calculating rotation matrix values..."):
-            heatmap_df = get_sector_heatmap_data()
-            if not heatmap_df.empty:
-                heatmap_df = heatmap_df.sort_values(by="1-Month Return %", ascending=False)
+        spy_df = yf.download("SPY", period="3mo", interval="1d", progress=False, multi_level_index=False)
+        if isinstance(spy_df.columns, pd.MultiIndex): spy_df.columns = spy_df.columns.get_level_values(0)
+        spy_roc = float(((spy_df['Close'].iloc[-1] - spy_df['Close'].iloc[-21]) / spy_df['Close'].iloc[-21]) * 100)
+        
+        matrix_rows = []
+        
+        for etf, metadata in sectors_map.items():
+            try:
+                # 1. Fetch Sector Data for 3-Step Calculation
+                df = yf.download(etf, period="6mo", interval="1d", progress=False, multi_level_index=False)
+                if df.empty or len(df) < 63: continue
+                if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
+                
+                # Crunch Multi-Timeframe Velocity Weights
+                roc_3m = ((df['Close'].iloc[-1] - df['Close'].iloc[-63]) / df['Close'].iloc[-63]) * 100
+                roc_1m = ((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100
+                roc_1w = ((df['Close'].iloc[-1] - df['Close'].iloc[-5]) / df['Close'].iloc[-5]) * 100
+                raw_score = (0.40 * roc_1m) + (0.40 * roc_1w) + (0.20 * roc_3m)
+                
+                # Apply Volume Force Multiplier
+                vol_5d = df['Volume'].iloc[-5:].mean()
+                vol_50d = df['Volume'].iloc[-50:].mean()
+                vol_mult = max(0.5, min(vol_5d / vol_50d if vol_50d > 0 else 1.0, 2.0))
+                final_momentum_score = round(float(raw_score * vol_mult), 2)
+                
+                # 2. Extract Top 5 Stocks based on Relative Strength vs SPY
+                stock_rs_rankings = []
+                for ticker in metadata['stocks']:
+                    try:
+                        stk_df = yf.download(ticker, period="3mo", interval="1d", progress=False, multi_level_index=False)
+                        if stk_df.empty or len(stk_df) < 22: continue
+                        if isinstance(stk_df.columns, pd.MultiIndex): stk_df.columns = stk_df.columns.get_level_values(0)
+                        
+                        stk_roc = ((stk_df['Close'].iloc[-1] - stk_df['Close'].iloc[-21]) / stk_df['Close'].iloc[-21]) * 100
+                        rs_score = stk_roc - spy_roc
+                        stock_rs_rankings.append((ticker, rs_score))
+                    except Exception: continue
+                
+                stock_rs_rankings.sort(key=lambda x: x[1], reverse=True)
+                top_5_leaders = ", ".join([item[0] for item in stock_rs_rankings[:5]])
+                
+                matrix_rows.append({
+                    "Sector Name": metadata['name'],
+                    "ETF Ticker": etf,
+                    "Blended Momentum Score": final_momentum_score,
+                    "1-Week Absolute %": round(float(roc_1w), 2),
+                    "1-Month Absolute %": round(float(roc_1m), 2),
+                    "🏆 Sector Alpha Horse Leaders (Top 5)": top_5_leaders
+                })
+            except Exception: continue
+            
+        return pd.DataFrame(matrix_rows)
+
+    with tab3:
+        st.subheader("Institutional Sector Rotation Master Matrix")
+        st.write("Ranked dynamically by multi-timeframe price returns and volume force parameters.")
+        
+        with st.spinner("Processing structural sector data maps..."):
+            master_matrix_df = get_advanced_heatmap_matrix()
+            
+            if not master_matrix_df.empty:
+                # Rank highest institutional momentum down to the lowest
+                master_matrix_df = master_matrix_df.sort_values(by="Blended Momentum Score", ascending=False)
                 
                 st.dataframe(
-                    heatmap_df.style.background_gradient(cmap="RdYlGn", subset=["1-Week Return %", "1-Month Return %"]),
+                    master_matrix_df.style.background_gradient(
+                        cmap="RdYlGn", 
+                        subset=["Blended Momentum Score", "1-Week Absolute %", "1-Month Absolute %"]
+                    ),
                     use_container_width=True,
                     hide_index=True
                 )
+
+                
