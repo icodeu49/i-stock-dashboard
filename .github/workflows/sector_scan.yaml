@@ -1,0 +1,32 @@
+name: Weekly Macro Sector Scan
+
+on:
+  schedule:
+    # 13:49 UTC corresponds exactly to 2:49 PM BST (UK Summer Time) on Mondays
+    - cron: '49 13 * * 3'
+  workflow_dispatch: # Allows manual testing anytime from the Actions tab
+
+jobs:
+  sector_macro_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v6
+
+    - name: Set Up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install yfinance pandas requests
+
+    - name: Run Sector Rotation Scanner
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: python sector_notifier.py
