@@ -182,25 +182,6 @@ def generate_summary(df):
     else:
         return f"⚠️ BEARISH UNDERPERFORMANCE HAZARD ZONE - {summary_msg}", "red"
 
-def get_sector_heatmap_data():
-    # Keep identical matching keys from notifier engine 
-    sectors = {
-        "XLK": "Technology", "XLF": "Financials", "XLY": "Consumer Disc.", 
-        "XLC": "Communications", "XLI": "Industrials", "XLP": "Consumer Staples", 
-        "XLV": "Healthcare", "XLE": "Energy", "XLU": "Utilities", "XLRE": "Real Estate"
-    }
-    heatmap_rows = []
-    for etf, name in sectors.items():
-        try:
-            df = yf.download(etf, period="3mo", interval="1d", progress=False, multi_level_index=False)
-            if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
-            if not df.empty:
-                r1w = float(((df['Close'].iloc[-1] - df['Close'].iloc[-5]) / df['Close'].iloc[-5]) * 100)
-                r1m = float(((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100)
-                heatmap_rows.append({"Sector": name, "Ticker": etf, "1-Week Return %": round(r1w, 2), "1-Month Return %": round(r1m, 2)})
-        except Exception: continue
-    return pd.DataFrame(heatmap_rows)
-
 
 # --- SIDEBAR CONTROL PANEL ---
 st.sidebar.header("⚙️ Manage Watchlist")
@@ -407,19 +388,44 @@ with tab2:
     else:
         st.info("Watchlist is empty. Populate items inside the sidebar engine panel menu.")
 
-with tab3:
-    st.subheader("Institutional Sector Rotation Performance Leaderboard")
-    st.write("Calculated multi-timeframe price acceleration footprinting across structural index groups.")
-    
-    with st.spinner("Calculating rotation matrix values..."):
-        heatmap_df = get_sector_heatmap_data()
-        if not heatmap_df.empty:
-            # Sort leaderboard high-to-low by trailing monthly institutional accumulation speed
-            heatmap_df = heatmap_df.sort_values(by="1-Month Return %", ascending=False)
-            
-            # Draw beautiful native streamlit styled tracking matrix 
-            st.dataframe(
-                heatmap_df.style.background_gradient(cmap="RdYlGn", subset=["1-Week Return %", "1-Month Return %"]),
-                use_container_width=True,
-                hide_index=True
-            )
+# ====================================================================
+# TAB 3: SECTOR HEATMAP (Only runs if NOT imported by a background cron)
+# ====================================================================
+
+if os.environ.get("STREAMLIT_RUN_PURE") != "true":
+
+    def get_sector_heatmap_data():
+        sectors = {
+            "XLK": "Technology", "XLF": "Financials", "XLY": "Consumer Disc.", 
+            "XLC": "Communications", "XLI": "Industrials", "XLP": "Consumer Staples", 
+            "XLV": "Healthcare", "XLE": "Energy", "XLU": "Utilities", "XLRE": "Real Estate"
+        }
+        heatmap_rows = []
+        for etf, name in sectors.items():
+            try:
+                df = yf.download(etf, period="3mo", interval="1d", progress=False, multi_level_index=False)
+                if isinstance(df.columns, pd.MultiIndex): 
+                    df.columns = df.columns.get_level_values(0)
+                if not df.empty:
+                    r1w = float(((df['Close'].iloc[-1] - df['Close'].iloc[-5]) / df['Close'].iloc[-5]) * 100)
+                    r1m = float(((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100)
+                    heatmap_rows.append({"Sector": name, "Ticker": etf, "1-Week Return %": round(r1w, 2), "1-Month Return %": round(r1m, 2)})
+            except Exception: 
+                continue
+        return pd.DataFrame(heatmap_rows)
+
+    # Put JUST Tab 3 inside this protected block
+    with tab3:
+        st.subheader("Institutional Sector Rotation Performance Leaderboard")
+        st.write("Calculated multi-timeframe price acceleration footprinting across structural index groups.")
+        
+        with st.spinner("Calculating rotation matrix values..."):
+            heatmap_df = get_sector_heatmap_data()
+            if not heatmap_df.empty:
+                heatmap_df = heatmap_df.sort_values(by="1-Month Return %", ascending=False)
+                
+                st.dataframe(
+                    heatmap_df.style.background_gradient(cmap="RdYlGn", subset=["1-Week Return %", "1-Month Return %"]),
+                    use_container_width=True,
+                    hide_index=True
+                )
