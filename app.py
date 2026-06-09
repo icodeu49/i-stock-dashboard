@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import json
 import os
-import sys
 
 # --- CONSTANTS & CONFIG ---
 WATCHLIST_FILE = "watchlist.json"
@@ -35,7 +34,7 @@ if "tickers" not in st.session_state:
     st.session_state.tickers = load_watchlist()
 
 # --- THE INSTITUTIONAL ENGINE ---
-def calculate_technicals(df, spy_df=None):
+def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     """
     Master Institutional Confluence Matrix.
     Processes 10/30 EMAs, Volatility Stops, Parabolic SAR, ADX, 
@@ -47,17 +46,22 @@ def calculate_technicals(df, spy_df=None):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
+    # DYNAMIC LOOKBACK CONFIGURATION
+    length_map = {"Daily": 30, "Weekly": 20, "Monthly": 10}
+    chosen_length = length_map.get(timeframe, 20)
+
     # 1. Core Speed EMAs (10 vs 30)
     df['EMA10'] = df['Close'].ewm(span=10, adjust=False).mean()
     df['EMA30'] = df['Close'].ewm(span=30, adjust=False).mean()
     df['EMA_SPEED_ALIGNED'] = df['EMA10'] > df['EMA30']
 
-    # 2. Average Directional Index (ADX 14)
+    # 2. Average Directional Index (ADX via Dynamic Length Lookback)
     high_low = df['High'] - df['Low']
     high_cp = (df['High'] - df['Close'].shift(1)).abs()
     low_cp = (df['Low'] - df['Close'].shift(1)).abs()
     tr = pd.concat([high_low, high_cp, low_cp], axis=1).max(axis=1)
-    df['ATR14'] = tr.rolling(window=14).mean()
+    df['ATR_CHOSEN'] = tr.rolling(window=chosen_length).mean()
+    df['ATR14'] = tr.rolling(window=14).mean()  # Kept as legacy indicator backup if needed
 
     up_move = df['High'] - df['High'].shift(1)
     down_move = df['Low'].shift(1) - df['Low']
@@ -65,15 +69,14 @@ def calculate_technicals(df, spy_df=None):
     pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
     neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
     
-    # Fill division zeroes safely
-    atr_filled = df['ATR14'].replace(0, np.nan)
-    di_plus = 100 * (pos_dm.rolling(window=14).mean() / atr_filled).fillna(0)
-    di_minus = 100 * (neg_dm.rolling(window=14).mean() / atr_filled).fillna(0)
+    atr_filled = df['ATR_CHOSEN'].replace(0, np.nan)
+    di_plus = 100 * (pos_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
+    di_minus = 100 * (neg_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
     
     dm_sum = di_plus + di_minus
     dm_sum = dm_sum.replace(0, np.nan)
     dx = 100 * (di_plus - di_minus).abs() / dm_sum
-    df['ADX'] = dx.rolling(window=14).mean().fillna(0)
+    df['ADX'] = dx.rolling(window=chosen_length).mean().fillna(0)
     df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
 
     # 3. Parabolic SAR Generation Engine (0.02 / 0.2 Standard Setup)
@@ -127,13 +130,13 @@ def calculate_technicals(df, spy_df=None):
     else: 
         df['RS_SCORE'] = 0.0
 
-    # 6. Advanced Dual-Direction Volatility Trailing Stop Logic (2.5x ATR Window)
+    # 6. Advanced Dual-Direction Volatility Trailing Stop Logic (Using Dynamic ATR Lookback)
     vstop_arr, trend_arr = [], []
-    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR14'].fillna(0).iloc[0] * 2.5)
+    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.5)
     
     for i in range(len(df)):
         close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
-        atr = df['ATR14'].fillna(0).iloc[i]
+        atr = df['ATR_CHOSEN'].fillna(0).iloc[i]
         if current_trend == 1:
             current_stop = max(current_stop, high_p - (atr * 2.5))
             if close_p < current_stop:
@@ -202,16 +205,16 @@ if st.sidebar.button("Remove Selected") and remove_ticker:
     st.sidebar.error(f"Removed {remove_ticker}")
 
 # --- GLOBAL BENCHMARK DATA PRE-FETCH ---
+spy_daily = yf.download("SPY", period="2y", interval="1d", progress=False, multi_level_index=False)
 spy_weekly = yf.download("SPY", period="5y", interval="1wk", progress=False, multi_level_index=False)
 spy_monthly = yf.download("SPY", period="10y", interval="1mo", progress=False, multi_level_index=False)
+if isinstance(spy_daily.columns, pd.MultiIndex): spy_daily.columns = spy_daily.columns.get_level_values(0)
 if isinstance(spy_weekly.columns, pd.MultiIndex): spy_weekly.columns = spy_weekly.columns.get_level_values(0)
 if isinstance(spy_monthly.columns, pd.MultiIndex): spy_monthly.columns = spy_monthly.columns.get_level_values(0)
 
 # --- NAVIGATION TABS ---
 tab1, tab2, tab3 = st.tabs(["Stock Dashboard", "Watchlist Alerts", "🔥 Macro Sector Heatmap"])
-
 initial_index = st.session_state.tickers.index(target_ticker) if target_ticker in st.session_state.tickers else 0
-
 
 
 # ==============================================================================
@@ -223,11 +226,18 @@ with tab1:
     with col1:
         selected_stock = st.selectbox("Select Target Stock", st.session_state.tickers, index=initial_index, key="single_select")
     with col2:
-        timeframe = st.selectbox("Select Interval", ["Weekly", "Monthly"])
+        timeframe = st.selectbox("Select Interval", ["Daily", "Weekly", "Monthly"], index=1)
     
-    interval_map = {"Weekly": "1wk", "Monthly": "1mo"}
-    period_map = {"Weekly": "5y", "Monthly": "10y"}  # Expanded buffer to preserve index sizing bounds
-    spy_ref = spy_weekly if timeframe == "Weekly" else spy_monthly
+    interval_map = {"Daily": "1d", "Weekly": "1wk", "Monthly": "1mo"}
+    period_map = {"Daily": "2y", "Weekly": "5y", "Monthly": "10y"}
+    
+    # Select benchmark asset mapping reference dynamically
+    if timeframe == "Daily":
+        spy_ref = spy_daily
+    elif timeframe == "Weekly":
+        spy_ref = spy_weekly
+    else:
+        spy_ref = spy_monthly
     
     if selected_stock:
         if target_ticker and selected_stock != target_ticker:
@@ -237,7 +247,7 @@ with tab1:
         if isinstance(raw_df.columns, pd.MultiIndex):
             raw_df.columns = raw_df.columns.get_level_values(0)
             
-        df = calculate_technicals(raw_df.copy(), spy_df=spy_ref)
+        df = calculate_technicals(raw_df.copy(), timeframe=timeframe, spy_df=spy_ref)
         
         if not df.empty and len(df) >= 50:
             summary_text, color = generate_summary(df)
@@ -248,7 +258,7 @@ with tab1:
             else: st.warning(summary_text)
             
             st.markdown("### 📊 Master Interactive Chart")
-            tv_interval = "W" if timeframe == "Weekly" else "M"
+            tv_interval = "D" if timeframe == "Daily" else ("W" if timeframe == "Weekly" else "M")
             
             def render_tv_widget(html_payload, height=310):
                 from base64 import b64encode
@@ -284,11 +294,13 @@ with tab1:
                 ], "container_id": "tv_ema_fast"}});
                 </script></body>""")
 
-                st.caption("🛡️ Volatility Stop Line Matrix (Chandelier Core 20 / 2.5 Multiplier Lookbacks)")
+                # Map text presentation cleanly to match user selections
+                vstop_len_lbl = 30 if timeframe == "Daily" else (20 if timeframe == "Weekly" else 10)
+                st.caption(f"🛡️ Volatility Stop Line Matrix (Chandelier Core {vstop_len_lbl} / 2.5 Multiplier Lookbacks)")
                 render_tv_widget(f"""
                 <body style="margin:0;"><div id="tv_vstop" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
                 new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
-                  {{ "id": "ChandelierExit@tv-basicstudies", "inputs": {{ "ATR Period": 20, "Multiplier": 2.5 }} }}
+                  {{ "id": "ChandelierExit@tv-basicstudies", "inputs": {{ "ATR Period": {vstop_len_lbl}, "Multiplier": 2.5 }} }}
                 ], "container_id": "tv_vstop"}});
                 </script></body>""")
 
@@ -307,11 +319,11 @@ with tab1:
                 new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": ["MA_Ribbon@tv-basicstudies"], "container_id": "tv_ema_macro"}});
                 </script></body>""")
 
-                st.caption("💪 Average Directional Index (DMI Analysis Engine Frame Length: 14)")
+                st.caption(f"💪 Average Directional Index (DMI Analysis Engine Frame Length: {vstop_len_lbl})")
                 render_tv_widget(f"""
                 <body style="margin:0;"><div id="tv_adx_chart" style="height:300px;"></div><script src="https://s3.tradingview.com/tv.js"></script><script>
                 new TradingView.widget({{"autosize": true, "symbol": "{selected_stock}", "interval": "{tv_interval}", "theme": "dark", "style": "1", "hide_top_toolbar": true, "hide_side_toolbar": true, "studies": [
-                  {{ "id": "DX@tv-basicstudies", "inputs": {{ "ADX Smoothing": 14, "DI Length": 14 }} }}
+                  {{ "id": "DX@tv-basicstudies", "inputs": {{ "ADX Smoothing": {vstop_len_lbl}, "DI Length": {vstop_len_lbl} }} }}
                 ], "container_id": "tv_adx_chart"}});
                 </script></body>""")
 
@@ -324,7 +336,6 @@ with tab1:
             with st.expander("🔍 Audit Raw Mathematical Data Engine Metrics"):
                 st.write("Below are the real-time calculations matching your requested institutional setups:")
                 audit_cols = ['Close', 'Volume', 'AvgVolume50', 'ACCUMULATION_DAY', 'POCKET_PIVOT', 'RS_SCORE', 'VSTOP_LINE', 'VSTOP_TREND']
-                # Render safely ensuring available columns exist
                 available_cols = [c for c in audit_cols if c in df.columns]
                 st.dataframe(df[available_cols].tail(5))
         else:
@@ -335,12 +346,18 @@ with tab1:
 # ==============================================================================
 with tab2:
     st.header("Multi-Stock Technical Screening Matrix")
-    multi_timeframe = st.radio("Screener Timeframe Target", ["Weekly", "Monthly"], horizontal=True)
+    multi_timeframe = st.radio("Screener Timeframe Target", ["Daily", "Weekly", "Monthly"], index=1, horizontal=True)
     
-    m_interval = "1wk" if multi_timeframe == "Weekly" else "1mo"
-    m_period = "5y" if multi_timeframe == "Weekly" else "10y"
-    spy_m_ref = spy_weekly if multi_timeframe == "Weekly" else spy_monthly
+    m_interval = "1d" if multi_timeframe == "Daily" else ("1wk" if multi_timeframe == "Weekly" else "1mo")
+    m_period = "2y" if multi_timeframe == "Daily" else ("5y" if multi_timeframe == "Weekly" else "10y")
     
+    if multi_timeframe == "Daily":
+        spy_m_ref = spy_daily
+    elif multi_timeframe == "Weekly":
+        spy_m_ref = spy_weekly
+    else:
+        spy_m_ref = spy_monthly
+        
     summary_data = []
     
     if st.session_state.tickers:
@@ -351,7 +368,7 @@ with tab2:
                     if isinstance(t_df.columns, pd.MultiIndex):
                         t_df.columns = t_df.columns.get_level_values(0)
                         
-                    t_df = calculate_technicals(t_df, spy_df=spy_m_ref)
+                    t_df = calculate_technicals(t_df, timeframe=multi_timeframe, spy_df=spy_m_ref)
                     
                     if not t_df.empty and len(t_df) >= 50:
                         latest = t_df.iloc[-1]
@@ -388,15 +405,12 @@ with tab2:
     else:
         st.info("Watchlist is empty. Populate items inside the sidebar engine panel menu.")
 
-
 # ====================================================================
-# TAB 3: SECTOR HEATMAP (Fully aligned with the 3-step Scoring Engine)
+# TAB 3: SECTOR HEATMAP
 # ====================================================================
-
 if os.environ.get("STREAMLIT_RUN_PURE") != "true":
 
     def get_advanced_heatmap_matrix():
-        # Master structural map linking Sector ETFs to their liquid components
         sectors_map = {
             "XLK": {"name": "Technology", "stocks": ["MSFT", "AAPL", "NVDA", "AVGO", "ORCL", "CSCO", "AMD", "QCOM", "NOW", "INTU"]},
             "XLF": {"name": "Financials", "stocks": ["JPM", "BAC", "WFC", "MS", "GS", "BRK-B", "AXP", "V", "MA", "BLK"]},
@@ -418,24 +432,20 @@ if os.environ.get("STREAMLIT_RUN_PURE") != "true":
         
         for etf, metadata in sectors_map.items():
             try:
-                # 1. Fetch Sector Data for 3-Step Calculation
                 df = yf.download(etf, period="6mo", interval="1d", progress=False, multi_level_index=False)
                 if df.empty or len(df) < 63: continue
                 if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
                 
-                # Crunch Multi-Timeframe Velocity Weights
                 roc_3m = ((df['Close'].iloc[-1] - df['Close'].iloc[-63]) / df['Close'].iloc[-63]) * 100
                 roc_1m = ((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100
                 roc_1w = ((df['Close'].iloc[-1] - df['Close'].iloc[-5]) / df['Close'].iloc[-5]) * 100
                 raw_score = (0.40 * roc_1m) + (0.40 * roc_1w) + (0.20 * roc_3m)
                 
-                # Apply Volume Force Multiplier
                 vol_5d = df['Volume'].iloc[-5:].mean()
                 vol_50d = df['Volume'].iloc[-50:].mean()
                 vol_mult = max(0.5, min(vol_5d / vol_50d if vol_50d > 0 else 1.0, 2.0))
                 final_momentum_score = round(float(raw_score * vol_mult), 2)
                 
-                # 2. Extract Top 5 Stocks based on Relative Strength vs SPY
                 stock_rs_rankings = []
                 for ticker in metadata['stocks']:
                     try:
@@ -471,9 +481,7 @@ if os.environ.get("STREAMLIT_RUN_PURE") != "true":
             master_matrix_df = get_advanced_heatmap_matrix()
             
             if not master_matrix_df.empty:
-                # Rank highest institutional momentum down to the lowest
                 master_matrix_df = master_matrix_df.sort_values(by="Blended Momentum Score", ascending=False)
-                
                 st.dataframe(
                     master_matrix_df.style.background_gradient(
                         cmap="RdYlGn", 
@@ -482,5 +490,3 @@ if os.environ.get("STREAMLIT_RUN_PURE") != "true":
                     use_container_width=True,
                     hide_index=True
                 )
-
-                
