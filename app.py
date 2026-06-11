@@ -33,6 +33,144 @@ def save_watchlist(tickers):
 if "tickers" not in st.session_state:
     st.session_state.tickers = load_watchlist()
 
+def run_backtest_simulation(watchlist, lookback_years, starting_capital=100000):
+    """
+    Multi-Asset Portfolio Simulation Engine:
+    - Simulates a shared $100k cash pool across the entire watchlist.
+    - Allocates a fixed $4,000 per asset on a weekly Bullish crossover.
+    - Fully liquidates the asset position on a weekly Bearish crossover.
+    - Tracks and records a historical quarterly equity performance curve.
+    """
+    fetch_years = lookback_years + 1
+    period_str = f"{int(fetch_years)}y"
+    
+    # 1. Gather historical weekly trend data arrays for all assets
+    portfolio_data = {}
+    all_dates = set()
+    
+    with st.spinner("📥 Harvesting historical framework arrays for watchlist..."):
+        # Download SPY benchmark once
+        spy_weekly = yf.download("SPY", period=period_str, interval="1wk", progress=False, multi_level_index=False)
+        if isinstance(spy_weekly.columns, pd.MultiIndex): 
+            spy_weekly.columns = spy_weekly.columns.get_level_values(0)
+            
+        for ticker in watchlist:
+            try:
+                df = yf.download(ticker, period=period_str, interval="1wk", progress=False, multi_level_index=False)
+                if df.empty or len(df) < 10:
+                    continue
+                if isinstance(df.columns, pd.MultiIndex): 
+                    df.columns = df.columns.get_level_values(0)
+                
+                df = calculate_technicals(df, timeframe="Weekly", spy_df=spy_weekly)
+                portfolio_data[ticker] = df
+                all_dates.update(df.index)
+            except Exception:
+                continue
+
+    if not portfolio_data:
+        return None, None, None
+
+    # Sort timeline down to strict target lookback horizon limits
+    start_date = pd.Timestamp.now() - pd.DateOffset(days=int(lookback_years * 365.25))
+    timeline = sorted([d for d in all_dates if d >= start_date])
+    
+    # 2. Initialize Simulation Ledger Matrices
+    cash = float(starting_capital)
+    positions = {}  # Format: { TICKER: { 'shares': X, 'cost': Y, 'entry_date': Z } }
+    trade_log = []
+    equity_curve = []
+    
+    # Store previous trend states to identify crossovers cleanly
+    prior_trends = {ticker: None for ticker in portfolio_data.keys()}
+    
+    # 3. Step Through Time Chronologically (Week-by-Week)
+    for current_date in timeline:
+        # Process Exits First to free up liquid cash capital
+        for ticker in list(positions.keys()):
+            df = portfolio_data[ticker]
+            if current_date in df.index:
+                row = df.loc[current_date]
+                current_trend = row.get('VSTOP_TREND', 1)
+                p_trend = prior_trends[ticker]
+                
+                # Exit Crossover: Trend flipped from 1 to -1
+                if p_trend == 1 and current_trend == -1:
+                    current_price = float(row['Close'])
+                    pos = positions.pop(ticker)
+                    
+                    exit_value = pos['shares'] * current_price
+                    cash += exit_value
+                    pnl = exit_value - pos['cost']
+                    ret_pct = (pnl / pos['cost']) * 100
+                    
+                    trade_log.append({
+                        'Stock Ticker': ticker,
+                        'Entry Date': pos['entry_date'].strftime('%Y-%m-%d'),
+                        'Exit Date': current_date.strftime('%Y-%m-%d'),
+                        'Capital Sizing': pos['cost'],
+                        'Net PnL ($)': round(pnl, 2),
+                        'Return (%)': round(ret_pct, 2)
+                    })
+                    
+        # Process Entries Second
+        for ticker, df in portfolio_data.items():
+            if current_date in df.index:
+                row = df.loc[current_date]
+                current_trend = row.get('VSTOP_TREND', 1)
+                p_trend = prior_trends[ticker]
+                
+                # Entry Crossover: Trend flipped from -1 to 1
+                if p_trend == -1 and current_trend == 1:
+                    # Verify we aren't already holding it and have enough cash reserves
+                    if ticker not in positions and cash >= 4000.0:
+                        current_price = float(row['Close'])
+                        cash -= 4000.0
+                        positions[ticker] = {
+                            'shares': 4000.0 / current_price,
+                            'cost': 4000.0,
+                            'entry_date': current_date
+                        }
+                        
+                prior_trends[ticker] = current_trend
+
+        # Calculate total portfolio liquidation value at this snapshot in time
+        current_portfolio_value = cash
+        for ticker, pos in positions.items():
+            df = portfolio_data[ticker]
+            if current_date in df.index:
+                current_portfolio_value += pos['shares'] * float(df.loc[current_date, 'Close'])
+            else:
+                current_portfolio_value += pos['cost'] # Fallback approximation if row gap exists
+                
+        equity_curve.append({
+            'Date': current_date,
+            'Portfolio Value': current_portfolio_value
+        })
+
+    # 4. Compile and Resample Equity Curve Data Into Quarterly Intervals
+    equity_df = pd.DataFrame(equity_curve)
+    if not equity_df.empty:
+        equity_df.set_index('Date', inplace=True)
+        # Resample to Quarter-End ('QE') and take the last available value of that quarter
+        quarterly_df = equity_df.resample('QE').last().dropna().reset_index()
+        quarterly_df['Date'] = quarterly_df['Date'].dt.strftime('%Y-Q%q')
+    else:
+        quarterly_df = pd.DataFrame(columns=['Date', 'Portfolio Value'])
+        
+    # Summarize final terminal statistics
+    final_val = equity_curve[-1]['Portfolio Value'] if equity_curve else starting_capital
+    summary = {
+        'Starting Capital': starting_capital,
+        'Ending Value': round(final_val, 2),
+        'Net Profit ($)': round(final_val - starting_capital, 2),
+        'Total Return (%)': round(((final_val - starting_capital) / starting_capital) * 100, 2),
+        'Total Trades Executed': len(trade_log)
+    }
+    
+    return summary, pd.DataFrame(trade_log), quarterly_df
+
+
 # --- THE INSTITUTIONAL ENGINE ---
 def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     """
@@ -213,7 +351,8 @@ if isinstance(spy_weekly.columns, pd.MultiIndex): spy_weekly.columns = spy_weekl
 if isinstance(spy_monthly.columns, pd.MultiIndex): spy_monthly.columns = spy_monthly.columns.get_level_values(0)
 
 # --- NAVIGATION TABS ---
-tab1, tab2, tab3 = st.tabs(["Stock Dashboard", "Watchlist Alerts", "🔥 Macro Sector Heatmap"])
+#tab1, tab2, tab3 = st.tabs(["Stock Dashboard", "Watchlist Alerts", "🔥 Macro Sector Heatmap"])
+tab1, tab2, tab3, tab4 = st.tabs(["📊 Stock Dashboard", "📈 Watchlist Alerts ", "🔥 Macro Sector Heatmap", "🧪 Historical Backtester"])
 initial_index = st.session_state.tickers.index(target_ticker) if target_ticker in st.session_state.tickers else 0
 
 
@@ -490,3 +629,58 @@ if os.environ.get("STREAMLIT_RUN_PURE") != "true":
                     use_container_width=True,
                     hide_index=True
                 )
+
+with tab4:
+    st.header("🧪 Portfolio Macro Framework Backtester")
+    st.markdown("Simulates running your system across your entire **Watchlist Pool** over the last 5 years as a single multi-position portfolio.")
+    
+    # Read active watchlist directly out of your global JSON config state
+    active_watchlist = WATCHLIST if 'WATCHLIST' in globals() else ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+    
+    st.info(f"📋 **Active Configuration:** Backtester will run across the **{len(active_watchlist)} assets** currently saved in your system scanner watchlist using a shared $100,000 baseline cash account.")
+
+    cc1, cc2 = st.columns(2)
+    with cc1:
+        bt_years = st.selectbox("Select Strategy Horizon Timeline:", options=[1.0, 2.0, 3.0, 5.0], index=3, format_func=lambda x: f"{int(x)} Years")
+    with cc2:
+        bt_capital = st.number_input("Starting Capital Allocation Pool ($):", value=100000, step=25000)
+
+    if st.button("🚀 Run Portfolio Level Simulation", use_container_width=True):
+        summary, trades_df, quarterly_df = run_backtest_simulation(active_watchlist, bt_years, bt_capital)
+        
+        if summary is None:
+            st.error("Simulation failed to compile. Ensure your watchlist components contain accessible historical data rows.")
+        else:
+            # --- ROW 1: METRIC SCORECARDS ---
+            st.subheader("📊 Portfolio Performance Scorecard")
+            m1, m2, m3, m4 = st.columns(4)
+            profit_color = "normal" if summary['Net Profit ($)'] >= 0 else "inverse"
+            
+            m1.metric("Starting Pool", f"${summary['Starting Capital']:,}")
+            m2.metric("Ending Liquidation Value", f"${summary['Ending Value']:,}")
+            m3.metric("Net Portfolio Return", f"${summary['Net Profit ($)']:,}", delta=f"{summary['Total Return (%)']:+.2f}%", delta_color=profit_color)
+            m4.metric("Total Watchlist Trades", f"{summary['Total Trades Executed']} Trades")
+            
+            # --- ROW 2: QUARTERLY EQUITY CURVE LINE CHART ---
+            st.subheader("📈 Total Portfolio Equity Curve (Quarterly Sampling)")
+            if not quarterly_df.empty:
+                # Set 'Date' as the index for a clean Streamlit chart display
+                chart_data = quarterly_df.set_index('Date')
+                st.line_chart(chart_data['Portfolio Value'], y_label="Account Value ($)", x_label="Fiscal Quarter Horizon")
+            else:
+                st.warning("Insufficient historic intervals to format a timeline equity curve chart.")
+
+            # --- ROW 3: ALL TRADES LEDGER TABLE ---
+            st.subheader("📜 System Entry & Exit Ledger Logs")
+            if not trades_df.empty:
+                # Sort trades chronologically by execution exit dates
+                trades_df = trades_df.sort_values(by='Exit Date', ascending=False)
+                
+                # Render beautiful interactive spreadsheet table complete with background gradients
+                st.dataframe(
+                    trades_df.style.background_gradient(subset=['Net PnL ($)', 'Return (%)'], cmap='RdYlGn', vmin=-400, vmax=400),
+                    hide_index=True,
+                    use_container_width=True
+                )
+            else:
+                st.info("Zero strategy cross-over triggers occurred across the watchlist assets during this testing timeframe.")
