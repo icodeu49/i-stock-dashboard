@@ -8,11 +8,12 @@ from google import genai
 from google.genai import types
 
 # 1. SETUP & CONFIGURATION
-# Set your Gemini API key as an environment variable: export GEMINI_API_KEY="your_key"
+# Automatically picks up GEMINI_API_KEY from environment variables
 client = genai.Client()
 
-USER_EMAIL = "sumit.kansal@gmail.com"
-APP_PASSWORD = "bczpembdiuivucbj" # Generated via Google Account App Passwords
+# 👇 SECURE UPDATE: Pull credentials dynamically from GitHub runner environment
+USER_EMAIL = os.environ.get("USER_EMAIL", "sumit.kansal@gmail.com")
+APP_PASSWORD = os.environ.get("APP_PASSWORD") 
 
 TOPICS_AND_FEEDS = {
     "AI & Tech": "https://news.google.com/rss/search?q=Artificial+Intelligence",
@@ -34,7 +35,6 @@ def load_memory():
 def save_feedback(new_feedback):
     memory = load_memory()
     memory["evolution_notes"].append(new_feedback)
-    # Use Gemini to distill all past feedback into a single, clean optimization instruction
     distill_prompt = f"Review these feedback logs: {memory['evolution_notes']}. Summarize them into a single paragraph of explicit instructions for how a news summarizing agent should adapt its style over time."
     
     response = client.models.generate_content(
@@ -51,7 +51,6 @@ def fetch_news():
     for topic, url in TOPICS_AND_FEEDS.items():
         feed = feedparser.parse(url)
         raw_content += f"\n### TOPIC: {topic}\n"
-        # Grab top 5 entries per topic
         for entry in feed.entries[:5]:
             raw_content += f"Title: {entry.title}\nLink: {entry.link}\nSource: {entry.get('source', {}).get('title', 'Unknown')}\n\n"
     return raw_content
@@ -78,6 +77,10 @@ def generate_summary(raw_news, formatting_instructions):
 
 # 5. SEND THE EMAIL
 def send_email(content):
+    if not APP_PASSWORD:
+        print("Error: APP_PASSWORD environment variable is missing!")
+        return
+
     msg = MIMEMultipart()
     msg['From'] = USER_EMAIL
     msg['To'] = USER_EMAIL
