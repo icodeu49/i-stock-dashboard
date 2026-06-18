@@ -15,7 +15,8 @@ api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 # 👇 SECURE UPDATE: Pull credentials dynamically from GitHub runner environment
-USER_EMAIL = os.environ.get("USER_EMAIL", "sumit.kansal@gmail.com")
+#USER_EMAIL = os.environ.get("USER_EMAIL", "sumit.kansal@gmail.com")
+USER_EMAIL = "sumit.kansal@gmail.com"
 APP_PASSWORD = os.environ.get("APP_PASSWORD") 
 
 TOPICS_AND_FEEDS = {
