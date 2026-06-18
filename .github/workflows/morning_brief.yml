@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '30 6 * * *'
   workflow_dispatch: 
+  push:             # 👈 ADD THIS LINE
+    branches:
+      - main        # Runs automatically whenever code is pushed to the main branch
 
 jobs:
   run-agent:
