@@ -2,9 +2,8 @@ name: Daily Morning News Agent
 
 on:
   schedule:
-    # Runs at 06:30 UTC every day (Adjust UTC to match your local morning time)
     - cron: '30 6 * * *'
-  workflow_dispatch: # Allows you to trigger it manually via the GitHub UI anytime
+  workflow_dispatch: 
 
 jobs:
   run-agent:
@@ -17,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-node: '3.10'
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
@@ -26,7 +25,6 @@ jobs:
 
     - name: Execute News Agent Script
       env:
-        # Securely maps your GitHub Secrets to Environment Variables
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         USER_EMAIL: ${{ secrets.USER_EMAIL }}
         APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
