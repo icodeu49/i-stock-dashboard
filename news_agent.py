@@ -8,14 +8,9 @@ from google import genai
 from google.genai import types
 
 # 1. SETUP & CONFIGURATION
-# Automatically picks up GEMINI_API_KEY from environment variables
-# 1. SETUP & CONFIGURATION
-# Pull the API key from the environment explicitly
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
-# 👇 SECURE UPDATE: Pull credentials dynamically from GitHub runner environment
-#USER_EMAIL = os.environ.get("USER_EMAIL", "sumit.kansal@gmail.com")
 USER_EMAIL = "sumit.kansal@gmail.com"
 APP_PASSWORD = os.environ.get("APP_PASSWORD") 
 
@@ -29,27 +24,15 @@ TOPICS_AND_FEEDS = {
 
 MEMORY_FILE = "agent_memory.json"
 
-# 2. LOAD LEARNINGS & FEEDBACK LOOP
 def load_memory():
-    if os.path.exists(MEMORY_FILE):
-        with open(MEMORY_FILE, "r") as f:
-            return json.load(f)
+    if os.path.exists(MEMORY_FILE) and os.path.getsize(MEMORY_FILE) > 0:
+        try:
+            with open(MEMORY_FILE, "r") as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            print("Warning: agent_memory.json was corrupted. Resetting.")
     return {"evolution_notes": [], "preferred_style": "Concise, data-driven, highlighting institutional trends."}
 
-def save_feedback(new_feedback):
-    memory = load_memory()
-    memory["evolution_notes"].append(new_feedback)
-    distill_prompt = f"Review these feedback logs: {memory['evolution_notes']}. Summarize them into a single paragraph of explicit instructions for how a news summarizing agent should adapt its style over time."
-    
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=distill_prompt,
-    )
-    memory["preferred_style"] = response.text
-    with open(MEMORY_FILE, "w") as f:
-        json.dump(memory, f, indent=4)
-
-# 3. FETCH FREE NEWS RSS
 def fetch_news():
     raw_content = ""
     for topic, url in TOPICS_AND_FEEDS.items():
@@ -59,15 +42,20 @@ def fetch_news():
             raw_content += f"Title: {entry.title}\nLink: {entry.link}\nSource: {entry.get('source', {}).get('title', 'Unknown')}\n\n"
     return raw_content
 
-# 4. GENERATE SUMMARY USING GEMINI
+# 2. UPDATED FOR CLEAN HTML CODE GENERATION
 def generate_summary(raw_news, formatting_instructions):
     system_instruction = (
-        "You are an elite news intelligence agent. Your job is to read raw headlines and sources, "
-        "synthesize them into crisp, high-signal daily summaries, and preserve the exact links for deep dives. "
-        f"Adhere strictly to the user's evolving style preferences: {formatting_instructions}"
+        "You are an elite news intelligence agent. Your job is to output the summary as a clean HTML snippet. "
+        "Format guidelines:\n"
+        "1. Use <h3> for the main topic headers.\n"
+        "2. Use an unordered list <ul> for items.\n"
+        "3. Each list item <li> should start with a bolded theme keyword or core insight.\n"
+        "4. Crucial: You MUST hyper-link the supporting source headlines by wrapping them in HTML anchor tags: <a href='URL'>Headline Text (Source)</a>. Hide raw URLs completely.\n"
+        "5. Add an extra <br><br> at the end of each major <li> bullet point to introduce generous spacing and breathability.\n"
+        f"Style baseline: {formatting_instructions}"
     )
     
-    prompt = f"Please synthesize and summarize the following raw news dump. Group by topic and include the URLs directly next to the summaries:\n\n{raw_news}"
+    prompt = f"Synthesize and summarize the following news into clean HTML following the system rules:\n\n{raw_news}"
     
     response = client.models.generate_content(
         model='gemini-2.5-flash',
@@ -79,8 +67,8 @@ def generate_summary(raw_news, formatting_instructions):
     )
     return response.text
 
-# 5. SEND THE EMAIL
-def send_email(content):
+# 3. SWITCHED TO HTML EMAIL DISPATCH
+def send_email(html_content):
     if not APP_PASSWORD:
         print("Error: APP_PASSWORD environment variable is missing!")
         return
@@ -90,7 +78,8 @@ def send_email(content):
     msg['To'] = USER_EMAIL
     msg['Subject'] = "Your Morning Intelligence Briefing"
     
-    msg.attach(MIMEText(content, 'plain'))
+    # 👇 CHANGE: Switched 'plain' text mode to 'html' mode
+    msg.attach(MIMEText(html_content, 'html'))
     
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -102,7 +91,6 @@ def send_email(content):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
-# MAIN EXECUTION FLOW
 if __name__ == "__main__":
     memory = load_memory()
     print("Fetching free news sources...")
