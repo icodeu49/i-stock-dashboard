@@ -9,7 +9,10 @@ from google.genai import types
 
 # 1. SETUP & CONFIGURATION
 # Automatically picks up GEMINI_API_KEY from environment variables
-client = genai.Client()
+# 1. SETUP & CONFIGURATION
+# Pull the API key from the environment explicitly
+api_key = os.environ.get("GEMINI_API_KEY")
+client = genai.Client(api_key=api_key)
 
 # 👇 SECURE UPDATE: Pull credentials dynamically from GitHub runner environment
 USER_EMAIL = os.environ.get("USER_EMAIL", "sumit.kansal@gmail.com")
