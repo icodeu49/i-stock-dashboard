@@ -9,7 +9,10 @@ import pandas as pd
 # Safely import code engine from our isolated backend module
 from helpers import calculate_technicals
 
-WATCHLIST_FILE = "watchlist.json"
+# --- CHANGE THIS LINE TO FORCE ABSOLUTE PATHING ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
+# --------------------------------------------------
 
 def run_automated_scanner():
     print("🤖 Booting automated analysis daemon workflow...")
