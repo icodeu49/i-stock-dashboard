@@ -33,7 +33,7 @@ jobs:
     - name: Install System Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install yfinance pandas numpy
+	pip install yfinance pandas numpy lxml html5lib
 
     # Step 4: Execute the skimmer scraper script
     - name: Execute Heatmap Skimmer Engine

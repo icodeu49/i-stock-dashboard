@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import json
 import os
+from io import StringIO
 
 def fetch_dynamic_growth_watchlist():
     """
@@ -25,7 +26,7 @@ def fetch_dynamic_growth_watchlist():
             return False
             
         # Extract tables containing stock symbols
-        tables = pd.read_html(response.text)
+	tables = pd.read_html(StringIO(response.text))
         
         # Locate the specific data grid table (Finviz data tables typically have ticker in column 1)
         screener_df = None
