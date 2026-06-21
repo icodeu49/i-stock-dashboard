@@ -1,9 +1,6 @@
 name: Daily Institutional Stock Scan
 
 on:
-  push:
-    branches:
-      - main  # Triggers automatically every time you push code to the main branch
   schedule:
     # Triggers at 14:00 (3 PM UK) and 19:00 (8 PM UK) every single day
     - cron: '18 13,18 * * *'
