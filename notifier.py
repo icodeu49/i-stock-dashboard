@@ -1,5 +1,16 @@
 # notifier.py
 
+# notifier.py
+import os
+import json
+import yfinance as yf
+import pandas as pd
+
+# Safely import code engine from our isolated backend module
+from helpers import calculate_technicals
+
+WATCHLIST_FILE = "watchlist.json"
+
 def run_automated_scanner():
     print("🤖 Booting automated analysis daemon workflow...")
     
