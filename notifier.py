@@ -1,13 +1,4 @@
 # notifier.py
-import yfinance as yf
-import pandas as pd
-import json
-import os
-
-# Safely import code engine from our isolated backend module
-from helpers import calculate_technicals
-
-WATCHLIST_FILE = "watchlist.json"
 
 def run_automated_scanner():
     """
@@ -15,13 +6,25 @@ def run_automated_scanner():
     """
     print("🤖 Booting automated analysis daemon workflow...")
     
-    # 1. Read category profile configurations
+    # 1. Read category profile configurations safely
     if os.path.exists(WATCHLIST_FILE):
         with open(WATCHLIST_FILE, "r") as f:
-            watchlist = json.load(f)
+            raw_data = json.load(f)
     else:
         print("❌ System watchlist file context configuration missing. Execution aborted.")
         return
+
+    # --- SAFETY NET: Handle both List and Dictionary formats ---
+    if isinstance(raw_data, list):
+        print("💡 Detected legacy list format. Automatically converting to dictionary framework...")
+        # Converts ["AAPL", "NVDA"] -> {"AAPL": {"group": "Small/Mid Growth"}, "NVDA": {"group": "Small/Mid Growth"}}
+        watchlist = {ticker: {"group": "Small/Mid Growth"} for ticker in raw_data}
+    elif isinstance(raw_data, dict):
+        watchlist = raw_data
+    else:
+        print("❌ Unknown data format inside watchlist.json. Execution aborted.")
+        return
+    # --------------------------------────────────────-----------
 
     tickers = list(watchlist.keys())
     print(f"📋 Watchlist successfully parsed. Target systems: {tickers}")
@@ -61,6 +64,3 @@ def run_automated_scanner():
     print(f"Total Assets Processed: {len(tickers)}")
     print(f"Active Alert Triggers Flagged: {alert_triggers}")
     print("==========================================")
-
-if __name__ == "__main__":
-    run_automated_scanner()
