@@ -2,55 +2,40 @@ name: Automated Daily Watchlist Scanner
 
 on:
   schedule:
-    # Runs at 21:00 UTC (9:00 PM UTC) Monday through Friday. 
-    # Note: GitHub Actions uses UTC time. Adjust the "21" if you want it matching your local time zone!
     - cron: '0 21 * * 1-5'
-  
-  # Allows you to manually trigger the script from the GitHub website anytime you want to test it
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run-scanner:
     runs-on: ubuntu-latest
-
-    # Gives the script permission to write changes and push the watchlist.json back to your repo
-    permissions:
-      contents: write
-
     steps:
-    # Step 1: Check out your repository code onto the runner machine
-    - name: Checkout Repository Code
-      uses: actions/checkout@v4
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    # Step 2: Set up a secure Python environment
-    - name: Set up Python Environment
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip' # Speeds up subsequent runs by caching dependencies
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
 
-    # Step 3: Install all required investment math libraries
-    - name: Install System Dependencies
-      run: |
-        python -m pip install --upgrade pip
-	pip install yfinance pandas numpy lxml html5lib
+      - name: Install System Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance pandas numpy lxml html5lib
 
-    # Step 4: Execute the skimmer scraper script
-    - name: Execute Heatmap Skimmer Engine
-      run: python notifier.py # ◄── CHANGED FROM heatmap_skimmer.py TO notifier.py
+      - name: Execute Breakout Scanner Core
+        run: python notifier.py
 
-    # Step 5: Check if watchlist changed, then commit and push it back to your repository safely
-    - name: Commit and Push Updated Watchlist Dataset
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        
-        # Explicitly stage the file from the root directory
-        git add watchlist.json
-        
-        # Commit only if there are changes, preventing a crash if nothing changed
-        git commit -m "🤖 Auto-Update: Watchlist framework synced by cloud scanner" || echo "No changes to commit"
-        
-        # Push back to main branch
-        git push origin main
-
+      - name: Commit and Push Updated Watchlist Dataset
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add watchlist.json
+          git commit -m "🤖 Auto-Update: Watchlist framework synced by cloud scanner" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main
