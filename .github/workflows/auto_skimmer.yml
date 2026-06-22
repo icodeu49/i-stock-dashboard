@@ -37,7 +37,7 @@ jobs:
 
     # Step 4: Execute the skimmer scraper script
     - name: Execute Heatmap Skimmer Engine
-      run: python heatmap_skimmer.py
+      run: python notifier.py # ◄── CHANGED FROM heatmap_skimmer.py TO notifier.py
 
     # Step 5: Check if watchlist changed, then commit and push it back to your repository safely
     - name: Commit and Push Updated Watchlist Dataset
