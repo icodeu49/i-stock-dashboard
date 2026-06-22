@@ -1,61 +1,179 @@
-[
-  "AAPL",
-  "ABAT",
-  "AMD",
-  "AMZN",
-  "APLD",
-  "APO",
-  "ARM",
-  "AVGO",
-  "BE",
-  "CCJ",
-  "CDNS",
-  "CRWV",
-  "FLEX",
-  "GEV",
-  "INTC",
-  "IONQ",
-  "IOT",
-  "LLY",
-  "LUMN",
-  "META",
-  "MRVL",
-  "MSFT",
-  "MU",
-  "MVST",
-  "NAK",
-  "NBIS",
-  "NET",
-  "NVDA",
-  "NVTS",
-  "ODFL",
-  "OKLO",
-  "ORCL",
-  "PLTR",
-  "POWI",
-  "QUBT",
-  "RDDT",
-  "RGTI",
-  "SNPS",
-  "SOUN",
-  "T",
-  "TSM",
-  "VRT",
-  "SPY",
-  "ENR",
-  "FTGFF",
-  "AI",
-  "ALAB",
-  "BA",
-  "CRDO",
-  "IRM",
-  "PATH",
-  "TER",
-  "VNET",
-  "FLYW",
-  "UNFI",
-  "OSCR",
-  "PARR",
-  "ICHR",
-  "WOLF"
-]
+{
+    "AAPL": {
+        "group": "Small/Mid Growth"
+    },
+    "ABAT": {
+        "group": "Small/Mid Growth"
+    },
+    "AMD": {
+        "group": "Small/Mid Growth"
+    },
+    "AMZN": {
+        "group": "Small/Mid Growth"
+    },
+    "APLD": {
+        "group": "Small/Mid Growth"
+    },
+    "APO": {
+        "group": "Small/Mid Growth"
+    },
+    "ARM": {
+        "group": "Small/Mid Growth"
+    },
+    "AVGO": {
+        "group": "Small/Mid Growth"
+    },
+    "BE": {
+        "group": "Small/Mid Growth"
+    },
+    "CCJ": {
+        "group": "Small/Mid Growth"
+    },
+    "CDNS": {
+        "group": "Small/Mid Growth"
+    },
+    "CRWV": {
+        "group": "Small/Mid Growth"
+    },
+    "FLEX": {
+        "group": "Small/Mid Growth"
+    },
+    "GEV": {
+        "group": "Small/Mid Growth"
+    },
+    "INTC": {
+        "group": "Small/Mid Growth"
+    },
+    "IONQ": {
+        "group": "Small/Mid Growth"
+    },
+    "IOT": {
+        "group": "Small/Mid Growth"
+    },
+    "LLY": {
+        "group": "Small/Mid Growth"
+    },
+    "LUMN": {
+        "group": "Small/Mid Growth"
+    },
+    "META": {
+        "group": "Small/Mid Growth"
+    },
+    "MRVL": {
+        "group": "Small/Mid Growth"
+    },
+    "MSFT": {
+        "group": "Small/Mid Growth"
+    },
+    "MU": {
+        "group": "Small/Mid Growth"
+    },
+    "MVST": {
+        "group": "Small/Mid Growth"
+    },
+    "NAK": {
+        "group": "Small/Mid Growth"
+    },
+    "NBIS": {
+        "group": "Small/Mid Growth"
+    },
+    "NET": {
+        "group": "Small/Mid Growth"
+    },
+    "NVDA": {
+        "group": "Small/Mid Growth"
+    },
+    "NVTS": {
+        "group": "Small/Mid Growth"
+    },
+    "ODFL": {
+        "group": "Small/Mid Growth"
+    },
+    "OKLO": {
+        "group": "Small/Mid Growth"
+    },
+    "ORCL": {
+        "group": "Small/Mid Growth"
+    },
+    "PLTR": {
+        "group": "Small/Mid Growth"
+    },
+    "POWI": {
+        "group": "Small/Mid Growth"
+    },
+    "QUBT": {
+        "group": "Small/Mid Growth"
+    },
+    "RDDT": {
+        "group": "Small/Mid Growth"
+    },
+    "RGTI": {
+        "group": "Small/Mid Growth"
+    },
+    "SNPS": {
+        "group": "Small/Mid Growth"
+    },
+    "SOUN": {
+        "group": "Small/Mid Growth"
+    },
+    "T": {
+        "group": "Small/Mid Growth"
+    },
+    "TSM": {
+        "group": "Small/Mid Growth"
+    },
+    "VRT": {
+        "group": "Small/Mid Growth"
+    },
+    "SPY": {
+        "group": "Small/Mid Growth"
+    },
+    "ENR": {
+        "group": "Small/Mid Growth"
+    },
+    "FTGFF": {
+        "group": "Small/Mid Growth"
+    },
+    "AI": {
+        "group": "Small/Mid Growth"
+    },
+    "ALAB": {
+        "group": "Small/Mid Growth"
+    },
+    "BA": {
+        "group": "Small/Mid Growth"
+    },
+    "CRDO": {
+        "group": "Small/Mid Growth"
+    },
+    "IRM": {
+        "group": "Small/Mid Growth"
+    },
+    "PATH": {
+        "group": "Small/Mid Growth"
+    },
+    "TER": {
+        "group": "Small/Mid Growth"
+    },
+    "VNET": {
+        "group": "Small/Mid Growth"
+    },
+    "FLYW": {
+        "group": "Small/Mid Growth"
+    },
+    "UNFI": {
+        "group": "Small/Mid Growth"
+    },
+    "OSCR": {
+        "group": "Small/Mid Growth"
+    },
+    "PARR": {
+        "group": "Small/Mid Growth"
+    },
+    "ICHR": {
+        "group": "Small/Mid Growth"
+    },
+    "WOLF": {
+        "group": "Small/Mid Growth"
+    }
+}
