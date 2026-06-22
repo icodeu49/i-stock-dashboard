@@ -10,6 +10,7 @@ import pandas as pd
 from helpers import calculate_technicals
 
 # --- CHANGE THIS LINE TO FORCE ABSOLUTE PATHING ---
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 # --------------------------------------------------

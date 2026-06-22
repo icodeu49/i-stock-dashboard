@@ -4,8 +4,9 @@ import json
 import os
 from io import StringIO
 
-# Force absolute pathing so GitHub Actions always locks onto the root folder
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Force absolute pathing to step out of .github/workflows and into the repository root!
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 
 def fetch_dynamic_growth_watchlist():
