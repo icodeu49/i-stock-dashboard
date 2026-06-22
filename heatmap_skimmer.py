@@ -4,17 +4,18 @@ import json
 import os
 from io import StringIO
 
+# Force absolute pathing so GitHub Actions always locks onto the root folder
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
+
 def fetch_dynamic_growth_watchlist():
     """
     Scrapes high-volume, high-momentum small/mid-cap growth leaders
-    and outputs a fresh, structured watchlist file for the scanner.
+    and safely merges unique additions into the master watchlist file.
     """
     print("🔥 Initializing Dynamic Momentum Watchlist Generator...")
     
-    # Target: High-Beta, Small/Mid-Cap Growth Leaders with institutional volume
-    # Screening criteria: Market Cap (Small + Mid), Earnings Growth (Over 20%), Volatility (High/Beta)
     url = "https://finviz.com/screener.ashx?v=111&f=cap_smallover,fa_epsqoq_o20,sh_avgvol_o300,sh_beta_o1.2,sh_price_u5to100&o=-perf1w"
-    
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
@@ -25,10 +26,8 @@ def fetch_dynamic_growth_watchlist():
             print(f"❌ Failed to reach data source. Status code: {response.status_code}")
             return False
             
-        # Extract tables containing stock symbols
-	tables = pd.read_html(StringIO(response.text))
+        tables = pd.read_html(StringIO(response.text))
         
-        # Locate the specific data grid table (Finviz data tables typically have ticker in column 1)
         screener_df = None
         for table in tables:
             if 'Ticker' in table.columns:
@@ -39,27 +38,45 @@ def fetch_dynamic_growth_watchlist():
             print("⚠️ Screener data empty. Using high-conviction fallback names.")
             return False
             
-        # Take the top 25 momentum leaders from the list
         top_tickers = screener_df['Ticker'].head(25).tolist()
         
-        # Build the structured dictionary tracking categories cleanly
-        new_watchlist = {}
-        
-        # Keep your core bedrock Mega-Caps stable
+        # ─── CHANGE 1: READ EXISTING DISK STATE FIRST ───────────────────
+        if os.path.exists(WATCHLIST_FILE):
+            with open(WATCHLIST_FILE, "r") as f:
+                try:
+                    master_watchlist = json.load(f)
+                    # Convert to dictionary format if legacy list structure found
+                    if isinstance(master_watchlist, list):
+                        master_watchlist = {ticker: {"group": "Small/Mid Growth"} for ticker in master_watchlist}
+                except Exception:
+                    master_watchlist = {}
+        else:
+            master_watchlist = {}
+        # ────────────────────────────────────────────────────────────────
+
+        # Add stable baseline Mega-Caps only if missing
         core_tech = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOGL"]
         for ticker in core_tech:
-            new_watchlist[ticker] = {"group": "Mega-Cap Tech"}
+            if ticker not in master_watchlist:
+                master_watchlist[ticker] = {"group": "Mega-Cap Tech"}
             
-        # Dynamically append the fresh small/mid cap growth names found
+        # ─── CHANGE 2: DUPLICATE-PROOF MERGE ENGINE ─────────────────────
+        new_additions_count = 0
         for ticker in top_tickers:
-            if ticker not in new_watchlist:
-                new_watchlist[ticker] = {"group": "Small/Mid Growth"}
-                
-        # Save output straight back to your central watchlist configuration file
-        with open("watchlist.json", "w") as f:
-            json.dump(new_watchlist, f, indent=4)
+            ticker = ticker.strip().upper()
+            if ticker not in master_watchlist:  # ◄── Only inject if completely missing
+                master_watchlist[ticker] = {"group": "Small/Mid Growth"}
+                new_additions_count += 1
+                print(f"➕ [NEW] Captured fresh momentum asset: {ticker}")
+        
+        print(f"🔄 Sync complete. Identified {new_additions_count} new tickers.")
+        # ────────────────────────────────────────────────────────────────
             
-        print(f"✨ Watchlist successfully refreshed! Total tracking assets: {len(new_watchlist)}")
+        # Save output back safely to disk path architecture
+        with open(WATCHLIST_FILE, "w") as f:
+            json.dump(master_watchlist, f, indent=4)
+            
+        print(f"✨ Watchlist successfully refreshed! Total tracking assets: {len(master_watchlist)}")
         return True
         
     except Exception as e:
