@@ -6,7 +6,8 @@ from io import StringIO
 
 
 # Force absolute pathing to step out of .github/workflows and into the repository root!
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Force clean absolute pathing relative to where the script actually sits
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 
 def fetch_dynamic_growth_watchlist():
