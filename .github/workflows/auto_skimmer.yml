@@ -2,7 +2,7 @@ name: Automated Daily Watchlist Scanner
 
 on:
   schedule:
-    - cron: '0 21 * * 1-5'
+    - cron: '18 13,21 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +32,9 @@ jobs:
         run: python heatmap_skimmer.py # ◄── 1. GRABS NEW NAMES FIRST
 
       - name: Execute Breakout Scanner Core
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python notifier.py
 
       - name: Commit and Push Updated Watchlist Dataset
