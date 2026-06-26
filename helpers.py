@@ -98,21 +98,21 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     else: 
         df['RS_SCORE'] = 0.0
 
-    # 7. Volatility Stop (VSTOP)
+    # 7. Volatility Stop (VSTOP) ─── UPDATED MULTIPLIER TO 2.0 ───
     vstop_arr, trend_arr = [], []
-    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.5)
+    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.0)
     
     for i in range(len(df)):
         close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
         atr = df['ATR_CHOSEN'].fillna(0).iloc[i]
         if current_trend == 1:
-            current_stop = max(current_stop, high_p - (atr * 2.5))
+            current_stop = max(current_stop, high_p - (atr * 2.0))
             if close_p < current_stop:
-                current_trend, current_stop = -1, low_p + (atr * 2.5)
+                current_trend, current_stop = -1, low_p + (atr * 2.0)
         else:
-            current_stop = min(current_stop, low_p + (atr * 2.5))
+            current_stop = min(current_stop, low_p + (atr * 2.0))
             if close_p > current_stop:
-                current_trend, current_stop = 1, high_p - (atr * 2.5)
+                current_trend, current_stop = 1, high_p - (atr * 2.0)
         vstop_arr.append(current_stop)
         trend_arr.append(current_trend)
         
