@@ -92,7 +92,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
         
         if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
-            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1)) * 100
+            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1), fill_method=None) * 100
         else: 
             df['RS_SCORE'] = 0.0
     else: 

@@ -15,29 +15,56 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def send_telegram_report(message_text):
-    """Dispatches the structured alert matrix straight to your Telegram device."""
+    """Dispatches the structured alert matrix, auto-splitting if it exceeds limits."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("⚠️ Telegram Config Missing: Report printing to console only.")
         return False
         
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {
-        "chat_id": TELEGRAM_CHAT_ID,
-        "text": message_text,
-        "parse_mode": "Markdown"
-    }
     
-    try:
-        response = requests.post(url, json=payload, timeout=12)
-        if response.status_code == 200:
-            print("🚀 Telemetry Report transmitted to Telegram successfully.")
-            return True
+    # Telegram limit is 4096; chunking safely at 3800 to avoid clipping text boundaries
+    MAX_LENGTH = 3800 
+    
+    # Split by lines to prevent breaking a stock tree in half
+    lines = message_text.split('\n')
+    chunks = []
+    current_chunk = []
+    current_length = 0
+    
+    for line in lines:
+        if current_length + len(line) + 1 > MAX_LENGTH:
+            chunks.append("\n".join(current_chunk))
+            current_chunk = [line]
+            current_length = len(line)
         else:
-            print(f"❌ Telegram API Error: Status {response.status_code} - {response.text}")
-            return False
-    except Exception as e:
-        print(f"❌ Network Exception during Telegram dispatch: {e}")
-        return False
+            current_chunk.append(line)
+            current_length += len(line) + 1
+            
+    if current_chunk:
+        chunks.append("\n".join(current_chunk))
+
+    # Send each chunk sequentially
+    success = True
+    for idx, chunk in enumerate(chunks):
+        suffix = f" (Part {idx+1}/{len(chunks)})" if len(chunks) > 1 else ""
+        payload = {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": chunk + suffix,
+            "parse_mode": "Markdown"
+        }
+        
+        try:
+            response = requests.post(url, json=payload, timeout=12)
+            if response.status_code != 200:
+                print(f"❌ Telegram API Error on Chunk {idx+1}: Status {response.status_code} - {response.text}")
+                success = False
+            else:
+                print(f"🚀 Telemetry Report Part {idx+1} transmitted successfully.")
+        except Exception as e:
+            print(f"❌ Network Exception during chunk dispatch: {e}")
+            success = False
+            
+    return success
 
 def run_automated_scanner():
     print("🤖 Booting automated analysis daemon workflow...")
