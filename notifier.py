@@ -98,4 +98,75 @@ def run_automated_scanner():
                     "vol_accumulation": latest.get('ACCUMULATION_DAY', False),
                     "speed_emas": latest.get('EMA_SPEED_ALIGNED', True),
                     "sar_support": latest.get('SAR_ALIGNED', True),
-                    "adx": round(latest.get('ADX', 0
+                    "adx": round(latest.get('ADX', 0.0), 1)
+                }
+                
+                if is_triggered and ticker not in alert_triggers_summary:
+                    alert_triggers_summary.append(ticker)
+                    
+        except Exception as e:
+            print(f"⚠️ Error scanning {ticker}: {e}")
+            continue
+
+    # 3. SAVE THE CONVERTED WATCHLIST DATABASE
+    try:
+        with open(WATCHLIST_FILE, "w") as f:
+            json.dump(watchlist, f, indent=4)
+        print("💾 Success: watchlist.json successfully written to disk architecture.")
+    except Exception as e:
+        print(f"❌ Failed writing structural dictionary framework data to file: {e}")
+
+    # 4. GROUP DATA BY TIMEFRAME CATEGORIES FOR TELEGRAM SEND
+    message_blocks = ["🎯 **MULTI-TIMEFRAME SCORECARD** 🎯\n"]
+    any_signals_found = False
+
+    for tf in ["Monthly", "Weekly", "Daily"]:
+        tf_block = f"\n📊 **{tf.upper()} CLOSE TRIGGERS** ════════"
+        has_triggers = False
+        
+        for ticker, results in scan_results.items():
+            if tf in results and results[tf]["triggered"]:
+                has_triggers = True
+                any_signals_found = True
+                data = results[tf]
+                
+                # Adjust format layout based on whether this was a breakdown vs a standard breakout
+                if data["is_bearish_vstop"]:
+                    tf_block += f"\n\n• 🚨 **{ticker} (BEARISH BREAKDOWN)**"
+                    tf_block += f"\n    └── 📉 Volatility Stop: 🔴 FLIPPED RED (Multiplier: 2.0)"
+                else:
+                    emoji = "🟢" if data["matrix"] == "BULLISH" else "🔴"
+                    pivot = "✅ TRIGGERED" if data["pocket_pivot"] else "❌ No Surge"
+                    vol = "✅ DETECTED" if data["vol_accumulation"] else "❌ Normal Vol"
+                    ema = "✅ BULLISH" if data["speed_emas"] else "❌ BEARISH"
+                    sar = "✅ ABOVE SAR" if data["sar_support"] else "❌ BELOW SAR"
+                    adx_status = "🔥 (Strong)" if data["adx"] > 25 else "⏳ (Weak)"
+
+                    tf_block += f"\n\n• **{ticker}** | Trend Matrix: {emoji} {data['matrix']}"
+                    tf_block += f"\n    ├── 📊 RS Score: +{data['rs_score']}% vs SPY"
+                    tf_block += f"\n    ├── ⚡️ Pocket Pivot Matrix: {pivot}"
+                    tf_block += f"\n    ├── 📈 Vol Accumulation Day: {vol}"
+                    tf_block += f"\n    ├── 🚀 Speed EMAs (10 > 30): {ema}"
+                    tf_block += f"\n    ├── 🎯 Parabolic SAR Support: {sar}"
+                    tf_block += f"\n    └── 🌊 Trend Strength (ADX): {data['adx']} {adx_status}"
+        
+        if not has_triggers:
+            tf_block += f"\n*No active breakout or VSTOP triggers on the {tf.lower()} chart.*"
+            
+        message_blocks.append(tf_block)
+
+    final_report = "\n".join(message_blocks)
+
+    # 5. DISPATCH DATA DIRECTLY VIA LIVE PIPELINE HOOK
+    if any_signals_found:
+        send_telegram_report(final_report)
+    else:
+        print("💡 No active triggers today across any timeframe. Skipping Telegram dispatch.")
+
+    print("\n==========================================")
+    print("🏁 AUTOMATION RUN MATRIX COMPLETED")
+    print(f"Active Alert Triggers Flagged: {alert_triggers_summary}")
+    print("==========================================")
+
+if __name__ == "__main__":
+    run_automated_scanner()
