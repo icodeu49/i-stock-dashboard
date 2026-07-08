@@ -4,8 +4,6 @@ import json
 import os
 from io import StringIO
 
-
-# Force absolute pathing to step out of .github/workflows and into the repository root!
 # Force clean absolute pathing relative to where the script actually sits
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
@@ -40,7 +38,10 @@ def fetch_dynamic_growth_watchlist():
             print("⚠️ Screener data empty. Using high-conviction fallback names.")
             return False
             
-        top_tickers = screener_df['Ticker'].head(25).tolist()
+        # ─── CRUCIAL BUG FIX: COERCE DATA TYPE AND DROP NaN VALUES ───
+        screener_df['Ticker'] = screener_df['Ticker'].astype(str)
+        top_tickers = screener_df['Ticker'].dropna().head(25).tolist()
+        # ─────────────────────────────────────────────────────────────
         
         # ─── CHANGE 1: READ EXISTING DISK STATE FIRST ───────────────────
         if os.path.exists(WATCHLIST_FILE):
@@ -62,14 +63,19 @@ def fetch_dynamic_growth_watchlist():
             if ticker not in master_watchlist:
                 master_watchlist[ticker] = {"group": "Mega-Cap Tech"}
             
-        # ─── CHANGE 2: DUPLICATE-PROOF MERGE ENGINE ─────────────────────
+        # ─── CHANGE 2: DUPLICATE-PROOF HARDENED MERGE ENGINE ───────────
         new_additions_count = 0
         for ticker in top_tickers:
-            ticker = ticker.strip().upper()
-            if ticker not in master_watchlist:  # ◄── Only inject if completely missing
-                master_watchlist[ticker] = {"group": "Small/Mid Growth"}
+            ticker_clean = ticker.strip().upper()
+            
+            # Skip floating artifacts, empty values, or non-alphabet columns
+            if not ticker_clean or ticker_clean == "NAN" or not ticker_clean.isalpha():
+                continue
+                
+            if ticker_clean not in master_watchlist:  # Only inject if completely missing
+                master_watchlist[ticker_clean] = {"group": "Small/Mid Growth"}
                 new_additions_count += 1
-                print(f"➕ [NEW] Captured fresh momentum asset: {ticker}")
+                print(f"➕ [NEW] Captured fresh momentum asset: {ticker_clean}")
         
         print(f"🔄 Sync complete. Identified {new_additions_count} new tickers.")
         # ────────────────────────────────────────────────────────────────
