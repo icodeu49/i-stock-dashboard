@@ -240,10 +240,9 @@ def run_automated_scanner():
                         sector_rank = "N/A"
 
                     tf_block += f"\n\n• **{ticker}** | Trend Matrix: {emoji} {data['matrix']}"
-                    tf_block += f"\n    ├── 📊 RS vs SPY: +{data['rs_score']}%"
-                    
+                    tf_block += f"\n    ├── 📊 RS vs SPY: {data['rs_score']:+.2f}%"
                     if data.get('sector_ticker'):
-                        tf_block += f"\n    ├── 🎯 RS vs Sector ({data['sector_ticker']}): +{data['rs_sector_score']}%"
+                        tf_block += f"\n    ├── 🎯 RS vs Sector ({data['sector_ticker']}): {data['rs_sector_score']:+.2f}%"
                         
                     tf_block += f"\n    ├── 👑 Sector Leaderboard: {sector_rank}"
                     tf_block += f"\n    ├── ⚡️ Pocket Pivot Matrix: {pivot}"
