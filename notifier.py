@@ -6,6 +6,7 @@ import pandas as pd
 
 # Safely import code engine from our isolated backend module
 from helpers import calculate_technicals
+from alpha_engine import check_vcp_contraction, check_overextension
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
@@ -103,7 +104,6 @@ def run_automated_scanner():
             
             for tf in ["Daily", "Weekly", "Monthly"]:
                 # ─── FIXED: FORCE MAXIMUM HISTORY FOR PERFECT WILDER SMOOTHING WARM-UP ───
-                # This drops the faulty interval parameters and ensures the math has full depth
                 df_raw = yf.download(ticker, period="max", interval="1d", progress=False, multi_level_index=False)
                 
                 if df_raw.empty: 
@@ -124,6 +124,16 @@ def run_automated_scanner():
                 
                 # Trigger system alert if either condition is met
                 is_triggered = is_breakout or is_macro_bear_flip
+
+                # ─── THE ALPHA ENGINE HOOK ───
+                # Only run heavy advanced math on the Daily chart to grade execution timing
+                alpha_vcp = {"has_vcp": False}
+                alpha_ext = {"is_extended": False}
+                
+                if tf == "Daily" and is_triggered:
+                    alpha_vcp = check_vcp_contraction(df)
+                    alpha_ext = check_overextension(df)
+                # ─────────────────────────────
                 
                 scan_results[ticker][tf] = {
                     "triggered": is_triggered,
@@ -134,7 +144,11 @@ def run_automated_scanner():
                     "vol_accumulation": latest.get('ACCUMULATION_DAY', False),
                     "speed_emas": latest.get('EMA_SPEED_ALIGNED', True),
                     "sar_support": latest.get('SAR_ALIGNED', True),
-                    "adx": round(latest.get('ADX', 0.0), 1)
+                    "adx": round(latest.get('ADX', 0.0), 1),
+                    "vcp_setup": alpha_vcp.get("has_vcp", False),
+                    "vcp_range": alpha_vcp.get("tight_range", 0.0),
+                    "is_extended": alpha_ext.get("is_extended", False),
+                    "dist_50ma": alpha_ext.get("dist_50", 0.0)
                 }
                 
                 # ─── THE DISCREPANCY AUDIT LOG ────────────────────────────────────────
@@ -179,6 +193,12 @@ def run_automated_scanner():
                     tf_block += f"\n\n• 🚨 **{ticker} (BEARISH BREAKDOWN)**"
                     tf_block += f"\n    └── 📉 Volatility Stop: 🔴 FLIPPED RED (Multiplier: 2.0)"
                 else:
+                    # Inject Premium Alpha Engine Labels
+                    if data.get("vcp_setup"):
+                        tf_block += f"\n\n⭐ **ALPHA SETUP: True VCP Contraction (Tightly coiled at {data.get('vcp_range')}%)**"
+                    if data.get("is_extended"):
+                        tf_block += f"\n\n⚠️ **HIGH RISK: Late-Stage Breakout (+{data.get('dist_50ma')}% above 50-Day MA)**"
+
                     emoji = "🟢" if data["matrix"] == "BULLISH" else "🔴"
                     pivot = "✅ TRIGGERED" if data["pocket_pivot"] else "❌ No Surge"
                     vol = "✅ DETECTED" if data["vol_accumulation"] else "❌ Normal Vol"
