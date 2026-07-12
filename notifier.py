@@ -86,7 +86,9 @@ def run_automated_scanner():
         return
 
     tickers = list(watchlist.keys())
-    spy_df = yf.download("SPY", period="2y", interval="1d", progress=False, multi_level_index=False)
+    
+    # Pre-download SPY for relative strength computations
+    spy_df = yf.download("SPY", period="5y", interval="1d", progress=False, multi_level_index=False)
     if isinstance(spy_df.columns, pd.MultiIndex):
         spy_df.columns = spy_df.columns.get_level_values(0)
 
@@ -97,13 +99,20 @@ def run_automated_scanner():
     # 2. RUN TECHNICALS MATRIX ACROSS ALL TIMEFRAMES
     for ticker in tickers:
         try:
-            df_raw = yf.download(ticker, period="2y", interval="1d", progress=False, multi_level_index=False)
-            if df_raw.empty: continue
-            
             scan_results[ticker] = {}
             
             for tf in ["Daily", "Weekly", "Monthly"]:
+                # ─── OPTIMIZATION: SCALE HISTORICAL PERIOD BY TIMEFRAME ───
+                fetch_period = "max" if tf == "Monthly" else ("5y" if tf == "Weekly" else "2y")
+                
+                df_raw = yf.download(ticker, period=fetch_period, interval="1d", progress=False, multi_level_index=False)
+                if df_raw.empty: 
+                    continue
+                
                 df = calculate_technicals(df_raw, timeframe=tf, spy_df=spy_df)
+                if df is None or df.empty:
+                    continue
+                    
                 latest = df.iloc[-1]
                 
                 # Check for standard breakout trigger
@@ -129,20 +138,19 @@ def run_automated_scanner():
                 }
                 
                 # ─── THE DISCREPANCY AUDIT LOG ────────────────────────────────────────
-                # This exposes the exact price and stops used at the second of execution
                 if tf in ["Weekly", "Monthly"]:
                     print(f"🔍 AUDIT [{ticker} - {tf} Close]")
-                    print(f"    ├── Current Price: ${round(latest.get('Close', 0.0), 2)}")
-                    print(f"    ├── VSTOP Line Value: ${round(latest.get('VSTOP_LINE', 0.0), 2)}")
-                    print(f"    ├── VSTOP Trend State: {latest.get('VSTOP_TREND', 0)}")
-                    print(f"    └── ADX Value: {round(latest.get('ADX', 0.0), 2)}")
+                    print(f"    ├── Current Close Price: ${round(latest.get('Close', 0.0), 2)}")
+                    print(f"    ├── VSTOP Line Value:    ${round(latest.get('VSTOP_LINE', 0.0), 2)}")
+                    print(f"    ├── VSTOP Trend State:   {latest.get('VSTOP_TREND', 0)}")
+                    print(f"    └── ADX Value:           {round(latest.get('ADX', 0.0), 2)}")
                 # ──────────────────────────────────────────────────────────────────────
                 
                 if is_triggered and ticker not in alert_triggers_summary:
                     alert_triggers_summary.append(ticker)
                     
         except Exception as e:
-            print(f"⚠️ Error scanning {ticker}: {e}")
+            print(f"⚠️ Error scanning {ticker} on {tf}: {e}")
             continue
 
     # 3. SAVE THE CONVERTED WATCHLIST DATABASE
@@ -167,7 +175,6 @@ def run_automated_scanner():
                 any_signals_found = True
                 data = results[tf]
                 
-                # Adjust format layout based on whether this was a breakdown vs a standard breakout
                 if data["is_bearish_vstop"]:
                     tf_block += f"\n\n• 🚨 **{ticker} (BEARISH BREAKDOWN)**"
                     tf_block += f"\n    └── 📉 Volatility Stop: 🔴 FLIPPED RED (Multiplier: 2.0)"

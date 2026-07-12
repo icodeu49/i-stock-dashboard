@@ -30,22 +30,59 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     df['ATR_CHOSEN'] = tr.rolling(window=chosen_length).mean()
     df['ATR14'] = tr.rolling(window=14).mean()  
 
-    # 3. ADX / DMI
+    # # 3. ADX / DMI
+    # up_move = df['High'] - df['High'].shift(1)
+    # down_move = df['Low'].shift(1) - df['Low']
+    
+    # pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
+    # neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
+    
+    # atr_filled = df['ATR_CHOSEN'].replace(0, np.nan)
+    # di_plus = 100 * (pos_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
+    # di_minus = 100 * (neg_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
+    
+    # dm_sum = di_plus + di_minus
+    # dm_sum = dm_sum.replace(0, np.nan)
+    # dx = 100 * (di_plus - di_minus).abs() / dm_sum
+    # df['ADX'] = dx.rolling(window=chosen_length).mean().fillna(0)
+    # df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
+
+    # =========================================================================
+    # # 3. ADX / DMI (HARDENED WILDER SMOOTHING ALIGNMENT)
+    # =========================================================================
+    # 1. Calculate True Range (TR) if not already defined
+    if 'TR' not in df.columns:
+        df['H-L'] = df['High'] - df['Low']
+        df['H-PC'] = (df['High'] - df['Close'].shift(1)).abs()
+        df['L-PC'] = (df['Low'] - df['Close'].shift(1)).abs()
+        df['TR'] = df[['H-L', 'H-PC', 'L-PC']].max(axis=1)
+
+    # 2. Raw Directional Movement
     up_move = df['High'] - df['High'].shift(1)
     down_move = df['Low'].shift(1) - df['Low']
     
     pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
     neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
     
-    atr_filled = df['ATR_CHOSEN'].replace(0, np.nan)
-    di_plus = 100 * (pos_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
-    di_minus = 100 * (neg_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
+    # 3. Wilder's Smoothing Allocation via Alpha = 1 / chosen_length
+    alpha = 1 / chosen_length
+    tr_smoothed = df['TR'].ewm(alpha=alpha, adjust=False).mean()
+    pos_dm_smoothed = pos_dm.ewm(alpha=alpha, adjust=False).mean()
+    neg_dm_smoothed = neg_dm.ewm(alpha=alpha, adjust=False).mean()
     
+    # 4. Calculate Directional Indicators (+DI, -DI)
+    atr_filled = tr_smoothed.replace(0, float('nan'))
+    di_plus = 100 * (pos_dm_smoothed / atr_filled).fillna(0)
+    di_minus = 100 * (neg_dm_smoothed / atr_filled).fillna(0)
+    
+    # 5. Directional Movement Index (DX) and final Wilder's ADX
     dm_sum = di_plus + di_minus
-    dm_sum = dm_sum.replace(0, np.nan)
+    dm_sum = dm_sum.replace(0, float('nan'))
     dx = 100 * (di_plus - di_minus).abs() / dm_sum
-    df['ADX'] = dx.rolling(window=chosen_length).mean().fillna(0)
+    
+    df['ADX'] = dx.ewm(alpha=alpha, adjust=False).mean().fillna(0)
     df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
+    
 
     # 4. Parabolic SAR
     highs, lows, sar = df['High'].values, df['Low'].values, list(df['Close'][:2])
