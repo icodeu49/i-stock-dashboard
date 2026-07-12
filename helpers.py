@@ -2,22 +2,29 @@
 import pandas as pd
 import yfinance as yf
 import numpy as np
-
+import requests 
 
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
-    """
+"""
     Scrapes S&P 500 peers for a sector, calculates their RS scores, 
     and returns the target ticker's exact leaderboard rank.
     """
     try:
-        # 1. Scrape live S&P 500 table from Wikipedia
+        # 1. Scrape live S&P 500 table from Wikipedia using a Fake Browser ID
         url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
-        tables = pd.read_html(url)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+        
+        # Fetch the webpage with the headers to bypass the 403 Forbidden block
+        response = requests.get(url, headers=headers)
+        tables = pd.read_html(response.text)
         sp500_df = tables[0]
         
         # 2. Isolate tickers in the matching sector
         peer_tickers = sp500_df[sp500_df['GICS Sector'] == gics_sector]['Symbol'].tolist()
         peer_tickers = [t.replace('.', '-') for t in peer_tickers]
+
         
         # Remove target ticker if it's already in the list to avoid duplicates
         if target_ticker in peer_tickers:
