@@ -89,7 +89,7 @@ def run_automated_scanner():
     tickers = list(watchlist.keys())
     
     # Pre-download SPY for relative strength computations
-    spy_df = yf.download("SPY", period="5y", interval="1d", progress=False, multi_level_index=False)
+    spy_df = yf.download("SPY", period="max", interval="1d", progress=False, multi_level_index=False)
     if isinstance(spy_df.columns, pd.MultiIndex):
         spy_df.columns = spy_df.columns.get_level_values(0)
 
@@ -102,12 +102,13 @@ def run_automated_scanner():
     if unique_sectors:
         print(f"📥 Pre-fetching {len(unique_sectors)} Sector ETFs: {', '.join(unique_sectors)}")
         for etf in unique_sectors:
-            sdf = yf.download(etf, period="5y", interval="1d", progress=False, multi_level_index=False)
+            sdf = yf.download(etf, period="max", interval="1d", progress=False, multi_level_index=False)
             if isinstance(sdf.columns, pd.MultiIndex):
                 sdf.columns = sdf.columns.get_level_values(0)
             sector_dfs[etf] = sdf
     # ──────────────────────────────
 
+ 
     # Dictionary to collect results by stock and timeframe
     scan_results = {}
     alert_triggers_summary = []

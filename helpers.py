@@ -45,7 +45,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
         if sector_df is not None and not sector_df.empty:
             sector_df = sector_df.resample('ME').agg({'Close': 'last'}).dropna()
     # ─────────────────────────────────────────────────────────────────────────
-    
+
     if timeframe == "Monthly":
         print(f"🚨 [DEBUG SHAPE AFTER COMPRESSION] Real monthly bars: {len(df)}")
 
@@ -144,6 +144,9 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).rolling(window=10).max()
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
+    # ─── DYNAMIC MOMENTUM LOOKBACK (1 Quarter Equivalent) ───
+    rs_lookback = {"Daily": 63, "Weekly": 13, "Monthly": 3}.get(timeframe, 63)
+
     # 6. Relative Strength Score vs Benchmark (SPY)
     if spy_df is not None and not spy_df.empty:
         spy_ref = spy_df.copy()
@@ -155,7 +158,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
         
         if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
-            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(63, len(df)-1), fill_method=None) * 100
+            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
         else: 
             df['RS_SCORE'] = 0.0
     else: 
@@ -172,12 +175,12 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
         
         if not merged_sec.empty and 'Close_Sector' in merged_sec.columns:
             df['RS_Sector_Ratio'] = merged_sec['Close'] / merged_sec['Close_Sector']
-            df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=min(63, len(df)-1), fill_method=None) * 100
+            df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
         else: 
             df['RS_SECTOR_SCORE'] = 0.0
     else: 
         df['RS_SECTOR_SCORE'] = 0.0
-
+        
     # 7. Volatility Stop (VSTOP) ─── UPDATED MULTIPLIER TO 2.0 ───
     vstop_arr, trend_arr = [], []
     current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.0)
