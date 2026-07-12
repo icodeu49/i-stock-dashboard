@@ -102,11 +102,10 @@ def run_automated_scanner():
             scan_results[ticker] = {}
             
             for tf in ["Daily", "Weekly", "Monthly"]:
-                # ─── OPTIMIZATION: SCALE HISTORICAL PERIOD BY TIMEFRAME ───
-                fetch_period = "max" if tf == "Monthly" else ("5y" if tf == "Weekly" else "2y")
-                fetch_interval = "1mo" if tf == "Monthly" else ("1wk" if tf == "Weekly" else "1d")
+                # ─── FIXED: FORCE MAXIMUM HISTORY FOR PERFECT WILDER SMOOTHING WARM-UP ───
+                # This drops the faulty interval parameters and ensures the math has full depth
+                df_raw = yf.download(ticker, period="max", interval="1d", progress=False, multi_level_index=False)
                 
-                df_raw = yf.download(ticker, period=fetch_period, interval="1d", progress=False, multi_level_index=False)
                 if df_raw.empty: 
                     continue
                 
