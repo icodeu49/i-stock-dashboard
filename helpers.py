@@ -22,31 +22,30 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     # Flatten out yfinance MultiIndex layers completely if they exist
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
-        
+    
     # ─── FORCE TIME TIMEFRAME COMPRESSION ──────────────────────────────────
     # This guarantees that even if yfinance sends daily rows, we compress them cleanly
     df = df.copy()
     
     if timeframe == "Weekly":
-        # Compress daily rows into true weekly bars (Monday-Friday blocks)
-        df = df.resample('W').agg({
-            'Open': 'first',
-            'High': 'max',
-            'Low': 'min',
-            'Close': 'last',
-            'Volume': 'sum'
-        }).dropna()
+        # 1. Compress main stock
+        df = df.resample('W').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
+        # 2. Compress the benchmarks so their dates match perfectly
+        if spy_df is not None and not spy_df.empty:
+            spy_df = spy_df.resample('W').agg({'Close': 'last'}).dropna()
+        if sector_df is not None and not sector_df.empty:
+            sector_df = sector_df.resample('W').agg({'Close': 'last'}).dropna()
+            
     elif timeframe == "Monthly":
-        # Compress daily rows into true monthly bars (Full calendar month blocks)
-        df = df.resample('ME').agg({
-            'Open': 'first',
-            'High': 'max',
-            'Low': 'min',
-            'Close': 'last',
-            'Volume': 'sum'
-        }).dropna()
+        # 1. Compress main stock
+        df = df.resample('ME').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
+        # 2. Compress the benchmarks so their dates match perfectly
+        if spy_df is not None and not spy_df.empty:
+            spy_df = spy_df.resample('ME').agg({'Close': 'last'}).dropna()
+        if sector_df is not None and not sector_df.empty:
+            sector_df = sector_df.resample('ME').agg({'Close': 'last'}).dropna()
     # ─────────────────────────────────────────────────────────────────────────
-
+    
     if timeframe == "Monthly":
         print(f"🚨 [DEBUG SHAPE AFTER COMPRESSION] Real monthly bars: {len(df)}")
 
