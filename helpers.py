@@ -11,14 +11,24 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     if df.empty:
         return df
         
-    # Lower the bar requirement for macro timeframes (Monthly needs fewer bars than Daily)
+   # ─── HARD DISAGREEMENT AUDIT PRINT ─────────────────────────────────────
+    # This forces GitHub to tell us EXACTLY what data rows and columns it sees
+    if timeframe == "Monthly":
+        print(f"🚨 [DEBUG SHAPE] Analyzing Monthly Frame. Total rows available: {len(df)}")
+        print(f"🚨 [DEBUG COLUMNS] Raw column footprint: {list(df.columns)}")
+        print(f"🚨 [DEBUG SAMPLE] Latest row values:\n{df.tail(1)}")
+    # ─────────────────────────────────────────────────────────────────────────
+
+    # Flatten out yfinance MultiIndex layers completely if they exist
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    # Lower the bar requirement for macro timeframes 
     min_bars = 14 if timeframe == "Monthly" else 50
     if len(df) < min_bars:
         print(f"⚠️ Insufficient bars for {timeframe} calculation. Have {len(df)}, need {min_bars}.")
         return df
-
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.get_level_values(0)
+        
 
     length_map = {"Daily": 30, "Weekly": 20, "Monthly": 14}
     chosen_length = length_map.get(timeframe, 14)
