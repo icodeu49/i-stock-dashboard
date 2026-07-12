@@ -73,3 +73,30 @@ def check_vcp_contraction(df):
         "tight_range": round(micro_drawdown, 2),
         "vol_dryup": vol_dryup
     }
+
+def check_market_regime(spy_df):
+    """
+    PILLAR 2: MARKET REGIME TRAFFIC LIGHT
+    Evaluates the S&P 500 to determine if the macro environment is safe for breakouts.
+    Returns: "GREEN" (Risk On), "YELLOW" (Caution), or "RED" (Risk Off/Cash)
+    """
+    if spy_df.empty or len(spy_df) < 200:
+        return "YELLOW"
+
+    # Calculate Macro Trend Lines for the Market
+    spy_close = spy_df['Close'].iloc[-1]
+    spy_ma50 = spy_df['Close'].rolling(50).mean().iloc[-1]
+    spy_ma200 = spy_df['Close'].rolling(200).mean().iloc[-1]
+
+    # Is the 50-day trending above the 200-day? (Golden/Death Cross)
+    trend_up = spy_ma50 > spy_ma200
+
+    # Is the current price above the 50-day?
+    price_up = spy_close > spy_ma50
+
+    if trend_up and price_up:
+        return "GREEN"
+    elif not trend_up and not price_up:
+        return "RED"
+    else:
+        return "YELLOW"

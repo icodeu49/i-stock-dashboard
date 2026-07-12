@@ -6,7 +6,7 @@ import pandas as pd
 
 # Safely import code engine from our isolated backend module
 from helpers import calculate_technicals
-from alpha_engine import check_vcp_contraction, check_overextension
+from alpha_engine import check_vcp_contraction, check_overextension, check_market_regime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
@@ -93,6 +93,9 @@ def run_automated_scanner():
     if isinstance(spy_df.columns, pd.MultiIndex):
         spy_df.columns = spy_df.columns.get_level_values(0)
 
+    macro_regime = check_market_regime(spy_df)
+    print(f"🚦 Macro Market Regime: {macro_regime}")
+
     # Dictionary to collect results by stock and timeframe
     scan_results = {}
     alert_triggers_summary = []
@@ -176,7 +179,10 @@ def run_automated_scanner():
         print(f"❌ Failed writing structural dictionary framework data to file: {e}")
 
     # 4. GROUP DATA BY TIMEFRAME CATEGORIES FOR TELEGRAM SEND
-    message_blocks = ["🎯 **MULTI-TIMEFRAME SCORECARD** 🎯\n"]
+    message_blocks = [
+        "🎯 **MULTI-TIMEFRAME SCORECARD** 🎯",
+        f"🚦 **MACRO REGIME:** {market_regime}\n"
+    ]
     any_signals_found = False
 
     for tf in ["Monthly", "Weekly", "Daily"]:
