@@ -4,6 +4,8 @@ import yfinance as yf
 import numpy as np
 import requests 
 
+import io  
+
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
     """
     Scrapes S&P 500 peers for a sector, calculates their RS scores, 
@@ -14,7 +16,9 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         response = requests.get(url, headers=headers)
-        tables = pd.read_html(response.text)
+        
+        # Wrapped in io.StringIO to resolve the pandas literal HTML deprecation warning
+        tables = pd.read_html(io.StringIO(response.text))
         sp500_df = tables[0]
         
         # Robustly find the Sector and Symbol columns in case Wikipedia formatting changes
@@ -34,7 +38,9 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
             
         # 3. Bulk download close prices for peers + target ticker
         all_tickers = list(set(peer_tickers + [target_ticker])) 
-        data = yf.download(all_tickers, period="6m", interval="1d", progress=False)
+        
+        # 🛡️ THE FIX: Changed period from "6m" to "6mo" to match yfinance syntax
+        data = yf.download(all_tickers, period="6mo", interval="1d", progress=False)
         
         # Robust Close Extraction (handles different yfinance versions)
         if isinstance(data.columns, pd.MultiIndex):
@@ -47,7 +53,7 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
             
         close_prices = close_prices.dropna(how='all')
         
-        # 🛡️ THE FIX: Strip Timezones to prevent silent Pandas merge failures
+        # Strip Timezones to prevent silent Pandas merge failures
         close_prices.index = pd.to_datetime(close_prices.index).tz_localize(None)
         
         # Resample if Weekly or Monthly
@@ -57,13 +63,14 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
             close_prices = close_prices.resample('ME').last().dropna(how='all')
             
         # 4. Calculate RS Score for every peer
-        spy = yf.download("SPY", period="6m", interval="1d", progress=False)
+        # 🛡️ THE FIX: Changed period here from "6m" to "6mo" as well
+        spy = yf.download("SPY", period="6mo", interval="1d", progress=False)
         if isinstance(spy.columns, pd.MultiIndex): 
             spy.columns = spy.columns.get_level_values(0)
             
         spy_close = spy['Close'].dropna()
         
-        # 🛡️ THE FIX: Strip Timezones from Benchmark
+        # Strip Timezones from Benchmark
         spy_close.index = pd.to_datetime(spy_close.index).tz_localize(None)
         
         if timeframe == "Weekly":
@@ -79,17 +86,16 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         for ticker in all_tickers:
             if ticker in close_prices.columns:
                 stock_series = close_prices[ticker].dropna()
-                # Because timezones are gone, this merge will perfectly lock dates together
                 merged = pd.DataFrame({'Stock': stock_series, 'SPY': spy_close}).dropna()
                 
-                # Only grade stocks that have enough historical data to prevent divide-by-zero math
+                # Only grade stocks that have enough historical data
                 if len(merged) >= rs_lookback * 0.8: 
                     ratio = merged['Stock'] / merged['SPY']
                     pct_chg = ratio.pct_change(periods=min(rs_lookback, len(ratio)-1)).iloc[-1] * 100
                     if not pd.isna(pct_chg):
                         leaderboard[ticker] = pct_chg
 
-        # Overwrite our target stock with its official processed score to guarantee matching
+        # Overwrite our target stock with its official processed score
         leaderboard[target_ticker] = target_score
         
         # 5. Sort Leaderboard and find Rank
@@ -102,7 +108,6 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
     except Exception as e:
         print(f"⚠️ Leaderboard ranking failed for {target_ticker}: {e}")
         return "N/A (Error)"
-
 
 def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     """
