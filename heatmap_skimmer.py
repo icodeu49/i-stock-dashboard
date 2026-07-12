@@ -1,8 +1,7 @@
-import pandas as pd
-import requests
 import json
 import os
-from io import StringIO
+import requests
+from bs4 import BeautifulSoup
 
 # Force clean absolute pathing relative to where the script actually sits
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -26,23 +25,21 @@ def fetch_dynamic_growth_watchlist():
             print(f"❌ Failed to reach data source. Status code: {response.status_code}")
             return False
             
-        tables = pd.read_html(StringIO(response.text))
+        # ─── FIXED PARSING LOGIC USING BEAUTIFULSOUP TARGETING ───
+        soup = BeautifulSoup(response.text, 'html.parser')
         
-        screener_df = None
-        for table in tables:
-            if 'Ticker' in table.columns:
-                screener_df = table
-                break
-                
-        if screener_df is None or screener_df.empty:
-            print("⚠️ Screener data empty. Using high-conviction fallback names.")
+        # Finviz uses the 'screener-link-primary' class for raw stock table row hyperlinks
+        ticker_elements = soup.find_all("a", class_="screener-link-primary")
+        top_tickers = [elem.text.strip().upper() for elem in ticker_elements if elem.text]
+        
+        # Limit extraction to the top 25 momentum assets
+        top_tickers = top_tickers[:25]
+        # ─────────────────────────────────────────────────────────
+        
+        if not top_tickers:
+            print("⚠️ Screener data empty or element class structure modified. Using high-conviction fallback names.")
             return False
             
-        # ─── CRUCIAL BUG FIX: COERCE DATA TYPE AND DROP NaN VALUES ───
-        screener_df['Ticker'] = screener_df['Ticker'].astype(str)
-        top_tickers = screener_df['Ticker'].dropna().head(25).tolist()
-        # ─────────────────────────────────────────────────────────────
-        
         # ─── CHANGE 1: READ EXISTING DISK STATE FIRST ───────────────────
         if os.path.exists(WATCHLIST_FILE):
             with open(WATCHLIST_FILE, "r") as f:
@@ -65,7 +62,8 @@ def fetch_dynamic_growth_watchlist():
             
         # ─── CHANGE 2: DUPLICATE-PROOF HARDENED MERGE ENGINE ───────────
         new_additions_count = 0
-        print(f"📋 RAW FINVIZ LIST FETCHED ({len(top_tickers)} items): {top_tickers}") # ◄── ADD THIS LOG
+        print(f"📋 RAW FINVIZ LIST FETCHED ({len(top_tickers)} items): {top_tickers}")
+        
         for ticker in top_tickers:
             ticker_clean = ticker.strip().upper()
             
@@ -76,9 +74,9 @@ def fetch_dynamic_growth_watchlist():
             if ticker_clean not in master_watchlist:  # Only inject if completely missing
                 master_watchlist[ticker_clean] = {"group": "Small/Mid Growth"}
                 new_additions_count += 1
-                print(f"➕ [ADDED] {ticker_clean} is new. Appending to watchlist.") # ◄── ADD THIS LOG
+                print(f"➕ [ADDED] {ticker_clean} is new. Appending to watchlist.")
             else:
-                print(f"⏭️ [SKIPPED] {ticker_clean} already exists in watchlist.") # ◄── ADD THIS LOG
+                print(f"⏭️ [SKIPPED] {ticker_clean} already exists in watchlist.")
         
         print(f"🔄 Sync complete. Identified {new_additions_count} new tickers.")
         # ────────────────────────────────────────────────────────────────
