@@ -1,306 +1,382 @@
 {
     "ABAT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "AMD": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "AMZN": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "APLD": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "APO": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLF"
+        "sector_etf": "XLF",
+        "gics_sector": "Financials"
     },
     "ARM": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "AVGO": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "BE": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "CCJ": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLU"
+        "sector_etf": "XLU",
+        "gics_sector": "Energy"
     },
     "CDNS": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "CRWV": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "FLEX": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "GEV": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "INTC": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "IONQ": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "IOT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "LLY": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLV"
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care"
     },
     "LUMN": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "META": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "MRVL": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "MSFT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "MU": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "MVST": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "NAK": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XME"
+        "sector_etf": "XME",
+        "gics_sector": "Materials"
     },
     "NBIS": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "NET": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "NVDA": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "NVTS": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "ODFL": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "OKLO": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLU"
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities"
     },
     "ORCL": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "PLTR": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "POWI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "QUBT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "RDDT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "RGTI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "SNPS": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "SOUN": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "T": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "TSM": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "VRT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "SPY": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SPY"
+        "sector_etf": "SPY",
+        "gics_sector": "Information Technology"
     },
     "ENR": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLP"
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples"
     },
     "FTGFF": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLE"
+        "sector_etf": "XLE",
+        "gics_sector": "Energy"
     },
     "AI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "ALAB": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "BA": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLI"
+        "sector_etf": "XLI",
+        "gics_sector": "Industrials"
     },
     "CRDO": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "IRM": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLRE"
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate"
     },
     "PATH": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "TER": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "VNET": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "FLYW": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLF"
+        "sector_etf": "XLF",
+        "gics_sector": "Financials"
     },
     "UNFI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLP"
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples"
     },
     "OSCR": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLV"
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care"
     },
     "PARR": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLE"
+        "sector_etf": "XLE",
+        "gics_sector": "Energy"
     },
     "ICHR": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "WOLF": {
         "group": "Small/Mid Growth",
-        "sector_etf": "SMH"
+        "sector_etf": "SMH",
+        "gics_sector": "Information Technology"
     },
     "AAPL": {
         "group": "Mega-Cap Tech",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "GOOGL": {
         "group": "Mega-Cap Tech",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "CARD": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "U": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "SMCI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLK"
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology"
     },
     "TEAM": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "MELI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "SHOP": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "NCLH": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "TTD": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "DKNG": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "SOFI": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLF"
+        "sector_etf": "XLF",
+        "gics_sector": "Financials"
     },
     "DDOG": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "SNOW": {
         "group": "Small/Mid Growth",
-        "sector_etf": "IGV"
+        "sector_etf": "IGV",
+        "gics_sector": "Information Technology"
     },
     "SPOT": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLC"
+        "sector_etf": "XLC",
+        "gics_sector": "Communication Services"
     },
     "RCL": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "CCL": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     },
     "BABA": {
         "group": "Small/Mid Growth",
-        "sector_etf": "XLY"
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary"
     }
 }
