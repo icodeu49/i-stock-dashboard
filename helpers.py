@@ -3,6 +3,80 @@ import pandas as pd
 import yfinance as yf
 import numpy as np
 
+
+def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
+    """
+    Scrapes S&P 500 peers for a sector, calculates their RS scores, 
+    and returns the target ticker's exact leaderboard rank.
+    """
+    try:
+        # 1. Scrape live S&P 500 table from Wikipedia
+        url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+        tables = pd.read_html(url)
+        sp500_df = tables[0]
+        
+        # 2. Isolate tickers in the matching sector
+        peer_tickers = sp500_df[sp500_df['GICS Sector'] == gics_sector]['Symbol'].tolist()
+        peer_tickers = [t.replace('.', '-') for t in peer_tickers]
+        
+        # Remove target ticker if it's already in the list to avoid duplicates
+        if target_ticker in peer_tickers:
+            peer_tickers.remove(target_ticker)
+            
+        if not peer_tickers:
+            return "N/A"
+            
+        # 3. Bulk download close prices for peers + target ticker
+        all_tickers = peer_tickers + [target_ticker]
+        # Download 6 months to ensure we have enough data for lookbacks
+        data = yf.download(all_tickers, period="6m", interval="1d", progress=False, multi_level_index=False)
+        
+        if isinstance(data.columns, pd.MultiIndex):
+            data.columns = data.columns.get_level_values(0)
+            
+        close_prices = data['Close'].dropna(how='all')
+        
+        # Resample if Weekly or Monthly
+        if timeframe == "Weekly":
+            close_prices = close_prices.resample('W').last().dropna()
+        elif timeframe == "Monthly":
+            close_prices = close_prices.resample('ME').last().dropna()
+            
+        # 4. Calculate RS Score for every peer
+        # We need SPY to calculate the RS Ratio (Stock / SPY)
+        spy = yf.download("SPY", period="6m", interval="1d", progress=False, multi_level_index=False)
+        if isinstance(spy.columns, pd.MultiIndex): spy.columns = spy.columns.get_level_values(0)
+        spy_close = spy['Close'].resample('W' if timeframe=="Weekly" else 'ME' if timeframe=="Monthly" else 'D').last()
+        
+        rs_lookback = {"Daily": 63, "Weekly": 13, "Monthly": 3}.get(timeframe, 63)
+        leaderboard = {}
+        
+        for ticker in all_tickers:
+            if ticker in close_prices.columns:
+                stock_series = close_prices[ticker].dropna()
+                # Align with SPY
+                merged = pd.DataFrame({'Stock': stock_series, 'SPY': spy_close}).dropna()
+                if len(merged) > rs_lookback:
+                    ratio = merged['Stock'] / merged['SPY']
+                    pct_chg = ratio.pct_change(periods=min(rs_lookback, len(ratio)-1)).iloc[-1] * 100
+                    if not pd.isna(pct_chg):
+                        leaderboard[ticker] = pct_chg
+
+        # Overwrite our target stock with its official processed score
+        leaderboard[target_ticker] = target_score
+        
+        # 5. Sort Leaderboard and find Rank
+        sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
+        rank = [item[0] for item in sorted_leaderboard].index(target_ticker) + 1
+        total_peers = len(sorted_leaderboard)
+        
+        return f"🏆 #{rank} of {total_peers}"
+        
+    except Exception as e:
+        print(f"⚠️ Leaderboard ranking failed for {target_ticker}: {e}")
+        return "N/A"
+
+
 def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     """
     Pure mathematical technical analysis engine. 
@@ -180,7 +254,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
             df['RS_SECTOR_SCORE'] = 0.0
     else: 
         df['RS_SECTOR_SCORE'] = 0.0
-        
+
     # 7. Volatility Stop (VSTOP) ─── UPDATED MULTIPLIER TO 2.0 ───
     vstop_arr, trend_arr = [], []
     current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.0)

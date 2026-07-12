@@ -5,7 +5,7 @@ import yfinance as yf
 import pandas as pd
 
 # Safely import code engine from our isolated backend module
-from helpers import calculate_technicals
+from helpers import calculate_technicals, calculate_sector_rank
 from alpha_engine import check_vcp_contraction, check_overextension, check_market_regime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -232,12 +232,20 @@ def run_automated_scanner():
                     sar = "✅ ABOVE SAR" if data["sar_support"] else "❌ BELOW SAR"
                     adx_status = "🔥 (Strong)" if data["adx"] > 25 else "⏳ (Weak)"
 
+                    # Fetch live GICS Sector ranking info
+                    gics_sector = watchlist[ticker].get("gics_sector") if isinstance(watchlist[ticker], dict) else None
+                    if gics_sector:
+                        sector_rank = calculate_sector_rank(ticker, data["rs_score"], gics_sector, timeframe=tf)
+                    else:
+                        sector_rank = "N/A"
+
                     tf_block += f"\n\n• **{ticker}** | Trend Matrix: {emoji} {data['matrix']}"
                     tf_block += f"\n    ├── 📊 RS vs SPY: +{data['rs_score']}%"
                     
                     if data.get('sector_ticker'):
                         tf_block += f"\n    ├── 🎯 RS vs Sector ({data['sector_ticker']}): +{data['rs_sector_score']}%"
                         
+                    tf_block += f"\n    ├── 👑 Sector Leaderboard: {sector_rank}"
                     tf_block += f"\n    ├── ⚡️ Pocket Pivot Matrix: {pivot}"
                     tf_block += f"\n    ├── 📈 Vol Accumulation Day: {vol}"
                     tf_block += f"\n    ├── 🚀 Speed EMAs (10 > 30): {ema}"
