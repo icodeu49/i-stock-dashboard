@@ -200,7 +200,7 @@ def run_automated_scanner():
     # 4. GROUP DATA BY TIMEFRAME CATEGORIES FOR TELEGRAM SEND
     message_blocks = [
         "🎯 **MULTI-TIMEFRAME SCORECARD** 🎯",
-        f"🚦 **MACRO REGIME:** {market_regime}\n"
+        f"🚦 **MACRO REGIME:** {macro_regime}\n"
     ]
     any_signals_found = False
 
