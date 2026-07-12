@@ -1,230 +1,306 @@
 {
     "ABAT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "AMD": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "AMZN": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "APLD": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "APO": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLF"
     },
     "ARM": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "AVGO": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "BE": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "CCJ": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLU"
     },
     "CDNS": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "CRWV": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "FLEX": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "GEV": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "INTC": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "IONQ": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "IOT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "LLY": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLV"
     },
     "LUMN": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLC"
     },
     "META": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLC"
     },
     "MRVL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "MSFT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "MU": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "MVST": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "NAK": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XME"
     },
     "NBIS": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "NET": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "NVDA": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "NVTS": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "ODFL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "OKLO": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLU"
     },
     "ORCL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "PLTR": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "POWI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "QUBT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "RDDT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLC"
     },
     "RGTI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "SNPS": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "SOUN": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "T": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLC"
     },
     "TSM": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "VRT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "SPY": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SPY"
     },
     "ENR": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLP"
     },
     "FTGFF": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLE"
     },
     "AI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "ALAB": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "BA": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLI"
     },
     "CRDO": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "IRM": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLRE"
     },
     "PATH": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "TER": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "VNET": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "FLYW": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLF"
     },
     "UNFI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLP"
     },
     "OSCR": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLV"
     },
     "PARR": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLE"
     },
     "ICHR": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "WOLF": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "SMH"
     },
     "AAPL": {
-        "group": "Mega-Cap Tech"
+        "group": "Mega-Cap Tech",
+        "sector_etf": "XLK"
     },
     "GOOGL": {
-        "group": "Mega-Cap Tech"
+        "group": "Mega-Cap Tech",
+        "sector_etf": "XLC"
     },
     "CARD": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "U": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "SMCI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLK"
     },
     "TEAM": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "MELI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "SHOP": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "NCLH": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "TTD": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "DKNG": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "SOFI": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLF"
     },
     "DDOG": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "SNOW": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "IGV"
     },
     "SPOT": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLC"
     },
     "RCL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "CCL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     },
     "BABA": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY"
     }
 }

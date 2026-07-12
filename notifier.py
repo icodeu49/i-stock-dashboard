@@ -96,6 +96,18 @@ def run_automated_scanner():
     macro_regime = check_market_regime(spy_df)
     print(f"🚦 Macro Market Regime: {macro_regime}")
 
+    # ─── BULK FETCH SECTOR ETFs ───
+    unique_sectors = set(info.get("sector_etf") for info in watchlist.values() if isinstance(info, dict) and info.get("sector_etf"))
+    sector_dfs = {}
+    if unique_sectors:
+        print(f"📥 Pre-fetching {len(unique_sectors)} Sector ETFs: {', '.join(unique_sectors)}")
+        for etf in unique_sectors:
+            sdf = yf.download(etf, period="5y", interval="1d", progress=False, multi_level_index=False)
+            if isinstance(sdf.columns, pd.MultiIndex):
+                sdf.columns = sdf.columns.get_level_values(0)
+            sector_dfs[etf] = sdf
+    # ──────────────────────────────
+
     # Dictionary to collect results by stock and timeframe
     scan_results = {}
     alert_triggers_summary = []
@@ -112,7 +124,12 @@ def run_automated_scanner():
                 if df_raw.empty: 
                     continue
                 
-                df = calculate_technicals(df_raw, timeframe=tf, spy_df=spy_df)
+                # Retrieve the specific sector dataframe for this stock
+                sector_etf_ticker = watchlist[ticker].get("sector_etf") if isinstance(watchlist[ticker], dict) else None
+                current_sector_df = sector_dfs.get(sector_etf_ticker)
+
+                # Pass both SPY and Sector data into the math engine
+                df = calculate_technicals(df_raw, timeframe=tf, spy_df=spy_df, sector_df=current_sector_df)
                 if df is None or df.empty:
                     continue
                     
@@ -143,6 +160,8 @@ def run_automated_scanner():
                     "is_bearish_vstop": is_macro_bear_flip,
                     "matrix": "BEARISH" if (is_macro_bear_flip or not latest.get('EMA_SPEED_ALIGNED', True)) else "BULLISH",
                     "rs_score": round(latest.get('RS_SCORE', 0.0), 2),
+                    "rs_sector_score": round(latest.get('RS_SECTOR_SCORE', 0.0), 2),
+                    "sector_ticker": sector_etf_ticker,
                     "pocket_pivot": latest.get('POCKET_PIVOT', False),
                     "vol_accumulation": latest.get('ACCUMULATION_DAY', False),
                     "speed_emas": latest.get('EMA_SPEED_ALIGNED', True),
@@ -213,7 +232,11 @@ def run_automated_scanner():
                     adx_status = "🔥 (Strong)" if data["adx"] > 25 else "⏳ (Weak)"
 
                     tf_block += f"\n\n• **{ticker}** | Trend Matrix: {emoji} {data['matrix']}"
-                    tf_block += f"\n    ├── 📊 RS Score: +{data['rs_score']}% vs SPY"
+                    tf_block += f"\n    ├── 📊 RS vs SPY: +{data['rs_score']}%"
+                    
+                    if data.get('sector_ticker'):
+                        tf_block += f"\n    ├── 🎯 RS vs Sector ({data['sector_ticker']}): +{data['rs_sector_score']}%"
+                        
                     tf_block += f"\n    ├── ⚡️ Pocket Pivot Matrix: {pivot}"
                     tf_block += f"\n    ├── 📈 Vol Accumulation Day: {vol}"
                     tf_block += f"\n    ├── 🚀 Speed EMAs (10 > 30): {ema}"

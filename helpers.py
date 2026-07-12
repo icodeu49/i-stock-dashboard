@@ -3,7 +3,7 @@ import pandas as pd
 import yfinance as yf
 import numpy as np
 
-def calculate_technicals(df, timeframe="Weekly", spy_df=None):
+def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     """
     Pure mathematical technical analysis engine. 
     Contains absolutely no UI logic so it can run smoothly in GitHub Actions.
@@ -11,7 +11,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     if df.empty:
         return df
         
-   # ─── HARD DISAGREEMENT AUDIT PRINT ─────────────────────────────────────
+    # ─── HARD DISAGREEMENT AUDIT PRINT ─────────────────────────────────────
     # This forces GitHub to tell us EXACTLY what data rows and columns it sees
     if timeframe == "Monthly":
         print(f"🚨 [DEBUG SHAPE] Analyzing Monthly Frame. Total rows available: {len(df)}")
@@ -23,7 +23,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
         
-# ─── FORCE TIME TIMEFRAME COMPRESSION ──────────────────────────────────
+    # ─── FORCE TIME TIMEFRAME COMPRESSION ──────────────────────────────────
     # This guarantees that even if yfinance sends daily rows, we compress them cleanly
     df = df.copy()
     
@@ -73,23 +73,6 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     tr = pd.concat([high_low, high_cp, low_cp], axis=1).max(axis=1)
     df['ATR_CHOSEN'] = tr.rolling(window=chosen_length).mean()
     df['ATR14'] = tr.rolling(window=14).mean()  
-
-    # # 3. ADX / DMI
-    # up_move = df['High'] - df['High'].shift(1)
-    # down_move = df['Low'].shift(1) - df['Low']
-    
-    # pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
-    # neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
-    
-    # atr_filled = df['ATR_CHOSEN'].replace(0, np.nan)
-    # di_plus = 100 * (pos_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
-    # di_minus = 100 * (neg_dm.rolling(window=chosen_length).mean() / atr_filled).fillna(0)
-    
-    # dm_sum = di_plus + di_minus
-    # dm_sum = dm_sum.replace(0, np.nan)
-    # dx = 100 * (di_plus - di_minus).abs() / dm_sum
-    # df['ADX'] = dx.rolling(window=chosen_length).mean().fillna(0)
-    # df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
 
     # =========================================================================
     # # 3. ADX / DMI (HARDENED WILDER SMOOTHING ALIGNMENT)
@@ -162,7 +145,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).rolling(window=10).max()
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
-    # 6. Relative Strength Score vs Benchmark
+    # 6. Relative Strength Score vs Benchmark (SPY)
     if spy_df is not None and not spy_df.empty:
         spy_ref = spy_df.copy()
         if isinstance(spy_ref.columns, pd.MultiIndex): 
@@ -178,6 +161,23 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
             df['RS_SCORE'] = 0.0
     else: 
         df['RS_SCORE'] = 0.0
+
+    # 6b. Relative Strength Score vs Specific Sector ETF
+    if sector_df is not None and not sector_df.empty:
+        sector_ref = sector_df.copy()
+        if isinstance(sector_ref.columns, pd.MultiIndex): 
+            sector_ref.columns = sector_ref.columns.get_level_values(0)
+            
+        sector_close = sector_ref[['Close']].rename(columns={'Close': 'Close_Sector'})
+        merged_sec = df[['Close']].merge(sector_close, left_index=True, right_index=True, how='left')
+        
+        if not merged_sec.empty and 'Close_Sector' in merged_sec.columns:
+            df['RS_Sector_Ratio'] = merged_sec['Close'] / merged_sec['Close_Sector']
+            df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=min(63, len(df)-1), fill_method=None) * 100
+        else: 
+            df['RS_SECTOR_SCORE'] = 0.0
+    else: 
+        df['RS_SECTOR_SCORE'] = 0.0
 
     # 7. Volatility Stop (VSTOP) ─── UPDATED MULTIPLIER TO 2.0 ───
     vstop_arr, trend_arr = [], []
