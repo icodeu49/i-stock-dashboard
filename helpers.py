@@ -5,7 +5,7 @@ import numpy as np
 import requests 
 
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
-"""
+    """
     Scrapes S&P 500 peers for a sector, calculates their RS scores, 
     and returns the target ticker's exact leaderboard rank.
     """
@@ -25,7 +25,7 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         peer_tickers = sp500_df[sp500_df['GICS Sector'] == gics_sector]['Symbol'].tolist()
         peer_tickers = [t.replace('.', '-') for t in peer_tickers]
 
-        
+
         # Remove target ticker if it's already in the list to avoid duplicates
         if target_ticker in peer_tickers:
             peer_tickers.remove(target_ticker)
