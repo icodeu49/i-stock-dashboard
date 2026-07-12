@@ -1,7 +1,7 @@
 import json
 import os
-import requests
-import re
+import yfinance as yf
+import pandas as pd
 
 # Force clean absolute pathing relative to where the script actually sits
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -9,43 +9,48 @@ WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 
 def fetch_dynamic_growth_watchlist():
     """
-    Ingests high-volume, high-momentum small/mid-cap growth leaders
-    by scanning raw document anchor reference patterns directly via regex.
+    Cloud-proof momentum engine. Bypasses volatile web scraping entirely by 
+    calculating trailing 1-week performance metrics directly via yfinance.
     """
-    print("🔥 Initializing Dynamic Momentum Watchlist Generator...")
+    print("🔥 Initializing Cloud-Proof Momentum Watchlist Generator...")
     
-    url = "https://finviz.com/screener.ashx?v=111&f=cap_smallover,fa_epsqoq_o20,sh_avgvol_o300,sh_beta_o1.2,sh_price_u5to100&o=-perf1w"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-    }
+    # High-conviction, high-volume growth & momentum universe pool to rotate through
+    momentum_universe = [
+        "AAPL", "NVDA", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "AVGO", "NFLX", "AMD",
+        "SMCI", "ARM", "PLTR", "PANW", "CRWD", "COIN", "MARA", "RIOT", "HOOD", "SOFI",
+        "AFRM", "UPST", "AI", "PATH", "CELH", "WING", "DUOL", "CARD", "APP", "MELI",
+        "SHOP", "SQ", "COUP", "NET", "OKTA", "DDOG", "SNOW", "ZS", "MDB", "TEAM",
+        "SPOT", "TTD", "RBLX", "U", "AAL", "CCL", "NCLH", "RCL", "DKNG", "PENT"
+    ]
     
     try:
-        response = requests.get(url, headers=headers, timeout=15)
-        if not response.ok:
-            print(f"❌ Failed to reach data source. Status code: {response.status_code}")
+        print(f"📡 Downloading market data for universe pool...")
+        # Download 2 weeks of daily data to ensure we can calculate a clean trailing 1-week return
+        data = yf.download(momentum_universe, period="2wk", interval="1d", progress=False, multi_level_index=False)
+        
+        if data.empty or 'Close' not in data:
+            print("❌ Failed to pull market data feed from Yahoo Finance.")
             return False
             
-        # ─── THE FIX: REGEX SEARCH FOR THE TICKER EMBED SIGNATURE ───
-        # Finviz hyperlinks rows via 'quote.ashx?t=TICKER'
-        raw_matches = re.findall(r'quote\.ashx\?t=([A-Za-z]+)', response.text)
+        close_df = data['Close']
         
-        # Deduplicate while preserving rank ordering safely
-        top_tickers = []
-        for ticker in raw_matches:
-            ticker_upper = ticker.strip().upper()
-            if ticker_upper not in top_tickers:
-                top_tickers.append(ticker_upper)
-                
-        # Slice to capture the top 25 momentum names
-        top_tickers = top_tickers[:25]
-        # ─────────────────────────────────────────────────────────────
+        # Calculate trailing 1-week performance matrix (Current Close vs Close 5 trading sessions ago)
+        performance_dict = {}
+        for ticker in momentum_universe:
+            if ticker in close_df.columns:
+                series = close_df[ticker].dropna()
+                if len(series) >= 5:
+                    current_price = series.iloc[-1]
+                    prev_price = series.iloc[-5]
+                    one_week_return = ((current_price - prev_price) / prev_price) * 100
+                    performance_dict[ticker] = one_week_return
         
-        print(f"📋 RAW FINVIZ LIST FETCHED ({len(top_tickers)} items): {top_tickers}")
+        # Sort universe by best performing assets and slice the top 25 momentum leaders
+        sorted_leaders = sorted(performance_dict.items(), key=lambda item: item[1], reverse=True)
+        top_tickers = [ticker for ticker, perf in sorted_leaders[:25]]
         
-        if not top_tickers:
-            print("⚠️ Screener data empty. Verify element signature patterns.")
-            return False
-            
+        print(f"📋 RAW MOMENTUM LIST GENERATED ({len(top_tickers)} items): {top_tickers}")
+        
         # ─── READ EXISTING DISK STATE ───────────────────
         if os.path.exists(WATCHLIST_FILE):
             with open(WATCHLIST_FILE, "r") as f:
@@ -67,9 +72,6 @@ def fetch_dynamic_growth_watchlist():
         # ─── DUPLICATE-PROOF HARDENED MERGE ENGINE ───────────
         new_additions_count = 0
         for ticker_clean in top_tickers:
-            if not ticker_clean or ticker_clean == "NAN" or not ticker_clean.isalpha():
-                continue
-                
             if ticker_clean not in master_watchlist:  
                 master_watchlist[ticker_clean] = {"group": "Small/Mid Growth"}
                 new_additions_count += 1
