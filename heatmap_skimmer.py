@@ -65,6 +65,7 @@ def fetch_dynamic_growth_watchlist():
             
         # ─── CHANGE 2: DUPLICATE-PROOF HARDENED MERGE ENGINE ───────────
         new_additions_count = 0
+        print(f"📋 RAW FINVIZ LIST FETCHED ({len(top_tickers)} items): {top_tickers}") # ◄── ADD THIS LOG
         for ticker in top_tickers:
             ticker_clean = ticker.strip().upper()
             
@@ -75,7 +76,9 @@ def fetch_dynamic_growth_watchlist():
             if ticker_clean not in master_watchlist:  # Only inject if completely missing
                 master_watchlist[ticker_clean] = {"group": "Small/Mid Growth"}
                 new_additions_count += 1
-                print(f"➕ [NEW] Captured fresh momentum asset: {ticker_clean}")
+                print(f"➕ [ADDED] {ticker_clean} is new. Appending to watchlist.") # ◄── ADD THIS LOG
+            else:
+                print(f"⏭️ [SKIPPED] {ticker_clean} already exists in watchlist.") # ◄── ADD THIS LOG
         
         print(f"🔄 Sync complete. Identified {new_additions_count} new tickers.")
         # ────────────────────────────────────────────────────────────────
