@@ -104,6 +104,7 @@ def run_automated_scanner():
             for tf in ["Daily", "Weekly", "Monthly"]:
                 # ─── OPTIMIZATION: SCALE HISTORICAL PERIOD BY TIMEFRAME ───
                 fetch_period = "max" if tf == "Monthly" else ("5y" if tf == "Weekly" else "2y")
+                fetch_interval = "1mo" if tf == "Monthly" else ("1wk" if tf == "Weekly" else "1d")
                 
                 df_raw = yf.download(ticker, period=fetch_period, interval="1d", progress=False, multi_level_index=False)
                 if df_raw.empty: 
