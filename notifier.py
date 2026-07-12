@@ -128,6 +128,16 @@ def run_automated_scanner():
                     "adx": round(latest.get('ADX', 0.0), 1)
                 }
                 
+                # ─── THE DISCREPANCY AUDIT LOG ────────────────────────────────────────
+                # This exposes the exact price and stops used at the second of execution
+                if tf in ["Weekly", "Monthly"]:
+                    print(f"🔍 AUDIT [{ticker} - {tf} Close]")
+                    print(f"    ├── Current Price: ${round(latest.get('Close', 0.0), 2)}")
+                    print(f"    ├── VSTOP Line Value: ${round(latest.get('VSTOP_LINE', 0.0), 2)}")
+                    print(f"    ├── VSTOP Trend State: {latest.get('VSTOP_TREND', 0)}")
+                    print(f"    └── ADX Value: {round(latest.get('ADX', 0.0), 2)}")
+                # ──────────────────────────────────────────────────────────────────────
+                
                 if is_triggered and ticker not in alert_triggers_summary:
                     alert_triggers_summary.append(ticker)
                     
