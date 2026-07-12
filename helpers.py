@@ -14,8 +14,8 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
-    length_map = {"Daily": 30, "Weekly": 20, "Monthly": 10}
-    chosen_length = length_map.get(timeframe, 20)
+    length_map = {"Daily": 30, "Weekly": 20, "Monthly": 14}
+    chosen_length = length_map.get(timeframe, 14)
 
     # 1. EMAs
     df['EMA10'] = df['Close'].ewm(span=10, adjust=False).mean()
@@ -82,7 +82,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     
     df['ADX'] = dx.ewm(alpha=alpha, adjust=False).mean().fillna(0)
     df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
-    
+
 
     # 4. Parabolic SAR
     highs, lows, sar = df['High'].values, df['Low'].values, list(df['Close'][:2])
