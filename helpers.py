@@ -22,13 +22,41 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     # Flatten out yfinance MultiIndex layers completely if they exist
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
+        
+# ─── FORCE TIME TIMEFRAME COMPRESSION ──────────────────────────────────
+    # This guarantees that even if yfinance sends daily rows, we compress them cleanly
+    df = df.copy()
+    
+    if timeframe == "Weekly":
+        # Compress daily rows into true weekly bars (Monday-Friday blocks)
+        df = df.resample('W').agg({
+            'Open': 'first',
+            'High': 'max',
+            'Low': 'min',
+            'Close': 'last',
+            'Volume': 'sum'
+        }).dropna()
+    elif timeframe == "Monthly":
+        # Compress daily rows into true monthly bars (Full calendar month blocks)
+        df = df.resample('ME').agg({
+            'Open': 'first',
+            'High': 'max',
+            'Low': 'min',
+            'Close': 'last',
+            'Volume': 'sum'
+        }).dropna()
+    # ─────────────────────────────────────────────────────────────────────────
+
+    if timeframe == "Monthly":
+        print(f"🚨 [DEBUG SHAPE AFTER COMPRESSION] Real monthly bars: {len(df)}")
+
 
     # Lower the bar requirement for macro timeframes 
     min_bars = 14 if timeframe == "Monthly" else 50
     if len(df) < min_bars:
         print(f"⚠️ Insufficient bars for {timeframe} calculation. Have {len(df)}, need {min_bars}.")
         return df
-        
+
 
     length_map = {"Daily": 30, "Weekly": 20, "Monthly": 14}
     chosen_length = length_map.get(timeframe, 14)
