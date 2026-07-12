@@ -25,7 +25,6 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         peer_tickers = sp500_df[sp500_df['GICS Sector'] == gics_sector]['Symbol'].tolist()
         peer_tickers = [t.replace('.', '-') for t in peer_tickers]
 
-
         # Remove target ticker if it's already in the list to avoid duplicates
         if target_ticker in peer_tickers:
             peer_tickers.remove(target_ticker)
@@ -34,25 +33,28 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
             return "N/A"
             
         # 3. Bulk download close prices for peers + target ticker
-        all_tickers = peer_tickers + [target_ticker]
-        # Download 6 months to ensure we have enough data for lookbacks
-        data = yf.download(all_tickers, period="6m", interval="1d", progress=False, multi_level_index=False)
+        all_tickers = list(set(peer_tickers + [target_ticker])) # Ensure unique list
+        
+        # Do NOT flatten the MultiIndex here. Let yfinance return the tickers as columns
+        data = yf.download(all_tickers, period="6m", interval="1d", progress=False)
         
         if isinstance(data.columns, pd.MultiIndex):
-            data.columns = data.columns.get_level_values(0)
+            # yfinance puts 'Close' at level 0, and 'Tickers' at level 1
+            close_prices = data['Close'].dropna(how='all')
+        else:
+            # Fallback if it only downloads 1 stock
+            close_prices = data[['Close']].rename(columns={'Close': target_ticker}).dropna(how='all')
             
-        close_prices = data['Close'].dropna(how='all')
-        
         # Resample if Weekly or Monthly
         if timeframe == "Weekly":
-            close_prices = close_prices.resample('W').last().dropna()
+            close_prices = close_prices.resample('W').last().dropna(how='all')
         elif timeframe == "Monthly":
-            close_prices = close_prices.resample('ME').last().dropna()
+            close_prices = close_prices.resample('ME').last().dropna(how='all')
             
         # 4. Calculate RS Score for every peer
-        # We need SPY to calculate the RS Ratio (Stock / SPY)
-        spy = yf.download("SPY", period="6m", interval="1d", progress=False, multi_level_index=False)
-        if isinstance(spy.columns, pd.MultiIndex): spy.columns = spy.columns.get_level_values(0)
+        spy = yf.download("SPY", period="6m", interval="1d", progress=False)
+        if isinstance(spy.columns, pd.MultiIndex): 
+            spy.columns = spy.columns.get_level_values(0)
         spy_close = spy['Close'].resample('W' if timeframe=="Weekly" else 'ME' if timeframe=="Monthly" else 'D').last()
         
         rs_lookback = {"Daily": 63, "Weekly": 13, "Monthly": 3}.get(timeframe, 63)
@@ -61,7 +63,6 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         for ticker in all_tickers:
             if ticker in close_prices.columns:
                 stock_series = close_prices[ticker].dropna()
-                # Align with SPY
                 merged = pd.DataFrame({'Stock': stock_series, 'SPY': spy_close}).dropna()
                 if len(merged) > rs_lookback:
                     ratio = merged['Stock'] / merged['SPY']
@@ -69,7 +70,7 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
                     if not pd.isna(pct_chg):
                         leaderboard[ticker] = pct_chg
 
-        # Overwrite our target stock with its official processed score
+        # Overwrite our target stock with its official processed score to guarantee matching
         leaderboard[target_ticker] = target_score
         
         # 5. Sort Leaderboard and find Rank
