@@ -15,13 +15,15 @@ def fetch_dynamic_growth_watchlist():
     print("🔥 Initializing Cloud-Proof Momentum Watchlist Generator...")
     
     # High-conviction, high-volume growth & momentum universe pool to rotate through
+    # High-conviction, high-volume growth & momentum universe pool to rotate through
     momentum_universe = [
         "AAPL", "NVDA", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "AVGO", "NFLX", "AMD",
         "SMCI", "ARM", "PLTR", "PANW", "CRWD", "COIN", "MARA", "RIOT", "HOOD", "SOFI",
         "AFRM", "UPST", "AI", "PATH", "CELH", "WING", "DUOL", "CARD", "APP", "MELI",
-        "SHOP", "SQ", "COUP", "NET", "OKTA", "DDOG", "SNOW", "ZS", "MDB", "TEAM",
-        "SPOT", "TTD", "RBLX", "U", "AAL", "CCL", "NCLH", "RCL", "DKNG", "PENT"
+        "SHOP", "TSM", "GEV", "NET", "OKTA", "DDOG", "SNOW", "ZS", "MDB", "TEAM",
+        "SPOT", "TTD", "RBLX", "U", "AAL", "CCL", "NCLH", "RCL", "DKNG", "BABA"
     ]
+    
     
     try:
         print(f"📡 Downloading market data for universe pool...")
