@@ -8,7 +8,13 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None):
     Pure mathematical technical analysis engine. 
     Contains absolutely no UI logic so it can run smoothly in GitHub Actions.
     """
-    if df.empty or len(df) < 50:
+    if df.empty:
+        return df
+        
+    # Lower the bar requirement for macro timeframes (Monthly needs fewer bars than Daily)
+    min_bars = 14 if timeframe == "Monthly" else 50
+    if len(df) < min_bars:
+        print(f"⚠️ Insufficient bars for {timeframe} calculation. Have {len(df)}, need {min_bars}.")
         return df
 
     if isinstance(df.columns, pd.MultiIndex):
