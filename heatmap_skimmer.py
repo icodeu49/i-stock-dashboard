@@ -1,8 +1,7 @@
 import json
 import os
 import requests
-import pandas as pd
-from io import StringIO
+import re
 
 # Force clean absolute pathing relative to where the script actually sits
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -10,39 +9,43 @@ WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 
 def fetch_dynamic_growth_watchlist():
     """
-    Ingests high-volume, high-momentum leaders by directly pulling the clean 
-    Finviz CSV export endpoint, bypassing volatile HTML table scrapes entirely.
+    Ingests high-volume, high-momentum small/mid-cap growth leaders
+    by scanning raw document anchor reference patterns directly via regex.
     """
     print("🔥 Initializing Dynamic Momentum Watchlist Generator...")
     
-    # Target the official raw CSV data export link with your exact momentum filters
-    url = "https://finviz.com/export.ashx?v=111&f=cap_smallover,fa_epsqoq_o20,sh_avgvol_o300,sh_beta_o1.2,sh_price_u5to100&o=-perf1w"
+    url = "https://finviz.com/screener.ashx?v=111&f=cap_smallover,fa_epsqoq_o20,sh_avgvol_o300,sh_beta_o1.2,sh_price_u5to100&o=-perf1w"
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     }
     
     try:
         response = requests.get(url, headers=headers, timeout=15)
         if not response.ok:
-            print(f"❌ Failed to reach data export link. Status code: {response.status_code}")
+            print(f"❌ Failed to reach data source. Status code: {response.status_code}")
             return False
             
-        # Parse the clean comma-separated text table directly into a DataFrame
-        csv_data = StringIO(response.text)
-        df = pd.read_csv(csv_data)
+        # ─── THE FIX: REGEX SEARCH FOR THE TICKER EMBED SIGNATURE ───
+        # Finviz hyperlinks rows via 'quote.ashx?t=TICKER'
+        raw_matches = re.findall(r'quote\.ashx\?t=([A-Za-z]+)', response.text)
         
-        if df.empty or 'Ticker' not in df.columns:
-            print("⚠️ Export payload empty or missing Ticker index column.")
-            return False
-            
-        # Clean values and grab top 25 records cleanly
-        df['Ticker'] = df['Ticker'].astype(str)
-        top_tickers = [t.strip().upper() for t in df['Ticker'].dropna().tolist() if t.strip()]
+        # Deduplicate while preserving rank ordering safely
+        top_tickers = []
+        for ticker in raw_matches:
+            ticker_upper = ticker.strip().upper()
+            if ticker_upper not in top_tickers:
+                top_tickers.append(ticker_upper)
+                
+        # Slice to capture the top 25 momentum names
         top_tickers = top_tickers[:25]
+        # ─────────────────────────────────────────────────────────────
         
         print(f"📋 RAW FINVIZ LIST FETCHED ({len(top_tickers)} items): {top_tickers}")
         
+        if not top_tickers:
+            print("⚠️ Screener data empty. Verify element signature patterns.")
+            return False
+            
         # ─── READ EXISTING DISK STATE ───────────────────
         if os.path.exists(WATCHLIST_FILE):
             with open(WATCHLIST_FILE, "r") as f:
