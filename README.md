@@ -26,6 +26,7 @@ this pipeline. Stock and sector jobs serialize writes to `watchlist.json` and
 
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`: stock and sector reports.
 - `USER_EMAIL` and `APP_PASSWORD`: Gmail sender/recipient and app password.
+  Both must be configured as repository secrets.
 - `GEMINI_API_KEY`: AI summaries. A temporary model failure is retried; if it
   remains unavailable, email contains a clearly labelled source-headline digest.
 
@@ -59,8 +60,9 @@ SMTP acceptance is logged; inbox arrival is not independently verified.
 ## Run locally
 
 Use Python 3.11 and install `requirements.txt` for the full dashboard, or
-`requirements-automation.txt` for the unattended scripts. Dependencies have
-bounded compatibility ranges; CI checks the resolved set on each code update.
+`requirements-automation.txt` for the unattended scripts. Direct dependency
+versions are pinned to the set validated by CI; transitive dependencies are
+resolved by pip. CI checks installations and imports on each code update.
 
 ```bash
 python -m pip install -r requirements.txt

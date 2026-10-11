@@ -13,6 +13,7 @@ import feedparser
 from google import genai
 from google.genai import types
 
+
 # 1. SETUP & CONFIGURATION
 
 TOPICS_AND_FEEDS = {
@@ -39,7 +40,7 @@ def fetch_news():
     raw_content = ""
     link_map = {}
     link_counter = 1
-    
+
     for topic, url in TOPICS_AND_FEEDS.items():
         response = None
         for attempt in range(3):
@@ -59,10 +60,10 @@ def fetch_news():
             # Safeguard long tracker URLs from LLM truncation
             link_id = f"LINK_ID_{link_counter}"
             link_map[link_id] = entry.link
-            
+
             raw_content += f"Title: {entry.title}\nLinkID: {link_id}\nSource: {entry.get('source', {}).get('title', 'Unknown')}\n\n"
             link_counter += 1
-            
+
     return raw_content, link_map
 
 # 3. GENERATE SUMMARY (WITH LINK CODES INSTEAD OF BREAKABLE URL STRINGS)
@@ -84,9 +85,9 @@ def _generate_summary(raw_news, formatting_instructions):
         "5. Add an extra <br><br> at the end of each major <li> bullet point to introduce generous spacing and breathability.\n"
         f"Style baseline: {formatting_instructions}"
     )
-    
+
     prompt = f"Synthesize and summarize the following news into clean HTML following the system rules:\n\n{raw_news}"
-    
+
     response = client.models.generate_content(
         model=os.getenv('GEMINI_MODEL', 'gemini-2.5-flash'),
         contents=prompt,
@@ -95,7 +96,7 @@ def _generate_summary(raw_news, formatting_instructions):
             temperature=0.3,
         )
     )
-    
+
     # Strip away markdown block text if present
     if not response.text:
         raise RuntimeError("The summary model returned no text")
@@ -151,9 +152,9 @@ def send_email(html_content, link_map):
     msg['From'] = user_email
     msg['To'] = user_email
     msg['Subject'] = "Your Morning Intelligence Briefing"
-    
+
     msg.attach(MIMEText(html_content, 'html'))
-    
+
     # An ambiguous SMTP send is not retried automatically, avoiding duplicate email.
     with smtplib.SMTP('smtp.gmail.com', 587, timeout=30) as server:
         server.starttls(context=ssl.create_default_context())
@@ -169,7 +170,7 @@ if __name__ == "__main__":
     memory = load_memory()
     print("Fetching free news sources...")
     news_data, original_links = fetch_news()
-    
+
     print("Synthesizing summaries with Gemini...")
     try:
         summary_email = generate_summary(news_data, memory.get("preferred_style", "Concise, with source links."))
@@ -177,6 +178,6 @@ if __name__ == "__main__":
     except Exception as exc:
         print(f"::warning::Using source-headline fallback ({type(exc).__name__}).")
         summary_email = fallback_digest(news_data)
-    
+
     print("Dispatching morning brief...")
     send_email(summary_email, original_links)

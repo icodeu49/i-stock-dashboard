@@ -1,7 +1,7 @@
-yfinance>=0.2.54,<2
-pandas>=2.2,<3
-numpy>=1.26,<3
-requests>=2.32,<3
-pandas-market-calendars>=4.6,<6
-feedparser>=6,<7
-google-genai>=1,<2
+yfinance==1.7.0
+pandas==2.3.3
+numpy==2.4.6
+requests==2.34.2
+pandas-market-calendars==5.5.0
+feedparser==6.0.14
+google-genai==1.75.0

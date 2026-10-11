@@ -207,6 +207,13 @@ class NewsTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 news_agent.send_email('<a href="LINK_ID_1">test</a>', {'LINK_ID_1': 'https://example.com'})
 
+    def test_missing_recipient_fails_before_any_email_send(self):
+        with patch.dict('os.environ', {'USER_EMAIL': '', 'APP_PASSWORD': 'dummy'}), patch.object(news_agent.smtplib, 'SMTP') as smtp:
+            with self.assertRaises(RuntimeError):
+                news_agent.send_email('<a href="LINK_ID_1">test</a>', {'LINK_ID_1': 'https://example.com'})
+            smtp.assert_not_called()
+
+
 
 class BacktestTests(unittest.TestCase):
     def test_signals_execute_at_next_session_open_and_return_three_values(self):
