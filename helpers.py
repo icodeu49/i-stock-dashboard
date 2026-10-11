@@ -309,6 +309,6 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
     
     # Final Entry Signal for VectorBT 
     df['BREAKOUT_TRIGGERED'] = base_bull_triggers & primary_trend_filter
-    
-    return df
+    from signal_policy import add_signal_columns
+    return add_signal_columns(df)
     

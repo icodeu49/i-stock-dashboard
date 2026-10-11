@@ -163,7 +163,7 @@ with tab2:
     
     # Define Scan Types
     scan_type = st.radio("Select Scan Criteria:", [
-        "🔥 Full VCP Breakout (Buy Signal Triggered Today)",
+        "📋 Momentum Setup (Legacy Entry Trigger)",
         "🌊 Accumulation Volume (Institutions are buying)",
         "🎯 Trend Matrix Alignment (Bullish Setup Forming)"
     ])
@@ -193,7 +193,7 @@ with tab2:
                 
                 # Filter Logic based on user selection
                 passed = False
-                if "Breakout" in scan_type and today.get('BREAKOUT_TRIGGERED', False):
+                if "Momentum Setup" in scan_type and today.get('BREAKOUT_TRIGGERED', False):
                     passed = True
                 elif "Accumulation" in scan_type and today.get('ACCUMULATION_DAY', False):
                     passed = True

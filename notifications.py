@@ -41,8 +41,9 @@ def send_telegram(message, attempts=3):
     raise RuntimeError("Telegram delivery failed after retries")
 
 
-def send_records(records, state_path=ALERT_STATE_FILE):
+def send_records(records, state_path=ALERT_STATE_FILE, acknowledgements=None):
     """Each record is (stable_id, text). Persist IDs only after confirmed delivery."""
+    acknowledgements = acknowledgements or {}
     state = read_json(state_path, {"delivered": {}})
     delivered = state.setdefault("delivered", {})
     pending = [(key, text) for key, text in records if key not in delivered]
@@ -64,6 +65,8 @@ def send_records(records, state_path=ALERT_STATE_FILE):
         stamp = datetime.now(timezone.utc).isoformat()
         for key, _ in batch:
             delivered[key] = stamp
+            for alias in acknowledgements.get(key, []):
+                delivered[alias] = stamp
         # Bounded state retains far more than a year of normal signal traffic.
         state["delivered"] = dict(sorted(delivered.items(), key=lambda item: item[1])[-10000:])
         delivered = state["delivered"]

@@ -57,7 +57,8 @@ def generate_summary(df):
     msg_lines = [f"{'✅' if status else '❌'} {name}" for name, status in conditions.items()]
     summary_msg = f"Score: ({passed_count}/6 Checklist Confluences Cleared) | " + " • ".join(msg_lines)
     
-    if latest['BREAKOUT_TRIGGERED']: return f"🚀 ELITE BREAKOUT ALERT - {summary_msg}", "green"
+    if latest.get('PRICE_BREAKOUT_TRIGGERED', False): return f"🚀 CONFIRMED PRICE BREAKOUT - {summary_msg}", "green"
+    if latest['BREAKOUT_TRIGGERED']: return f"📋 MOMENTUM SETUP - {summary_msg}", "green"
     elif passed_count >= 4: return f"🔥 STRONGLY BULLISH SYSTEM OVERVIEW - {summary_msg}", "green"
     elif passed_count == 3: return f"⚖️ NEUTRAL CONSOLIDATION AREA - {summary_msg}", "orange"
     else: return f"⚠️ BEARISH UNDERPERFORMANCE HAZARD ZONE - {summary_msg}", "red"

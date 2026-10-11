@@ -7,8 +7,9 @@ import pandas as pd
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WATCHLIST_FILE = os.path.join(BASE_DIR, "watchlist.json")
 
-from market_data import download_prices
+from market_data import download_prices, last_completed_session
 from storage import load_watchlist, merge_candidates, write_json
+from watchlist_history import update_selection
 
 
 def fetch_dynamic_growth_watchlist():
@@ -33,8 +34,12 @@ def fetch_dynamic_growth_watchlist():
         raise RuntimeError("Momentum scan returned no valid stocks")
     top = sorted(performance, key=performance.get, reverse=True)[:25]
     watchlist = load_watchlist(WATCHLIST_FILE)
-    added = merge_candidates(watchlist, {ticker: {"group": "Small/Mid Growth", "source": "momentum_scan"} for ticker in top})
+    candidates = {ticker: {"group": "Small/Mid Growth", "source": "momentum_scan",
+        "selection_reason": f"Top-25 five-session momentum in the configured 50-stock universe ({performance[ticker]:+.2f}%)"} for ticker in top}
+    added = merge_candidates(watchlist, candidates)
     write_json(WATCHLIST_FILE, watchlist)
+    update_selection("momentum_scan", candidates, added, last_completed_session().date().isoformat(),
+                     complete=not failures, path=__import__("pathlib").Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
     print(f"Momentum scan: {len(performance)}/{len(momentum_universe)} valid, {len(added)} additions; {len(watchlist)} tracked.")
     if failures:
         for error in failures:

@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 from market_data import download_prices, last_completed_session
 from notifications import require_telegram_config, send_records
 from storage import WATCHLIST_FILE, load_watchlist, merge_candidates, write_json
+from watchlist_history import update_selection
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
@@ -81,11 +82,14 @@ def run_macro_rotation_pipeline():
         leaders = rank_individual_stocks(SECTOR_MAP[etf]['stocks'], spy, failures)
         for ticker in leaders:
             candidates[ticker] = {"group": "Sector Leaders", "sector_etf": etf,
-                "gics_sector": GICS_NAMES[etf], "source": "sector_scan"}
+                "gics_sector": GICS_NAMES[etf], "source": "sector_scan",
+                "selection_reason": f"Top-five stock in sector #{rank} {etf}; ranked by 21-session RS vs SPY"}
         text = f"Sector #{rank}: {name} ({etf}) | US close {session}\nMomentum {score:+.2f}\nLeaders: {', '.join(leaders) or 'unavailable'}"
         records.append((f"sector:{session}:{etf}:{','.join(leaders)}", text))
     added = merge_candidates(watchlist, candidates)
     write_json(WATCHLIST_FILE, watchlist)
+    update_selection("sector_scan", candidates, added, session, complete=not failures,
+                     path=__import__("pathlib").Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
     status = "⚠️ Partial" if failures else "✅ Completed"
     stamp = datetime.now(ZoneInfo("Europe/London")).strftime("%a %d %b %Y %H:%M %Z")
     message = f"{status} sector scan — {stamp}\nWatchlist: {len(watchlist)} stocks. Added {len(added)}: {', '.join(added) or 'none (leaders already tracked)'}."

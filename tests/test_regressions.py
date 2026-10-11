@@ -165,7 +165,9 @@ class PersistenceAndDeliveryTests(unittest.TestCase):
             self.assertEqual(result['AAPL']['group'], 'My holdings')
 
     def test_scanner_reports_failures_and_exits_unsuccessfully(self):
-        with patch.object(notifier, 'require_telegram_config'), \
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.object(notifier, 'SNAPSHOT_FILE', Path(directory) / 'scan_snapshot.json'), \
+             patch.object(notifier, 'require_telegram_config'), \
              patch.object(notifier, 'load_watchlist', return_value={'BAD': {}}), \
              patch.object(notifier, 'download_prices', side_effect=[prices(), RuntimeError('stale')]), \
              patch.object(notifier, 'last_completed_session', return_value=pd.Timestamp('2026-10-09')), \
