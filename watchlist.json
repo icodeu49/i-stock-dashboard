@@ -8,13 +8,15 @@
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
         "gics_sector": "Information Technology",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLK; ranked by 21-session RS vs SPY"
     },
     "AMZN": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
         "gics_sector": "Consumer Discretionary",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     },
     "APLD": {
         "group": "Small/Mid Growth",
@@ -85,7 +87,8 @@
         "group": "Small/Mid Growth",
         "sector_etf": "XLV",
         "gics_sector": "Health Care",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
     },
     "LUMN": {
         "group": "Small/Mid Growth",
@@ -106,7 +109,8 @@
         "group": "Small/Mid Growth",
         "sector_etf": "XLK",
         "gics_sector": "Information Technology",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLK; ranked by 21-session RS vs SPY"
     },
     "MU": {
         "group": "Small/Mid Growth",
@@ -138,7 +142,8 @@
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
         "gics_sector": "Information Technology",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLK; ranked by 21-session RS vs SPY"
     },
     "NVTS": {
         "group": "Small/Mid Growth",
@@ -429,7 +434,8 @@
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
         "gics_sector": "Consumer Discretionary",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     },
     "RBLX": {
         "group": "Small/Mid Growth",
@@ -471,114 +477,133 @@
         "group": "Sector Leaders",
         "sector_etf": "XLE",
         "gics_sector": "Energy",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
     },
     "VLO": {
         "group": "Sector Leaders",
         "sector_etf": "XLE",
         "gics_sector": "Energy",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
     },
     "PSX": {
         "group": "Sector Leaders",
         "sector_etf": "XLE",
         "gics_sector": "Energy",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
     },
     "XOM": {
         "group": "Sector Leaders",
         "sector_etf": "XLE",
         "gics_sector": "Energy",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
     },
     "WMB": {
         "group": "Sector Leaders",
         "sector_etf": "XLE",
         "gics_sector": "Energy",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
     },
     "CSCO": {
         "group": "Sector Leaders",
         "sector_etf": "XLK",
         "gics_sector": "Information Technology",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLK; ranked by 21-session RS vs SPY"
     },
     "NOW": {
         "group": "Sector Leaders",
         "sector_etf": "XLK",
         "gics_sector": "Information Technology",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLK; ranked by 21-session RS vs SPY"
     },
     "ISRG": {
         "group": "Sector Leaders",
         "sector_etf": "XLV",
         "gics_sector": "Health Care",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
     },
     "TMO": {
         "group": "Sector Leaders",
         "sector_etf": "XLV",
         "gics_sector": "Health Care",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
     },
     "AMGN": {
         "group": "Sector Leaders",
         "sector_etf": "XLV",
         "gics_sector": "Health Care",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
     },
     "ABBV": {
         "group": "Sector Leaders",
         "sector_etf": "XLV",
         "gics_sector": "Health Care",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
     },
     "PM": {
         "group": "Sector Leaders",
         "sector_etf": "XLP",
         "gics_sector": "Consumer Staples",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLP; ranked by 21-session RS vs SPY"
     },
     "MO": {
         "group": "Sector Leaders",
         "sector_etf": "XLP",
         "gics_sector": "Consumer Staples",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLP; ranked by 21-session RS vs SPY"
     },
     "PG": {
         "group": "Sector Leaders",
         "sector_etf": "XLP",
         "gics_sector": "Consumer Staples",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLP; ranked by 21-session RS vs SPY"
     },
     "WMT": {
         "group": "Sector Leaders",
         "sector_etf": "XLP",
         "gics_sector": "Consumer Staples",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLP; ranked by 21-session RS vs SPY"
     },
     "COST": {
         "group": "Sector Leaders",
         "sector_etf": "XLP",
         "gics_sector": "Consumer Staples",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLP; ranked by 21-session RS vs SPY"
     },
     "TJX": {
         "group": "Sector Leaders",
         "sector_etf": "XLY",
         "gics_sector": "Consumer Discretionary",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     },
     "HD": {
         "group": "Sector Leaders",
         "sector_etf": "XLY",
         "gics_sector": "Consumer Discretionary",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     },
     "NKE": {
         "group": "Sector Leaders",
         "sector_etf": "XLY",
         "gics_sector": "Consumer Discretionary",
-        "source": "sector_scan"
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     }
 }
