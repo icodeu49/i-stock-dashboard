@@ -7,12 +7,14 @@
     "AMD": {
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "sector_scan"
     },
     "AMZN": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan"
     },
     "APLD": {
         "group": "Small/Mid Growth",
@@ -82,7 +84,8 @@
     "LLY": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLV",
-        "gics_sector": "Health Care"
+        "gics_sector": "Health Care",
+        "source": "sector_scan"
     },
     "LUMN": {
         "group": "Small/Mid Growth",
@@ -102,7 +105,8 @@
     "MSFT": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLK",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "sector_scan"
     },
     "MU": {
         "group": "Small/Mid Growth",
@@ -132,7 +136,8 @@
     "NVDA": {
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "sector_scan"
     },
     "NVTS": {
         "group": "Small/Mid Growth",
@@ -404,7 +409,10 @@
         "group": "Small/Mid Growth"
     },
     "TSLA": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan"
     },
     "RBLX": {
         "group": "Small/Mid Growth"
@@ -435,5 +443,119 @@
     },
     "APP": {
         "group": "Small/Mid Growth"
+    },
+    "MPC": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan"
+    },
+    "VLO": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan"
+    },
+    "PSX": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan"
+    },
+    "XOM": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan"
+    },
+    "WMB": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan"
+    },
+    "CSCO": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology",
+        "source": "sector_scan"
+    },
+    "NOW": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLK",
+        "gics_sector": "Information Technology",
+        "source": "sector_scan"
+    },
+    "ISRG": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan"
+    },
+    "TMO": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan"
+    },
+    "AMGN": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan"
+    },
+    "ABBV": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan"
+    },
+    "PM": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan"
+    },
+    "MO": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan"
+    },
+    "PG": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan"
+    },
+    "WMT": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan"
+    },
+    "COST": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan"
+    },
+    "TJX": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan"
+    },
+    "HD": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan"
+    },
+    "NKE": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan"
     }
 }
