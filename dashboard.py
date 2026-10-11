@@ -7,6 +7,7 @@ import json
 import os
 
 from helpers import calculate_technicals
+from market_data import download_prices
 
 # --- Setup Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -80,7 +81,7 @@ with tab1:
             for i, ticker in enumerate(selected_tickers):
                 status_text.text(f"Simulating {ticker} ({i+1}/{len(selected_tickers)})...")
                 try:
-                    df_raw = yf.download(ticker, period=f"{years}y", interval="1d", progress=False)
+                    df_raw = download_prices(ticker)
                     if df_raw.empty or len(df_raw) < 100: continue
                     
                     if isinstance(df_raw.columns, pd.MultiIndex):
@@ -88,11 +89,13 @@ with tab1:
                     df_raw.columns = [str(c).strip().title() for c in df_raw.columns]
                     df_raw.index = pd.to_datetime(df_raw.index).tz_localize(None)
 
-                    df = calculate_technicals(df_raw, timeframe="Daily")
+                    df = calculate_technicals(df_raw, timeframe="Daily", spy_df=download_prices("SPY"))
+                    df = df.loc[df.index >= pd.Timestamp.now().normalize() - pd.DateOffset(years=int(years))]
                     if df is None or df.empty: continue
 
                     pf = vbt.Portfolio.from_signals(
-                        close=df['Close'], entries=df['BREAKOUT_TRIGGERED'], exits=df['VSTOP_SELL_SIGNAL'],
+                        close=df['Close'], entries=df['BREAKOUT_TRIGGERED'].shift(1, fill_value=False), exits=df['VSTOP_SELL_SIGNAL'].shift(1, fill_value=False),
+                        price=df['Open'], open=df['Open'], high=df['High'], low=df['Low'],
                         init_cash=10000, fees=0.001, sl_stop=stop_loss 
                     )
                     
@@ -108,8 +111,8 @@ with tab1:
                         "Total Trades": int(stats.get('Total Trades', 0)),
                         "Open PnL ($)": round(stats.get('Open Trade PnL', 0), 2) if not pd.isna(stats.get('Open Trade PnL')) else 0.0,
                     })
-                except:
-                    pass
+                except Exception as exc:
+                    st.warning(f"{ticker}: backtest failed ({exc})")
                 progress_bar.progress((i + 1) / len(selected_tickers))
             status_text.text("✅ Complete!")
 
@@ -174,7 +177,7 @@ with tab2:
             scan_status.text(f"Scanning {ticker}...")
             try:
                 # Only need 1 year of data to calculate the 200-day MAs for today's signal
-                df_raw = yf.download(ticker, period="1y", interval="1d", progress=False)
+                df_raw = download_prices(ticker)
                 if df_raw.empty: continue
                 
                 if isinstance(df_raw.columns, pd.MultiIndex):
@@ -182,7 +185,7 @@ with tab2:
                 df_raw.columns = [str(c).strip().title() for c in df_raw.columns]
                 df_raw.index = pd.to_datetime(df_raw.index).tz_localize(None)
 
-                df = calculate_technicals(df_raw, timeframe="Daily")
+                df = calculate_technicals(df_raw, timeframe="Daily", spy_df=download_prices("SPY"))
                 if df is None or df.empty: continue
                 
                 # Get the very last row (Today's Data)
@@ -205,8 +208,8 @@ with tab2:
                         "ADX (Trend Strength)": round(today.get('ADX', 0), 2),
                         "Volume Surge": "Yes" if today.get('ACCUMULATION_DAY', False) else "No"
                     })
-            except:
-                pass
+            except Exception as exc:
+                st.warning(f"{ticker}: scan failed ({exc})")
             scan_progress.progress((i + 1) / len(selected_tickers))
             
         scan_status.text("✅ Scan Complete!")

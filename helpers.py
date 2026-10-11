@@ -3,6 +3,7 @@ import yfinance as yf
 import numpy as np
 import requests
 import io
+from market_data import normalize_prices, resample_prices
 
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
     """
@@ -12,7 +13,8 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
     try:
         url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=20)
+        response.raise_for_status()
         
         tables = pd.read_html(io.StringIO(response.text))
         sp500_df = tables[0]
@@ -116,40 +118,33 @@ def calculate_position_size(ticker, base_capital, sector_rank, atr_14_day, curre
         "volatility_scalar": round(volatility_scalar, 2)
     }
 
-def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, sector_rank=3):
+def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, sector_rank=3, now=None):
+    """Calculate indicators from DAILY bars, using only completed exchange periods.
+
+    EMA/ATR/MA50 lengths are bars of the selected timeframe. The 200-DMA
+    entry guardrail always uses 200 daily sessions, even on weekly/monthly views.
     """
-    Pure mathematical technical analysis engine with Dynamic Volatility Stops 
-    and the 200-DMA Compounding Shield.
-    """
-    if df.empty:
-        return df
-
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.get_level_values(0)
-    
-    df = df.copy()
-    if timeframe == "Weekly":
-        df = df.resample('W').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
-        if spy_df is not None and not spy_df.empty: spy_df = spy_df.resample('W').agg({'Close': 'last'}).dropna()
-        if sector_df is not None and not sector_df.empty: sector_df = sector_df.resample('W').agg({'Close': 'last'}).dropna()
-            
-    elif timeframe == "Monthly":
-        df = df.resample('ME').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
-        if spy_df is not None and not spy_df.empty: spy_df = spy_df.resample('ME').agg({'Close': 'last'}).dropna()
-        if sector_df is not None and not sector_df.empty: sector_df = sector_df.resample('ME').agg({'Close': 'last'}).dropna()
-
-    min_bars = 14 if timeframe == "Monthly" else 200 # Needs 200 bars for MA200 calculation
-    if len(df) < min_bars:
-        return df
-
+    if df is None or df.empty:
+        return pd.DataFrame()
+    df = normalize_prices(df)
+    df['MA200_DAILY'] = df['Close'].rolling(200).mean()
+    df = resample_prices(df, timeframe, now)
+    for label, ref in [('SPY', spy_df), ('Sector', sector_df)]:
+        if ref is not None and not ref.empty:
+            ref = resample_prices(normalize_prices(ref), timeframe, now)
+        if label == 'SPY': spy_df = ref
+        else: sector_df = ref
     length_map = {"Daily": 30, "Weekly": 20, "Monthly": 14}
-    chosen_length = length_map.get(timeframe, 14)
+    chosen_length = length_map[timeframe]
+    if len(df) < chosen_length:
+        result = pd.DataFrame()
+        result.attrs['reason'] = f"Need {chosen_length} completed {timeframe.lower()} bars; found {len(df)}"
+        return result
 
-    # 1. EMAs & Long-Term Institutional Baseline
     df['EMA10'] = df['Close'].ewm(span=10, adjust=False).mean()
     df['EMA30'] = df['Close'].ewm(span=30, adjust=False).mean()
     df['EMA_SPEED_ALIGNED'] = df['EMA10'] > df['EMA30']
-    df['MA200'] = df['Close'].rolling(window=200).mean()
+    df['MA200'] = df['MA200_DAILY']
 
     # 2. ATR
     high_low = df['High'] - df['Low']
@@ -218,7 +213,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
     df['Price_Down'] = df['Close'] < df['Close'].shift(1)
     
     df['ACCUMULATION_DAY'] = df['Price_Up'] & (df['Volume'] > (df['AvgVolume50'] * 1.5))
-    max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).rolling(window=10).max()
+    max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).shift(1).rolling(window=10).max()
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
     # 6. Relative Strength
@@ -230,9 +225,9 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
         merged = df[['Close']].merge(spy_close, left_index=True, right_index=True, how='left')
         if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
-            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
-        else: df['RS_SCORE'] = 0.0
-    else: df['RS_SCORE'] = 0.0
+            df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=rs_lookback, fill_method=None) * 100
+        else: df['RS_SCORE'] = np.nan
+    else: df['RS_SCORE'] = np.nan
 
     if sector_df is not None and not sector_df.empty:
         sector_ref = sector_df.copy()
@@ -241,22 +236,25 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
         merged_sec = df[['Close']].merge(sector_close, left_index=True, right_index=True, how='left')
         if not merged_sec.empty and 'Close_Sector' in merged_sec.columns:
             df['RS_Sector_Ratio'] = merged_sec['Close'] / merged_sec['Close_Sector']
-            df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
-        else: df['RS_SECTOR_SCORE'] = 0.0
-    else: df['RS_SECTOR_SCORE'] = 0.0
+            df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=rs_lookback, fill_method=None) * 100
+        else: df['RS_SECTOR_SCORE'] = np.nan
+    else: df['RS_SECTOR_SCORE'] = np.nan
 
 # 7. Volatility Stop (The Elastic Leash & 2-Day Rule)
     vstop_arr, trend_arr = [], []
-    atr_initial = df['ATR_CHOSEN'].fillna(0).iloc[0]
     current_trend = 1
-    current_stop = df['Close'].iloc[0] - (atr_initial * 2.0)
+    current_stop = None
     
     days_below = 0
     days_above = 0
     
     for i in range(len(df)):
         close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
-        atr = df['ATR_CHOSEN'].fillna(0).iloc[i]
+        atr = df['ATR_CHOSEN'].iloc[i]
+        if pd.isna(atr):
+            vstop_arr.append(np.nan)
+            trend_arr.append(current_trend)
+            continue
         adx = df['ADX'].iloc[i]
         
         # Safe fallback if MA50 hasn't generated enough bars yet
@@ -271,6 +269,8 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
             # Broken Trend: Snap the leash tight immediately (2.0x)
             mult = 2.0 
             
+        if current_stop is None:
+            current_stop = close_p - atr * mult
         if current_trend == 1:
             current_stop = max(current_stop, high_p - (atr * mult))
             if close_p < current_stop:
@@ -305,7 +305,7 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
     base_bull_triggers = df['POCKET_PIVOT'] | df['ACCUMULATION_DAY'] | df['VSTOP_BUY_SIGNAL']
     
     # Strictly enforce that entries ONLY happen in an active primary uptrend
-    primary_trend_filter = df['Close'] > df['MA50']
+    primary_trend_filter = (df['Close'] > df['MA50']) & (df['Close'] > df['MA200_DAILY'])
     
     # Final Entry Signal for VectorBT 
     df['BREAKOUT_TRIGGERED'] = base_bull_triggers & primary_trend_filter

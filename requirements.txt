@@ -1,9 +1,8 @@
-streamlit
-yfinance
-pandas
-numpy
-requests
-matplotlib
-lxml
-html5lib
-vectorbt
+-r requirements-automation.txt
+streamlit>=1.35,<2
+matplotlib>=3.8,<4
+plotly>=5,<7
+lxml>=5,<7
+html5lib>=1.1,<2
+vectorbt>=0.26,<1
+

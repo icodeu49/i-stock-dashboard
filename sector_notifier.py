@@ -5,6 +5,11 @@ import requests
 import yfinance as yf
 import pandas as pd
 import numpy as np
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from market_data import download_prices, last_completed_session
+from notifications import require_telegram_config, send_records
+from storage import WATCHLIST_FILE, load_watchlist, merge_candidates, write_json
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
@@ -19,105 +24,79 @@ SECTOR_MAP = {
     "XLP": {"name": "Consumer Staples", "stocks": ["PG", "COST", "KO", "PEP", "WMT", "PM", "MDLZ", "EL", "MO", "CL"]},
     "XLV": {"name": "Healthcare", "stocks": ["LLY", "UNH", "JNJ", "ABBV", "MRK", "TMO", "ISRG", "PFE", "AMGN", "REGN"]},
     "XLE": {"name": "Energy", "stocks": ["XOM", "CVX", "COP", "SLB", "EOG", "MPC", "PSX", "VLO", "WMB", "HAL"]},
-    "XLI_MAT": {"name": "Materials", "stocks": ["LIN", "APD", "SHW", "FCX", "NEM", "ECL", "CTVA", "DOW", "NUE", "ALB"]}, # Using alternative tracking key
+    "XLB": {"name": "Materials", "stocks": ["LIN", "APD", "SHW", "FCX", "NEM", "ECL", "CTVA", "DOW", "NUE", "ALB"]},
     "XLU": {"name": "Utilities", "stocks": ["NEE", "SO", "DUK", "CEG", "AEP", "SRE", "D", "FE", "EXC", "PCG"]},
     "XLRE": {"name": "Real Estate", "stocks": ["PLD", "AMT", "EQIX", "CCI", "WY", "PSA", "O", "IRM", "DLR", "AVB"]}
 }
 
-def send_telegram_message(message):
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
-    try:
-        res = requests.post(url, json=payload, timeout=15)
-        if not res.ok: print(f"Telegram error: {res.text}")
-    except Exception as e:
-        print(f"Failed to transmit Telegram message: {e}")
+GICS_NAMES = {"XLK": "Information Technology", "XLF": "Financials",
+    "XLY": "Consumer Discretionary", "XLC": "Communication Services",
+    "XLI": "Industrials", "XLP": "Consumer Staples", "XLV": "Health Care",
+    "XLE": "Energy", "XLB": "Materials", "XLU": "Utilities", "XLRE": "Real Estate"}
+
 
 def calculate_momentum_score(ticker):
-    try:
-        df = yf.download(ticker, period="6mo", interval="1d", progress=False, multi_level_index=False)
-        if df.empty or len(df) < 65: return -999.0
-        if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
+    df = download_prices(ticker, period="6mo")
+    if len(df) < 64:
+        raise ValueError(f"{ticker}: need 64 daily closes for sector momentum")
+    close, volume = df.Close, df.Volume
+    roc = lambda n: (close.iloc[-1] / close.iloc[-n-1] - 1) * 100
+    volume_ratio = volume.tail(5).mean() / volume.tail(50).mean() if volume.tail(50).mean() > 0 else 1
+    return float((0.4 * roc(21) + 0.4 * roc(5) + 0.2 * roc(63)) * np.clip(volume_ratio, 0.5, 2))
 
-        close = df['Close']
-        volume = df['Volume']
-        
-        # Calculate Multi-Timeframe Rate of Change (ROC)
-        roc_3m = ((close.iloc[-1] - close.iloc[-63]) / close.iloc[-63]) * 100
-        roc_1m = ((close.iloc[-1] - close.iloc[-21]) / close.iloc[-21]) * 100
-        roc_1w = ((close.iloc[-1] - close.iloc[-5]) / close.iloc[-5]) * 100
-        
-        # Mathematical Scoring Engine Formula: Blended Weighted Matrix
-        raw_score = (0.40 * roc_1m) + (0.40 * roc_1w) + (0.20 * roc_3m)
-        
-        # Volume Force Multiplier calculation
-        vol_5d = volume.iloc[-5:].mean()
-        vol_50d = volume.iloc[-50:].mean()
-        vol_multiplier = vol_5d / vol_50d if vol_50d > 0 else 1.0
-        
-        # Cap multiplier bounds to prevent statistical anomalies from penny movements
-        vol_multiplier = max(0.5, min(vol_multiplier, 2.0))
-        
-        return float(raw_score * vol_multiplier)
-    except Exception:
-        return -999.0
 
-def rank_individual_stocks(stock_list):
+def rank_individual_stocks(stock_list, spy=None, failures=None):
+    spy = download_prices("SPY", period="3mo") if spy is None else spy
+    failures = [] if failures is None else failures
     stock_scores = []
-    spy_df = yf.download("SPY", period="3mo", interval="1d", progress=False, multi_level_index=False)
-    if isinstance(spy_df.columns, pd.MultiIndex): spy_df.columns = spy_df.columns.get_level_values(0)
-    spy_roc = ((spy_df['Close'].iloc[-1] - spy_df['Close'].iloc[-21]) / spy_df['Close'].iloc[-21]) * 100
-
     for ticker in stock_list:
         try:
-            df = yf.download(ticker, period="3mo", interval="1d", progress=False, multi_level_index=False)
-            if df.empty or len(df) < 22: continue
-            if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
-            
-            # Simple 1-Month Relative Strength Score calculations vs SPY benchmark
-            stock_roc = ((df['Close'].iloc[-1] - df['Close'].iloc[-21]) / df['Close'].iloc[-21]) * 100
-            rs_score = stock_roc - spy_roc
-            stock_scores.append((ticker, rs_score))
-        except Exception:
-            continue
-            
-    # Return sorted structure ranked high to low by relative outperformance
-    stock_scores.sort(key=lambda x: x[1], reverse=True)
-    return [item[0] for item in stock_scores[:5]]
+            df = download_prices(ticker, period="3mo")
+            merged = pd.concat([df.Close.rename("stock"), spy.Close.rename("spy")], axis=1).dropna()
+            if len(merged) < 22:
+                raise ValueError("need 22 matching daily closes")
+            ratio = merged.stock / merged.spy
+            stock_scores.append((ticker, (ratio.iloc[-1] / ratio.iloc[-22] - 1) * 100))
+        except Exception as exc:
+            failures.append(f"{ticker}: {exc}")
+    stock_scores.sort(key=lambda pair: pair[1], reverse=True)
+    return [ticker for ticker, _ in stock_scores[:5]]
+
 
 def run_macro_rotation_pipeline():
-    print("🚀 Running Mathematical Sector Scoring Engine...")
-    sector_rankings = []
-    
-    # Evaluate raw sector strengths
+    require_telegram_config()
+    watchlist = load_watchlist()
+    failures, rankings, candidates, records = [], [], {}, []
+    session = last_completed_session().date().isoformat()
     for etf, metadata in SECTOR_MAP.items():
-        score = calculate_momentum_score(etf)
-        if score != -999.0:
-            sector_rankings.append((etf, metadata['name'], score))
-            
-    # Rank top sectors down
-    sector_rankings.sort(key=lambda x: x[2], reverse=True)
-    top_5_sectors = sector_rankings[:5]
-    
-    # Build Telegram Output String Matrix
-    msg = "📊 *WEEKLY MACRO SECTOR ROTATION MATRIX* 📊\n"
-    msg += "🕒 _Generated Monday 2:49 PM UK Time_\n"
-    msg += "====================================\n\n"
-    
-    for rank, (etf, name, score) in enumerate(top_5_sectors, 1):
-        msg += f"🔥 *RANK #{rank}: {name} ({etf})*\n"
-        msg += f"    └── 🧮 Momentum Score: `{score:+.2f}`\n"
-        
-        # Dig out underlying stock leaders within selected winner sector
-        leader_stocks = rank_individual_stocks(SECTOR_MAP[etf]['stocks'])
-        msg += f"    └── 🏆 Top 5 Liquid Leaders: `{', '.join(leader_stocks)}`\n\n"
-        
-    msg += "====================================\n"
-    msg += "💡 *Strategy Note:* Consider focusing your daily breakout scans on these 25 leading institutional horses this week."
-    
-    print("📤 Sending macro matrix report to Telegram...")
-    send_telegram_message(msg)
-    print("✅ Completed Successfully.")
+        try:
+            rankings.append((etf, metadata['name'], calculate_momentum_score(etf)))
+        except Exception as exc:
+            failures.append(f"{etf}: {exc}")
+    if len(rankings) < 5:
+        raise RuntimeError("Fewer than five sectors have valid current data")
+    rankings.sort(key=lambda row: row[2], reverse=True)
+    spy = download_prices("SPY", period="3mo")
+    for rank, (etf, name, score) in enumerate(rankings[:5], 1):
+        leaders = rank_individual_stocks(SECTOR_MAP[etf]['stocks'], spy, failures)
+        for ticker in leaders:
+            candidates[ticker] = {"group": "Sector Leaders", "sector_etf": etf,
+                "gics_sector": GICS_NAMES[etf], "source": "sector_scan"}
+        text = f"Sector #{rank}: {name} ({etf}) | US close {session}\nMomentum {score:+.2f}\nLeaders: {', '.join(leaders) or 'unavailable'}"
+        records.append((f"sector:{session}:{etf}:{','.join(leaders)}", text))
+    added = merge_candidates(watchlist, candidates)
+    write_json(WATCHLIST_FILE, watchlist)
+    status = "⚠️ Partial" if failures else "✅ Completed"
+    stamp = datetime.now(ZoneInfo("Europe/London")).strftime("%a %d %b %Y %H:%M %Z")
+    message = f"{status} sector scan — {stamp}\nWatchlist: {len(watchlist)} stocks. Added {len(added)}: {', '.join(added) or 'none (leaders already tracked)'}."
+    if failures:
+        message += "\nData failures: " + "; ".join(failures)[:1000]
+    records.append((f"sector-status:{session}:{','.join(added)}:{len(failures)}", message))
+    send_records(records)
+    print(message)
+    if failures:
+        raise RuntimeError(f"Sector scan incomplete: {len(failures)} data failures")
+
 
 if __name__ == "__main__":
     run_macro_rotation_pipeline()

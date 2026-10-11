@@ -1,6 +1,6 @@
 import pandas as pd
 import yfinance as yf
-from app import calculate_technicals, run_backtest_simulation
+from portfolio_backtest import run_backtest_simulation
 
 def execute_terminal_test():
     # User Configuration Inputs
@@ -12,7 +12,7 @@ def execute_terminal_test():
     print(f"🧪 STARTING 5-YEAR STRATEGY BACKTEST FOR: {target_stock}")
     print("=" * 60)
     
-    summary, trades_df = run_backtest_simulation(target_stock, test_horizon_years, starting_pool)
+    summary, trades_df, quarterly_df = run_backtest_simulation([target_stock], test_horizon_years, starting_pool)
     
     if summary is None:
         print("❌ Error: Simulation failed to process. Check data connection.")
@@ -21,7 +21,7 @@ def execute_terminal_test():
     # Output High-Level Metrics directly to terminal output stream
     print(f"🟢 Starting Capital Pool:   ${summary['Starting Capital']:,}")
     print(f"💰 Final Ending Value:     ${summary['Ending Value']:,}")
-    print(f"📈 Net Strategy Profit:    ${summary['Net Profit ($']:,}")
+    print(f"📈 Net Strategy Profit:    ${summary['Net Profit ($)']:,}")
     print(f"📊 Total Return Rate:      {summary['Total Return (%)']:+.2f}%")
     print(f"🔄 Total Completed Trades: {summary['Total Trades Executed']}")
     print("-" * 60)
@@ -35,3 +35,4 @@ def execute_terminal_test():
 
 if __name__ == "__main__":
     execute_terminal_test()
+

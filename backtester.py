@@ -4,12 +4,13 @@ import vectorbt as vbt
 
 # Import your existing engine!
 from helpers import calculate_technicals
+from market_data import download_prices
 
 def run_backtest(ticker="AAPL", years=5):
     print(f"🧪 Running {years}-Year Backtest on {ticker}...")
     
     # 1. Download Historical Data
-    df_raw = yf.download(ticker, period=f"{years}y", interval="1d", progress=False)
+    df_raw = download_prices(ticker)
     if isinstance(df_raw.columns, pd.MultiIndex):
         df_raw.columns = df_raw.columns.get_level_values(0)
     
@@ -17,7 +18,8 @@ def run_backtest(ticker="AAPL", years=5):
     df_raw.index = pd.to_datetime(df_raw.index).tz_localize(None)
 
     # 2. Run the data through your EXACT Quant Engine
-    df = calculate_technicals(df_raw, timeframe="Daily")
+    df = calculate_technicals(df_raw, timeframe="Daily", spy_df=download_prices("SPY"))
+    df = df.loc[df.index >= pd.Timestamp.now().normalize() - pd.DateOffset(years=int(years))]
     
     if df is None or df.empty:
         print("Not enough data to backtest.")
@@ -32,8 +34,9 @@ def run_backtest(ticker="AAPL", years=5):
     # 4. Execute the VectorBT Simulation
     pf = vbt.Portfolio.from_signals(
         close=df['Close'],
-        entries=entries,
-        exits=exits,
+        entries=entries.shift(1, fill_value=False),
+        exits=exits.shift(1, fill_value=False),
+        price=df["Open"], open=df["Open"], high=df["High"], low=df["Low"],
         init_cash=10000,        # Start with $10,000
         fees=0.001,             # 0.1% slippage/commission per trade
         sl_stop=0.08,           # 🛡️ Hard 8% Stop-Loss safety net
@@ -53,3 +56,4 @@ def run_backtest(ticker="AAPL", years=5):
 if __name__ == "__main__":
     # Test it on a leading stock like Nvidia
     run_backtest("NVDA", years=5)
+
