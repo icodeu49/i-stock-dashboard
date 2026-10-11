@@ -1,0 +1,1370 @@
+{
+    "ABAT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:48.214693+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 280878176.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AMD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:49.555104+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 992708001792.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AMZN": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:51.206804+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2830652145664.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "APLD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:52.512211+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 7160527360.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "APO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:53.420366+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 70067945472.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ARM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:54.404703+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 284386656256.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AVGO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:55.465623+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1725858185216.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "BE": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:56.631772+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 82614927360.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CCJ": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:57.714776+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 38353035264.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CDNS": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:32:59.297834+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 97169661952.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CRWV": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:00.802014+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 45270122496.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "FLEX": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:01.678797+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 44272447488.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "GEV": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:02.973132+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 267593334784.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "INTC": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:04.009040+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 553455190016.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "IONQ": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:05.900368+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 16160861184.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "IOT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:06.734674+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 24331894784.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "LLY": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:07.906496+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1051603894272.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "LUMN": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:09.906491+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 5796722688.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "META": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:11.055918+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1830816186368.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MRVL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:12.227362+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 247395418112.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MSFT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:13.600630+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 3973186846720.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MU": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:15.264943+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1164234457088.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MVST": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:17.063100+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 222491648.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NAK": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:18.023931+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 629576256.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NBIS": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:19.224181+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 60099039232.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NET": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:20.026452+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 128519847936.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NVDA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:20.997008+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 5536424132608.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NVTS": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:22.237618+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2830348032.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ODFL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:23.411909+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 37843988480.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "OKLO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:24.851149+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 6454812672.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ORCL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:25.929903+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 428654231552.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PLTR": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:27.427286+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 502359359488.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "POWI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:28.443160+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2744496128.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "QUBT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:29.891109+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1684020736.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "RDDT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:31.057988+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 30766127104.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "RGTI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:31.850949+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 4682775040.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SNPS": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:32.831252+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 97732771840.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SOUN": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:34.434578+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2393764608.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "T": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:35.598125+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 151985913856.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TSM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:37.270918+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2351080407040.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "VRT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:38.604508+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 93467426816.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SPY": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:39.669685+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
+            }
+        }
+    },
+    "ENR": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:41.124621+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1460756096.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "FTGFF": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:42.206968+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 616999808.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:43.192164+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1853791744.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ALAB": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:44.160026+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 59368337408.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "BA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:45.312201+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 150462742528.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CRDO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:47.273713+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 40700989440.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "IRM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:48.244481+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 34089949184.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PATH": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:49.535298+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 7025175040.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TER": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:50.663706+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 62955294720.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "VNET": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:52.519140+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1577340160.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "FLYW": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:53.588430+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2282485504.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "UNFI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:54.530248+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2684713216.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "OSCR": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:55.901862+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 10299483136.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PARR": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:56.931213+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 4102658560.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ICHR": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:58.000415+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2243882752.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "WOLF": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:59.011649+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1620204672.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AAPL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:33:59.978943+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 4912984883200.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "GOOGL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:01.631487+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 4300779028480.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CARD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:02.753085+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
+            }
+        }
+    },
+    "U": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:03.581529+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 20631369728.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SMCI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:04.448577+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 27497285632.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TEAM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:05.547292+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 52346572800.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MELI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:06.570351+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 95809347584.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SHOP": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:07.703669+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 221704306688.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NCLH": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:08.610727+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 7149554688.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TTD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:09.706470+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 5711364608.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "DKNG": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:10.601389+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 9720569856.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SOFI": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:11.688255+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 20406810624.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "DDOG": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:12.383472+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 105302343680.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SNOW": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:13.212493+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 130144395264.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "SPOT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:14.104711+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 108782829568.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "RCL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:15.067896+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 75491024896.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CCL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:16.597652+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 35430477824.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "BABA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:18.284812+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 277060157440.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MARA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:19.308406+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 3727788032.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "DUOL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:20.198863+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 6985240064.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PANW": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:20.971409+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 342562045952.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CRWD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:21.934222+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 281623035904.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ZS": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:22.840051+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 38110773248.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "OKTA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:23.673094+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 40581181440.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AFRM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:24.587179+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 27229894656.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "COIN": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:25.472927+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 47329705984.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TSLA": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:26.298867+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 1511491895296.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "RBLX": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:27.382683+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 34354339840.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "HOOD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:28.120966+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 98017951744.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NFLX": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:29.045426+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 292724965376.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CELH": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:30.205609+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 7231741440.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "RIOT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:31.219248+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 6336247296.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "WING": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:32.159688+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 3330673664.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MDB": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:32.826122+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 31041093632.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "UPST": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:33.663927+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 2345244416.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AAL": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:34.522703+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 8446736384.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "APP": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:35.693569+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 93068689408.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MPC": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:36.780959+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 127783690240.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "VLO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:38.147707+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 124888530944.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PSX": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:39.849860+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 111532097536.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "XOM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:41.385220+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 694666395648.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "WMB": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:43.077121+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 88887582720.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "CSCO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:44.856956+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 466762858496.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NOW": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:46.378938+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 145629806592.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ISRG": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:47.627635+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 149775761408.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TMO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:49.153529+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 243301122048.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "AMGN": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:50.618099+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 224291995648.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "ABBV": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:52.342846+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 488554921984.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PM": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:53.463550+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 313577439232.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MO": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:55.043083+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 119687241728.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "PG": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:57.074595+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 351257722880.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "WMT": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:34:58.766373+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 886132113408.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "COST": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:35:00.667982+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 419608035328.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "TJX": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:35:02.457030+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 152632393728.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "HD": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:35:04.326103+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 290068267008.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NKE": {
+        "observations": {
+            "2026-10-09": {
+                "observed_at": "2026-10-11T09:35:06.205458+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 51555065856.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    }
+}

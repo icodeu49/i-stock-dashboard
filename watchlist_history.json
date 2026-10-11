@@ -16,7 +16,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "VLO": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -34,7 +35,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PSX": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -52,7 +54,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "XOM": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -67,10 +70,11 @@
             },
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
-                "Monthly": "bullish"
+                "Weekly": "bullish",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "WMB": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -88,7 +92,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AMD": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -106,7 +111,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CSCO": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -122,9 +128,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MSFT": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -147,9 +154,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NOW": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -165,9 +173,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NVDA": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -185,7 +194,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ISRG": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -203,7 +213,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TMO": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -221,7 +232,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AMGN": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -239,7 +251,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ABBV": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -257,7 +270,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "LLY": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -272,10 +286,11 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Weekly": "bearish",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PM": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -293,7 +308,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MO": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -309,9 +325,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PG": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -326,10 +343,11 @@
             },
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
+                "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "WMT": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -347,7 +365,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "COST": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -365,7 +384,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TJX": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -383,7 +403,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TSLA": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -401,7 +422,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AMZN": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -424,9 +446,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "HD": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -444,7 +467,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NKE": {
             "first_observed_at": "2026-10-11T07:38:16.933287+00:00",
@@ -462,7 +486,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ZS": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -478,9 +503,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "WING": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -498,7 +524,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AFRM": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -514,9 +541,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SHOP": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -534,7 +562,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SPOT": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -552,7 +581,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MELI": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -570,7 +600,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PLTR": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -588,7 +619,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TEAM": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -606,7 +638,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "OKTA": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -624,7 +657,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "RBLX": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -642,7 +676,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SNOW": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -660,7 +695,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MDB": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -675,10 +711,11 @@
             },
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Weekly": "mixed",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "U": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -694,9 +731,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CELH": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -714,7 +752,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "DDOG": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -732,7 +771,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "UPST": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -750,7 +790,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "DKNG": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -768,7 +809,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "BABA": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -786,7 +828,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NFLX": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -804,7 +847,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AI": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -820,9 +864,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "DUOL": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -838,9 +883,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PANW": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -858,7 +904,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NET": {
             "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
@@ -876,7 +923,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ABAT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -886,7 +934,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "APLD": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -896,7 +945,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "APO": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -906,16 +956,19 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ARM": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bearish"
+                "Weekly": "bearish",
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AVGO": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -925,7 +978,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "BE": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -935,7 +989,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CCJ": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -945,7 +1000,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CDNS": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -955,45 +1011,52 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CRWV": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bearish"
+                "Weekly": "bearish",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "FLEX": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
-                "Monthly": "bullish"
+                "Weekly": "bullish",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "GEV": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bullish"
+                "Weekly": "bullish",
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "INTC": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
-                "Daily": "bearish",
-                "Weekly": "bearish",
+                "Daily": "bullish",
+                "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "IONQ": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1003,7 +1066,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "IOT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1013,7 +1077,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "LUMN": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1023,7 +1088,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "META": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1033,17 +1099,19 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MRVL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
+                "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MU": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1053,7 +1121,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MVST": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1063,7 +1132,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NAK": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1073,16 +1143,19 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NBIS": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish"
+                "Weekly": "mixed",
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NVTS": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1092,7 +1165,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ODFL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1102,7 +1176,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "OKLO": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1112,7 +1187,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ORCL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1122,7 +1198,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "POWI": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1132,7 +1209,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "QUBT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1142,16 +1220,19 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "RDDT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bearish"
+                "Weekly": "bearish",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "RGTI": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1161,7 +1242,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SNPS": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1171,7 +1253,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SOUN": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1181,7 +1264,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "T": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1191,7 +1275,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TSM": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1201,7 +1286,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "VRT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1211,7 +1297,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SPY": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1221,17 +1308,19 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ENR": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Weekly": "mixed",
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "FTGFF": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1241,16 +1330,19 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ALAB": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish"
+                "Weekly": "bullish",
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "BA": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1260,27 +1352,30 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CRDO": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
-                "Monthly": "bearish"
+                "Weekly": "bullish",
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "IRM": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
-                "Monthly": "bullish"
+                "Weekly": "mixed",
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PATH": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1290,7 +1385,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TER": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1300,7 +1396,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "VNET": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1310,7 +1407,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "FLYW": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1318,9 +1416,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "mixed"
+                "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "UNFI": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1328,9 +1427,10 @@
             "trends": {
                 "Daily": "bearish",
                 "Weekly": "bearish",
-                "Monthly": "bullish"
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "OSCR": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1340,7 +1440,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "PARR": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1350,26 +1451,29 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "ICHR": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bearish",
-                "Monthly": "bearish"
+                "Weekly": "mixed",
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "WOLF": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish"
+                "Weekly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AAPL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1379,7 +1483,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "GOOGL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1389,16 +1494,19 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CARD": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish"
+                "Weekly": "bullish",
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SMCI": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1406,9 +1514,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "NCLH": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1418,7 +1527,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "TTD": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1428,7 +1538,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "SOFI": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1438,7 +1549,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "RCL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1448,7 +1560,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CCL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1458,7 +1571,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "MARA": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1466,9 +1580,10 @@
             "trends": {
                 "Daily": "bearish",
                 "Weekly": "bearish",
-                "Monthly": "mixed"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "CRWD": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1478,7 +1593,8 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "COIN": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1488,7 +1604,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "HOOD": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1496,9 +1613,10 @@
             "trends": {
                 "Daily": "bullish",
                 "Weekly": "bullish",
-                "Monthly": "bearish"
+                "Monthly": "bullish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "RIOT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1506,9 +1624,10 @@
             "trends": {
                 "Daily": "bearish",
                 "Weekly": "bearish",
-                "Monthly": "bullish"
+                "Monthly": "mixed"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "AAL": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1518,7 +1637,8 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         },
         "APP": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
@@ -1528,9 +1648,10 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-10-09"
+            "trend_asof": "2026-10-09",
+            "trend_policy": "daily-risk-v2"
         }
     },
     "events": [],
-    "updated_at": "2026-10-11T09:32:08.150210+00:00"
+    "updated_at": "2026-10-11T09:35:20.877879+00:00"
 }
