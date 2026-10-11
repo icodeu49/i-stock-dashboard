@@ -5,11 +5,9 @@ import re
 import ssl
 import time
 from pathlib import Path
-import requests
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import feedparser
 from google import genai
 from google.genai import types
 
@@ -34,37 +32,6 @@ def load_memory():
         except json.JSONDecodeError:
             print("Warning: agent_memory.json was corrupted. Resetting.")
     return {"evolution_notes": [], "preferred_style": "Concise, data-driven, highlighting institutional trends."}
-
-# 2. FETCH NEWS & MAP ORIGINAL LINKS TO TRACKING IDs
-def fetch_news():
-    raw_content = ""
-    link_map = {}
-    link_counter = 1
-
-    for topic, url in TOPICS_AND_FEEDS.items():
-        response = None
-        for attempt in range(3):
-            try:
-                response = requests.get(url, timeout=20, headers={"User-Agent": "i-stock-dashboard/1.0"})
-                response.raise_for_status()
-                break
-            except requests.RequestException:
-                if attempt == 2:
-                    raise RuntimeError(f"News feed unavailable: {topic}") from None
-                time.sleep(2 ** attempt)
-        feed = feedparser.parse(response.content)
-        if not feed.entries:
-            raise RuntimeError(f"News feed returned no headlines: {topic}")
-        raw_content += f"\n### TOPIC: {topic}\n"
-        for entry in feed.entries[:5]:
-            # Safeguard long tracker URLs from LLM truncation
-            link_id = f"LINK_ID_{link_counter}"
-            link_map[link_id] = entry.link
-
-            raw_content += f"Title: {entry.title}\nLinkID: {link_id}\nSource: {entry.get('source', {}).get('title', 'Unknown')}\n\n"
-            link_counter += 1
-
-    return raw_content, link_map
 
 # 3. GENERATE SUMMARY (WITH LINK CODES INSTEAD OF BREAKABLE URL STRINGS)
 def _generate_summary(raw_news, formatting_instructions):
@@ -230,6 +197,8 @@ def run_briefing():
         supplement, extra_links, extra_stories, signal_ids = build_supplement(
             load_watchlist(), read_json(BASE_DIR / 'scan_snapshot.json', {}),
             read_json(BASE_DIR / 'watchlist_history.json', {}), state, stories, now)
+        from watchlist_briefing import render_comparison
+        supplement += render_comparison(read_json(BASE_DIR / 'strategy_report.json', {}), read_json(BASE_DIR / 'forward_observations.json', {}))
         body += supplement
         links.update(extra_links)
         stories += extra_stories

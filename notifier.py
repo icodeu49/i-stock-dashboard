@@ -124,6 +124,15 @@ def run_automated_scanner():
         'watchlist_count': len(watchlist), 'regime': regime, 'failures': failures, 'limited': limited,
         'signals': signals, 'trends': statuses, 'changes': changes}
     write_json(SNAPSHOT_FILE, snapshot)
+    try:
+        from forward_observations import record_and_evaluate
+        forward = record_and_evaluate(snapshot,
+            {ticker: frame for (ticker, tf), frame in results.items() if tf == 'Daily'}, spy,
+            SNAPSHOT_FILE.with_name('forward_observations.json'))
+        print(f"Forward observations: {len(forward['observations'])} recorded; "
+              f"{sum(item['status'] == 'complete' for item in forward['observations'].values())} mature.")
+    except Exception as exc:
+        print(f'::warning::Forward evaluation unavailable ({type(exc).__name__}); price alerts continue.')
     delivered = read_json(ALERT_STATE_FILE, {'delivered': {}}).get('delivered', {})
     records = [(item['id'], format_signal(item, regime)) for item in signals if item['route'] == 'alert']
     pending_digest = [item for item in signals if item['route'] == 'digest' and item['id'] not in delivered]

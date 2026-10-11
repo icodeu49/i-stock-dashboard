@@ -1,5 +1,6 @@
 """Optional earnings context; calendar gaps never suppress price alerts."""
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 import pandas as pd
 import yfinance as yf
 from storage import BASE_DIR, read_json, write_json
@@ -21,7 +22,7 @@ def upcoming_earnings(ticker, now=None, cache=None):
     try:
         dates = yf.Ticker(ticker).get_earnings_dates(limit=4)
         if dates is not None and not dates.empty:
-            today = now.astimezone(__import__('zoneinfo').ZoneInfo('America/New_York')).date()
+            today = now.astimezone(ZoneInfo('America/New_York')).date()
             future = sorted({pd.Timestamp(date).date() for date in dates.index if pd.Timestamp(date).date() >= today})
             if future:
                 result.update(status='provider_reported', date=future[0].isoformat(),

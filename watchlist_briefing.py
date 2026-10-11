@@ -11,6 +11,26 @@ from news_content import select_stories, check_links, render_topics, parse_date
 HEADING = '<hr><h2>Your Watchlist &amp; Confirmed Signals</h2>'
 
 
+def render_comparison(report, forward):
+    parts = ['<h3>Signal assessment</h3>']
+    if report.get('results'):
+        parts.append(f'<p>Historical comparison through {html.escape(report["asof"])} '
+                     f'(coverage: {html.escape(report.get("coverage", "unknown"))}). Latest 18-month holdout:</p><ul>')
+        for item in report['results']:
+            if item['window'] == 'historical_holdout':
+                small = ' · small sample' if item.get('small_sample') else ''
+                parts.append(f'<li>{html.escape(item["strategy"])}: {item["total_return_pct"]:+.1f}% return, '
+                             f'{item["max_drawdown_pct"]:.1f}% maximum drawdown, {item["trades"]} trades{small}.</li>')
+        parts.append('</ul><p>Same costs and exits; current-watchlist selection bias remains. Historical results do not establish a superior future strategy.</p>')
+    else:
+        parts.append('<p>Historical comparison has not completed yet.</p>')
+    observations = list(forward.get('observations', {}).values())
+    mature = [item for item in observations if item.get('status') == 'complete']
+    parts.append(f'<p>Forward study: {len(observations)} recorded signal/strategy observations; {len(mature)} have 20 subsequent trading sessions. '
+                 'This study starts from the first market open after each observation and is separate from the historical portfolio test.</p>')
+    return ''.join(parts)
+
+
 def selected_symbols(watchlist, snapshot, now, limit=8):
     priorities = []
     signals = sorted(snapshot.get('signals', []), key=lambda item: (

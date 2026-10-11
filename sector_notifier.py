@@ -6,6 +6,7 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
 from market_data import download_prices, last_completed_session
 from notifications import require_telegram_config, send_records
@@ -89,7 +90,7 @@ def run_macro_rotation_pipeline():
     added = merge_candidates(watchlist, candidates)
     write_json(WATCHLIST_FILE, watchlist)
     update_selection("sector_scan", candidates, added, session, complete=not failures,
-                     path=__import__("pathlib").Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
+                     path=Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
     status = "⚠️ Partial" if failures else "✅ Completed"
     stamp = datetime.now(ZoneInfo("Europe/London")).strftime("%a %d %b %Y %H:%M %Z")
     message = f"{status} sector scan — {stamp}\nWatchlist: {len(watchlist)} stocks. Added {len(added)}: {', '.join(added) or 'none (leaders already tracked)'}."

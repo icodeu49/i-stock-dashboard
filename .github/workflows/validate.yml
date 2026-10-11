@@ -43,9 +43,15 @@ jobs:
       contents: write
     uses: ./.github/workflows/auto_skimmer.yml
     secrets: inherit
-  email:
+  comparison:
     if: always() && needs.tests.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: [tests, stocks]
+    permissions:
+      contents: write
+    uses: ./.github/workflows/strategy_comparison.yml
+  email:
+    if: always() && needs.tests.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: [tests, stocks, comparison]
     permissions:
       contents: write
     uses: ./.github/workflows/morning_brief.yml

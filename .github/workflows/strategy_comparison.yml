@@ -1,0 +1,42 @@
+name: Compare entry timeframes
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    if: github.ref == 'refs/heads/main'
+    concurrency:
+      group: watchlist-state-main
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-automation.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements-automation.txt
+      - name: Compare fixed rules with historical holdout
+        run: python strategy_comparison.py
+      - name: Save metrics, trades and equity curves
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: entry-timeframe-comparison
+          path: reports/strategy_comparison/
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Persist comparison summary
+        if: always()
+        run: bash scripts/persist_state.sh

@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 import yfinance as yf
 import pandas as pd
 
@@ -39,7 +40,7 @@ def fetch_dynamic_growth_watchlist():
     added = merge_candidates(watchlist, candidates)
     write_json(WATCHLIST_FILE, watchlist)
     update_selection("momentum_scan", candidates, added, last_completed_session().date().isoformat(),
-                     complete=not failures, path=__import__("pathlib").Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
+                     complete=not failures, path=Path(WATCHLIST_FILE).with_name("watchlist_history.json"))
     print(f"Momentum scan: {len(performance)}/{len(momentum_universe)} valid, {len(added)} additions; {len(watchlist)} tracked.")
     if failures:
         for error in failures:
