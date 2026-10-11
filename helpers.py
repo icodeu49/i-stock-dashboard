@@ -1,10 +1,8 @@
-# helpers.py
 import pandas as pd
 import yfinance as yf
 import numpy as np
-import requests 
-
-import io  
+import requests
+import io
 
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
     """
@@ -12,37 +10,29 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
     and returns the target ticker's exact leaderboard rank.
     """
     try:
-        # 1. Scrape live S&P 500 table from Wikipedia using a Fake Browser ID
         url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         response = requests.get(url, headers=headers)
         
-        # Wrapped in io.StringIO to resolve the pandas literal HTML deprecation warning
         tables = pd.read_html(io.StringIO(response.text))
         sp500_df = tables[0]
         
-        # Robustly find the Sector and Symbol columns in case Wikipedia formatting changes
         sec_col = [c for c in sp500_df.columns if 'Sector' in str(c)][0]
         sym_col = [c for c in sp500_df.columns if 'Symbol' in str(c) or 'Ticker' in str(c)][0]
         
-        # 2. Isolate tickers in the matching sector
         peer_tickers = sp500_df[sp500_df[sec_col].astype(str).str.strip() == gics_sector.strip()][sym_col].tolist()
         peer_tickers = [str(t).replace('.', '-') for t in peer_tickers]
 
-        # Remove target ticker if it's already in the list to avoid duplicates
         if target_ticker in peer_tickers:
             peer_tickers.remove(target_ticker)
             
         if not peer_tickers:
             return "N/A (No Peers Found)"
             
-        # 3. Bulk download close prices for peers + target ticker
         all_tickers = list(set(peer_tickers + [target_ticker])) 
         
-        # 🛡️ THE FIX: Changed period from "6m" to "6mo" to match yfinance syntax
         data = yf.download(all_tickers, period="6mo", interval="1d", progress=False)
         
-        # Robust Close Extraction (handles different yfinance versions)
         if isinstance(data.columns, pd.MultiIndex):
             if 'Close' in data.columns.get_level_values(0):
                 close_prices = data['Close']
@@ -52,25 +42,18 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
             close_prices = data[['Close']].rename(columns={'Close': target_ticker})
             
         close_prices = close_prices.dropna(how='all')
-        
-        # Strip Timezones to prevent silent Pandas merge failures
         close_prices.index = pd.to_datetime(close_prices.index).tz_localize(None)
         
-        # Resample if Weekly or Monthly
         if timeframe == "Weekly":
             close_prices = close_prices.resample('W').last().dropna(how='all')
         elif timeframe == "Monthly":
             close_prices = close_prices.resample('ME').last().dropna(how='all')
             
-        # 4. Calculate RS Score for every peer
-        # 🛡️ THE FIX: Changed period here from "6m" to "6mo" as well
         spy = yf.download("SPY", period="6mo", interval="1d", progress=False)
         if isinstance(spy.columns, pd.MultiIndex): 
             spy.columns = spy.columns.get_level_values(0)
             
         spy_close = spy['Close'].dropna()
-        
-        # Strip Timezones from Benchmark
         spy_close.index = pd.to_datetime(spy_close.index).tz_localize(None)
         
         if timeframe == "Weekly":
@@ -88,17 +71,14 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
                 stock_series = close_prices[ticker].dropna()
                 merged = pd.DataFrame({'Stock': stock_series, 'SPY': spy_close}).dropna()
                 
-                # Only grade stocks that have enough historical data
                 if len(merged) >= rs_lookback * 0.8: 
                     ratio = merged['Stock'] / merged['SPY']
                     pct_chg = ratio.pct_change(periods=min(rs_lookback, len(ratio)-1)).iloc[-1] * 100
                     if not pd.isna(pct_chg):
                         leaderboard[ticker] = pct_chg
 
-        # Overwrite our target stock with its official processed score
         leaderboard[target_ticker] = target_score
         
-        # 5. Sort Leaderboard and find Rank
         sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
         rank = [item[0] for item in sorted_leaderboard].index(target_ticker) + 1
         total_peers = len(sorted_leaderboard)
@@ -109,67 +89,67 @@ def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="D
         print(f"⚠️ Leaderboard ranking failed for {target_ticker}: {e}")
         return "N/A (Error)"
 
-def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
+def calculate_position_size(ticker, base_capital, sector_rank, atr_14_day, current_price):
     """
-    Pure mathematical technical analysis engine. 
-    Contains absolutely no UI logic so it can run smoothly in GitHub Actions.
+    Calculates dynamic position size based on Sector Momentum and Asset Volatility.
+    """
+    if current_price == 0 or atr_14_day == 0:
+        return {"ticker": ticker, "suggested_shares": 0, "suggested_allocation": 0}
+
+    sector_multipliers = {1: 1.5, 2: 1.25, 3: 1.0, 4: 0.75, 5: 0.5}
+    conviction_capital = base_capital * sector_multipliers.get(sector_rank, 1.0)
+    
+    atr_pct = atr_14_day / current_price
+    baseline_volatility = 0.03 
+    
+    volatility_scalar = baseline_volatility / atr_pct
+    volatility_scalar = min(volatility_scalar, 2.0) 
+    
+    final_allocation = conviction_capital * volatility_scalar
+    suggested_shares = int(final_allocation / current_price)
+    
+    return {
+        "ticker": ticker,
+        "suggested_allocation": round(final_allocation, 2),
+        "suggested_shares": suggested_shares,
+        "conviction_capital": conviction_capital,
+        "volatility_scalar": round(volatility_scalar, 2)
+    }
+
+def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, sector_rank=3):
+    """
+    Pure mathematical technical analysis engine with Dynamic Volatility Stops 
+    and the 200-DMA Compounding Shield.
     """
     if df.empty:
         return df
-        
-    # ─── HARD DISAGREEMENT AUDIT PRINT ─────────────────────────────────────
-    # This forces GitHub to tell us EXACTLY what data rows and columns it sees
-    if timeframe == "Monthly":
-        print(f"🚨 [DEBUG SHAPE] Analyzing Monthly Frame. Total rows available: {len(df)}")
-        print(f"🚨 [DEBUG COLUMNS] Raw column footprint: {list(df.columns)}")
-        print(f"🚨 [DEBUG SAMPLE] Latest row values:\n{df.tail(1)}")
-    # ─────────────────────────────────────────────────────────────────────────
 
-    # Flatten out yfinance MultiIndex layers completely if they exist
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
     
-    # ─── FORCE TIME TIMEFRAME COMPRESSION ──────────────────────────────────
-    # This guarantees that even if yfinance sends daily rows, we compress them cleanly
     df = df.copy()
-    
     if timeframe == "Weekly":
-        # 1. Compress main stock
         df = df.resample('W').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
-        # 2. Compress the benchmarks so their dates match perfectly
-        if spy_df is not None and not spy_df.empty:
-            spy_df = spy_df.resample('W').agg({'Close': 'last'}).dropna()
-        if sector_df is not None and not sector_df.empty:
-            sector_df = sector_df.resample('W').agg({'Close': 'last'}).dropna()
+        if spy_df is not None and not spy_df.empty: spy_df = spy_df.resample('W').agg({'Close': 'last'}).dropna()
+        if sector_df is not None and not sector_df.empty: sector_df = sector_df.resample('W').agg({'Close': 'last'}).dropna()
             
     elif timeframe == "Monthly":
-        # 1. Compress main stock
         df = df.resample('ME').agg({'Open': 'first', 'High': 'max', 'Low': 'min', 'Close': 'last', 'Volume': 'sum'}).dropna()
-        # 2. Compress the benchmarks so their dates match perfectly
-        if spy_df is not None and not spy_df.empty:
-            spy_df = spy_df.resample('ME').agg({'Close': 'last'}).dropna()
-        if sector_df is not None and not sector_df.empty:
-            sector_df = sector_df.resample('ME').agg({'Close': 'last'}).dropna()
-    # ─────────────────────────────────────────────────────────────────────────
+        if spy_df is not None and not spy_df.empty: spy_df = spy_df.resample('ME').agg({'Close': 'last'}).dropna()
+        if sector_df is not None and not sector_df.empty: sector_df = sector_df.resample('ME').agg({'Close': 'last'}).dropna()
 
-    if timeframe == "Monthly":
-        print(f"🚨 [DEBUG SHAPE AFTER COMPRESSION] Real monthly bars: {len(df)}")
-
-
-    # Lower the bar requirement for macro timeframes 
-    min_bars = 14 if timeframe == "Monthly" else 50
+    min_bars = 14 if timeframe == "Monthly" else 200 # Needs 200 bars for MA200 calculation
     if len(df) < min_bars:
-        print(f"⚠️ Insufficient bars for {timeframe} calculation. Have {len(df)}, need {min_bars}.")
         return df
-
 
     length_map = {"Daily": 30, "Weekly": 20, "Monthly": 14}
     chosen_length = length_map.get(timeframe, 14)
 
-    # 1. EMAs
+    # 1. EMAs & Long-Term Institutional Baseline
     df['EMA10'] = df['Close'].ewm(span=10, adjust=False).mean()
     df['EMA30'] = df['Close'].ewm(span=30, adjust=False).mean()
     df['EMA_SPEED_ALIGNED'] = df['EMA10'] > df['EMA30']
+    df['MA200'] = df['Close'].rolling(window=200).mean()
 
     # 2. ATR
     high_low = df['High'] - df['Low']
@@ -179,42 +159,34 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     df['ATR_CHOSEN'] = tr.rolling(window=chosen_length).mean()
     df['ATR14'] = tr.rolling(window=14).mean()  
 
-    # =========================================================================
-    # # 3. ADX / DMI (HARDENED WILDER SMOOTHING ALIGNMENT)
-    # =========================================================================
-    # 1. Calculate True Range (TR) if not already defined
+    # 3. ADX / DMI
     if 'TR' not in df.columns:
         df['H-L'] = df['High'] - df['Low']
         df['H-PC'] = (df['High'] - df['Close'].shift(1)).abs()
         df['L-PC'] = (df['Low'] - df['Close'].shift(1)).abs()
         df['TR'] = df[['H-L', 'H-PC', 'L-PC']].max(axis=1)
 
-    # 2. Raw Directional Movement
     up_move = df['High'] - df['High'].shift(1)
     down_move = df['Low'].shift(1) - df['Low']
     
     pos_dm = ((up_move > down_move) & (up_move > 0)) * up_move
     neg_dm = ((down_move > up_move) & (down_move > 0)) * down_move
     
-    # 3. Wilder's Smoothing Allocation via Alpha = 1 / chosen_length
     alpha = 1 / chosen_length
     tr_smoothed = df['TR'].ewm(alpha=alpha, adjust=False).mean()
     pos_dm_smoothed = pos_dm.ewm(alpha=alpha, adjust=False).mean()
     neg_dm_smoothed = neg_dm.ewm(alpha=alpha, adjust=False).mean()
     
-    # 4. Calculate Directional Indicators (+DI, -DI)
     atr_filled = tr_smoothed.replace(0, float('nan'))
-    di_plus = 100 * (pos_dm_smoothed / atr_filled).fillna(0)
-    di_minus = 100 * (neg_dm_smoothed / atr_filled).fillna(0)
+    di_plus = (100 * (pos_dm_smoothed / atr_filled)).fillna(0)
+    di_minus = (100 * (neg_dm_smoothed / atr_filled)).fillna(0)
     
-    # 5. Directional Movement Index (DX) and final Wilder's ADX
     dm_sum = di_plus + di_minus
     dm_sum = dm_sum.replace(0, float('nan'))
-    dx = 100 * (di_plus - di_minus).abs() / dm_sum
+    dx = (100 * (di_plus - di_minus).abs() / dm_sum)
     
     df['ADX'] = dx.ewm(alpha=alpha, adjust=False).mean().fillna(0)
     df['ADX_STRONG'] = (df['ADX'] > 20) & (df['ADX'] > df['ADX'].shift(1))
-
 
     # 4. Parabolic SAR
     highs, lows, sar = df['High'].values, df['Low'].values, list(df['Close'][:2])
@@ -241,7 +213,6 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
 
     # 5. Volume and Anchors
     df['MA50'] = df['Close'].rolling(window=50).mean()
-    df['MA200'] = df['Close'].rolling(window=200).mean()
     df['AvgVolume50'] = df['Volume'].rolling(window=50).mean()
     df['Price_Up'] = df['Close'] > df['Close'].shift(1)
     df['Price_Down'] = df['Close'] < df['Close'].shift(1)
@@ -250,65 +221,94 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None):
     max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).rolling(window=10).max()
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
-    # ─── DYNAMIC MOMENTUM LOOKBACK (1 Quarter Equivalent) ───
+    # 6. Relative Strength
     rs_lookback = {"Daily": 63, "Weekly": 13, "Monthly": 3}.get(timeframe, 63)
-
-    # 6. Relative Strength Score vs Benchmark (SPY)
     if spy_df is not None and not spy_df.empty:
         spy_ref = spy_df.copy()
-        if isinstance(spy_ref.columns, pd.MultiIndex): 
-            spy_ref.columns = spy_ref.columns.get_level_values(0)
-            
+        if isinstance(spy_ref.columns, pd.MultiIndex): spy_ref.columns = spy_ref.columns.get_level_values(0)
         spy_close = spy_ref[['Close']].rename(columns={'Close': 'Close_SPY'})
         merged = df[['Close']].merge(spy_close, left_index=True, right_index=True, how='left')
-        
         if not merged.empty and 'Close_SPY' in merged.columns:
             df['RS_Ratio'] = merged['Close'] / merged['Close_SPY']
             df['RS_SCORE'] = df['RS_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
-        else: 
-            df['RS_SCORE'] = 0.0
-    else: 
-        df['RS_SCORE'] = 0.0
+        else: df['RS_SCORE'] = 0.0
+    else: df['RS_SCORE'] = 0.0
 
-    # 6b. Relative Strength Score vs Specific Sector ETF
     if sector_df is not None and not sector_df.empty:
         sector_ref = sector_df.copy()
-        if isinstance(sector_ref.columns, pd.MultiIndex): 
-            sector_ref.columns = sector_ref.columns.get_level_values(0)
-            
+        if isinstance(sector_ref.columns, pd.MultiIndex): sector_ref.columns = sector_ref.columns.get_level_values(0)
         sector_close = sector_ref[['Close']].rename(columns={'Close': 'Close_Sector'})
         merged_sec = df[['Close']].merge(sector_close, left_index=True, right_index=True, how='left')
-        
         if not merged_sec.empty and 'Close_Sector' in merged_sec.columns:
             df['RS_Sector_Ratio'] = merged_sec['Close'] / merged_sec['Close_Sector']
             df['RS_SECTOR_SCORE'] = df['RS_Sector_Ratio'].pct_change(periods=min(rs_lookback, len(df)-1), fill_method=None) * 100
-        else: 
-            df['RS_SECTOR_SCORE'] = 0.0
-    else: 
-        df['RS_SECTOR_SCORE'] = 0.0
+        else: df['RS_SECTOR_SCORE'] = 0.0
+    else: df['RS_SECTOR_SCORE'] = 0.0
 
-    # 7. Volatility Stop (VSTOP) ─── UPDATED MULTIPLIER TO 2.0 ───
+# 7. Volatility Stop (The Elastic Leash & 2-Day Rule)
     vstop_arr, trend_arr = [], []
-    current_trend, current_stop = 1, df['Close'].iloc[0] - (df['ATR_CHOSEN'].fillna(0).iloc[0] * 2.0)
+    atr_initial = df['ATR_CHOSEN'].fillna(0).iloc[0]
+    current_trend = 1
+    current_stop = df['Close'].iloc[0] - (atr_initial * 2.0)
+    
+    days_below = 0
+    days_above = 0
     
     for i in range(len(df)):
         close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
         atr = df['ATR_CHOSEN'].fillna(0).iloc[i]
-        if current_trend == 1:
-            current_stop = max(current_stop, high_p - (atr * 2.0))
-            if close_p < current_stop:
-                current_trend, current_stop = -1, low_p + (atr * 2.0)
+        adx = df['ADX'].iloc[i]
+        
+        # Safe fallback if MA50 hasn't generated enough bars yet
+        ma50 = df['MA50'].iloc[i] if not pd.isna(df['MA50'].iloc[i]) else close_p
+        
+        # --- THE ELASTIC MULTIPLIER ---
+        if close_p > ma50:
+            # Healthy Trend: Give it wide room to compound (3.0x)
+            # If the ADX trend is very strong, give it even more room (3.5x)
+            mult = 3.5 if adx >= 25 else 3.0
         else:
-            current_stop = min(current_stop, low_p + (atr * 2.0))
+            # Broken Trend: Snap the leash tight immediately (2.0x)
+            mult = 2.0 
+            
+        if current_trend == 1:
+            current_stop = max(current_stop, high_p - (atr * mult))
+            if close_p < current_stop:
+                days_below += 1
+                if days_below >= 2: # 2-Day Confirmation Rule
+                    current_trend, current_stop = -1, low_p + (atr * mult)
+                    days_below = 0
+            else:
+                days_below = 0
+        else:
+            current_stop = min(current_stop, low_p + (atr * mult))
             if close_p > current_stop:
-                current_trend, current_stop = 1, high_p - (atr * 2.0)
+                days_above += 1
+                if days_above >= 2: # 2-Day Confirmation Rule
+                    current_trend, current_stop = 1, high_p - (atr * mult)
+                    days_above = 0
+            else:
+                days_above = 0
+                
         vstop_arr.append(current_stop)
         trend_arr.append(current_trend)
         
     df['VSTOP_LINE'] = vstop_arr
     df['VSTOP_TREND'] = trend_arr
+    
+    # 8. Clean Signals (Fixing the VectorBT double-trigger bug)
     df['VSTOP_BUY_SIGNAL'] = (df['VSTOP_TREND'] == 1) & (df['VSTOP_TREND'].shift(1) == -1)
     df['VSTOP_SELL_SIGNAL'] = (df['VSTOP_TREND'] == -1) & (df['VSTOP_TREND'].shift(1) == 1)
 
-    df['BREAKOUT_TRIGGERED'] = df['POCKET_PIVOT'] | df['ACCUMULATION_DAY'] | df['VSTOP_BUY_SIGNAL'] | df['VSTOP_SELL_SIGNAL']
+    # 9. Guardrail: Zero Falling Knives
+    # Isolate all potential bullish entry triggers
+    base_bull_triggers = df['POCKET_PIVOT'] | df['ACCUMULATION_DAY'] | df['VSTOP_BUY_SIGNAL']
+    
+    # Strictly enforce that entries ONLY happen in an active primary uptrend
+    primary_trend_filter = df['Close'] > df['MA50']
+    
+    # Final Entry Signal for VectorBT 
+    df['BREAKOUT_TRIGGERED'] = base_bull_triggers & primary_trend_filter
+    
     return df
+    
