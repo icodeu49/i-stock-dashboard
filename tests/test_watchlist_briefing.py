@@ -71,6 +71,18 @@ class SupplementTests(unittest.TestCase):
             self.assertIn('supplement unavailable', send.call_args.args[0])
             self.assertIn('last_sent', read_json(Path(directory) / 'news_state.json'))
 
+    def test_rejected_supplement_cannot_acknowledge_undelivered_signals(self):
+        with tempfile.TemporaryDirectory() as directory, patch('storage.BASE_DIR', Path(directory)), \
+             patch.dict('os.environ', {'USER_EMAIL': 'test@example.invalid', 'APP_PASSWORD': 'dummy'}), \
+             patch.object(news_agent, 'build_briefing', return_value=('<h3>AI &amp; Tech</h3><p>Original</p>', {}, [])), \
+             patch.object(briefing, 'build_supplement', return_value=('<a href="LINK_ID_typo">Bad</a>', {}, [], ['unsent'])), \
+             patch.object(news_agent, 'send_email') as send:
+            news_agent.run_briefing()
+            state = read_json(Path(directory) / 'news_state.json')
+            self.assertEqual(state['signal_ids'], [])
+            self.assertNotIn('LINK_ID_typo', send.call_args.args[0])
+            self.assertIn('Original', send.call_args.args[0])
+
 
 if __name__ == '__main__':
     unittest.main()

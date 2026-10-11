@@ -15,7 +15,8 @@ def render_comparison(report, forward):
     parts = ['<h3>Signal assessment</h3>']
     if report.get('results'):
         parts.append(f'<p>Historical comparison through {html.escape(report["asof"])} '
-                     f'(coverage: {html.escape(report.get("coverage", "unknown"))}). Latest 18-month holdout:</p><ul>')
+                     f'(coverage: {html.escape(report.get("coverage", "unknown"))}). Historical holdout from '
+                     f'{html.escape(report.get("holdout_start", "unknown"))}:</p><ul>')
         for item in report['results']:
             if item['window'] == 'historical_holdout':
                 small = ' · small sample' if item.get('small_sample') else ''

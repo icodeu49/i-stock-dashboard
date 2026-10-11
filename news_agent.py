@@ -199,11 +199,13 @@ def run_briefing():
             read_json(BASE_DIR / 'watchlist_history.json', {}), state, stories, now)
         from watchlist_briefing import render_comparison
         supplement += render_comparison(read_json(BASE_DIR / 'strategy_report.json', {}), read_json(BASE_DIR / 'forward_observations.json', {}))
+        restore_links(supplement, extra_links, allow_empty=not extra_links)
         body += supplement
         links.update(extra_links)
         stories += extra_stories
     except Exception as exc:
         # Optional context cannot stop delivery of the original topic briefing.
+        signal_ids = []
         body += '<hr><h2>Your Watchlist &amp; Confirmed Signals</h2><p>Watchlist supplement unavailable for this briefing.</p>'
         print(f'::warning::Watchlist supplement unavailable ({type(exc).__name__}).')
     # Preview contains public source material, never SMTP headers or secrets.

@@ -163,7 +163,7 @@ with tab2:
     
     # Define Scan Types
     scan_type = st.radio("Select Scan Criteria:", [
-        "📋 Momentum Setup (Legacy Entry Trigger)",
+        "📋 Momentum Setup (Pivot, Accumulation or VSTOP)",
         "🌊 Accumulation Volume (Institutions are buying)",
         "🎯 Trend Matrix Alignment (Bullish Setup Forming)"
     ])
