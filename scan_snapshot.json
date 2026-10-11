@@ -1,0 +1,2410 @@
+{
+    "schema_version": 1,
+    "policy": "weekly-led-v1",
+    "generated_at": "2026-10-11T07:41:05.243657+00:00",
+    "session": "2026-10-09",
+    "coverage": "complete",
+    "scanned": 114,
+    "watchlist_count": 114,
+    "regime": "GREEN",
+    "failures": [],
+    "limited": [
+        "WOLF/Monthly"
+    ],
+    "signals": [
+        {
+            "id": "signal:CDNS:Weekly:2026-10-09:buy",
+            "ticker": "CDNS",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 352.8399963378906,
+                "breakout_level": 416.69000244140625,
+                "breakout_distance_pct": -15.323143279036078,
+                "vstop": 272.75599670410156,
+                "stop_distance_pct": 22.6969732640792,
+                "daily_ma50_distance_pct": 10.087596883677264,
+                "daily_ma200_distance_pct": 8.018631051752777,
+                "extended": false
+            },
+            "rs_spy": -11.162206098706518,
+            "rs_sector": -24.670506678484962,
+            "sector_rank": "16/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-26",
+                "checked_at": "2026-10-11T07:40:49.731204+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:MSFT:Weekly:2026-10-09:buy",
+            "ticker": "MSFT",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 535.0700073242188,
+                "breakout_level": 522.8499755859375,
+                "breakout_distance_pct": 2.337196578155476,
+                "vstop": 443.62272919326347,
+                "stop_distance_pct": 17.090712781354604,
+                "daily_ma50_distance_pct": 6.973672181498358,
+                "daily_ma200_distance_pct": 23.657121618123877,
+                "extended": false
+            },
+            "rs_spy": 34.647194124606884,
+            "rs_sector": 29.949207135285484,
+            "sector_rank": "2/9",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-28",
+                "checked_at": "2026-10-11T07:40:50.396257+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:PLTR:Weekly:2026-10-09:buy",
+            "ticker": "PLTR",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 209.0500030517578,
+                "breakout_level": 194.77999877929688,
+                "breakout_distance_pct": 7.326216429762966,
+                "vstop": 154.47855033874512,
+                "stop_distance_pct": 26.104497448632696,
+                "daily_ma50_distance_pct": 18.120961068032273,
+                "daily_ma200_distance_pct": 37.23389419055223,
+                "extended": false
+            },
+            "rs_spy": 59.48086860576451,
+            "rs_sector": 35.23087977505976,
+            "sector_rank": "2/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-02",
+                "checked_at": "2026-10-11T07:40:50.873653+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SNPS:Weekly:2026-10-09:buy",
+            "ticker": "SNPS",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot",
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 509.989990234375,
+                "breakout_level": 539.47998046875,
+                "breakout_distance_pct": -5.466373415516069,
+                "vstop": 377.0954895019531,
+                "stop_distance_pct": 26.0582566868318,
+                "daily_ma50_distance_pct": 21.471768484742192,
+                "daily_ma200_distance_pct": 14.393147212675728,
+                "extended": false
+            },
+            "rs_spy": 10.72797634566558,
+            "rs_sector": -6.108853131772274,
+            "sector_rank": "10/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-09",
+                "checked_at": "2026-10-11T07:40:51.289638+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SPY:Weekly:2026-10-09:buy",
+            "ticker": "SPY",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 778.5700073242188,
+                "breakout_level": 777.4394855444215,
+                "breakout_distance_pct": 0.1454160485565792,
+                "vstop": 729.2149465149906,
+                "stop_distance_pct": 6.339193694199842,
+                "daily_ma50_distance_pct": 1.603368896441193,
+                "daily_ma200_distance_pct": 8.186137489637325,
+                "extended": false
+            },
+            "rs_spy": 0.0,
+            "rs_sector": 0.0,
+            "sector_rank": "1/1",
+            "earnings": {
+                "status": "unavailable",
+                "date": null,
+                "checked_at": "2026-10-11T07:40:51.977691+00:00",
+                "source": "Yahoo Finance"
+            }
+        },
+        {
+            "id": "signal:FTGFF:Weekly:2026-10-09:buy",
+            "ticker": "FTGFF",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout",
+                "pocket pivot",
+                "accumulation"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 24.510000228881836,
+                "breakout_level": 19.087200164794922,
+                "breakout_distance_pct": 28.41066273349462,
+                "vstop": 17.246695804595944,
+                "stop_distance_pct": 29.63404470199488,
+                "daily_ma50_distance_pct": 47.04317451489881,
+                "daily_ma200_distance_pct": 67.32905527666382,
+                "extended": true
+            },
+            "rs_spy": 44.11885796205708,
+            "rs_sector": 25.3573974350672,
+            "sector_rank": "3/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2027-02-10",
+                "checked_at": "2026-10-11T07:40:52.379952+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:U:Weekly:2026-10-09:buy",
+            "ticker": "U",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 46.880001068115234,
+                "breakout_level": 48.459999084472656,
+                "breakout_distance_pct": -3.2604169339814915,
+                "vstop": 35.973999404907225,
+                "stop_distance_pct": 23.263654894891992,
+                "daily_ma50_distance_pct": 9.591092655701349,
+                "daily_ma200_distance_pct": 46.79244122938153,
+                "extended": false
+            },
+            "rs_spy": 46.79563174415566,
+            "rs_sector": 24.474506575269107,
+            "sector_rank": "3/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-04",
+                "checked_at": "2026-10-11T07:40:52.851853+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:TEAM:Weekly:2026-10-09:buy",
+            "ticker": "TEAM",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 206.7899932861328,
+                "breakout_level": 200.0,
+                "breakout_distance_pct": 3.394996643066417,
+                "vstop": 148.81439933776855,
+                "stop_distance_pct": 28.035976512724258,
+                "daily_ma50_distance_pct": 18.947912243722232,
+                "daily_ma200_distance_pct": 82.54641481446998,
+                "extended": true
+            },
+            "rs_spy": 125.09540331467251,
+            "rs_sector": 90.86834483459046,
+            "sector_rank": "1/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:40:53.334441+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SHOP:Weekly:2026-10-09:buy",
+            "ticker": "SHOP",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 170.85000610351562,
+                "breakout_level": 158.8699951171875,
+                "breakout_distance_pct": 7.540763740498191,
+                "vstop": 124.28699913024903,
+                "stop_distance_pct": 27.253734451173926,
+                "daily_ma50_distance_pct": 17.97778802714689,
+                "daily_ma200_distance_pct": 31.90585707355713,
+                "extended": false
+            },
+            "rs_spy": 34.859187411046946,
+            "rs_sector": 14.35306766749298,
+            "sector_rank": "5/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-03",
+                "checked_at": "2026-10-11T07:40:53.831128+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:DDOG:Weekly:2026-10-09:buy",
+            "ticker": "DDOG",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 293.260009765625,
+                "breakout_level": 292.7200012207031,
+                "breakout_distance_pct": 0.18447955133571448,
+                "vstop": 212.66958770751953,
+                "stop_distance_pct": 27.480876824124017,
+                "daily_ma50_distance_pct": 18.7883832240054,
+                "daily_ma200_distance_pct": 55.73069209498001,
+                "extended": true
+            },
+            "rs_spy": 10.14164487999376,
+            "rs_sector": -6.606029505564203,
+            "sector_rank": "11/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:40:54.250263+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SNOW:Weekly:2026-10-09:buy",
+            "ticker": "SNOW",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 368.8900146484375,
+                "breakout_level": 384.55999755859375,
+                "breakout_distance_pct": -4.074782351164508,
+                "vstop": 276.4782554626465,
+                "stop_distance_pct": 25.05130405165941,
+                "daily_ma50_distance_pct": 11.700096318996822,
+                "daily_ma200_distance_pct": 59.65884917867703,
+                "extended": true
+            },
+            "rs_spy": 36.47454413073798,
+            "rs_sector": 15.722800051471708,
+            "sector_rank": "4/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-02",
+                "checked_at": "2026-10-11T07:40:54.751891+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ZS:Weekly:2026-10-09:buy",
+            "ticker": "ZS",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 233.72999572753906,
+                "breakout_level": 216.97000122070312,
+                "breakout_distance_pct": 7.7245676418592035,
+                "vstop": 166.21120262145996,
+                "stop_distance_pct": 28.88751736631455,
+                "daily_ma50_distance_pct": 25.807996812479182,
+                "daily_ma200_distance_pct": 40.769190091323296,
+                "extended": true
+            },
+            "rs_spy": 62.330557931023336,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-24",
+                "checked_at": "2026-10-11T07:40:55.227739+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:OKTA:Weekly:2026-10-09:buy",
+            "ticker": "OKTA",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 232.1300048828125,
+                "breakout_level": 216.58999633789062,
+                "breakout_distance_pct": 7.174850550659184,
+                "vstop": 160.89049530029297,
+                "stop_distance_pct": 30.68948782320656,
+                "daily_ma50_distance_pct": 34.09385399919558,
+                "daily_ma200_distance_pct": 101.1168333291796,
+                "extended": true
+            },
+            "rs_spy": 61.96361482612034,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-01",
+                "checked_at": "2026-10-11T07:40:55.719757+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:MPC:Weekly:2026-10-09:buy",
+            "ticker": "MPC",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 455.0299987792969,
+                "breakout_level": 431.0799865722656,
+                "breakout_distance_pct": 5.555816310905515,
+                "vstop": 371.92969183242377,
+                "stop_distance_pct": 18.26259964613437,
+                "daily_ma50_distance_pct": 20.144099597435527,
+                "daily_ma200_distance_pct": 70.11272196874212,
+                "extended": true
+            },
+            "rs_spy": 55.54299324091105,
+            "rs_sector": 35.29433342494512,
+            "sector_rank": "1/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-03",
+                "checked_at": "2026-10-11T07:40:56.146548+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:VLO:Weekly:2026-10-09:buy",
+            "ticker": "VLO",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 433.75,
+                "breakout_level": 419.0400085449219,
+                "breakout_distance_pct": 3.510402623882447,
+                "vstop": 354.6230186413538,
+                "stop_distance_pct": 18.242531725336303,
+                "daily_ma50_distance_pct": 18.026696916853812,
+                "daily_ma200_distance_pct": 63.326764235342004,
+                "extended": true
+            },
+            "rs_spy": 50.04831775925813,
+            "rs_sector": 30.514957374715635,
+            "sector_rank": "2/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-22",
+                "checked_at": "2026-10-11T07:40:56.689538+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:PSX:Weekly:2026-10-09:buy",
+            "ticker": "PSX",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 278.17999267578125,
+                "breakout_level": 277.1199951171875,
+                "breakout_distance_pct": 0.3825048994192892,
+                "vstop": 230.78947679454015,
+                "stop_distance_pct": 17.03591815694479,
+                "daily_ma50_distance_pct": 12.609608837179742,
+                "daily_ma200_distance_pct": 49.48715301407489,
+                "extended": false
+            },
+            "rs_spy": 43.608316952841065,
+            "rs_sector": 24.91331889389501,
+            "sector_rank": "4/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-28",
+                "checked_at": "2026-10-11T07:40:57.175499+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:TMO:Weekly:2026-10-09:buy",
+            "ticker": "TMO",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 658.02001953125,
+                "breakout_level": 683.6300048828125,
+                "breakout_distance_pct": -3.7461763188630925,
+                "vstop": 580.1001046901513,
+                "stop_distance_pct": 11.841572068978401,
+                "daily_ma50_distance_pct": 5.094679895574128,
+                "daily_ma200_distance_pct": 20.933469760106902,
+                "extended": false
+            },
+            "rs_spy": 20.854684085488874,
+            "rs_sector": 17.203860723292095,
+            "sector_rank": "1/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-21",
+                "checked_at": "2026-10-11T07:40:57.729233+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ABBV:Weekly:2026-10-09:buy",
+            "ticker": "ABBV",
+            "timeframe": "Weekly",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 276.4700012207031,
+                "breakout_level": 269.3900146484375,
+                "breakout_distance_pct": 2.6281547894435597,
+                "vstop": 233.97613674468974,
+                "stop_distance_pct": 15.370153828042621,
+                "daily_ma50_distance_pct": 6.789292228351607,
+                "daily_ma200_distance_pct": 19.815261821417597,
+                "extended": false
+            },
+            "rs_spy": 8.562538095637628,
+            "rs_sector": 5.283040463104216,
+            "sector_rank": "3/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-30",
+                "checked_at": "2026-10-11T07:40:58.216819+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:AMD:Monthly:2026-09-30:buy",
+            "ticker": "AMD",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 611.760009765625,
+                "breakout_level": 584.72998046875,
+                "breakout_distance_pct": 4.622651514329124,
+                "vstop": 331.3224983215332,
+                "stop_distance_pct": 45.84109895505132,
+                "daily_ma50_distance_pct": 14.969905877555579,
+                "daily_ma200_distance_pct": 57.81726214781939,
+                "extended": true
+            },
+            "rs_spy": 2.86511841625956,
+            "rs_sector": 13.419042897438715,
+            "sector_rank": "2/14",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-03",
+                "checked_at": "2026-10-11T07:40:58.664418+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:BE:Monthly:2026-09-30:buy",
+            "ticker": "BE",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "accumulation"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 276.9800109863281,
+                "breakout_level": 351.2799987792969,
+                "breakout_distance_pct": -21.151214999761525,
+                "vstop": 145.1382393836975,
+                "stop_distance_pct": 47.59974235438181,
+                "daily_ma50_distance_pct": 13.801874744363074,
+                "daily_ma200_distance_pct": 32.043651613173374,
+                "extended": false
+            },
+            "rs_spy": -10.62174558204142,
+            "rs_sector": 1.2318596423921635,
+            "sector_rank": "1/9",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-27",
+                "checked_at": "2026-10-11T07:40:59.078493+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:IONQ:Monthly:2026-09-30:buy",
+            "ticker": "IONQ",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "accumulation"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 43.86000061035156,
+                "breakout_level": 84.63999938964844,
+                "breakout_distance_pct": -48.18052820577443,
+                "vstop": 22.202999591827393,
+                "stop_distance_pct": 49.3775666145632,
+                "daily_ma50_distance_pct": -3.4906918287689104,
+                "daily_ma200_distance_pct": -7.816850845461943,
+                "extended": false
+            },
+            "rs_spy": -19.56161105027524,
+            "rs_sector": -19.942914851140735,
+            "sector_rank": "7/9",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-04",
+                "checked_at": "2026-10-11T07:40:59.571787+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:META:Monthly:2026-09-30:buy",
+            "ticker": "META",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 725.1799926757812,
+                "breakout_level": 793.0230270081914,
+                "breakout_distance_pct": -8.554989202313468,
+                "vstop": 478.73114102469464,
+                "stop_distance_pct": 33.984507865659054,
+                "daily_ma50_distance_pct": 12.39758779604605,
+                "daily_ma200_distance_pct": 14.223111687585565,
+                "extended": false
+            },
+            "rs_spy": 25.84973066138623,
+            "rs_sector": 23.974665074953695,
+            "sector_rank": "1/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-28",
+                "checked_at": "2026-10-11T07:40:59.981814+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:POWI:Monthly:2026-09-30:sell",
+            "ticker": "POWI",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 51.79999923706055,
+                "breakout_level": 90.79942060790914,
+                "breakout_distance_pct": -42.95117866363513,
+                "vstop": 74.9065828217867,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": -9.326475841251302,
+                "daily_ma200_distance_pct": -15.213208455683592,
+                "extended": false
+            },
+            "rs_spy": -39.33957259261079,
+            "rs_sector": -33.1158343642354,
+            "sector_rank": "13/14",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:41:00.490139+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:FTGFF:Monthly:2026-09-30:buy",
+            "ticker": "FTGFF",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "accumulation"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 17.489999771118164,
+                "breakout_level": 19.087200164794922,
+                "breakout_distance_pct": -8.367913470214916,
+                "vstop": 10.486400604248047,
+                "stop_distance_pct": 40.04344916250599,
+                "daily_ma50_distance_pct": 47.04317451489881,
+                "daily_ma200_distance_pct": 67.32905527666382,
+                "extended": true
+            },
+            "rs_spy": 6.57421481490188,
+            "rs_sector": -6.333644485214817,
+            "sector_rank": "6/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2027-02-10",
+                "checked_at": "2026-10-11T07:40:52.379952+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ICHR:Monthly:2026-09-30:sell",
+            "ticker": "ICHR",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 61.86000061035156,
+                "breakout_level": 113.58000183105469,
+                "breakout_distance_pct": -45.53618628888066,
+                "vstop": 121.04975128173828,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": -1.148727530055782,
+                "daily_ma200_distance_pct": 1.1300107533704251,
+                "extended": false
+            },
+            "rs_spy": -46.184993193453714,
+            "rs_sector": -40.66359267853771,
+            "sector_rank": "14/14",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-02",
+                "checked_at": "2026-10-11T07:41:01.079255+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:U:Monthly:2026-09-30:buy",
+            "ticker": "U",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 40.93000030517578,
+                "breakout_level": 52.150001525878906,
+                "breakout_distance_pct": -21.514862689189595,
+                "vstop": 15.283426829746787,
+                "stop_distance_pct": 62.65959756708301,
+                "daily_ma50_distance_pct": 9.591092655701349,
+                "daily_ma200_distance_pct": 46.79244122938153,
+                "extended": false
+            },
+            "rs_spy": 39.886370927617286,
+            "rs_sector": 21.853963191678226,
+            "sector_rank": "3/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-04",
+                "checked_at": "2026-10-11T07:40:52.851853+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:TEAM:Monthly:2026-09-30:buy",
+            "ticker": "TEAM",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 179.2899932861328,
+                "breakout_level": 326.0,
+                "breakout_distance_pct": -45.00306954413104,
+                "vstop": 86.9910738808768,
+                "stop_distance_pct": 51.480240315450374,
+                "daily_ma50_distance_pct": 18.947912243722232,
+                "daily_ma200_distance_pct": 82.54641481446998,
+                "extended": true
+            },
+            "rs_spy": 125.12729501951658,
+            "rs_sector": 96.10668958554223,
+            "sector_rank": "1/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:40:53.334441+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:NCLH:Monthly:2026-09-30:sell",
+            "ticker": "NCLH",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 14.65999984741211,
+                "breakout_level": 29.290000915527344,
+                "breakout_distance_pct": -49.94879006766952,
+                "vstop": 22.254285676138743,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": -4.531242268280932,
+                "daily_ma200_distance_pct": -19.170631132812264,
+                "extended": false
+            },
+            "rs_spy": -32.16691034002975,
+            "rs_sector": -25.333517542444252,
+            "sector_rank": "11/11",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-04",
+                "checked_at": "2026-10-11T07:41:01.538978+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ZS:Monthly:2026-09-30:buy",
+            "ticker": "ZS",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot",
+                "accumulation"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 199.4199981689453,
+                "breakout_level": 336.989990234375,
+                "breakout_distance_pct": -40.82316865546968,
+                "vstop": 203.2847137451172,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": 25.807996812479182,
+                "daily_ma200_distance_pct": 40.769190091323296,
+                "extended": true
+            },
+            "rs_spy": 38.0014733370234,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-24",
+                "checked_at": "2026-10-11T07:40:55.227739+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:OKTA:Monthly:2026-09-30:buy",
+            "ticker": "OKTA",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 209.11000061035156,
+                "breakout_level": 174.85000610351562,
+                "breakout_distance_pct": 19.593933835239994,
+                "vstop": 138.45549746922086,
+                "stop_distance_pct": 33.788199002871174,
+                "daily_ma50_distance_pct": 34.09385399919558,
+                "daily_ma200_distance_pct": 101.1168333291796,
+                "extended": true
+            },
+            "rs_spy": 49.691503972366256,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-01",
+                "checked_at": "2026-10-11T07:40:55.719757+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:APP:Monthly:2026-09-30:sell",
+            "ticker": "APP",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 290.42999267578125,
+                "breakout_level": 745.6099853515625,
+                "breakout_distance_pct": -61.048001182704034,
+                "vstop": 880.7374877929688,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": -12.92781506738665,
+                "daily_ma200_distance_pct": -37.85460480015941,
+                "extended": false
+            },
+            "rs_spy": -44.939998779800625,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-04",
+                "checked_at": "2026-10-11T07:41:01.950909+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:MPC:Monthly:2026-09-30:buy",
+            "ticker": "MPC",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 395.4200134277344,
+                "breakout_level": 376.55999755859375,
+                "breakout_distance_pct": 5.008502228441292,
+                "vstop": 289.31298927759366,
+                "stop_distance_pct": 26.834004488124492,
+                "daily_ma50_distance_pct": 20.144099597435527,
+                "daily_ma200_distance_pct": 70.11272196874212,
+                "extended": true
+            },
+            "rs_spy": 51.48244089707041,
+            "rs_sector": 33.13546985033435,
+            "sector_rank": "1/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-03",
+                "checked_at": "2026-10-11T07:40:56.146548+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:VLO:Monthly:2026-09-30:buy",
+            "ticker": "VLO",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 387.6099853515625,
+                "breakout_level": 362.7900085449219,
+                "breakout_distance_pct": 6.841416858801752,
+                "vstop": 285.00748705400815,
+                "stop_distance_pct": 26.470550856550773,
+                "daily_ma50_distance_pct": 18.026696916853812,
+                "daily_ma200_distance_pct": 63.326764235342004,
+                "extended": true
+            },
+            "rs_spy": 45.93460568286088,
+            "rs_sector": 28.259567115192354,
+            "sector_rank": "3/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-22",
+                "checked_at": "2026-10-11T07:40:56.689538+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:PSX:Monthly:2026-09-30:buy",
+            "ticker": "PSX",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 255.30999755859375,
+                "breakout_level": 250.66000366210938,
+                "breakout_distance_pct": 1.8551000672419216,
+                "vstop": 189.06398478630098,
+                "stop_distance_pct": 25.947285028307316,
+                "daily_ma50_distance_pct": 12.609608837179742,
+                "daily_ma200_distance_pct": 49.48715301407489,
+                "extended": false
+            },
+            "rs_spy": 48.30215267751565,
+            "rs_sector": 30.34036591708309,
+            "sector_rank": "2/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-28",
+                "checked_at": "2026-10-11T07:40:57.175499+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:TMO:Monthly:2026-09-30:buy",
+            "ticker": "TMO",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 675.0499877929688,
+                "breakout_level": 646.5044214656405,
+                "breakout_distance_pct": 4.41537062695021,
+                "vstop": 472.6880779748442,
+                "stop_distance_pct": 29.977322195017504,
+                "daily_ma50_distance_pct": 5.094679895574128,
+                "daily_ma200_distance_pct": 20.933469760106902,
+                "extended": false
+            },
+            "rs_spy": 31.61788470480755,
+            "rs_sector": 26.454381604289168,
+            "sector_rank": "1/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-21",
+                "checked_at": "2026-10-11T07:40:57.729233+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:AMZN:Daily:2026-10-09:buy",
+            "ticker": "AMZN",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 262.42999267578125,
+                "breakout_level": 260.1400146484375,
+                "breakout_distance_pct": 0.8802867296054062,
+                "vstop": 248.49065450032552,
+                "stop_distance_pct": 5.311640652551885,
+                "daily_ma50_distance_pct": 1.2869354051603832,
+                "daily_ma200_distance_pct": 8.374277467565472,
+                "extended": false
+            },
+            "rs_spy": 1.8538385645463284,
+            "rs_sector": 8.873577592852788,
+            "sector_rank": "1/11",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-29",
+                "checked_at": "2026-10-11T07:41:02.506658+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:PLTR:Daily:2026-10-09:buy",
+            "ticker": "PLTR",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 209.0500030517578,
+                "breakout_level": 204.44000244140625,
+                "breakout_distance_pct": 2.2549405964093605,
+                "vstop": 189.93700103759767,
+                "stop_distance_pct": 9.142789636519659,
+                "daily_ma50_distance_pct": 18.120961068032273,
+                "daily_ma200_distance_pct": 37.23389419055223,
+                "extended": false
+            },
+            "rs_spy": 54.30459022453744,
+            "rs_sector": 32.264919642699375,
+            "sector_rank": "2/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-02",
+                "checked_at": "2026-10-11T07:40:50.873653+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:FTGFF:Daily:2026-10-09:buy",
+            "ticker": "FTGFF",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot",
+                "accumulation",
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 24.510000228881836,
+                "breakout_level": 22.549999237060547,
+                "breakout_distance_pct": 8.6918007012615,
+                "vstop": 22.662890720367432,
+                "stop_distance_pct": 7.5361464351918945,
+                "daily_ma50_distance_pct": 47.04317451489881,
+                "daily_ma200_distance_pct": 67.32905527666382,
+                "extended": true
+            },
+            "rs_spy": 43.355346288477925,
+            "rs_sector": 29.44231459079141,
+            "sector_rank": "2/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2027-02-10",
+                "checked_at": "2026-10-11T07:40:52.379952+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:AI:Daily:2026-10-09:buy",
+            "ticker": "AI",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "digest",
+            "context": {
+                "close": 11.529999732971191,
+                "breakout_level": 11.470000267028809,
+                "breakout_distance_pct": 0.5230990806064373,
+                "vstop": 10.291700458526611,
+                "stop_distance_pct": 10.7398031493751,
+                "daily_ma50_distance_pct": 9.98549829542268,
+                "daily_ma200_distance_pct": 13.226814577244483,
+                "extended": false
+            },
+            "rs_spy": 20.820168352643286,
+            "rs_sector": 3.5631528208329266,
+            "sector_rank": "7/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-09",
+                "checked_at": "2026-10-11T07:41:02.936281+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:OSCR:Daily:2026-10-09:buy",
+            "ticker": "OSCR",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 33.369998931884766,
+                "breakout_level": 34.47999954223633,
+                "breakout_distance_pct": -3.219259353503956,
+                "vstop": 29.213198852539062,
+                "stop_distance_pct": 12.45669826909678,
+                "daily_ma50_distance_pct": 7.46835525193732,
+                "daily_ma200_distance_pct": 49.18299808299118,
+                "extended": false
+            },
+            "rs_spy": 1.3618925214358812,
+            "rs_sector": -0.5906296168788794,
+            "sector_rank": "4/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-09",
+                "checked_at": "2026-10-11T07:41:03.373174+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SHOP:Daily:2026-10-09:buy",
+            "ticker": "SHOP",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 170.85000610351562,
+                "breakout_level": 167.94000244140625,
+                "breakout_distance_pct": 1.7327638560233227,
+                "vstop": 151.10299682617188,
+                "stop_distance_pct": 11.55809691067808,
+                "daily_ma50_distance_pct": 17.97778802714689,
+                "daily_ma200_distance_pct": 31.90585707355713,
+                "extended": false
+            },
+            "rs_spy": 31.46643072180457,
+            "rs_sector": 12.688785666253555,
+            "sector_rank": "5/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-03",
+                "checked_at": "2026-10-11T07:40:53.831128+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:DDOG:Daily:2026-10-09:buy",
+            "ticker": "DDOG",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout",
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 293.260009765625,
+                "breakout_level": 285.67999267578125,
+                "breakout_distance_pct": 2.653324448396477,
+                "vstop": 260.18690338134763,
+                "stop_distance_pct": 11.277741690968902,
+                "daily_ma50_distance_pct": 18.7883832240054,
+                "daily_ma200_distance_pct": 55.73069209498001,
+                "extended": true
+            },
+            "rs_spy": 8.164417663469159,
+            "rs_sector": -7.284948622460819,
+            "sector_rank": "11/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:40:54.250263+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:SNOW:Daily:2026-10-09:buy",
+            "ticker": "SNOW",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout",
+                "pocket pivot",
+                "accumulation"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 368.8900146484375,
+                "breakout_level": 349.0,
+                "breakout_distance_pct": 5.6991445984061695,
+                "vstop": 329.1563939412435,
+                "stop_distance_pct": 10.771129369023788,
+                "daily_ma50_distance_pct": 11.700096318996822,
+                "daily_ma200_distance_pct": 59.65884917867703,
+                "extended": true
+            },
+            "rs_spy": 31.800078926682772,
+            "rs_sector": 12.974778149969879,
+            "sector_rank": "4/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-02",
+                "checked_at": "2026-10-11T07:40:54.751891+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ZS:Daily:2026-10-09:buy",
+            "ticker": "ZS",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "digest",
+            "context": {
+                "close": 233.72999572753906,
+                "breakout_level": 218.82000732421875,
+                "breakout_distance_pct": 6.813814050023614,
+                "vstop": 204.80719909667968,
+                "stop_distance_pct": 12.374447935460932,
+                "daily_ma50_distance_pct": 25.807996812479182,
+                "daily_ma200_distance_pct": 40.769190091323296,
+                "extended": true
+            },
+            "rs_spy": 58.19128482973153,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-24",
+                "checked_at": "2026-10-11T07:40:55.227739+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:OKTA:Daily:2026-10-09:buy",
+            "ticker": "OKTA",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 232.1300048828125,
+                "breakout_level": 226.44000244140625,
+                "breakout_distance_pct": 2.512807975648479,
+                "vstop": 200.00276209513345,
+                "stop_distance_pct": 13.840193905091255,
+                "daily_ma50_distance_pct": 34.09385399919558,
+                "daily_ma200_distance_pct": 101.1168333291796,
+                "extended": true
+            },
+            "rs_spy": 59.68690214290964,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-01",
+                "checked_at": "2026-10-11T07:40:55.719757+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:AFRM:Daily:2026-10-09:buy",
+            "ticker": "AFRM",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 80.69999694824219,
+                "breakout_level": 77.18499755859375,
+                "breakout_distance_pct": 4.5539930048972055,
+                "vstop": 69.95669479370117,
+                "stop_distance_pct": 13.312642578451825,
+                "daily_ma50_distance_pct": 9.380417925476126,
+                "daily_ma200_distance_pct": 20.78243214922044,
+                "extended": false
+            },
+            "rs_spy": -5.455522172370541,
+            "rs_sector": null,
+            "sector_rank": "N/A",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-11T07:41:03.909110+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:XOM:Daily:2026-10-09:buy",
+            "ticker": "XOM",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "digest",
+            "context": {
+                "close": 168.94000244140625,
+                "breakout_level": 169.63999938964844,
+                "breakout_distance_pct": -0.41263673117232225,
+                "vstop": 159.4199996948242,
+                "stop_distance_pct": 5.635138279273955,
+                "daily_ma50_distance_pct": 4.705599180991871,
+                "daily_ma200_distance_pct": 13.429539116251178,
+                "extended": false
+            },
+            "rs_spy": 12.93882638310726,
+            "rs_sector": 1.9778018238580053,
+            "sector_rank": "5/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-30",
+                "checked_at": "2026-10-11T07:41:04.399294+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:ABBV:Daily:2026-10-09:buy",
+            "ticker": "ABBV",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 276.4700012207031,
+                "breakout_level": 274.94000244140625,
+                "breakout_distance_pct": 0.5564846023535353,
+                "vstop": 260.82001953125,
+                "stop_distance_pct": 5.660643693837834,
+                "daily_ma50_distance_pct": 6.789292228351607,
+                "daily_ma200_distance_pct": 19.815261821417597,
+                "extended": false
+            },
+            "rs_spy": 7.76612125805809,
+            "rs_sector": 5.690235219602635,
+            "sector_rank": "3/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-30",
+                "checked_at": "2026-10-11T07:40:58.216819+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:MO:Daily:2026-10-09:buy",
+            "ticker": "MO",
+            "timeframe": "Daily",
+            "date": "2026-10-09",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "pocket pivot"
+            ],
+            "fresh_period": true,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-09",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 71.68000030517578,
+                "breakout_level": 71.83999633789062,
+                "breakout_distance_pct": -0.22271163818317063,
+                "vstop": 67.99620235255782,
+                "stop_distance_pct": 5.139227032553417,
+                "daily_ma50_distance_pct": 6.225709936572321,
+                "daily_ma200_distance_pct": 8.95663357674028,
+                "extended": false
+            },
+            "rs_spy": -2.739310494665015,
+            "rs_sector": 2.066115027223492,
+            "sector_rank": "5/7",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-29",
+                "checked_at": "2026-10-11T07:41:04.840006+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        }
+    ],
+    "trends": {
+        "ABAT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "AMD": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "AMZN": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "APLD": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "APO": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "ARM": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "AVGO": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "BE": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "CCJ": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "CDNS": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "CRWV": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "FLEX": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "GEV": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "unknown"
+        },
+        "INTC": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "IONQ": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "IOT": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "LLY": {
+            "Daily": "bearish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "LUMN": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "META": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "MRVL": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "MSFT": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "MU": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "MVST": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "NAK": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "NBIS": {
+            "Daily": "mixed",
+            "Weekly": "bullish",
+            "Monthly": "unknown"
+        },
+        "NET": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "NVDA": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "NVTS": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "ODFL": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "OKLO": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "ORCL": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "PLTR": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "POWI": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "QUBT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "RDDT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "RGTI": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "SNPS": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "SOUN": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "T": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "TSM": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "VRT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "SPY": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "ENR": {
+            "Daily": "mixed",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "FTGFF": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "AI": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "ALAB": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "BA": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "CRDO": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "IRM": {
+            "Daily": "mixed",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "PATH": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "TER": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "VNET": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "FLYW": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "mixed"
+        },
+        "UNFI": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "OSCR": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "PARR": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "ICHR": {
+            "Daily": "mixed",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "WOLF": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "AAPL": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "GOOGL": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "CARD": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "unknown"
+        },
+        "U": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "SMCI": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "TEAM": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "MELI": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "SHOP": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "NCLH": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "TTD": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "DKNG": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "SOFI": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "DDOG": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "SNOW": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "SPOT": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "RCL": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "CCL": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "BABA": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "MARA": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "mixed"
+        },
+        "DUOL": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "PANW": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "CRWD": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "ZS": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "OKTA": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "AFRM": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "COIN": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "TSLA": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "RBLX": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "HOOD": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "NFLX": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "CELH": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "RIOT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "WING": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "MDB": {
+            "Daily": "mixed",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "UPST": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "AAL": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "APP": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "MPC": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "VLO": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "PSX": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "XOM": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "bullish"
+        },
+        "WMB": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "CSCO": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "NOW": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
+        },
+        "ISRG": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "TMO": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "AMGN": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "ABBV": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "PM": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "MO": {
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
+        },
+        "PG": {
+            "Daily": "bullish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "WMT": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "COST": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "TJX": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "HD": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        },
+        "NKE": {
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
+        }
+    },
+    "changes": []
+}
