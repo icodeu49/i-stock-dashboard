@@ -7,7 +7,7 @@ on:
   workflow_call:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: morning-email-main
@@ -17,9 +17,15 @@ jobs:
   run-agent:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    concurrency:
+      group: watchlist-state-main
+      cancel-in-progress: false
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
@@ -34,3 +40,14 @@ jobs:
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: python news_agent.py
 
+      - name: Save email preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: morning-briefing-preview
+          path: reports/latest_briefing.html
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Persist confirmed briefing state
+        if: always()
+        run: bash scripts/persist_state.sh

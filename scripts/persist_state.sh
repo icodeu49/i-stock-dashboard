@@ -2,13 +2,13 @@
 set -euo pipefail
 git config user.name 'github-actions[bot]'
 git config user.email 'github-actions[bot]@users.noreply.github.com'
-for state_file in watchlist.json alert_state.json; do
+for state_file in watchlist.json alert_state.json news_state.json; do
   if [[ -f "$state_file" ]]; then git add -- "$state_file"; fi
 done
 if git diff --cached --quiet; then
   echo 'No state changes to persist.'
   exit 0
 fi
-git commit -m 'Update watchlist and delivered-alert state'
+git commit -m 'Update automation state'
 git pull --rebase origin main
 git push origin HEAD:main
