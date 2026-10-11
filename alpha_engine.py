@@ -2,33 +2,20 @@ import numpy as np
 import pandas as pd
 
 def check_overextension(df):
+    """Warning only: never filter an entry or hide a breakout alert.
+
+    Raw input must be daily; helpers output carries daily MA aliases on all views.
     """
-    PILLAR 4: THE RUBBER BAND FILTER
-    Measures how stretched the current price is from primary moving averages.
-    Returns a dictionary with the extension status and raw metrics.
-    """
-    if df.empty or len(df) < 200:
-        return {"is_extended": False, "dist_50": 0.0, "dist_200": 0.0, "warning": "Insufficient Data"}
-
-    # Use existing MAs if present, otherwise calculate them
-    ma50 = df['MA50'].iloc[-1] if 'MA50' in df.columns else df['Close'].rolling(50).mean().iloc[-1]
-    ma200 = df['MA200'].iloc[-1] if 'MA200' in df.columns else df['Close'].rolling(200).mean().iloc[-1]
-    
-    current_price = df['Close'].iloc[-1]
-
-    # Calculate percentage distance from MAs
-    dist_50 = ((current_price - ma50) / ma50) * 100
-    dist_200 = ((current_price - ma200) / ma200) * 100
-
-    # Institutional "Late-Stage" Thresholds:
-    # Dangerously extended if > 25% above 50-day or > 50% above 200-day
-    is_extended = (dist_50 > 25.0) or (dist_200 > 50.0)
-
-    return {
-        "is_extended": is_extended,
-        "dist_50": round(dist_50, 2),
-        "dist_200": round(dist_200, 2)
-    }
+    from risk_policy import extension_pct, extension_warning
+    if df.empty:
+        return {"is_extended": False, "dist_50": None, "dist_200": None, "warning": "Insufficient Data"}
+    ma50 = df['MA50'].iloc[-1] if 'MA50' in df else df.Close.rolling(50).mean().iloc[-1]
+    ma200 = df['MA200_DAILY'].iloc[-1] if 'MA200_DAILY' in df else df.Close.rolling(200).mean().iloc[-1]
+    dist_50 = extension_pct(df.Close.iloc[-1], ma50)
+    dist_200 = extension_pct(df.Close.iloc[-1], ma200)
+    warning = extension_warning(dist_50)
+    return {"is_extended": bool(warning), "dist_50": dist_50, "dist_200": dist_200,
+            "warning": warning if dist_50 is not None else "Insufficient Data"}
 
 
 def check_vcp_contraction(df):

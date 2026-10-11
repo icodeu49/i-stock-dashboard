@@ -114,6 +114,7 @@ class ScannerIntegrationTests(unittest.TestCase):
              patch.object(notifier, 'ALERT_STATE_FILE', Path(directory) / 'alert_state.json'), \
              patch.object(notifier, 'load_watchlist', return_value={'ABC': {}}), \
              patch.object(notifier, 'require_telegram_config'), \
+             patch.object(notifier, 'asset_profile', return_value={'observations': {}}), \
              patch.object(notifier, 'download_prices', return_value=pd.DataFrame({'Close': [100.]})), \
              patch.object(notifier, 'calculate_technicals', side_effect=frame), \
              patch.object(notifier, 'upcoming_earnings', return_value={'status': 'unavailable'}), \

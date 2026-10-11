@@ -28,9 +28,8 @@ def prepare_signals(raw, spy, now=None):
         frame = frames[name]
         aligned &= False if frame.empty else frame.TREND_STATE.reindex(raw.index, method='ffill').eq('bullish')
     result['Aligned daily'] = result.Daily & aligned
-    weekly = frames['Weekly']
-    result['exit'] = False if weekly.empty else weekly.VSTOP_SELL_SIGNAL.reindex(raw.index, fill_value=False)
     daily = frames['Daily']
+    result['exit'] = False if daily.empty else daily.VSTOP_SELL_SIGNAL.reindex(raw.index, fill_value=False)
     result['score'] = float('-inf') if daily.empty else daily.RS_SCORE.reindex(raw.index).fillna(float('-inf'))
     # A closing signal/state is available only for the following trading open.
     for name in STRATEGIES + ['exit']:
@@ -68,7 +67,7 @@ def simulate(data, timeline, strategy, config=None):
             if row.Open <= stop:
                 close_position(ticker, date, row.Open, 'gap through fixed stop')
             elif bool(row['exit']) or position['age'] >= config['max_hold_sessions']:
-                close_position(ticker, date, row.Open, 'weekly VSTOP / maximum holding period')
+                close_position(ticker, date, row.Open, 'daily VSTOP / maximum holding period')
             elif row.Low <= stop:
                 close_position(ticker, date, stop, 'fixed stop')
             if ticker not in positions:
@@ -159,8 +158,9 @@ def run_comparison(years=5, holdout_months=18, output=None):
         'limitations': [
             'Current watchlist only: selection and survivorship bias; historical watchlist membership is not reconstructed.',
             'Parameters are fixed before this run, with no fitting or optimisation. The historical holdout is not future evidence.',
+            'Mega-cap shielding is excluded: point-in-time size observations did not exist for the historical window. Current sizes are never backfilled.',
             'Adjusted daily OHLCV; exact intraday paths and real execution liquidity are unavailable.',
-            'Common exits: weekly VSTOP at next open, 8% fixed stop, or maximum 63 sessions; final positions liquidated for valuation.',
+            'Common exits: daily VSTOP at next open, 8% fixed stop, or maximum 63 sessions; final positions liquidated for valuation.',
             'Each window starts flat with equal capital. Fees 0.10% and slippage 0.05% per side; taxes excluded.',
             'SPY is a fully invested adjusted-price benchmark; strategy cash and exposure can differ.',
             'Small-sample flags are descriptive, not a statistical guarantee. Do not infer a proven winner from this comparison.']}

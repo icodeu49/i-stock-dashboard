@@ -9,11 +9,19 @@ import os
 from helpers import calculate_technicals
 from portfolio_backtest import run_backtest_simulation
 from market_data import download_prices as _download_prices
-from storage import WATCHLIST_FILE, write_json, load_watchlist
+from storage import WATCHLIST_FILE, write_json, load_watchlist, read_json, BASE_DIR
+from market_data import last_completed_session
+from asset_profiles import asset_profile
+from risk_policy import extension_warning, extension_pct
 
 @st.cache_data(ttl=3600)
 def download_prices(ticker):
     return _download_prices(ticker)
+
+@st.cache_data(ttl=3600)
+def risk_profile(ticker):
+    profiles = read_json(BASE_DIR / 'asset_profiles.json', {})
+    return asset_profile(ticker, last_completed_session().date().isoformat(), profiles)
 
 # --- CONSTANTS & CONFIG ---
 
@@ -46,7 +54,7 @@ def generate_summary(df):
         return "Awaiting complete data arrays...", "orange"
     latest = df.iloc[-1]
     conditions = {
-        "Institutional Trend Guardrail (Close > 50MA)": latest['Close'] > latest['MA50'] if 'MA50' in latest else False,
+        "Institutional Trend Guardrail (Close > 50-DMA)": latest['Close'] > latest['MA50'] if 'MA50' in latest else False,
         "200-day trend guardrail": latest["Close"] > latest["MA200_DAILY"],
         "Institutional Volume Accumulation Trigger (+50% Spike)": latest['ACCUMULATION_DAY'],
         "Institutional Pivot Matrix (Pocket Pivot Spark)": latest['POCKET_PIVOT'],
@@ -111,9 +119,13 @@ with tab1:
         raw_df = download_prices(selected_stock)
         if isinstance(raw_df.columns, pd.MultiIndex): raw_df.columns = raw_df.columns.get_level_values(0)
             
-        df = calculate_technicals(raw_df.copy(), timeframe=timeframe, spy_df=spy_ref)
+        df = calculate_technicals(raw_df.copy(), timeframe=timeframe, spy_df=spy_ref, asset_profile=risk_profile(selected_stock))
         if not df.empty:
             summary_text, color = generate_summary(df)
+            warning = extension_warning(extension_pct(df.Close.iloc[-1], df.MA50.iloc[-1]))
+            if warning:
+                st.warning(warning)
+            st.caption('VSTOP uses daily ATR(30) and consecutive daily closes. Mega-cap protection requires dated size metadata; missing data uses normal two-close stops.')
             current_category = st.session_state.watchlist_config.get(selected_stock, {}).get("group", "Unassigned Group")
             st.markdown(f"### 📋 Technical Summary Confluence Matrix ({timeframe} View) | Group: `{current_category}`")
             st.success(summary_text) if color == "green" else (st.error(summary_text) if color == "red" else st.warning(summary_text))
@@ -150,13 +162,13 @@ with tab2:
             try:
                 t_df = download_prices(t)
                 if isinstance(t_df.columns, pd.MultiIndex): t_df.columns = t_df.columns.get_level_values(0)
-                t_df = calculate_technicals(t_df, timeframe=multi_timeframe, spy_df=spy_m_ref)
+                t_df = calculate_technicals(t_df, timeframe=multi_timeframe, spy_df=spy_m_ref, asset_profile=risk_profile(t))
                 if not t_df.empty:
                     latest = t_df.iloc[-1]
                     summary_msg, _ = generate_summary(t_df)
                     summary_data.append({
                         "Link View": f'<a href="?ticker={t}" target="_self">🔍 Deep Dive {t}</a>', "Ticker": t, "Category Channel": f"`{grp}`", "Last Close": round(float(latest['Close']), 2),
-                        "Trend Guardrail": "🔥 Aligned" if latest['Close'] > latest['MA50'] else "❌ Below 50MA",
+                        "Trend Guardrail": "🔥 Aligned" if latest['Close'] > latest['MA50'] else "❌ Below 50-DMA",
                         "RS Matrix Score": f"{latest['RS_SCORE']:+.2f}%", "Verdict": summary_msg.split("-")[0].strip()
                     })
             except Exception as exc:

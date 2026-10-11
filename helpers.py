@@ -3,7 +3,8 @@ import yfinance as yf
 import numpy as np
 import requests
 import io
-from market_data import normalize_prices, resample_prices
+from market_data import normalize_prices, resample_prices, closed_daily_data
+from risk_policy import daily_risk_inputs, apply_daily_vstop
 
 def calculate_sector_rank(target_ticker, target_score, gics_sector, timeframe="Daily"):
     """
@@ -118,16 +119,20 @@ def calculate_position_size(ticker, base_capital, sector_rank, atr_14_day, curre
         "volatility_scalar": round(volatility_scalar, 2)
     }
 
-def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, sector_rank=3, now=None):
+def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, sector_rank=3, now=None, asset_profile=None):
     """Calculate indicators from DAILY bars, using only completed exchange periods.
 
-    EMA/ATR/MA50 lengths are bars of the selected timeframe. The 200-DMA
-    entry guardrail always uses 200 daily sessions, even on weekly/monthly views.
+    EMA, chart ATR and volume lengths use the selected timeframe. MA50/MA200
+    and VSTOP use completed DAILY sessions, including on weekly/monthly views.
     """
     if df is None or df.empty:
         return pd.DataFrame()
-    df = normalize_prices(df)
-    df['MA200_DAILY'] = df['Close'].rolling(200).mean()
+    df = closed_daily_data(normalize_prices(df), 'Daily', now)
+    if df.empty:
+        return df
+    df = daily_risk_inputs(df)
+    from asset_profiles import mega_cap_mask
+    df = apply_daily_vstop(df, mega_cap_mask(df.index, asset_profile))
     df = resample_prices(df, timeframe, now)
     for label, ref in [('SPY', spy_df), ('Sector', sector_df)]:
         if ref is not None and not ref.empty:
@@ -207,12 +212,14 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
     df['SAR_ALIGNED'] = df['Close'] > df['SAR']
 
     # 5. Volume and Anchors
-    df['MA50'] = df['Close'].rolling(window=50).mean()
+    df['MA50_TIMEFRAME'] = df['Close'].rolling(window=50).mean()
+    df['MA50'] = df['MA50_DAILY']  # legacy consumers now receive an actual 50-DMA
+    above_ma50 = df['Close'] > df['MA50']
     df['AvgVolume50'] = df['Volume'].rolling(window=50).mean()
     df['Price_Up'] = df['Close'] > df['Close'].shift(1)
     df['Price_Down'] = df['Close'] < df['Close'].shift(1)
     
-    df['ACCUMULATION_DAY'] = df['Price_Up'] & (df['Volume'] > (df['AvgVolume50'] * 1.5))
+    df['ACCUMULATION_DAY'] = above_ma50 & df['Price_Up'] & (df['Volume'] > (df['AvgVolume50'] * 1.5))
     max_down_vol_10d = (df['Volume'] * df['Price_Down'].astype(int)).shift(1).rolling(window=10).max()
     df['POCKET_PIVOT'] = df['Price_Up'] & (df['Volume'] > max_down_vol_10d) & (df['Close'] > df['MA50'])
 
@@ -240,64 +247,10 @@ def calculate_technicals(df, timeframe="Weekly", spy_df=None, sector_df=None, se
         else: df['RS_SECTOR_SCORE'] = np.nan
     else: df['RS_SECTOR_SCORE'] = np.nan
 
-# 7. Volatility Stop (The Elastic Leash & 2-Day Rule)
-    vstop_arr, trend_arr = [], []
-    current_trend = 1
-    current_stop = None
-    
-    days_below = 0
-    days_above = 0
-    
-    for i in range(len(df)):
-        close_p, high_p, low_p = df['Close'].iloc[i], df['High'].iloc[i], df['Low'].iloc[i]
-        atr = df['ATR_CHOSEN'].iloc[i]
-        if pd.isna(atr):
-            vstop_arr.append(np.nan)
-            trend_arr.append(current_trend)
-            continue
-        adx = df['ADX'].iloc[i]
-        
-        # Safe fallback if MA50 hasn't generated enough bars yet
-        ma50 = df['MA50'].iloc[i] if not pd.isna(df['MA50'].iloc[i]) else close_p
-        
-        # --- THE ELASTIC MULTIPLIER ---
-        if close_p > ma50:
-            # Healthy Trend: Give it wide room to compound (3.0x)
-            # If the ADX trend is very strong, give it even more room (3.5x)
-            mult = 3.5 if adx >= 25 else 3.0
-        else:
-            # Broken Trend: Snap the leash tight immediately (2.0x)
-            mult = 2.0 
-            
-        if current_stop is None:
-            current_stop = close_p - atr * mult
-        if current_trend == 1:
-            current_stop = max(current_stop, high_p - (atr * mult))
-            if close_p < current_stop:
-                days_below += 1
-                if days_below >= 2: # 2-Day Confirmation Rule
-                    current_trend, current_stop = -1, low_p + (atr * mult)
-                    days_below = 0
-            else:
-                days_below = 0
-        else:
-            current_stop = min(current_stop, low_p + (atr * mult))
-            if close_p > current_stop:
-                days_above += 1
-                if days_above >= 2: # 2-Day Confirmation Rule
-                    current_trend, current_stop = 1, high_p - (atr * mult)
-                    days_above = 0
-            else:
-                days_above = 0
-                
-        vstop_arr.append(current_stop)
-        trend_arr.append(current_trend)
-        
-    df['VSTOP_LINE'] = vstop_arr
-    df['VSTOP_TREND'] = trend_arr
-    
-    # 8. Clean Signals (Fixing the VectorBT double-trigger bug)
-    df['VSTOP_BUY_SIGNAL'] = (df['VSTOP_TREND'] == 1) & (df['VSTOP_TREND'].shift(1) == -1)
+    # 7. Daily VSTOP is already computed before resampling. Weekly/monthly
+    # views sample its state; they never count weeks/months as daily sessions.
+    df['VSTOP_TURN_UP'] = (df['VSTOP_TREND'] == 1) & (df['VSTOP_TREND'].shift(1) == -1)
+    df['VSTOP_BUY_SIGNAL'] = df['VSTOP_TURN_UP'] & above_ma50 & (df.Close > df.MA200_DAILY)
     df['VSTOP_SELL_SIGNAL'] = (df['VSTOP_TREND'] == -1) & (df['VSTOP_TREND'].shift(1) == 1)
 
     # 9. Guardrail: Zero Falling Knives

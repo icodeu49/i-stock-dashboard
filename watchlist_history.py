@@ -36,23 +36,27 @@ def update_selection(source, candidates, added, asof, complete=True, path=None):
     return state
 
 
-def update_trends(statuses, asof, path=None):
+def update_trends(statuses, asof, path=None, policy=None):
     path = path or HISTORY_FILE
     state = read_json(path, {'stocks': {}, 'events': []})
     stamp = datetime.now(timezone.utc).isoformat()
     changes = []
     for ticker, trends in statuses.items():
         item = state.setdefault('stocks', {}).setdefault(ticker, {'first_observed_at': stamp, 'sources': {}})
-        previous = item.get('trends', {})
+        # A rule migration is a new baseline, not a market deterioration event.
+        same_policy = policy is None or item.get('trend_policy') == policy
+        previous = item.get('trends', {}) if same_policy else {}
         for timeframe in ['Weekly', 'Monthly']:
             old, new = previous.get(timeframe), trends.get(timeframe, 'unknown')
             if old in {'bullish', 'mixed', 'bearish'} and new in {'bullish', 'mixed', 'bearish'} and old != new:
                 event = {'type': 'trend_changed', 'ticker': ticker, 'timeframe': timeframe,
-                         'from': old, 'to': new, 'asof': asof, 'observed_at': stamp}
+                         'from': old, 'to': new, 'asof': asof, 'observed_at': stamp, 'policy': policy}
                 state.setdefault('events', []).append(event)
                 changes.append(event)
         item['trends'] = {**previous, **{key: value for key, value in trends.items() if value != 'unknown'}}
         item['trend_asof'] = asof
+        if policy is not None:
+            item['trend_policy'] = policy
     state['events'] = state.get('events', [])[-2000:]
     state['updated_at'] = stamp
     write_json(path, state)

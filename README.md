@@ -40,8 +40,10 @@ SMTP acceptance is logged; inbox arrival is not independently verified.
 - The NYSE calendar handles US market holidays, early closes and daylight saving.
   A session becomes usable 15 minutes after its close; incomplete weeks and
   months are excluded. Signals are dated by their actual last trading session.
-- The entry guardrail requires price above the selected timeframe's 50-bar MA
-  and the **200-day** MA. The latter remains daily on weekly/monthly views.
+- Every entry requires price strictly above the **50-day** and **200-day** MAs.
+  Both are computed before resampling, including on weekly/monthly views. `MA50`
+  is a daily alias; the old chart-period average remains as `MA50_TIMEFRAME`.
+  Older weekly/monthly entries also require the latest daily close above its 50-DMA.
 - Indicators need 30 daily, 20 weekly or 14 monthly bars. Additional indicator
   warm-up requirements still apply; missing values cannot qualify an entry.
 - Missing benchmarks are shown as unavailable, never as zero relative strength.
@@ -127,23 +129,23 @@ five topics.
 - Each email has plain-text and HTML alternatives. The generated HTML preview is
   retained for 14 days in its Actions run, without recipient headers or credentials.
 
-## Signal policy: weekly-led-v1
+## Signal policy: daily-risk-v2
 
-- Existing `BREAKOUT_TRIGGERED` calculations remain as a compatibility column for
-  the dashboard's historical tools. They are now labelled **momentum setups** when
+- `BREAKOUT_TRIGGERED` remains a compatibility entry column for
+  the dashboard's historical tools. These entries are labelled **momentum setups** when
   triggered by a pocket pivot, accumulation or bullish VSTOP turn.
 - **Confirmed price breakout** means the completed close first exceeds the highest
-  high of the preceding **20 bars of that timeframe**, with the existing MA50 and
+  high of the preceding **20 bars of that timeframe**, with the strict 50-day and
   200-day filters. The current bar is excluded from its own resistance level;
   consecutive closes above their thresholds do not create repeated breakout events.
   The 20-bar definition is a transparent starting rule, not an optimised parameter.
 - Weekly signals lead the alert ordering. Monthly signals show their actual closed
-  month and provide broader context. Daily signals receive individual alerts only
-  when the last completed weekly **and** monthly trend states are bullish.
-  Unknown/mixed/bearish higher-timeframe states route daily candidates into one
-  compact digest; they do not qualify as bullish alignment. A fresh monthly
+  month and provide broader context. Every qualifying price breakout receives an individual alert, even when extended
+  or without bullish weekly/monthly alignment. Other daily momentum setups receive
+  individual alerts when both higher-timeframe states are bullish; otherwise they
+  go into one compact digest. Unknown/mixed/bearish states do not qualify as bullish alignment. A fresh monthly
   breakout is not required—an established bullish monthly trend is sufficient.
-- Bullish trend state requires price above that timeframe's MA50, above the daily
+- Bullish trend state requires price above the daily MA50, above the daily
   MA200 and a bullish VSTOP state. Bearish means a bearish VSTOP or price below the
   daily MA200. Other fully warmed states are mixed; missing warm-up is unknown.
 - Alerts show the actual trigger, period date, resistance/stop distances, latest
@@ -160,6 +162,49 @@ five topics.
   partial scans cannot establish loss of sector leadership. Manual watchlist fields
   are preserved and stocks are never automatically deleted.
 
+## Daily risk engine and extension warnings
+
+`helpers.py` delegates daily calculations to `risk_policy.py`. `notifier.py` is the
+Telegram dispatcher; `news_agent.py` creates the email. The original five email
+topics remain intact, and extension warnings also appear in the separate watchlist section.
+
+- The displayed extension is exactly `(Close - MA50) / MA50 * 100`. Only values
+  **strictly greater than 10%** receive `⚠️ Extended — Wait for Pullback (X.XX% above 50-DMA)`.
+  The calculation keeps full precision; only display is rounded. Missing or invalid
+  averages show unavailable. Extension never filters an alert or changes its route.
+- VSTOP uses daily ATR(30). Its multiplier is 3.0 above the 50-DMA, or 3.5 when
+  daily ADX(30) is at least 25; at/below the 50-DMA it changes to 2.0 immediately.
+  A trailing long stop never moves down; a trailing short stop never moves up.
+  Chart ATR/ADX and resistance/volume windows still use the selected timeframe.
+- Ordinary flips require **two consecutive completed NYSE sessions** strictly
+  below the stop (long to short) or above it (short to long). A recovery/touch,
+  missing session or missing warm-up resets confirmation. Holidays do not count
+  as missing sessions. Intraday updates cannot advance the counter.
+- Daily confirmed exits are sent immediately by the next stock scan, independently
+  of weekly/monthly alignment. Weekly/monthly views sample the daily stop; their
+  period-transition signals remain dated to the completed week/month.
+- The bounded compounding shield uses a configurable-in-code **USD 200 billion**
+  equity market-cap threshold, excluding ETFs and unverified/non-USD metadata.
+  It requires price above MA50 and a **rising MA200**. Such long trends require
+  **three** consecutive closing breaches instead of two. A two-close dip followed
+  by recovery is suppressed; the third breach always permits an exit. Losing any
+  eligibility condition restores the ordinary two-close rule without erasing a
+  pending breach. The shield never delays a short-to-long reversal.
+- `asset_profiles.json` freezes Yahoo-reported size/type/currency once per stock
+  and completed session. Only that session receives the classification; it is
+  never applied retroactively to earlier prices or carried forward as stale data.
+  Missing metadata uses normal stops and is disclosed in scan coverage. No ticker
+  or manually chosen watchlist group is assumed to be a mega-cap. The dashboard
+  uses the same profile resolver. Historical simulations do not claim shield performance.
+- These are explicit screening parameters, not validated institutional standards
+  or guarantees. Stops produce notifications, not broker orders. Actual execution
+  can gap past a displayed level. A wider stop or an extra confirmation close can
+  delay an exit and increase the loss before an alert.
+- The policy version changes to `daily-risk-v2`. Trend history starts a new baseline
+  instead of reporting rule changes as market deterioration. Forward observations
+  retain their original policy; a visible unaligned breakout is not counted as an
+  aligned-daily observation. Existing delivery IDs remain deduplicated.
+
 ## Measuring daily versus weekly/monthly entries
 
 Run **Compare entry timeframes** in Actions, or `python strategy_comparison.py`.
@@ -169,7 +214,7 @@ window. Each window starts with fresh capital.
 
 Four entry rules—Daily, Weekly, Monthly and Aligned daily—share these assumptions:
 100,000 initial capital, fixed 10,000 allocations, at most ten positions, 0.10% fees
-and 0.05% slippage on each side. Close-derived entries and weekly VSTOP exits occur
+and 0.05% slippage on each side. Close-derived entries and daily VSTOP exits occur
 at the following session's open. All strategies also use an 8% fixed stop and
 63-session maximum holding period. A gap through a stop fills at the open; positions
 remaining at a reporting boundary are liquidated for comparable valuation. Fractional
@@ -180,7 +225,11 @@ an Actions artifact for 30 days; `strategy_report.json` retains the latest summa
 Reports include SPY, returns, drawdowns, trade counts, win rates and small-sample
 flags. A current-watchlist backtest has selection/survivorship bias and does not
 reconstruct historical additions. The historical holdout is not evidence from the
-future and no strategy is automatically declared a winner.
+future and no strategy is automatically declared a winner. The historical comparison
+uses the ordinary two-session risk stop: historical point-in-time market-cap records
+are unavailable, so the mega-cap shield is not backfilled from present-day sizes.
+The older portfolio simulator retains its selectable weekly/monthly execution schedules;
+its underlying stop now samples the same daily risk engine.
 
 Separately, `forward_observations.json` freezes signals as they are observed from
 this deployment onward. Its 20-session cohort study uses the first market open

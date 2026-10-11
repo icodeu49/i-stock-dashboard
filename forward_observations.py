@@ -18,7 +18,7 @@ def record_and_evaluate(snapshot, daily_frames, spy, path, now=None):
         strategies = [signal['timeframe']]
         if signal['direction'] != 'buy':
             continue
-        if signal['timeframe'] == 'Daily' and signal['route'] == 'alert':
+        if signal['timeframe'] == 'Daily' and signal.get('higher_timeframe_aligned', False):
             strategies.append('Aligned daily')
         for strategy in strategies:
             key = f'{snapshot["policy"]}:{strategy}:{signal["id"]}'

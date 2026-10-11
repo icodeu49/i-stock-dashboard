@@ -1,8 +1,9 @@
 """Shared, causal signal definitions for notifications and strategy comparisons."""
 import math
 import pandas as pd
+from risk_policy import extension_pct, extension_warning
 
-POLICY_VERSION = 'weekly-led-v1'
+POLICY_VERSION = 'daily-risk-v2'
 BREAKOUT_BARS = 20
 
 
@@ -13,7 +14,8 @@ def add_signal_columns(frame):
     above = frame.Close > frame.BREAKOUT_LEVEL
     primary = (frame.Close > frame.MA50) & (frame.Close > frame.MA200_DAILY)
     frame['PRICE_BREAKOUT_TRIGGERED'] = above & ~above.shift(1, fill_value=False) & primary
-    frame['SETUP_TRIGGERED'] = frame['BREAKOUT_TRIGGERED']  # legacy entry semantics stay compatible
+    frame['BREAKOUT_TRIGGERED'] = frame['BREAKOUT_TRIGGERED'] & primary
+    frame['SETUP_TRIGGERED'] = frame['BREAKOUT_TRIGGERED']
     frame['ENTRY_CANDIDATE'] = frame.SETUP_TRIGGERED | frame.PRICE_BREAKOUT_TRIGGERED
     known = frame[['Close', 'MA50', 'MA200_DAILY', 'VSTOP_TREND']].notna().all(axis=1)
     frame['TREND_STATE'] = 'unknown'
@@ -72,10 +74,13 @@ def percent_distance(price, reference):
 def context(row, daily_row):
     """Distances refer to the signal close, not an executable current quote."""
     close, stop = number(row.Close), number(row.get('VSTOP_LINE'))
-    distance_50 = percent_distance(daily_row.Close, daily_row.get('MA50')) if daily_row is not None else None
+    distance_50 = extension_pct(daily_row.Close, daily_row.get('MA50')) if daily_row is not None else None
     distance_200 = percent_distance(daily_row.Close, daily_row.get('MA200_DAILY')) if daily_row is not None else None
     return {'close': close, 'breakout_level': number(row.get('BREAKOUT_LEVEL')),
             'breakout_distance_pct': percent_distance(close, row.get('BREAKOUT_LEVEL')),
             'vstop': stop, 'stop_distance_pct': (close - stop) / close * 100 if close and stop and stop < close else None,
             'daily_ma50_distance_pct': distance_50, 'daily_ma200_distance_pct': distance_200,
-            'extended': bool((distance_50 is not None and distance_50 > 25) or (distance_200 is not None and distance_200 > 50))}
+            'extended': bool(extension_warning(distance_50)), 'extension_warning': extension_warning(distance_50),
+            'vstop_multiplier': number(row.get('VSTOP_MULTIPLIER')),
+            'vstop_confirm_sessions': number(row.get('VSTOP_CONFIRM_SESSIONS')),
+            'vstop_shield_eligible': bool(row.get('VSTOP_SHIELD_ELIGIBLE', False))}

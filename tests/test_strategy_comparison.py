@@ -51,7 +51,7 @@ class ComparisonTests(unittest.TestCase):
         raw.index = pd.bdate_range('2026-10-05', periods=6)
         def technical(data, timeframe, **kwargs):
             if timeframe == 'Daily':
-                return pd.DataFrame({'ENTRY_CANDIDATE': True, 'RS_SCORE': 1.}, index=raw.index)
+                return pd.DataFrame({'ENTRY_CANDIDATE': True, 'RS_SCORE': 1., 'VSTOP_SELL_SIGNAL': False}, index=raw.index)
             date = '2026-10-09' if timeframe == 'Weekly' else '2026-09-30'
             return pd.DataFrame({'ENTRY_CANDIDATE': [True], 'VSTOP_SELL_SIGNAL': [False], 'TREND_STATE': ['bullish']}, index=pd.to_datetime([date]))
         with patch.object(comparison, 'calculate_technicals', side_effect=technical):

@@ -1,4 +1,4 @@
-"""Completed-period signals, weekly-led alerts and a compact daily setup digest."""
+"""All price breakouts, daily risk exits and weekly-led setup context."""
 import hashlib
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -12,6 +12,8 @@ from storage import BASE_DIR, ALERT_STATE_FILE, load_watchlist, read_json, write
 from signal_policy import POLICY_VERSION, aligned, context, reasons, signal_label, trend_at, row_at, number
 from watchlist_history import update_trends
 from earnings_context import upcoming_earnings, describe_earnings
+from asset_profiles import asset_profile, is_mega_cap
+from risk_policy import extension_warning
 
 SNAPSHOT_FILE = BASE_DIR / 'scan_snapshot.json'
 
@@ -34,16 +36,21 @@ def format_signal(signal, regime):
     text += f"Prior 20-bar resistance {price(detail['breakout_level'])} | distance {percentage(detail['breakout_distance_pct'])}\n"
     text += f"VSTOP {price(detail['vstop'])} | distance below signal close {percentage(detail['stop_distance_pct'])}\n"
     text += f"Latest daily close vs 50-day MA: {percentage(detail['daily_ma50_distance_pct'])}"
-    if detail['extended']:
-        text += ' | ⚠️ Extended'
+    warning = extension_warning(detail['daily_ma50_distance_pct'])
+    if warning:
+        text += '\n' + warning
+    if detail.get('vstop_multiplier') is not None:
+        text += f"\nDaily VSTOP: {detail['vstop_multiplier']:.1f}× ATR(30); {int(detail['vstop_confirm_sessions'])} closing breaches required"
+        if detail.get('vstop_shield_eligible'):
+            text += ' | mega-cap shield eligible'
     text += f"\nRS vs SPY: {percentage(signal['rs_spy'])} | sector: {percentage(signal['rs_sector'])}"
     text += f"\nWatchlist sector rank: {signal['sector_rank']}"
     text += '\n' + describe_earnings(signal.get('earnings', {}))
     return text
 
 
-def route_signal(timeframe, direction, weekly, monthly, date):
-    if timeframe != 'Daily' or direction == 'sell':
+def route_signal(timeframe, direction, weekly, monthly, date, price_breakout=False):
+    if price_breakout or timeframe != 'Daily' or direction == 'sell':
         return 'alert'
     return 'alert' if aligned(weekly, monthly, date) else 'digest'
 
@@ -55,6 +62,8 @@ def run_automated_scanner():
     spy = download_prices('SPY')
     regime = check_market_regime(spy)
     sectors, failures, results, limited = {}, [], {}, []
+    profile_path = SNAPSHOT_FILE.with_name('asset_profiles.json')
+    profiles = read_json(profile_path, {})
     for etf in sorted({item.get('sector_etf') for item in watchlist.values()} - {None, ''}):
         try:
             sectors[etf] = download_prices(etf)
@@ -63,8 +72,9 @@ def run_automated_scanner():
     for ticker, metadata in watchlist.items():
         try:
             raw = download_prices(ticker)
+            profile = asset_profile(ticker, session, profiles)
             for timeframe in ['Daily', 'Weekly', 'Monthly']:
-                frame = calculate_technicals(raw, timeframe, spy_df=spy, sector_df=sectors.get(metadata.get('sector_etf')))
+                frame = calculate_technicals(raw, timeframe, spy_df=spy, sector_df=sectors.get(metadata.get('sector_etf')), asset_profile=profile)
                 if frame.empty:
                     limited.append(f'{ticker}/{timeframe}')
                     continue
@@ -72,6 +82,7 @@ def run_automated_scanner():
         except Exception as exc:
             failures.append(f'{ticker}: {exc}')
             print(f'Scan error: {ticker}: {exc}')
+    write_json(profile_path, profiles)
     groups = defaultdict(list)
     for (ticker, timeframe), frame in results.items():
         sector = watchlist[ticker].get('sector_etf')
@@ -96,7 +107,10 @@ def run_automated_scanner():
                 continue
             row = frame.iloc[-1]
             buy = bool(row.get('ENTRY_CANDIDATE', row.BREAKOUT_TRIGGERED))
-            sell = timeframe in ['Weekly', 'Monthly'] and bool(row.VSTOP_SELL_SIGNAL)
+            daily_row = row_at(results.get((ticker, 'Daily')))
+            # An old weekly/monthly setup cannot bypass today's 50-DMA gate.
+            buy = buy and daily_row is not None and bool(daily_row.Close > daily_row.MA50)
+            sell = bool(row.VSTOP_SELL_SIGNAL)  # daily risk exits must not wait for Friday/month-end
             if not buy and not sell:
                 continue
             date = frame.index[-1].date().isoformat()
@@ -108,21 +122,25 @@ def run_automated_scanner():
                 'reasons': ['bearish VSTOP turn'] if sell else reasons(row),
                 'fresh_period': date == session, 'weekly_trend': statuses[ticker]['Weekly'],
                 'monthly_trend': statuses[ticker]['Monthly'], 'weekly_asof': asof(weekly), 'monthly_asof': asof(monthly),
-                'route': route_signal(timeframe, kind, weekly, monthly, pd.Timestamp(date)),
-                'context': context(row, row_at(results.get((ticker, 'Daily')))),
+                'route': route_signal(timeframe, kind, weekly, monthly, pd.Timestamp(date), bool(row.get('PRICE_BREAKOUT_TRIGGERED', False))),
+                'context': context(row, daily_row),
+                'higher_timeframe_aligned': aligned(weekly, monthly, pd.Timestamp(date)),
                 'rs_spy': number(row.RS_SCORE), 'rs_sector': number(row.RS_SECTOR_SCORE),
                 'sector_rank': rankings.get((ticker, timeframe), 'N/A')}
             signal['earnings'] = upcoming_earnings(ticker, cache=earnings_cache)
             signals.append(signal)
     write_json(earnings_path, earnings_cache)
-    changes = update_trends(statuses, session, path=SNAPSHOT_FILE.with_name('watchlist_history.json'))
+    changes = update_trends(statuses, session, path=SNAPSHOT_FILE.with_name('watchlist_history.json'), policy=POLICY_VERSION)
     scanned = len({ticker for ticker, _ in results})
     if not scanned:
         failures.append('No stocks have sufficient valid history for analysis')
-    snapshot = {'schema_version': 1, 'policy': POLICY_VERSION, 'generated_at': datetime.now(timezone.utc).isoformat(),
+    profile_observations = [profiles.get(t, {}).get('observations', {}).get(session, {}) for t in watchlist]
+    profile_coverage = {'available': sum(p.get('status') == 'available' for p in profile_observations),
+                        'mega_caps': sum(is_mega_cap(p) for p in profile_observations), 'total': len(watchlist)}
+    snapshot = {'schema_version': 2, 'policy': POLICY_VERSION, 'generated_at': datetime.now(timezone.utc).isoformat(),
         'session': session, 'coverage': 'partial' if failures else 'complete', 'scanned': scanned,
         'watchlist_count': len(watchlist), 'regime': regime, 'failures': failures, 'limited': limited,
-        'signals': signals, 'trends': statuses, 'changes': changes}
+        'signals': signals, 'trends': statuses, 'changes': changes, 'asset_profiles': profile_coverage}
     write_json(SNAPSHOT_FILE, snapshot)
     try:
         from forward_observations import record_and_evaluate
@@ -145,11 +163,14 @@ def run_automated_scanner():
         text = f'📋 Daily setups — US close {session}\nWeekly/monthly bullish alignment is not confirmed.\n'
         for item in batch:
             text += f"{item['ticker']}: {item['label']} | W {item['weekly_trend']}, M {item['monthly_trend']}\n"
+            warning = extension_warning(item['context']['daily_ma50_distance_pct'])
+            if warning:
+                text += warning + '\n'
         records.append((key, text.rstrip()))
         acknowledgements[key] = keys
     history = read_json(SNAPSHOT_FILE.with_name('watchlist_history.json'), {'events': []})
     for item in history.get('events', []):
-        if item.get('type') == 'trend_changed' and item['to'] == 'bearish' and item['asof'] >= (pd.Timestamp(session) - pd.Timedelta(days=7)).date().isoformat():
+        if item.get('type') == 'trend_changed' and item.get('policy') == POLICY_VERSION and item['to'] == 'bearish' and item['asof'] >= (pd.Timestamp(session) - pd.Timedelta(days=7)).date().isoformat():
             key = f"trend-change:{item['asof']}:{item['ticker']}:{item['timeframe']}:{item['to']}"
             records.append((key, f"⚠️ Watchlist deterioration — {item['ticker']} | {item['timeframe']}\n"
                                  f"{item['from']} → {item['to']} | US close {item['asof']}. Stock remains on your watchlist."))
@@ -157,6 +178,8 @@ def run_automated_scanner():
     status = f"{'⚠️ Partial' if failures else '✅ Completed'} stock scan — US close {session}\n"
     status += f'Analysed {scanned}/{len(watchlist)} stocks. Market regime: {regime}.\n'
     status += f"{sum(s['route'] == 'alert' for s in signals)} individual-alert candidates; {sum(s['route'] == 'digest' for s in signals)} daily digest setups. Previously delivered signals are suppressed."
+    status += f'\nRisk policy: {POLICY_VERSION}; VSTOP confirmation uses daily closes on every view.'
+    status += f"\nSize metadata: {profile_coverage['available']}/{len(watchlist)} available; {profile_coverage['mega_caps']} verified mega-caps. Missing metadata uses normal two-close stops."
     if limited:
         status += f'\nInsufficient history in {len(limited)} stock/timeframe combinations (see workflow log).'
         print('Insufficient history:', ', '.join(limited))

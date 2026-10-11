@@ -6,6 +6,7 @@ from urllib.parse import urlsplit
 import yfinance as yf
 
 from market_data import last_completed_session
+from risk_policy import extension_warning
 from news_content import select_stories, check_links, render_topics, parse_date
 
 HEADING = '<hr><h2>Your Watchlist &amp; Confirmed Signals</h2>'
@@ -108,6 +109,9 @@ def render_scan_context(watchlist, snapshot, history, state, now):
         text = f"<strong>{html.escape(item['ticker'])} — {label}</strong>: {html.escape(item['timeframe'])} close {item['date']}, {price}. "
         text += 'Trigger: ' + html.escape(', '.join(item.get('reasons', []))) + '. '
         text += f"Weekly {html.escape(item.get('weekly_trend', 'unknown'))}; monthly {html.escape(item.get('monthly_trend', 'unknown'))}."
+        warning = extension_warning(item.get('context', {}).get('daily_ma50_distance_pct'))
+        if warning:
+            text += ' ' + html.escape(warning) + '.'
         if not item.get('fresh_period'):
             text += ' Earlier completed-period setup, newly included in this briefing.'
         earnings = item.get('earnings', {})

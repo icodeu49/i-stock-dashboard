@@ -105,7 +105,11 @@ def resample_prices(df, timeframe, now=None):
     rule = "W-FRI" if timeframe == "Weekly" else "ME"
     aggregations = {k: v for k, v in {
         "Open": "first", "High": "max", "Low": "min", "Close": "last",
-        "Volume": "sum", "MA200_DAILY": "last",
+        "Volume": "sum", "MA200_DAILY": "last", "MA50_DAILY": "last",
+        "MA200_RISING": "last", "VSTOP_ATR": "last", "VSTOP_ADX": "last",
+        "VSTOP_LINE": "last", "VSTOP_TREND": "last", "VSTOP_MULTIPLIER": "last",
+        "VSTOP_BREACH_SESSIONS": "last", "VSTOP_CONFIRM_SESSIONS": "last",
+        "VSTOP_SHIELD_ELIGIBLE": "last", "VSTOP_SHIELD_SUPPRESSED": "last",
     }.items() if k in df.columns}
     result = df.resample(rule).agg(aggregations).dropna(subset=["Close"])
     # Date the signal on the last actual trading session, including holiday weeks.
