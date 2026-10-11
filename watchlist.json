@@ -131,7 +131,8 @@
     "NET": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "NVDA": {
         "group": "Small/Mid Growth",
@@ -162,7 +163,8 @@
     "PLTR": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "POWI": {
         "group": "Small/Mid Growth",
@@ -227,7 +229,8 @@
     "AI": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "ALAB": {
         "group": "Small/Mid Growth",
@@ -312,7 +315,8 @@
     "U": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "SMCI": {
         "group": "Small/Mid Growth",
@@ -322,17 +326,20 @@
     "TEAM": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "MELI": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan"
     },
     "SHOP": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "NCLH": {
         "group": "Small/Mid Growth",
@@ -347,7 +354,8 @@
     "DKNG": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan"
     },
     "SOFI": {
         "group": "Small/Mid Growth",
@@ -357,17 +365,20 @@
     "DDOG": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "SNOW": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan"
     },
     "SPOT": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLC",
-        "gics_sector": "Communication Services"
+        "gics_sector": "Communication Services",
+        "source": "momentum_scan"
     },
     "RCL": {
         "group": "Small/Mid Growth",
@@ -382,28 +393,34 @@
     "BABA": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan"
     },
     "MARA": {
         "group": "Small/Mid Growth"
     },
     "DUOL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "PANW": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "CRWD": {
         "group": "Small/Mid Growth"
     },
     "ZS": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "OKTA": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "AFRM": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "COIN": {
         "group": "Small/Mid Growth"
@@ -415,28 +432,34 @@
         "source": "sector_scan"
     },
     "RBLX": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "HOOD": {
         "group": "Small/Mid Growth"
     },
     "NFLX": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "CELH": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "RIOT": {
         "group": "Small/Mid Growth"
     },
     "WING": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "MDB": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "UPST": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan"
     },
     "AAL": {
         "group": "Small/Mid Growth"
