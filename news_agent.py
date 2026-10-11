@@ -223,13 +223,29 @@ def run_briefing():
     state_path = BASE_DIR / 'news_state.json'
     state = read_json(state_path, {})
     body, links, stories = build_briefing(now=now, state=state)
+    signal_ids = []
+    try:
+        from storage import load_watchlist
+        from watchlist_briefing import build_supplement
+        supplement, extra_links, extra_stories, signal_ids = build_supplement(
+            load_watchlist(), read_json(BASE_DIR / 'scan_snapshot.json', {}),
+            read_json(BASE_DIR / 'watchlist_history.json', {}), state, stories, now)
+        body += supplement
+        links.update(extra_links)
+        stories += extra_stories
+    except Exception as exc:
+        # Optional context cannot stop delivery of the original topic briefing.
+        body += '<hr><h2>Your Watchlist &amp; Confirmed Signals</h2><p>Watchlist supplement unavailable for this briefing.</p>'
+        print(f'::warning::Watchlist supplement unavailable ({type(exc).__name__}).')
     # Preview contains public source material, never SMTP headers or secrets.
     preview = BASE_DIR / 'reports' / 'latest_briefing.html'
     preview.parent.mkdir(exist_ok=True)
     preview.write_text(restore_links(body, links, allow_empty=not links), encoding='utf-8')
     send_email(body, links)
     # Only confirmed SMTP acceptance advances the duplicate/freshness state.
-    write_json(state_path, remember_sent(state, stories, now))
+    updated = remember_sent(state, stories, now)
+    updated['signal_ids'] = list(dict.fromkeys(state.get('signal_ids', []) + signal_ids))[-2000:]
+    write_json(state_path, updated)
 
 
 if __name__ == '__main__':

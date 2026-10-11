@@ -126,6 +126,7 @@ class SummaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, patch('storage.BASE_DIR', Path(directory)), \
              patch.dict('os.environ', {'USER_EMAIL': 'test@example.invalid', 'APP_PASSWORD': 'dummy'}), \
              patch.object(news_agent, 'build_briefing', return_value=('<p>No fresh stories</p>', {}, [])), \
+             patch('watchlist_briefing.build_supplement', return_value=('', {}, [], [])), \
              patch.object(news_agent, 'send_email', side_effect=RuntimeError('SMTP failed')):
             with self.assertRaises(RuntimeError):
                 news_agent.run_briefing()

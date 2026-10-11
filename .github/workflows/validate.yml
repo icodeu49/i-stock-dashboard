@@ -44,7 +44,7 @@ jobs:
     uses: ./.github/workflows/auto_skimmer.yml
     secrets: inherit
   email:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: always() && needs.tests.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: [tests, stocks]
     permissions:
       contents: write
