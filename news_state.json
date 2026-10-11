@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-10-11T09:38:44.159898+00:00",
+    "last_sent": "2026-10-11T13:13:45.014868+00:00",
     "seen": {
         "420adfbac1dbfa52100f0b84": {
             "url_key": "420adfbac1dbfa52100f0b84",
@@ -105,6 +105,41 @@
             "url_key": "8bf700a5f7033b0b0945d25d",
             "title_key": "prediction this is how much micron stock will be worth by the end of 2027",
             "sent_at": "2026-10-11T09:38:44.159898+00:00"
+        },
+        "33728750a4735429b4f9d0d4": {
+            "url_key": "33728750a4735429b4f9d0d4",
+            "title_key": "from artificial to musk hollywood puts tech giants under microscope",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "9db88bd0c506864e31d9ea5b": {
+            "url_key": "9db88bd0c506864e31d9ea5b",
+            "title_key": "physician and the machine an analysis of the ethical educational use of artificial intelligence by medical students",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "fb51e601a771068bf6d2d917": {
+            "url_key": "fb51e601a771068bf6d2d917",
+            "title_key": "bank earnings to shed the first light on how higher yields are affecting the economy",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "388205ef40e9a8a3442abb25": {
+            "url_key": "388205ef40e9a8a3442abb25",
+            "title_key": "the stock market the economy",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "897c230aec2f25cafc843ab4": {
+            "url_key": "897c230aec2f25cafc843ab4",
+            "title_key": "how much energy does ai use and why does it need so many data centers",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "d3552c80d235a4dd37c0b57e": {
+            "url_key": "d3552c80d235a4dd37c0b57e",
+            "title_key": "marvell s outlook says revenue and earnings could 10x in 5 years here s why the stock s a bargain even if it falls short",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
+        },
+        "2233a17ce174473abe2cf5c4": {
+            "url_key": "2233a17ce174473abe2cf5c4",
+            "title_key": "spacex vs micron which is the better artificial intelligence ai stock to own for the next 5 years",
+            "sent_at": "2026-10-11T13:13:45.014868+00:00"
         }
     },
     "signal_ids": [
@@ -127,6 +162,16 @@
         "signal:IOT:Weekly:2026-10-09:buy",
         "signal:MVST:Weekly:2026-10-09:sell",
         "signal:NVTS:Weekly:2026-10-09:sell",
-        "signal:RGTI:Weekly:2026-10-09:sell"
+        "signal:RGTI:Weekly:2026-10-09:sell",
+        "signal:SNPS:Weekly:2026-10-09:buy",
+        "signal:FLYW:Weekly:2026-10-09:buy",
+        "signal:UNFI:Weekly:2026-10-09:sell",
+        "signal:U:Weekly:2026-10-09:buy",
+        "signal:MELI:Weekly:2026-10-09:buy",
+        "signal:SNOW:Weekly:2026-10-09:buy",
+        "signal:SPOT:Weekly:2026-10-09:buy",
+        "signal:AFRM:Weekly:2026-10-09:buy",
+        "signal:XOM:Weekly:2026-10-09:buy",
+        "signal:WMB:Weekly:2026-10-09:buy"
     ]
 }
