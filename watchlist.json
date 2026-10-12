@@ -263,7 +263,9 @@
     "PATH": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+1.22%)"
     },
     "TER": {
         "group": "Small/Mid Growth",
@@ -308,12 +310,16 @@
     "AAPL": {
         "group": "Mega-Cap Tech",
         "sector_etf": "XLK",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+2.43%)"
     },
     "GOOGL": {
         "group": "Mega-Cap Tech",
         "sector_etf": "XLC",
-        "gics_sector": "Communication Services"
+        "gics_sector": "Communication Services",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+1.80%)"
     },
     "CARD": {
         "group": "Small/Mid Growth",
@@ -356,7 +362,9 @@
     "NCLH": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+3.23%)"
     },
     "TTD": {
         "group": "Small/Mid Growth",
@@ -399,12 +407,16 @@
     "RCL": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+2.05%)"
     },
     "CCL": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLY",
-        "gics_sector": "Consumer Discretionary"
+        "gics_sector": "Consumer Discretionary",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+3.60%)"
     },
     "BABA": {
         "group": "Small/Mid Growth",
