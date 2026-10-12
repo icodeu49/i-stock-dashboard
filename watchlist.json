@@ -640,5 +640,19 @@
         "gics_sector": "Consumer Discretionary",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
+    },
+    "EOG": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
+    },
+    "LOW": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     }
 }
