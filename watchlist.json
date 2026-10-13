@@ -324,7 +324,9 @@
     "CARD": {
         "group": "Small/Mid Growth",
         "sector_etf": "IGV",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+3.26%)"
     },
     "U": {
         "group": "Small/Mid Growth",

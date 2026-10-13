@@ -608,6 +608,14 @@
                 "market_cap": 428654231552.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-10-12": {
+                "observed_at": "2026-10-13T19:53:54.842572+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 433428889600.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -1195,6 +1203,14 @@
         "observations": {
             "2026-10-09": {
                 "observed_at": "2026-10-11T09:34:02.753085+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
+            },
+            "2026-10-12": {
+                "observed_at": "2026-10-13T19:54:32.552373+00:00",
                 "source": "Yahoo Finance",
                 "status": "unavailable",
                 "market_cap": null,
@@ -2258,6 +2274,30 @@
                 "source": "Yahoo Finance",
                 "status": "available",
                 "market_cap": 52505665536.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "EOG": {
+        "observations": {
+            "2026-10-12": {
+                "observed_at": "2026-10-13T19:55:38.247772+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 80226738176.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "LOW": {
+        "observations": {
+            "2026-10-12": {
+                "observed_at": "2026-10-13T19:55:40.639866+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 105775513600.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
             }
