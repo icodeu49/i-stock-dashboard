@@ -848,8 +848,152 @@
             "recorded_at": "2026-10-12T21:48:34.113926+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:META:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "META",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:META:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "META",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:MSFT:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "MSFT",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:MSFT:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "MSFT",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:AI:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "AI",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:AI:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "AI",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:PARR:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "PARR",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:PARR:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "PARR",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:AAPL:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "AAPL",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:AAPL:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "AAPL",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ZS:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "ZS",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:ZS:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "ZS",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:MPC:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "MPC",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:MPC:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "MPC",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:VLO:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "VLO",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:VLO:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "VLO",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:PSX:Daily:2026-10-13:buy": {
+            "strategy": "Daily",
+            "ticker": "PSX",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:PSX:Daily:2026-10-13:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "PSX",
+            "signal_date": "2026-10-13",
+            "recorded_at": "2026-10-14T18:05:36.330259+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-10-13T19:56:14.459286+00:00",
+    "updated_at": "2026-10-14T18:05:36.330259+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
