@@ -218,7 +218,7 @@
     "MO": {
         "status": "provider_reported",
         "date": "2026-10-29",
-        "checked_at": "2026-10-11T07:41:04.840006+00:00",
+        "checked_at": "2026-10-14T23:59:44.864762+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -477,6 +477,55 @@
         "status": "provider_reported",
         "date": "2026-11-04",
         "checked_at": "2026-10-14T18:05:35.689802+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "CRWV": {
+        "status": "provider_reported",
+        "date": "2026-11-11",
+        "checked_at": "2026-10-14T23:59:42.420572+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "MU": {
+        "status": "provider_reported",
+        "date": "2026-12-23",
+        "checked_at": "2026-10-14T23:59:42.913264+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "SMCI": {
+        "status": "provider_reported",
+        "date": "2026-11-03",
+        "checked_at": "2026-10-14T23:59:43.388847+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "DUOL": {
+        "status": "provider_reported",
+        "date": "2026-11-03",
+        "checked_at": "2026-10-14T23:59:43.812843+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "NOW": {
+        "status": "provider_reported",
+        "date": "2026-10-28",
+        "checked_at": "2026-10-14T23:59:44.298265+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "PG": {
+        "status": "provider_reported",
+        "date": "2026-10-22",
+        "checked_at": "2026-10-14T23:59:45.338894+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "COST": {
+        "status": "provider_reported",
+        "date": "2026-12-10",
+        "checked_at": "2026-10-14T23:59:45.868171+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     }
