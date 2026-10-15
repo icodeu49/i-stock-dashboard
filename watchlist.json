@@ -463,7 +463,9 @@
         "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+14.03%)"
     },
     "COIN": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+6.87%)"
     },
     "TSLA": {
         "group": "Small/Mid Growth",
@@ -512,7 +514,9 @@
         "group": "Small/Mid Growth"
     },
     "APP": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (-0.30%)"
     },
     "MPC": {
         "group": "Sector Leaders",
