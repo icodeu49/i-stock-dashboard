@@ -438,9 +438,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-14",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-2.25%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-14"
                 }
             },
             "trends": {
@@ -533,9 +534,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-13",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (+4.02%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-14"
                 }
             },
             "trends": {
@@ -647,9 +649,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-13",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (+3.59%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-14"
                 }
             },
             "trends": {
@@ -723,9 +726,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-13",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (+3.74%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-14"
                 }
             },
             "trends": {
@@ -1538,9 +1542,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-10-13",
+                    "last_selected_asof": "2026-10-14",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+5.11%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+4.57%)",
                     "sector_etf": null
                 }
             },
@@ -1864,7 +1868,35 @@
             "source": "momentum_scan",
             "asof": "2026-10-13",
             "observed_at": "2026-10-14T18:02:03.554785+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "AMZN",
+            "source": "momentum_scan",
+            "asof": "2026-10-14",
+            "observed_at": "2026-10-15T17:47:27.836804+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "AFRM",
+            "source": "momentum_scan",
+            "asof": "2026-10-14",
+            "observed_at": "2026-10-15T17:47:27.836804+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "OKTA",
+            "source": "momentum_scan",
+            "asof": "2026-10-14",
+            "observed_at": "2026-10-15T17:47:27.836804+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "U",
+            "source": "momentum_scan",
+            "asof": "2026-10-14",
+            "observed_at": "2026-10-15T17:47:27.836804+00:00"
         }
     ],
-    "updated_at": "2026-10-14T23:59:46.351521+00:00"
+    "updated_at": "2026-10-15T17:49:53.314927+00:00"
 }
