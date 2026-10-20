@@ -511,7 +511,9 @@
         "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+5.66%)"
     },
     "AAL": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.12%)"
     },
     "APP": {
         "group": "Small/Mid Growth",

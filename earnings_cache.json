@@ -197,7 +197,7 @@
     "OSCR": {
         "status": "provider_reported",
         "date": "2026-11-05",
-        "checked_at": "2026-10-13T19:56:13.678090+00:00",
+        "checked_at": "2026-10-20T23:58:07.506466+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -218,7 +218,7 @@
     "MO": {
         "status": "provider_reported",
         "date": "2026-10-29",
-        "checked_at": "2026-10-19T19:24:27.971834+00:00",
+        "checked_at": "2026-10-20T23:58:10.438254+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -673,6 +673,20 @@
         "status": "provider_reported",
         "date": "2026-10-29",
         "checked_at": "2026-10-20T18:04:22.497262+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "SHW": {
+        "status": "provider_reported",
+        "date": "2026-10-27",
+        "checked_at": "2026-10-20T23:58:06.787207+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": true
+    },
+    "CCL": {
+        "status": "provider_reported",
+        "date": "2026-12-18",
+        "checked_at": "2026-10-20T23:58:07.966599+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     }
