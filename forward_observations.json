@@ -1424,8 +1424,24 @@
             "recorded_at": "2026-10-19T19:24:28.918009+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:AMZN:Daily:2026-10-19:buy": {
+            "strategy": "Daily",
+            "ticker": "AMZN",
+            "signal_date": "2026-10-19",
+            "recorded_at": "2026-10-20T18:04:22.993383+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:LIN:Daily:2026-10-19:buy": {
+            "strategy": "Daily",
+            "ticker": "LIN",
+            "signal_date": "2026-10-19",
+            "recorded_at": "2026-10-20T18:04:22.993383+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-10-19T19:24:28.918009+00:00",
+    "updated_at": "2026-10-20T18:04:22.993383+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
