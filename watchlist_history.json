@@ -198,9 +198,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-19",
                     "last_selected_asof": "2026-10-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.08%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-20"
                 }
             },
             "trends": {
@@ -1554,9 +1555,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
                     "last_selected_asof": "2026-10-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-2.42%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-20"
                 }
             },
             "trends": {
@@ -1572,9 +1574,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-10-19",
+                    "last_selected_asof": "2026-10-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-2.42%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.05%)",
                     "sector_etf": null
                 }
             },
@@ -1754,9 +1756,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-20",
                     "last_selected_asof": "2026-10-20",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.12%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-10-20"
                 }
             },
             "trends": {
@@ -2913,7 +2916,28 @@
             "source": "momentum_scan",
             "asof": "2026-10-19",
             "observed_at": "2026-10-20T18:00:16.176572+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "NVDA",
+            "source": "momentum_scan",
+            "asof": "2026-10-20",
+            "observed_at": "2026-10-21T18:05:10.397330+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "GOOGL",
+            "source": "momentum_scan",
+            "asof": "2026-10-20",
+            "observed_at": "2026-10-21T18:05:10.397330+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "AAL",
+            "source": "momentum_scan",
+            "asof": "2026-10-20",
+            "observed_at": "2026-10-21T18:05:10.397330+00:00"
         }
     ],
-    "updated_at": "2026-10-20T23:58:10.853314+00:00"
+    "updated_at": "2026-10-21T18:08:13.488918+00:00"
 }

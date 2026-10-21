@@ -1,19 +1,13 @@
 {
     "schema_version": 2,
     "policy": "daily-risk-v2",
-    "generated_at": "2026-10-20T23:58:10.857846+00:00",
+    "generated_at": "2026-10-21T18:08:13.493782+00:00",
     "session": "2026-10-20",
-    "coverage": "partial",
-    "scanned": 124,
+    "coverage": "complete",
+    "scanned": 129,
     "watchlist_count": 129,
     "regime": "GREEN",
-    "failures": [
-        "IOT: IOT: latest valid close 2026-10-19; expected 2026-10-20",
-        "T: T: latest valid close 2026-10-19; expected 2026-10-20",
-        "ENR: ENR: latest valid close 2026-10-19; expected 2026-10-20",
-        "CARD: CARD: latest valid close 2026-10-19; expected 2026-10-20",
-        "EOG: EOG: latest valid close 2026-10-19; expected 2026-10-20"
-    ],
+    "failures": [],
     "limited": [
         "WOLF/Monthly"
     ],
@@ -55,7 +49,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:03:45.549931+00:00",
+                "checked_at": "2026-10-21T18:07:38.902688+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -83,7 +77,7 @@
                 "vstop": 350.05632113350464,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -7.562666971376062,
-                "daily_ma200_distance_pct": -8.878859318294797,
+                "daily_ma200_distance_pct": -8.878858939389145,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -97,7 +91,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-09",
-                "checked_at": "2026-10-20T18:03:46.128917+00:00",
+                "checked_at": "2026-10-21T18:07:39.615737+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -139,7 +133,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-22",
-                "checked_at": "2026-10-20T18:03:46.592703+00:00",
+                "checked_at": "2026-10-21T18:07:40.074780+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -177,11 +171,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -5.975689816786433,
             "rs_sector": -13.915892622685123,
-            "sector_rank": "11/16",
+            "sector_rank": "13/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-26",
-                "checked_at": "2026-10-20T18:03:47.175879+00:00",
+                "checked_at": "2026-10-21T18:07:40.497787+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -219,11 +213,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -18.540530709548065,
             "rs_sector": -25.41965277241368,
-            "sector_rank": "14/16",
+            "sector_rank": "16/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-11",
-                "checked_at": "2026-10-20T18:03:47.808731+00:00",
+                "checked_at": "2026-10-21T18:07:41.137528+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -265,9 +259,9 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-28",
-                "checked_at": "2026-10-20T18:03:48.336484+00:00",
+                "checked_at": "2026-10-21T18:07:41.583041+00:00",
                 "source": "Yahoo Finance",
-                "within_7_days": false
+                "within_7_days": true
             }
         },
         {
@@ -293,7 +287,7 @@
                 "vstop": 949.1230265299479,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -7.275680601266855,
-                "daily_ma200_distance_pct": -4.842695487750525,
+                "daily_ma200_distance_pct": -4.842695363601512,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -307,9 +301,9 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-28",
-                "checked_at": "2026-10-20T18:03:48.816039+00:00",
+                "checked_at": "2026-10-21T18:07:42.049959+00:00",
                 "source": "Yahoo Finance",
-                "within_7_days": false
+                "within_7_days": true
             }
         },
         {
@@ -349,7 +343,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-29",
-                "checked_at": "2026-10-20T18:03:49.314798+00:00",
+                "checked_at": "2026-10-21T18:07:42.578125+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -391,7 +385,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-04",
-                "checked_at": "2026-10-20T18:03:49.723053+00:00",
+                "checked_at": "2026-10-21T18:07:43.172500+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -433,7 +427,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-29",
-                "checked_at": "2026-10-20T18:03:50.156181+00:00",
+                "checked_at": "2026-10-21T18:07:44.300181+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -461,7 +455,7 @@
                 "vstop": 255.66124747309462,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -0.6539068425626485,
-                "daily_ma200_distance_pct": 35.59938328073782,
+                "daily_ma200_distance_pct": 35.59938330991241,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -475,7 +469,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-01",
-                "checked_at": "2026-10-20T18:03:50.573331+00:00",
+                "checked_at": "2026-10-21T18:07:44.735116+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -517,7 +511,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-23",
-                "checked_at": "2026-10-20T18:03:51.069878+00:00",
+                "checked_at": "2026-10-21T18:07:45.173543+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -555,11 +549,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -9.547258242921453,
             "rs_sector": -17.185847800252862,
-            "sector_rank": "13/16",
+            "sector_rank": "15/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-10",
-                "checked_at": "2026-10-20T18:03:51.552733+00:00",
+                "checked_at": "2026-10-21T18:07:45.717177+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -597,11 +591,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 3.665120589185711,
             "rs_sector": -5.0892332558162945,
-            "sector_rank": "8/16",
+            "sector_rank": "9/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:03:52.082951+00:00",
+                "checked_at": "2026-10-21T18:07:46.251495+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -629,7 +623,7 @@
                 "vstop": 224.08889120823807,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -2.847227131157739,
-                "daily_ma200_distance_pct": 6.66053272544509,
+                "daily_ma200_distance_pct": 6.6605326853492075,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -643,7 +637,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-17",
-                "checked_at": "2026-10-20T18:03:52.537958+00:00",
+                "checked_at": "2026-10-21T18:07:46.767312+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -671,7 +665,7 @@
                 "vstop": 429.9736610514436,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -2.0406737368011676,
-                "daily_ma200_distance_pct": 7.740409261642145,
+                "daily_ma200_distance_pct": 7.740409178305363,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -685,7 +679,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2027-01-14",
-                "checked_at": "2026-10-20T18:03:52.996895+00:00",
+                "checked_at": "2026-10-21T18:07:47.212410+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -712,10 +706,10 @@
                 "breakout_distance_pct": -0.2855964674440603,
                 "vstop": 24.685209369659425,
                 "stop_distance_pct": null,
-                "daily_ma50_distance_pct": 34.580084237423904,
-                "daily_ma200_distance_pct": 55.13833508992645,
+                "daily_ma50_distance_pct": 37.692169138422464,
+                "daily_ma200_distance_pct": 58.79811780261941,
                 "extended": true,
-                "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (34.58% above 50-DMA)",
+                "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (37.69% above 50-DMA)",
                 "vstop_multiplier": 3.0,
                 "vstop_confirm_sessions": 2.0,
                 "vstop_shield_eligible": false
@@ -723,11 +717,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 43.10973242980498,
             "rs_sector": 23.784784633500557,
-            "sector_rank": "2/8",
+            "sector_rank": "2/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2027-02-10",
-                "checked_at": "2026-10-20T18:03:53.538672+00:00",
+                "checked_at": "2026-10-21T18:07:47.798367+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -769,7 +763,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:03:53.916923+00:00",
+                "checked_at": "2026-10-21T18:07:48.499044+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -811,7 +805,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-30",
-                "checked_at": "2026-10-20T18:03:54.412768+00:00",
+                "checked_at": "2026-10-21T18:07:49.027763+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -839,7 +833,7 @@
                 "vstop": 364.62666015625,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -11.189388329985949,
-                "daily_ma200_distance_pct": -2.68707203540669,
+                "daily_ma200_distance_pct": -2.687071863687074,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -853,7 +847,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-27",
-                "checked_at": "2026-10-20T18:03:54.792849+00:00",
+                "checked_at": "2026-10-21T18:07:49.441937+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -891,11 +885,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -5.448176509728109,
             "rs_sector": -5.985680355825618,
-            "sector_rank": "7/7",
+            "sector_rank": "8/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-01",
-                "checked_at": "2026-10-20T18:03:55.369964+00:00",
+                "checked_at": "2026-10-21T18:07:49.859299+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -937,7 +931,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:03:55.826530+00:00",
+                "checked_at": "2026-10-21T18:07:50.417165+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -979,7 +973,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-04",
-                "checked_at": "2026-10-20T18:03:56.309363+00:00",
+                "checked_at": "2026-10-21T18:07:50.946378+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1007,7 +1001,7 @@
                 "vstop": 327.40899963378905,
                 "stop_distance_pct": 4.673322139585628,
                 "daily_ma50_distance_pct": 3.8491797437746134,
-                "daily_ma200_distance_pct": 15.930710194578946,
+                "daily_ma200_distance_pct": 15.930710768432244,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1021,7 +1015,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:03:56.797801+00:00",
+                "checked_at": "2026-10-21T18:07:51.464112+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1063,7 +1057,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:03:57.310356+00:00",
+                "checked_at": "2026-10-21T18:07:51.919510+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1101,11 +1095,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -7.204903968742704,
             "rs_sector": -15.041301602985301,
-            "sector_rank": "12/16",
+            "sector_rank": "14/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-04",
-                "checked_at": "2026-10-20T18:03:57.776458+00:00",
+                "checked_at": "2026-10-21T18:07:52.540788+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1147,7 +1141,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:03:58.358830+00:00",
+                "checked_at": "2026-10-21T18:07:53.184203+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1189,7 +1183,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-19",
-                "checked_at": "2026-10-20T18:03:58.806722+00:00",
+                "checked_at": "2026-10-21T18:07:53.713890+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1231,7 +1225,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-01",
-                "checked_at": "2026-10-20T18:03:59.254866+00:00",
+                "checked_at": "2026-10-21T18:07:54.170395+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1273,7 +1267,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-27",
-                "checked_at": "2026-10-20T18:03:59.698071+00:00",
+                "checked_at": "2026-10-21T18:07:54.597265+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -1301,7 +1295,7 @@
                 "vstop": 168.01800842285155,
                 "stop_distance_pct": 6.124699724194276,
                 "daily_ma50_distance_pct": 8.139543401669238,
-                "daily_ma200_distance_pct": 17.8075855129608,
+                "daily_ma200_distance_pct": 17.807586108291495,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1311,11 +1305,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 18.752373078257833,
             "rs_sector": 2.7165425902772933,
-            "sector_rank": "6/8",
+            "sector_rank": "6/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-30",
-                "checked_at": "2026-10-20T18:04:00.183901+00:00",
+                "checked_at": "2026-10-21T18:07:55.016701+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1343,7 +1337,7 @@
                 "vstop": 112.81164818035332,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -3.5983337869969705,
-                "daily_ma200_distance_pct": 7.6202055200703,
+                "daily_ma200_distance_pct": 7.620205644282385,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -1357,7 +1351,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-12",
-                "checked_at": "2026-10-20T18:04:00.837098+00:00",
+                "checked_at": "2026-10-21T18:07:55.453133+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1385,7 +1379,7 @@
                 "vstop": 641.8020007580727,
                 "stop_distance_pct": 6.985217281438735,
                 "daily_ma50_distance_pct": 7.414080076448109,
-                "daily_ma200_distance_pct": 25.53998520601992,
+                "daily_ma200_distance_pct": 25.539985800781007,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.5,
@@ -1399,7 +1393,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:01.327822+00:00",
+                "checked_at": "2026-10-21T18:07:55.966479+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -1441,7 +1435,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-30",
-                "checked_at": "2026-10-20T18:04:02.060717+00:00",
+                "checked_at": "2026-10-21T18:07:56.454246+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1470,7 +1464,7 @@
                 "vstop": 152.78200073242186,
                 "stop_distance_pct": 4.121747800139467,
                 "daily_ma50_distance_pct": 8.10943321204734,
-                "daily_ma200_distance_pct": 8.425580112395782,
+                "daily_ma200_distance_pct": 8.425579380538139,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1480,13 +1474,55 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 3.983178178606761,
             "rs_sector": 3.3920594022862183,
-            "sector_rank": "3/7",
+            "sector_rank": "4/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-22",
-                "checked_at": "2026-10-20T18:04:02.524438+00:00",
+                "checked_at": "2026-10-21T18:07:57.003998+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
+            }
+        },
+        {
+            "id": "signal:EOG:Weekly:2026-10-16:buy",
+            "ticker": "EOG",
+            "timeframe": "Weekly",
+            "date": "2026-10-16",
+            "direction": "buy",
+            "label": "Confirmed price breakout",
+            "reasons": [
+                "20-bar resistance breakout"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-16",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 158.00999450683594,
+                "breakout_level": 153.1297003347229,
+                "breakout_distance_pct": 3.187033058541422,
+                "vstop": 147.44395493330885,
+                "stop_distance_pct": 6.686943826879241,
+                "daily_ma50_distance_pct": 8.431376904860947,
+                "daily_ma200_distance_pct": 18.774132211174166,
+                "extended": false,
+                "extension_warning": "",
+                "vstop_multiplier": 3.0,
+                "vstop_confirm_sessions": 2.0,
+                "vstop_shield_eligible": false
+            },
+            "higher_timeframe_aligned": false,
+            "rs_spy": 10.464945832311479,
+            "rs_sector": -4.451784674316361,
+            "sector_rank": "7/9",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-21T18:07:57.429706+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
             }
         },
         {
@@ -1522,11 +1558,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 24.90141833792261,
             "rs_sector": 8.03524614904887,
-            "sector_rank": "5/8",
+            "sector_rank": "5/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:03.453876+00:00",
+                "checked_at": "2026-10-21T18:07:58.090153+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1554,7 +1590,7 @@
                 "vstop": 98.94800033569337,
                 "stop_distance_pct": 5.3491491590406115,
                 "daily_ma50_distance_pct": 9.156223682116151,
-                "daily_ma200_distance_pct": 16.35013083046106,
+                "daily_ma200_distance_pct": 16.350130733135583,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1564,11 +1600,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 24.070270338100208,
             "rs_sector": 23.364961386549975,
-            "sector_rank": "1/7",
+            "sector_rank": "1/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:04:03.947207+00:00",
+                "checked_at": "2026-10-21T18:07:58.539086+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1610,7 +1646,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:04.337244+00:00",
+                "checked_at": "2026-10-21T18:07:59.001847+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1652,7 +1688,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-27",
-                "checked_at": "2026-10-20T18:04:04.863565+00:00",
+                "checked_at": "2026-10-21T18:07:59.521270+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -1680,7 +1716,7 @@
                 "vstop": 14.499440097808838,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": 3.536241223754657,
-                "daily_ma200_distance_pct": 7.654092673422919,
+                "daily_ma200_distance_pct": 7.654092759101339,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1694,7 +1730,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-11",
-                "checked_at": "2026-10-20T18:04:05.274192+00:00",
+                "checked_at": "2026-10-21T18:08:00.079590+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1722,7 +1758,7 @@
                 "vstop": 320.41001281738284,
                 "stop_distance_pct": 4.412290826682188,
                 "daily_ma50_distance_pct": 0.9810612497640496,
-                "daily_ma200_distance_pct": 1.187001827094547,
+                "daily_ma200_distance_pct": 1.1870017341021777,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -1764,7 +1800,7 @@
                 "vstop": 294.7248077392578,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -5.97225090046224,
-                "daily_ma200_distance_pct": -8.403547725088789,
+                "daily_ma200_distance_pct": -8.403547873466,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -1778,7 +1814,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-09",
-                "checked_at": "2026-10-20T18:04:05.766808+00:00",
+                "checked_at": "2026-10-21T18:08:00.529307+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1820,7 +1856,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-06",
-                "checked_at": "2026-10-20T18:04:06.209964+00:00",
+                "checked_at": "2026-10-21T18:08:01.018936+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1843,12 +1879,12 @@
             "route": "alert",
             "context": {
                 "close": 116.05999755859375,
-                "breakout_level": 170.34017758695367,
-                "breakout_distance_pct": -31.865752870106924,
+                "breakout_level": 170.34019319646893,
+                "breakout_distance_pct": -31.86575911374532,
                 "vstop": 122.79666646321614,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -11.567639013644646,
-                "daily_ma200_distance_pct": -10.265360948040591,
+                "daily_ma200_distance_pct": -10.265360837567272,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -1862,7 +1898,49 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:06.698053+00:00",
+                "checked_at": "2026-10-21T18:08:01.475329+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:IOT:Monthly:2026-09-30:sell",
+            "ticker": "IOT",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "mixed",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-16",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 38.130001068115234,
+                "breakout_level": 61.900001525878906,
+                "breakout_distance_pct": -38.400645996472235,
+                "vstop": 40.72086842854818,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": 6.002558961529309,
+                "daily_ma200_distance_pct": 25.055866207039546,
+                "extended": false,
+                "extension_warning": "",
+                "vstop_multiplier": 2.0,
+                "vstop_confirm_sessions": 2.0,
+                "vstop_shield_eligible": false
+            },
+            "higher_timeframe_aligned": false,
+            "rs_spy": 14.845965587004418,
+            "rs_sector": 0.04145486476914151,
+            "sector_rank": "10/18",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-12-03",
+                "checked_at": "2026-10-21T18:08:01.981823+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1904,7 +1982,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-29",
-                "checked_at": "2026-10-20T18:03:50.156181+00:00",
+                "checked_at": "2026-10-21T18:07:44.300181+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -1928,8 +2006,8 @@
             "route": "alert",
             "context": {
                 "close": 725.1799926757812,
-                "breakout_level": 793.0229032247282,
-                "breakout_distance_pct": -8.554974928601967,
+                "breakout_level": 793.0229651164598,
+                "breakout_distance_pct": -8.554982065458272,
                 "vstop": 709.8156178045869,
                 "stop_distance_pct": 2.11869811996642,
                 "daily_ma50_distance_pct": 5.312625831691515,
@@ -1943,11 +2021,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 25.84973066138623,
             "rs_sector": 23.974665074953695,
-            "sector_rank": "1/5",
+            "sector_rank": "1/6",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:07.566070+00:00",
+                "checked_at": "2026-10-21T18:08:02.398241+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -1975,7 +2053,7 @@
                 "vstop": 144.73868785240245,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -8.878609399098575,
-                "daily_ma200_distance_pct": -17.213800768620725,
+                "daily_ma200_distance_pct": -17.213800967981996,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -1985,11 +2063,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -8.169097320287399,
             "rs_sector": -20.006792936372552,
-            "sector_rank": "11/16",
+            "sector_rank": "13/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-14",
-                "checked_at": "2026-10-20T18:04:08.046945+00:00",
+                "checked_at": "2026-10-21T18:08:02.919716+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2031,7 +2109,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-09",
-                "checked_at": "2026-10-20T18:04:08.621177+00:00",
+                "checked_at": "2026-10-21T18:08:03.489897+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2069,13 +2147,55 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -9.115859977317342,
             "rs_sector": -20.831510749808977,
-            "sector_rank": "12/16",
+            "sector_rank": "14/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:09.069574+00:00",
+                "checked_at": "2026-10-21T18:08:03.984654+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:T:Monthly:2026-09-30:sell",
+            "ticker": "T",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bearish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-16",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 24.12725257873535,
+                "breakout_level": 28.428739040817675,
+                "breakout_distance_pct": -15.130767692180424,
+                "vstop": 25.195180733119944,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": -5.060595816553485,
+                "daily_ma200_distance_pct": -4.457638730765712,
+                "extended": false,
+                "extension_warning": "",
+                "vstop_multiplier": 2.0,
+                "vstop_confirm_sessions": 2.0,
+                "vstop_shield_eligible": false
+            },
+            "higher_timeframe_aligned": false,
+            "rs_spy": 16.67878462408938,
+            "rs_sector": 14.940359181574436,
+            "sector_rank": "2/6",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-10-21",
+                "checked_at": "2026-10-21T18:08:04.389076+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": true
             }
         },
         {
@@ -2100,10 +2220,10 @@
                 "breakout_distance_pct": -8.367913470214916,
                 "vstop": 16.712839889526368,
                 "stop_distance_pct": 4.443452783087778,
-                "daily_ma50_distance_pct": 34.580084237423904,
-                "daily_ma200_distance_pct": 55.13833508992645,
+                "daily_ma50_distance_pct": 37.692169138422464,
+                "daily_ma200_distance_pct": 58.79811780261941,
                 "extended": true,
-                "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (34.58% above 50-DMA)",
+                "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (37.69% above 50-DMA)",
                 "vstop_multiplier": 3.0,
                 "vstop_confirm_sessions": 2.0,
                 "vstop_shield_eligible": false
@@ -2111,11 +2231,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 6.57421481490188,
             "rs_sector": -6.333644485214817,
-            "sector_rank": "7/8",
+            "sector_rank": "7/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2027-02-10",
-                "checked_at": "2026-10-20T18:03:53.538672+00:00",
+                "checked_at": "2026-10-21T18:07:47.798367+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2153,11 +2273,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 15.380221461363575,
             "rs_sector": 0.5068411294738562,
-            "sector_rank": "8/16",
+            "sector_rank": "9/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-02",
-                "checked_at": "2026-10-20T18:04:10.041925+00:00",
+                "checked_at": "2026-10-21T18:08:04.862319+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2199,7 +2319,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:10.533065+00:00",
+                "checked_at": "2026-10-21T18:08:05.303777+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2227,7 +2347,7 @@
                 "vstop": 324.78899536132815,
                 "stop_distance_pct": 2.4716215013765463,
                 "daily_ma50_distance_pct": 3.8491797437746134,
-                "daily_ma200_distance_pct": 15.930710194578946,
+                "daily_ma200_distance_pct": 15.930710768432244,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -2241,9 +2361,50 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:03:56.797801+00:00",
+                "checked_at": "2026-10-21T18:07:51.464112+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
+            }
+        },
+        {
+            "id": "signal:CARD:Monthly:2026-09-30:buy",
+            "ticker": "CARD",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "buy",
+            "label": "Momentum setup",
+            "reasons": [
+                "bullish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bullish",
+            "weekly_asof": "2026-10-16",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 3.0199999809265137,
+                "breakout_level": 10.899999618530273,
+                "breakout_distance_pct": -72.29357718698964,
+                "vstop": 2.6981999397277834,
+                "stop_distance_pct": 10.655630570567237,
+                "daily_ma50_distance_pct": 11.361661496661664,
+                "daily_ma200_distance_pct": 5.987333984120058,
+                "extended": true,
+                "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (11.36% above 50-DMA)",
+                "vstop_multiplier": 3.0,
+                "vstop_confirm_sessions": 2.0,
+                "vstop_shield_eligible": false
+            },
+            "higher_timeframe_aligned": true,
+            "rs_spy": 20.89629246358551,
+            "rs_sector": 5.311848997003921,
+            "sector_rank": "7/18",
+            "earnings": {
+                "status": "unavailable",
+                "date": null,
+                "checked_at": "2026-10-21T18:08:05.730305+00:00",
+                "source": "Yahoo Finance"
             }
         },
         {
@@ -2279,11 +2440,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 39.886370927617286,
             "rs_sector": 21.853963191678226,
-            "sector_rank": "3/16",
+            "sector_rank": "3/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:11.545093+00:00",
+                "checked_at": "2026-10-21T18:08:06.263923+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2325,7 +2486,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-04",
-                "checked_at": "2026-10-20T18:04:11.960940+00:00",
+                "checked_at": "2026-10-21T18:08:06.713258+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2367,7 +2528,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:12.625740+00:00",
+                "checked_at": "2026-10-21T18:08:07.142078+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2409,7 +2570,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-27",
-                "checked_at": "2026-10-20T18:04:13.098521+00:00",
+                "checked_at": "2026-10-21T18:08:07.588024+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -2447,11 +2608,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 2.7387778873660285,
             "rs_sector": -10.505025071220174,
-            "sector_rank": "9/16",
+            "sector_rank": "11/18",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-04",
-                "checked_at": "2026-10-20T18:03:57.776458+00:00",
+                "checked_at": "2026-10-21T18:07:52.540788+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2489,11 +2650,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 3.687860009610633,
             "rs_sector": 2.142989496077563,
-            "sector_rank": "2/5",
+            "sector_rank": "3/6",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-22",
-                "checked_at": "2026-10-20T18:04:13.518960+00:00",
+                "checked_at": "2026-10-21T18:08:08.020496+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -2536,7 +2697,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-24",
-                "checked_at": "2026-10-20T18:04:14.165702+00:00",
+                "checked_at": "2026-10-21T18:08:08.441272+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2578,7 +2739,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-12-01",
-                "checked_at": "2026-10-20T18:04:14.758101+00:00",
+                "checked_at": "2026-10-21T18:08:08.911305+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2619,10 +2780,10 @@
             "sector_rank": "N/A",
             "earnings": {
                 "status": "provider_reported",
-                "date": "2026-10-20",
-                "checked_at": "2026-10-20T18:04:15.308556+00:00",
+                "date": "2027-01-19",
+                "checked_at": "2026-10-21T18:08:09.479346+00:00",
                 "source": "Yahoo Finance",
-                "within_7_days": true
+                "within_7_days": false
             }
         },
         {
@@ -2662,7 +2823,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-09",
-                "checked_at": "2026-10-20T18:04:15.942153+00:00",
+                "checked_at": "2026-10-21T18:08:09.949049+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2690,7 +2851,7 @@
                 "vstop": 385.2629849532343,
                 "stop_distance_pct": 2.568668284251204,
                 "daily_ma50_distance_pct": 18.07799093237586,
-                "daily_ma200_distance_pct": 70.61963024569047,
+                "daily_ma200_distance_pct": 70.61963005867486,
                 "extended": true,
                 "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (18.08% above 50-DMA)",
                 "vstop_multiplier": 3.5,
@@ -2700,11 +2861,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 51.48244089707041,
             "rs_sector": 33.13546985033435,
-            "sector_rank": "1/8",
+            "sector_rank": "1/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:16.463429+00:00",
+                "checked_at": "2026-10-21T18:08:10.360898+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2732,7 +2893,7 @@
                 "vstop": 375.1476643880208,
                 "stop_distance_pct": 3.2151702573498855,
                 "daily_ma50_distance_pct": 12.081662717763537,
-                "daily_ma200_distance_pct": 57.35821294906132,
+                "daily_ma200_distance_pct": 57.35821268753756,
                 "extended": true,
                 "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (12.08% above 50-DMA)",
                 "vstop_multiplier": 3.5,
@@ -2742,11 +2903,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 45.93460568286088,
             "rs_sector": 28.259567115192354,
-            "sector_rank": "3/8",
+            "sector_rank": "3/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-22",
-                "checked_at": "2026-10-20T18:04:16.941058+00:00",
+                "checked_at": "2026-10-21T18:08:10.841934+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -2774,7 +2935,7 @@
                 "vstop": 250.93673642776486,
                 "stop_distance_pct": 1.7129220056591117,
                 "daily_ma50_distance_pct": 12.42441224249539,
-                "daily_ma200_distance_pct": 51.701275423900796,
+                "daily_ma200_distance_pct": 51.701275122252554,
                 "extended": true,
                 "extension_warning": "\u26a0\ufe0f Extended \u2014 Wait for Pullback (12.42% above 50-DMA)",
                 "vstop_multiplier": 3.5,
@@ -2784,13 +2945,13 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 48.30215267751565,
             "rs_sector": 30.34036591708309,
-            "sector_rank": "2/8",
+            "sector_rank": "2/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-28",
-                "checked_at": "2026-10-20T18:04:17.493490+00:00",
+                "checked_at": "2026-10-21T18:08:11.260216+00:00",
                 "source": "Yahoo Finance",
-                "within_7_days": false
+                "within_7_days": true
             }
         },
         {
@@ -2816,7 +2977,7 @@
                 "vstop": 71.3443717084843,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -2.344130545677491,
-                "daily_ma200_distance_pct": -1.040350213171548,
+                "daily_ma200_distance_pct": -1.0403505584338113,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -2826,11 +2987,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": -10.043401161758291,
             "rs_sector": -20.938598681512467,
-            "sector_rank": "8/8",
+            "sector_rank": "9/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:04:18.066683+00:00",
+                "checked_at": "2026-10-21T18:08:11.813188+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2858,7 +3019,7 @@
                 "vstop": 627.4290828581853,
                 "stop_distance_pct": 7.05442645669498,
                 "daily_ma50_distance_pct": 7.414080076448109,
-                "daily_ma200_distance_pct": 25.53998520601992,
+                "daily_ma200_distance_pct": 25.539985800781007,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.5,
@@ -2872,7 +3033,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:01.327822+00:00",
+                "checked_at": "2026-10-21T18:07:55.966479+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -2910,13 +3071,55 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 3.0284592403071686,
             "rs_sector": 7.999960744216494,
-            "sector_rank": "2/7",
+            "sector_rank": "2/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:18.507474+00:00",
+                "checked_at": "2026-10-21T18:08:12.331703+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
+            }
+        },
+        {
+            "id": "signal:EOG:Monthly:2026-09-30:sell",
+            "ticker": "EOG",
+            "timeframe": "Monthly",
+            "date": "2026-09-30",
+            "direction": "sell",
+            "label": "VSTOP breakdown",
+            "reasons": [
+                "bearish VSTOP turn"
+            ],
+            "fresh_period": false,
+            "weekly_trend": "bullish",
+            "monthly_trend": "bearish",
+            "weekly_asof": "2026-10-16",
+            "monthly_asof": "2026-09-30",
+            "route": "alert",
+            "context": {
+                "close": 136.8393096923828,
+                "breakout_level": 152.6429712527643,
+                "breakout_distance_pct": -10.353350325061427,
+                "vstop": 143.38329519690816,
+                "stop_distance_pct": null,
+                "daily_ma50_distance_pct": 8.431376904860947,
+                "daily_ma200_distance_pct": 18.774132211174166,
+                "extended": false,
+                "extension_warning": "",
+                "vstop_multiplier": 2.0,
+                "vstop_confirm_sessions": 2.0,
+                "vstop_shield_eligible": false
+            },
+            "higher_timeframe_aligned": false,
+            "rs_spy": 4.493621819514204,
+            "rs_sector": -8.162244053375156,
+            "sector_rank": "8/9",
+            "earnings": {
+                "status": "provider_reported",
+                "date": "2026-11-05",
+                "checked_at": "2026-10-21T18:07:57.429706+00:00",
+                "source": "Yahoo Finance",
+                "within_7_days": false
             }
         },
         {
@@ -2952,11 +3155,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 18.37160544221237,
             "rs_sector": 4.034891530402573,
-            "sector_rank": "5/8",
+            "sector_rank": "5/9",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:03.453876+00:00",
+                "checked_at": "2026-10-21T18:07:58.090153+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -2984,7 +3187,7 @@
                 "vstop": 100.07320070923717,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": 9.156223682116151,
-                "daily_ma200_distance_pct": 16.35013083046106,
+                "daily_ma200_distance_pct": 16.350130733135583,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -2994,11 +3197,11 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 15.165922520928298,
             "rs_sector": 20.723101199845217,
-            "sector_rank": "1/7",
+            "sector_rank": "1/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-02",
-                "checked_at": "2026-10-20T18:04:03.947207+00:00",
+                "checked_at": "2026-10-21T18:07:58.539086+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3021,12 +3224,12 @@
             "route": "alert",
             "context": {
                 "close": 276.4200134277344,
-                "breakout_level": 326.03703699652004,
-                "breakout_distance_pct": -15.218216931996976,
+                "breakout_level": 326.0370680114056,
+                "breakout_distance_pct": -15.218224997022578,
                 "vstop": 285.7965925617198,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": 3.5316362213763095,
-                "daily_ma200_distance_pct": 6.19493971813998,
+                "daily_ma200_distance_pct": 6.194939831881108,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -3040,7 +3243,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:18.972850+00:00",
+                "checked_at": "2026-10-21T18:08:12.794122+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3068,7 +3271,7 @@
                 "vstop": 12.203762599708533,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": 3.536241223754657,
-                "daily_ma200_distance_pct": 7.654092673422919,
+                "daily_ma200_distance_pct": 7.654092759101339,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -3082,7 +3285,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-11",
-                "checked_at": "2026-10-20T18:04:05.274192+00:00",
+                "checked_at": "2026-10-21T18:08:00.079590+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3110,7 +3313,7 @@
                 "vstop": 265.7586629231771,
                 "stop_distance_pct": null,
                 "daily_ma50_distance_pct": -5.97225090046224,
-                "daily_ma200_distance_pct": -8.403547725088789,
+                "daily_ma200_distance_pct": -8.403547873466,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 2.0,
@@ -3124,7 +3327,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-09",
-                "checked_at": "2026-10-20T18:04:05.766808+00:00",
+                "checked_at": "2026-10-21T18:08:00.529307+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3166,7 +3369,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-29",
-                "checked_at": "2026-10-20T18:03:50.156181+00:00",
+                "checked_at": "2026-10-21T18:07:44.300181+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3204,11 +3407,11 @@
             "higher_timeframe_aligned": true,
             "rs_spy": 7.399050539206176,
             "rs_sector": 9.427052598513441,
-            "sector_rank": "2/5",
+            "sector_rank": "2/6",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:07.566070+00:00",
+                "checked_at": "2026-10-21T18:08:02.398241+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -3250,7 +3453,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:10.533065+00:00",
+                "checked_at": "2026-10-21T18:08:05.303777+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3320,7 +3523,7 @@
                 "vstop": 25.16999969482422,
                 "stop_distance_pct": 6.984478227713602,
                 "daily_ma50_distance_pct": 9.046945426316714,
-                "daily_ma200_distance_pct": 0.11343162300438969,
+                "daily_ma200_distance_pct": 0.1134313757437111,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -3363,7 +3566,7 @@
                 "vstop": 641.8020007580727,
                 "stop_distance_pct": 6.629325499048884,
                 "daily_ma50_distance_pct": 7.414080076448109,
-                "daily_ma200_distance_pct": 25.53998520601992,
+                "daily_ma200_distance_pct": 25.539985800781007,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.5,
@@ -3377,7 +3580,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-21",
-                "checked_at": "2026-10-20T18:04:01.327822+00:00",
+                "checked_at": "2026-10-21T18:07:55.966479+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": true
             }
@@ -3405,7 +3608,7 @@
                 "vstop": 71.74653522372773,
                 "stop_distance_pct": 3.8765597395248492,
                 "daily_ma50_distance_pct": 9.100451017509961,
-                "daily_ma200_distance_pct": 12.353533069904987,
+                "daily_ma200_distance_pct": 12.353533263450501,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -3415,7 +3618,7 @@
             "higher_timeframe_aligned": false,
             "rs_spy": 1.8646597639430107,
             "rs_sector": 0.37875414027821463,
-            "sector_rank": "5/7",
+            "sector_rank": "6/8",
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-10-29",
@@ -3444,8 +3647,8 @@
                 "close": 30.110000610351562,
                 "breakout_level": 29.8799991607666,
                 "breakout_distance_pct": 0.7697505222388434,
-                "vstop": 28.700500869750975,
-                "stop_distance_pct": 4.6811680904317665,
+                "vstop": 28.705000114440917,
+                "stop_distance_pct": 4.666225398307092,
                 "daily_ma50_distance_pct": 7.21483802298197,
                 "daily_ma200_distance_pct": 15.403014409200889,
                 "extended": false,
@@ -3461,7 +3664,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-03",
-                "checked_at": "2026-10-20T18:04:04.337244+00:00",
+                "checked_at": "2026-10-21T18:07:59.001847+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3486,10 +3689,10 @@
                 "close": 302.5799865722656,
                 "breakout_level": 301.5400085449219,
                 "breakout_distance_pct": 0.34488890292274643,
-                "vstop": 286.90151765389476,
-                "stop_distance_pct": 5.181594822573091,
+                "vstop": 286.90201509041816,
+                "stop_distance_pct": 5.181430424217125,
                 "daily_ma50_distance_pct": 3.5316362213763095,
-                "daily_ma200_distance_pct": 6.19493971813998,
+                "daily_ma200_distance_pct": 6.194939831881108,
                 "extended": false,
                 "extension_warning": "",
                 "vstop_multiplier": 3.0,
@@ -3503,7 +3706,7 @@
             "earnings": {
                 "status": "provider_reported",
                 "date": "2026-11-05",
-                "checked_at": "2026-10-20T18:04:18.972850+00:00",
+                "checked_at": "2026-10-21T18:08:12.794122+00:00",
                 "source": "Yahoo Finance",
                 "within_7_days": false
             }
@@ -3586,9 +3789,9 @@
             "Monthly": "bullish"
         },
         "IOT": {
-            "Daily": "unknown",
-            "Weekly": "unknown",
-            "Monthly": "unknown"
+            "Daily": "bullish",
+            "Weekly": "mixed",
+            "Monthly": "bearish"
         },
         "LLY": {
             "Daily": "bullish",
@@ -3701,9 +3904,9 @@
             "Monthly": "bearish"
         },
         "T": {
-            "Daily": "unknown",
-            "Weekly": "unknown",
-            "Monthly": "unknown"
+            "Daily": "bearish",
+            "Weekly": "bearish",
+            "Monthly": "bearish"
         },
         "TSM": {
             "Daily": "bearish",
@@ -3721,9 +3924,9 @@
             "Monthly": "bullish"
         },
         "ENR": {
-            "Daily": "unknown",
-            "Weekly": "unknown",
-            "Monthly": "unknown"
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "mixed"
         },
         "FTGFF": {
             "Daily": "bearish",
@@ -3811,9 +4014,9 @@
             "Monthly": "bullish"
         },
         "CARD": {
-            "Daily": "unknown",
-            "Weekly": "unknown",
-            "Monthly": "unknown"
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bullish"
         },
         "U": {
             "Daily": "bearish",
@@ -4081,9 +4284,9 @@
             "Monthly": "bearish"
         },
         "EOG": {
-            "Daily": "unknown",
-            "Weekly": "unknown",
-            "Monthly": "unknown"
+            "Daily": "bullish",
+            "Weekly": "bullish",
+            "Monthly": "bearish"
         },
         "LOW": {
             "Daily": "bearish",
@@ -4158,7 +4361,7 @@
     },
     "changes": [],
     "asset_profiles": {
-        "available": 123,
+        "available": 127,
         "mega_caps": 34,
         "total": 129
     }
