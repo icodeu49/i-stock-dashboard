@@ -213,7 +213,9 @@
     "TSM": {
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+0.44%)"
     },
     "VRT": {
         "group": "Small/Mid Growth",
@@ -387,7 +389,9 @@
     "SOFI": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLF",
-        "gics_sector": "Financials"
+        "gics_sector": "Financials",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+4.78%)"
     },
     "DDOG": {
         "group": "Small/Mid Growth",
@@ -480,7 +484,9 @@
         "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+9.00%)"
     },
     "HOOD": {
-        "group": "Small/Mid Growth"
+        "group": "Small/Mid Growth",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+0.84%)"
     },
     "NFLX": {
         "group": "Small/Mid Growth",

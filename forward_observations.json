@@ -1528,8 +1528,64 @@
             "recorded_at": "2026-10-20T23:58:10.864681+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:META:Daily:2026-10-21:buy": {
+            "strategy": "Daily",
+            "ticker": "META",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:META:Daily:2026-10-21:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "META",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ENR:Daily:2026-10-21:buy": {
+            "strategy": "Daily",
+            "ticker": "ENR",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:TEAM:Daily:2026-10-21:buy": {
+            "strategy": "Daily",
+            "ticker": "TEAM",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:TEAM:Daily:2026-10-21:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "TEAM",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:TMO:Daily:2026-10-21:buy": {
+            "strategy": "Daily",
+            "ticker": "TMO",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:TMO:Daily:2026-10-21:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "TMO",
+            "signal_date": "2026-10-21",
+            "recorded_at": "2026-10-22T18:03:27.755002+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-10-21T18:08:13.501830+00:00",
+    "updated_at": "2026-10-22T18:03:27.755002+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
