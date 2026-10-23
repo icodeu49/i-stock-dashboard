@@ -23,7 +23,7 @@
     "SNPS": {
         "status": "provider_reported",
         "date": "2026-12-09",
-        "checked_at": "2026-10-20T18:04:19.859855+00:00",
+        "checked_at": "2026-10-23T23:55:59.145762+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -148,7 +148,7 @@
     "META": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-10-22T18:03:13.490132+00:00",
+        "checked_at": "2026-10-23T23:55:58.546728+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -190,7 +190,7 @@
     "AI": {
         "status": "provider_reported",
         "date": "2026-12-09",
-        "checked_at": "2026-10-20T18:04:20.379117+00:00",
+        "checked_at": "2026-10-23T23:55:59.650569+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
@@ -400,7 +400,7 @@
     "GOOGL": {
         "status": "provider_reported",
         "date": "2026-10-28",
-        "checked_at": "2026-10-22T18:03:26.731620+00:00",
+        "checked_at": "2026-10-23T23:56:00.058795+00:00",
         "source": "Yahoo Finance",
         "within_7_days": true
     },
@@ -658,14 +658,14 @@
     "COIN": {
         "status": "provider_reported",
         "date": "2026-10-29",
-        "checked_at": "2026-10-20T18:04:21.495219+00:00",
+        "checked_at": "2026-10-23T23:56:00.467727+00:00",
         "source": "Yahoo Finance",
-        "within_7_days": false
+        "within_7_days": true
     },
     "MDB": {
         "status": "provider_reported",
         "date": "2026-12-01",
-        "checked_at": "2026-10-20T18:04:22.001894+00:00",
+        "checked_at": "2026-10-23T23:56:00.909977+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
     },
