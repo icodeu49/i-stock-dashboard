@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-10-25T11:53:40.138538+00:00",
+    "last_sent": "2026-10-26T13:24:53.170159+00:00",
     "seen": {
         "f38a3832f445667221ebc15c": {
             "url_key": "f38a3832f445667221ebc15c",
@@ -500,6 +500,76 @@
             "url_key": "4b8484f7feaea5f8a03f27f4",
             "title_key": "datadog reportedly offered nearly 4 billion for upwind here s what its cfo said about buying a platform",
             "sent_at": "2026-10-25T11:53:40.138538+00:00"
+        },
+        "be9b6cc07ac930640df65c92": {
+            "url_key": "be9b6cc07ac930640df65c92",
+            "title_key": "spacex closes 40 billion debt deal for ai chips elon musk says",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "1787feaec0cac4269a40d9ed": {
+            "url_key": "1787feaec0cac4269a40d9ed",
+            "title_key": "ai spending fears threaten to swamp big tech s strong earnings",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "466012ebf7fbc65634cc348a": {
+            "url_key": "466012ebf7fbc65634cc348a",
+            "title_key": "commentary ai gloom revives the specter of stagflation",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "908c05ce79805dd63c5d9db6": {
+            "url_key": "908c05ce79805dd63c5d9db6",
+            "title_key": "stocks rise pre bell as traders await fed policy decision inflation report big tech earnings",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "7c223a892b3c190a2c6d3177": {
+            "url_key": "7c223a892b3c190a2c6d3177",
+            "title_key": "chicago banks post strong profits despite macroeconomic shocks",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "5d499ab4439a14de52a934e2": {
+            "url_key": "5d499ab4439a14de52a934e2",
+            "title_key": "frank elderson taking action for nature investing in economic resilience and prosperity",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "dd92361af55fa5dc429185d2": {
+            "url_key": "dd92361af55fa5dc429185d2",
+            "title_key": "bloom energy be readies first fuel cell power block for ai data center",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "95b4f0a748d512add883cf61": {
+            "url_key": "95b4f0a748d512add883cf61",
+            "title_key": "spacex needs huge amounts of power here s the energy stock to buy to play it",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "6d7b30e1298660e1c61cdc27": {
+            "url_key": "6d7b30e1298660e1c61cdc27",
+            "title_key": "samsung may have overtaken sk hynix in hbm revenue analysis suggests",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "c143f1e2fec28eaa2711e0cd": {
+            "url_key": "c143f1e2fec28eaa2711e0cd",
+            "title_key": "custom hbm era begins semiconductor industry collaborates",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "f70fc1d207e6ff88a5de9011": {
+            "url_key": "f70fc1d207e6ff88a5de9011",
+            "title_key": "if intuitive surgical stock looks expensive you need to read this",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "58a2fab3d196dd29df869218": {
+            "url_key": "58a2fab3d196dd29df869218",
+            "title_key": "here are monday s top wall street analyst research calls block boise cascade equifax firstenergy lockheed martin lumentum holdings netapp roper technologies spotify technology and more",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "094ce9d60f091c7b8d6afbb3": {
+            "url_key": "094ce9d60f091c7b8d6afbb3",
+            "title_key": "top ai powered cybersecurity stocks to buy as digital threats rise",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
+        },
+        "fe498ce3e8b9ea7e92aea71b": {
+            "url_key": "fe498ce3e8b9ea7e92aea71b",
+            "title_key": "nextera energy nee vs duk and aep can its dividend moat and earnings growth close the valuation gap",
+            "sent_at": "2026-10-26T13:24:53.170159+00:00"
         }
     },
     "signal_ids": [
@@ -602,6 +672,16 @@
         "signal:EL:Weekly:2026-10-23:buy",
         "signal:IOT:Daily:2026-10-23:buy",
         "signal:XOM:Daily:2026-10-23:buy",
-        "signal:EOG:Daily:2026-10-23:buy"
+        "signal:EOG:Daily:2026-10-23:buy",
+        "signal:COP:Daily:2026-10-23:buy",
+        "signal:FLYW:Monthly:2026-09-30:sell",
+        "signal:AAPL:Monthly:2026-09-30:buy",
+        "signal:CARD:Monthly:2026-09-30:buy",
+        "signal:U:Monthly:2026-09-30:sell",
+        "signal:MELI:Monthly:2026-09-30:sell",
+        "signal:DKNG:Monthly:2026-09-30:sell",
+        "signal:SOFI:Monthly:2026-09-30:sell",
+        "signal:DDOG:Monthly:2026-09-30:buy",
+        "signal:SPOT:Monthly:2026-09-30:sell"
     ]
 }
