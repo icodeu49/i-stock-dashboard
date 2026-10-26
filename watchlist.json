@@ -767,5 +767,54 @@
         "gics_sector": "Utilities",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY"
+    },
+    "CVX": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLE",
+        "gics_sector": "Energy",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY"
+    },
+    "CL": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLP; ranked by 21-session RS vs SPY"
+    },
+    "UNH": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY"
+    },
+    "EXC": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY"
+    },
+    "NEE": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY"
+    },
+    "SBUX": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
+    },
+    "MCD": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY"
     }
 }
