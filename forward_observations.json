@@ -1904,8 +1904,72 @@
             "recorded_at": "2026-10-23T23:56:01.404344+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:NET:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "NET",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:UNFI:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "UNFI",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:PANW:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "PANW",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CRWD:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "CRWD",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:TSLA:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "TSLA",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:RBLX:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "RBLX",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:EL:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "EL",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:SBUX:Daily:2026-10-26:buy": {
+            "strategy": "Daily",
+            "ticker": "SBUX",
+            "signal_date": "2026-10-26",
+            "recorded_at": "2026-10-27T18:46:44.364592+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-10-26T19:24:38.535570+00:00",
+    "updated_at": "2026-10-27T18:46:44.364592+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
