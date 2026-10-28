@@ -31,12 +31,16 @@
     "ARM": {
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+2.51%)"
     },
     "AVGO": {
         "group": "Small/Mid Growth",
         "sector_etf": "SMH",
-        "gics_sector": "Information Technology"
+        "gics_sector": "Information Technology",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+2.38%)"
     },
     "BE": {
         "group": "Small/Mid Growth",

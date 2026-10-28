@@ -1968,8 +1968,64 @@
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CDNS:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "CDNS",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:SNPS:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "SNPS",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:DDOG:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "DDOG",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:RCL:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "RCL",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:MDB:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "MDB",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:WMB:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "WMB",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CSCO:Daily:2026-10-27:buy": {
+            "strategy": "Daily",
+            "ticker": "CSCO",
+            "signal_date": "2026-10-27",
+            "recorded_at": "2026-10-28T18:57:14.414301+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-10-27T18:46:44.364592+00:00",
+    "updated_at": "2026-10-28T18:57:14.414301+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
