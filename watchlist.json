@@ -70,7 +70,9 @@
     "GEV": {
         "group": "Small/Mid Growth",
         "sector_etf": "XLI",
-        "gics_sector": "Industrials"
+        "gics_sector": "Industrials",
+        "source": "momentum_scan",
+        "selection_reason": "Top-25 five-session momentum in the configured 50-stock universe (+7.37%)"
     },
     "INTC": {
         "group": "Small/Mid Growth",
