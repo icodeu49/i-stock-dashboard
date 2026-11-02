@@ -577,6 +577,12 @@
         "trend-change:2026-11-02:NOW:Monthly:bearish": "2026-11-02T22:25:20.837722+00:00",
         "trend-change:2026-11-02:ISRG:Weekly:bearish": "2026-11-02T22:25:20.837722+00:00",
         "trend-change:2026-11-02:CL:Weekly:bearish": "2026-11-02T22:25:21.224692+00:00",
-        "scan-status:2026-11-02:daily-risk-v2:0d086470e528": "2026-11-02T22:25:21.224692+00:00"
+        "scan-status:2026-11-02:daily-risk-v2:0d086470e528": "2026-11-02T22:25:21.224692+00:00",
+        "sector:2026-11-02:XLV:REGN,LLY,AMGN,ISRG,ABBV": "2026-11-02T22:29:13.968170+00:00",
+        "sector:2026-11-02:XLP:WMT,CL,MO,MDLZ,EL": "2026-11-02T22:29:13.968170+00:00",
+        "sector:2026-11-02:XLB:DOW,NUE,APD,ECL,SHW": "2026-11-02T22:29:13.968170+00:00",
+        "sector:2026-11-02:XLY:HD,NKE,MCD,SBUX,TSLA": "2026-11-02T22:29:13.968170+00:00",
+        "sector:2026-11-02:XLE:COP,EOG,CVX,XOM,HAL": "2026-11-02T22:29:13.968170+00:00",
+        "sector-status:2026-11-02:REGN,MDLZ,DOW,NUE,HAL:1": "2026-11-02T22:29:13.968170+00:00"
     }
 }
