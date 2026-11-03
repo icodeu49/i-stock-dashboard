@@ -3420,6 +3420,14 @@
                 "market_cap": 98538536960.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:08:37.022641+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 97259618304.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -9484,6 +9492,14 @@
                 "market_cap": 105727098880.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:09:21.611780+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 103437434880.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -9870,6 +9886,14 @@
                 "source": "Yahoo Finance",
                 "status": "available",
                 "market_cap": 38597033984.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            },
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:09:24.945035+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 39329849344.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
             }
@@ -15260,6 +15284,14 @@
                 "market_cap": 117350064128.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:10.893798+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 119403520000.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -16658,6 +16690,66 @@
                 "source": "Yahoo Finance",
                 "status": "available",
                 "market_cap": 187977908224.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "REGN": {
+        "observations": {
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:41.185040+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 100445798400.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "MDLZ": {
+        "observations": {
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:43.033301+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 82880765952.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "DOW": {
+        "observations": {
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:44.987151+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 24488927232.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "NUE": {
+        "observations": {
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:46.595812+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 61909835776.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "HAL": {
+        "observations": {
+            "2026-11-02": {
+                "observed_at": "2026-11-03T20:10:48.499324+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 28271177728.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
             }

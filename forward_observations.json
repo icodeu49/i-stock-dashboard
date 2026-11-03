@@ -2440,8 +2440,72 @@
             "recorded_at": "2026-11-02T22:25:09.462587+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CCL:Daily:2026-11-02:buy": {
+            "strategy": "Daily",
+            "ticker": "CCL",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:CCL:Daily:2026-11-02:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "CCL",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:REGN:Daily:2026-11-02:buy": {
+            "strategy": "Daily",
+            "ticker": "REGN",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:REGN:Daily:2026-11-02:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "REGN",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:MDLZ:Daily:2026-11-02:buy": {
+            "strategy": "Daily",
+            "ticker": "MDLZ",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:MDLZ:Daily:2026-11-02:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "MDLZ",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:NUE:Daily:2026-11-02:buy": {
+            "strategy": "Daily",
+            "ticker": "NUE",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:NUE:Daily:2026-11-02:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "NUE",
+            "signal_date": "2026-11-02",
+            "recorded_at": "2026-11-03T20:11:38.878675+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-02T22:25:09.462587+00:00",
+    "updated_at": "2026-11-03T20:11:38.878675+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
