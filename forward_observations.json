@@ -2504,8 +2504,48 @@
             "recorded_at": "2026-11-03T20:11:38.878675+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:WMB:Daily:2026-11-03:buy": {
+            "strategy": "Daily",
+            "ticker": "WMB",
+            "signal_date": "2026-11-03",
+            "recorded_at": "2026-11-04T20:29:28.583533+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:WMB:Daily:2026-11-03:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "WMB",
+            "signal_date": "2026-11-03",
+            "recorded_at": "2026-11-04T20:29:28.583533+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CL:Daily:2026-11-03:buy": {
+            "strategy": "Daily",
+            "ticker": "CL",
+            "signal_date": "2026-11-03",
+            "recorded_at": "2026-11-04T20:29:28.583533+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:REGN:Daily:2026-11-03:buy": {
+            "strategy": "Daily",
+            "ticker": "REGN",
+            "signal_date": "2026-11-03",
+            "recorded_at": "2026-11-04T20:29:28.583533+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:REGN:Daily:2026-11-03:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "REGN",
+            "signal_date": "2026-11-03",
+            "recorded_at": "2026-11-04T20:29:28.583533+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-03T20:11:38.878675+00:00",
+    "updated_at": "2026-11-04T20:29:28.583533+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
