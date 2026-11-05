@@ -2,7 +2,16 @@ name: Automated Daily Watchlist Scanner
 
 on:
   schedule:
-    - cron: '18 13,21 * * 1-5'
+    # Daytime run, unchanged: 13:18 UTC Mon-Fri (13:18 UK winter / 14:18 UK summer, intraday US).
+    - cron: '18 13 * * 1-5'
+    # Morning run replacing the 21:18 UTC evening run: 11:18 Europe/London Tue-Sat
+    # (covers Mon-Fri US closes, ~14-19h after the 4pm ET close, when Yahoo's previous-day
+    # bar is populated). GitHub cron is UTC-only and cannot track BST, so both candidate
+    # UTC slots fire and the gate step keeps the one matching London's current offset:
+    # 10:18 UTC = 11:18 BST (summer), 11:18 UTC = 11:18 GMT (winter). The gate checks the
+    # offset, not the clock, so GitHub's multi-hour scheduler delays cannot skip a real run.
+    - cron: '18 10 * * 2-6'
+    - cron: '18 11 * * 2-6'
   workflow_dispatch:
   workflow_call:
 
@@ -18,27 +27,51 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v6
+      - name: Gate morning schedule to 11:18 London time
+        id: gate
+        run: |
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            london_offset=$(TZ=Europe/London date +%z)
+            case "${{ github.event.schedule }}" in
+              "18 10 * * 2-6")
+                if [ "$london_offset" != "+0100" ]; then
+                  echo "10:18 UTC slot only runs in BST (London is $london_offset); skipping."
+                  echo "skip=true" >> "$GITHUB_OUTPUT"
+                fi
+                ;;
+              "18 11 * * 2-6")
+                if [ "$london_offset" != "+0000" ]; then
+                  echo "11:18 UTC slot only runs in GMT (London is $london_offset); skipping."
+                  echo "skip=true" >> "$GITHUB_OUTPUT"
+                fi
+                ;;
+            esac
+          fi
+      - if: steps.gate.outputs.skip != 'true'
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
-      - uses: actions/setup-python@v6
+      - if: steps.gate.outputs.skip != 'true'
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: pip
           cache-dependency-path: requirements-automation.txt
-      - name: Install dependencies
+      - if: steps.gate.outputs.skip != 'true'
+        name: Install dependencies
         run: python -m pip install -r requirements-automation.txt
-      - name: Refresh momentum candidates
+      - if: steps.gate.outputs.skip != 'true'
+        name: Refresh momentum candidates
         id: momentum
         run: python heatmap_skimmer.py
       - name: Send stock alerts and coverage report
-        if: success() || steps.momentum.outcome == 'failure'
+        if: (success() || steps.momentum.outcome == 'failure') && steps.gate.outputs.skip != 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python notifier.py
       - name: Persist watchlist and confirmed deliveries
-        if: always()
+        if: always() && steps.gate.outputs.skip != 'true'
         run: bash scripts/persist_state.sh
-

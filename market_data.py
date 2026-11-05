@@ -51,25 +51,65 @@ def normalize_prices(df):
     return df.loc[valid]
 
 
-def download_prices(ticker, period="max", now=None, attempts=3):
+_STALE_WAIT_BUDGET = {"left": 240.0}  # total seconds one process may spend waiting for lagging bars
+
+
+def _fetch_raw(ticker, period, use_history):
+    if use_history:
+        return yf.Ticker(ticker).history(period=period, interval="1d", auto_adjust=True)
+    return yf.download(
+        ticker, period=period, interval="1d", progress=False,
+        auto_adjust=True, multi_level_index=False, threads=False, timeout=20,
+    )
+
+
+def _stale_diagnostic(raw, cutoff):
+    """Say why the newest bar is missing, without request URLs or credentials."""
+    if raw is None or len(raw) == 0:
+        return "raw=empty"
+    idx = pd.to_datetime(raw.index).tz_localize(None).normalize() if getattr(raw.index, "tz", None) is not None \
+        else pd.to_datetime(raw.index).normalize()
+    last = idx[-1]
+    note = f"raw_last={last.date()}"
+    if last == cutoff:
+        note += " (row present but removed by validation/NaN)"
+    return note
+
+
+def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_delay=45):
+    """Return validated daily bars ending on the last completed session.
+
+    Still raises DataQualityError when that session's bar is missing: stale data is never returned.
+    Extra handling: a bar that is exactly one session behind (Yahoo lag after the close) is retried
+    with spaced waits and finally via the Ticker.history endpoint before failing.
+    """
     cutoff = last_completed_session(now)
     error = None
+    use_history = False
     for attempt in range(attempts):
+        wait = 2 ** attempt
         try:
-            df = normalize_prices(yf.download(
-                ticker, period=period, interval="1d", progress=False,
-                auto_adjust=True, multi_level_index=False, threads=False, timeout=20,
-            ))
+            raw = _fetch_raw(ticker, period, use_history)
+            df = normalize_prices(raw)
             df = df.loc[df.index <= cutoff]
             if df.empty or df.index[-1] != cutoff:
                 latest = "none" if df.empty else str(df.index[-1].date())
+                lag = (not df.empty) and df.index[-1] < cutoff and \
+                    len(market_schedule(str(df.index[-1].date()), str(cutoff.date()))) == 2
+                if lag:
+                    print(f"::warning::{ticker}: bar for {cutoff.date()} not available yet "
+                          f"(attempt {attempt + 1}/{attempts}, source={'history' if use_history else 'download'}, "
+                          f"{_stale_diagnostic(raw, cutoff)})")
+                    use_history = not use_history  # alternate endpoints between attempts
+                    wait = min(stale_retry_delay * (attempt + 1), _STALE_WAIT_BUDGET["left"])
+                    _STALE_WAIT_BUDGET["left"] -= wait
                 raise DataQualityError(f"{ticker}: latest valid close {latest}; expected {cutoff.date()}")
             return df
         except Exception as exc:
             # Do not log request URLs, cookies, or credentials from provider exceptions.
             error = exc if isinstance(exc, DataQualityError) else DataQualityError(f"{ticker}: download failed ({type(exc).__name__})")
             if attempt + 1 < attempts:
-                time.sleep(2 ** attempt)
+                time.sleep(max(wait, 0))
     raise error
 
 
