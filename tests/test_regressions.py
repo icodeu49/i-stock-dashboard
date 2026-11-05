@@ -274,5 +274,31 @@ class SectorMomentumTests(unittest.TestCase):
         self.assertAlmostEqual(score, expected)
 
 
+class MassiveFallbackTest(unittest.TestCase):
+    def _stale_yahoo(self, cutoff):
+        good = pd.DataFrame({
+            'Open': [10.0], 'High': [11.0], 'Low': [9.0], 'Close': [10.5], 'Volume': [1000.0],
+        }, index=[pd.Timestamp('2026-10-07')])
+        return good
+
+    def test_massive_supplies_lagging_bar(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        bar = {'T': 'TEST', 'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
+               't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
+        response = Mock()
+        response.status_code = 200
+        response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch('requests.get', return_value=response),              patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}),              patch('time.sleep'):
+            df = market_data.download_prices('TEST', attempts=1)
+        self.assertEqual(df.index[-1], cutoff)
+        self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
+
+    def test_no_key_still_raises(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch.dict('os.environ', {}, clear=True),              patch('time.sleep'):
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', attempts=1)
+
+
 if __name__ == '__main__':
     unittest.main()
