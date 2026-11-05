@@ -39,7 +39,7 @@ def format_signal(signal, regime):
     price = lambda value: 'N/A' if value is None else f'USD {value:.2f}'
     icon = '\U0001f534' if signal['direction'] == 'sell' else '\U0001f7e2'
     line = '\u2500' * 18
-    text = f"{icon} {signal['label']} \u2014 {signal['ticker']}\n"
+    text = f"{icon} {signal['label']} - {signal['ticker']}\n"
     text += f"\U0001f4c5 {signal['timeframe']} close {signal['date']}\n"
     text += line + '\n'
     if not signal['fresh_period']:
