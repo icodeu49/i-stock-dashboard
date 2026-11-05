@@ -63,6 +63,40 @@ def _fetch_raw(ticker, period, use_history):
     )
 
 
+def _fetch_massive_prev_bar(ticker, cutoff):
+    """Previous-day bar from Massive when Yahoo lags. Needs MASSIVE_API_KEY; free plan suffices."""
+    import os
+    import requests
+    key = os.environ.get("MASSIVE_API_KEY")
+    if not key:
+        return None
+    try:
+        resp = requests.get(
+            f"https://api.massive.com/v2/aggs/ticker/{ticker}/prev",
+            params={"adjusted": "true", "apiKey": key}, timeout=15)
+        if resp.status_code != 200:
+            print(f"::warning::{ticker}: Massive fallback unavailable (HTTP {resp.status_code})")
+            return None
+        results = resp.json().get("results") or []
+        if not results:
+            return None
+        bar = results[0]
+        stamp = pd.Timestamp(bar["t"], unit="ms", tz="UTC")
+        candidates = {stamp.normalize().tz_localize(None),
+                      stamp.tz_convert("America/New_York").normalize().tz_localize(None)}
+        if cutoff not in candidates:
+            days = sorted(str(d.date()) for d in candidates)
+            print(f"::warning::{ticker}: Massive previous-day bar is {'/'.join(days)}, expected {cutoff.date()}")
+            return None
+        day = cutoff
+        return pd.DataFrame(
+            {"Open": [bar["o"]], "High": [bar["h"]], "Low": [bar["l"]],
+             "Close": [bar["c"]], "Volume": [bar["v"]]}, index=[day])
+    except Exception as exc:
+        print(f"::warning::{ticker}: Massive fallback failed ({type(exc).__name__})")
+        return None
+
+
 def _stale_diagnostic(raw, cutoff):
     """Say why the newest bar is missing, without request URLs or credentials."""
     if raw is None or len(raw) == 0:
@@ -81,7 +115,8 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
 
     Still raises DataQualityError when that session's bar is missing: stale data is never returned.
     Extra handling: a bar that is exactly one session behind (Yahoo lag after the close) is retried
-    with spaced waits and finally via the Ticker.history endpoint before failing.
+    with spaced waits, via the Ticker.history endpoint, and finally via the Massive previous-day
+    bar when MASSIVE_API_KEY is set, before failing.
     """
     cutoff = last_completed_session(now)
     error = None
@@ -103,6 +138,14 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
                     use_history = not use_history  # alternate endpoints between attempts
                     wait = min(stale_retry_delay * (attempt + 1), _STALE_WAIT_BUDGET["left"])
                     _STALE_WAIT_BUDGET["left"] -= wait
+                if lag and attempt + 1 == attempts:
+                    bar = _fetch_massive_prev_bar(ticker, cutoff)
+                    if bar is not None:
+                        df = normalize_prices(pd.concat([df, bar]))
+                        df = df.loc[df.index <= cutoff]
+                        if not df.empty and df.index[-1] == cutoff:
+                            print(f"::notice::{ticker}: latest bar {cutoff.date()} supplied by Massive fallback")
+                            return df
                 raise DataQualityError(f"{ticker}: latest valid close {latest}; expected {cutoff.date()}")
             return df
         except Exception as exc:
