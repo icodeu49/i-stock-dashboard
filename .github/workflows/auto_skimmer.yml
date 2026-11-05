@@ -65,12 +65,15 @@ jobs:
       - if: steps.gate.outputs.skip != 'true'
         name: Refresh momentum candidates
         id: momentum
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
         run: python heatmap_skimmer.py
       - name: Send stock alerts and coverage report
         if: (success() || steps.momentum.outcome == 'failure') && steps.gate.outputs.skip != 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
         run: python notifier.py
       - name: Persist watchlist and confirmed deliveries
         if: always() && steps.gate.outputs.skip != 'true'
