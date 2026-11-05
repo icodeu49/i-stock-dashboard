@@ -288,7 +288,26 @@ class MassiveFallbackTest(unittest.TestCase):
         response = Mock()
         response.status_code = 200
         response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
-        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch('requests.get', return_value=response),              patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}),              patch('time.sleep'):
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch('requests.get', return_value=response),              patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), patch('time.sleep'):
+            market_data._MASSIVE_CALLS.update({"made": 0, "last_at": 0.0, "throttled": False})
+            df = market_data.download_prices('TEST', attempts=1)
+        self.assertEqual(df.index[-1], cutoff)
+        self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
+
+    def test_nan_latest_row_triggers_fallback(self):
+        # Yahoo returns today's row but with NaN values: validation removes it, leaving a lag.
+        cutoff = pd.Timestamp('2026-10-08')
+        raw = pd.DataFrame({
+            'Open': [10.0, np.nan], 'High': [11.0, np.nan], 'Low': [9.0, np.nan],
+            'Close': [10.5, np.nan], 'Volume': [1000.0, np.nan],
+        }, index=[pd.Timestamp('2026-10-07'), cutoff])
+        bar = {'T': 'TEST', 'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
+               't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
+        response = Mock()
+        response.status_code = 200
+        response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), patch.object(market_data, '_fetch_raw', return_value=raw), patch('requests.get', return_value=response), patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), patch('time.sleep'):
+            market_data._MASSIVE_CALLS.update({"made": 0, "last_at": 0.0, "throttled": False})
             df = market_data.download_prices('TEST', attempts=1)
         self.assertEqual(df.index[-1], cutoff)
         self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
