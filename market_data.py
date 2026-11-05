@@ -63,17 +63,40 @@ def _fetch_raw(ticker, period, use_history):
     )
 
 
+_MASSIVE_CALLS = {"made": 0, "last_at": 0.0, "throttled": False}
+_MASSIVE_MAX_CALLS_PER_RUN = 4  # free plan allows 5 requests/minute; keep headroom
+_MASSIVE_MIN_SPACING = 12.5     # seconds between fallback calls
+
+
 def _fetch_massive_prev_bar(ticker, cutoff):
-    """Previous-day bar from Massive when Yahoo lags. Needs MASSIVE_API_KEY; free plan suffices."""
+    """Previous-day bar from Massive when Yahoo lags. Needs MASSIVE_API_KEY; free plan suffices.
+
+    Bounded for the free tier: at most a few calls per run, spaced so any 60-second window
+    stays under 5 requests, and a 429 stops further fallback attempts for the run.
+    Note the free plan releases a day's bars only after midnight New York, so before then
+    the previous-day bar is the prior session and this declines with a warning.
+    """
     import os
     import requests
     key = os.environ.get("MASSIVE_API_KEY")
-    if not key:
+    if not key or _MASSIVE_CALLS["throttled"]:
         return None
+    if _MASSIVE_CALLS["made"] >= _MASSIVE_MAX_CALLS_PER_RUN:
+        print(f"::warning::{ticker}: Massive fallback skipped (per-run call budget reached)")
+        return None
+    gap = time.time() - _MASSIVE_CALLS["last_at"]
+    if _MASSIVE_CALLS["made"] and gap < _MASSIVE_MIN_SPACING:
+        time.sleep(_MASSIVE_MIN_SPACING - gap)
+    _MASSIVE_CALLS["made"] += 1
+    _MASSIVE_CALLS["last_at"] = time.time()
     try:
         resp = requests.get(
             f"https://api.massive.com/v2/aggs/ticker/{ticker}/prev",
             params={"adjusted": "true", "apiKey": key}, timeout=15)
+        if resp.status_code == 429:
+            _MASSIVE_CALLS["throttled"] = True
+            print(f"::warning::{ticker}: Massive rate limit hit; fallback disabled for the rest of this run")
+            return None
         if resp.status_code != 200:
             print(f"::warning::{ticker}: Massive fallback unavailable (HTTP {resp.status_code})")
             return None
