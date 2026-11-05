@@ -60,6 +60,36 @@ class MarketDataTests(unittest.TestCase):
             result = market_data.download_prices('TEST', now='2026-10-09T18:00:00Z', attempts=1)
         self.assertEqual(result.index[-1], pd.Timestamp('2026-10-08'))
 
+    def test_one_session_lag_recovers_via_history_endpoint(self):
+        full = prices(300, '2026-10-09')            # includes 2026-10-08 (cutoff for 18:00Z on the 9th is 10-08)
+        lagging = full.iloc[:-2]                    # newest bar is 2026-10-07: one session behind
+        now = '2026-10-09T18:00:00Z'
+        with patch.object(market_data.yf, 'download', return_value=lagging), \
+             patch.object(market_data.yf, 'Ticker') as ticker, patch.object(market_data.time, 'sleep') as sleep:
+            ticker.return_value.history.return_value = full
+            result = market_data.download_prices('TEST', now=now, attempts=3)
+        self.assertEqual(result.index[-1], pd.Timestamp('2026-10-08'))
+        self.assertTrue(sleep.called)
+
+    def test_persistent_lag_still_fails_and_never_returns_stale_data(self):
+        full = prices(300, '2026-10-09')
+        lagging = full.iloc[:-2]
+        with patch.object(market_data.yf, 'download', return_value=lagging), \
+             patch.object(market_data.yf, 'Ticker') as ticker, patch.object(market_data.time, 'sleep'):
+            ticker.return_value.history.return_value = lagging
+            with self.assertRaises(market_data.DataQualityError) as ctx:
+                market_data.download_prices('TEST', now='2026-10-09T18:00:00Z', attempts=3)
+        self.assertIn('expected 2026-10-08', str(ctx.exception))
+
+    def test_stale_by_more_than_one_session_gets_no_lag_wait(self):
+        full = prices(300, '2026-10-09')
+        old = full.iloc[:-4]
+        with patch.object(market_data.yf, 'download', return_value=old), \
+             patch.object(market_data.time, 'sleep') as sleep:
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', now='2026-10-09T18:00:00Z', attempts=2)
+        sleep.assert_called_once_with(1)
+
 
 class TechnicalTests(unittest.TestCase):
     def test_three_year_stock_has_weekly_indicators(self):
