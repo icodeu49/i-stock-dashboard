@@ -23,29 +23,53 @@ def percentage(value):
     return 'N/A' if value is None else f'{value:+.2f}%'
 
 
+def trend_icon(trend):
+    return {'bullish': '\U0001f7e2', 'bearish': '\U0001f534'}.get((trend or '').lower(), '\u26aa')
+
+
+def signed_icon(value):
+    value = number(value)
+    if value is None:
+        return '\u26aa'
+    return '\U0001f7e2' if value >= 0 else '\U0001f534'
+
+
 def format_signal(signal, regime):
     detail = signal['context']
     price = lambda value: 'N/A' if value is None else f'USD {value:.2f}'
-    icon = '🔴' if signal['direction'] == 'sell' else '🟢'
-    text = f"{icon} {signal['label']} — {signal['ticker']} | {signal['timeframe']} close {signal['date']}\n"
+    icon = '\U0001f534' if signal['direction'] == 'sell' else '\U0001f7e2'
+    line = '\u2500' * 18
+    text = f"{icon} {signal['label']} \u2014 {signal['ticker']}\n"
+    text += f"\U0001f4c5 {signal['timeframe']} close {signal['date']}\n"
+    text += line + '\n'
     if not signal['fresh_period']:
-        text += 'Last completed-period setup; not a fresh signal from today.\n'
-    text += f"Trigger: {', '.join(signal['reasons'])}\n"
-    text += f"Signal close {price(detail['close'])} | Market regime: {regime}\n"
-    text += f"Weekly: {signal['weekly_trend']} ({signal['weekly_asof']}) | Monthly: {signal['monthly_trend']} ({signal['monthly_asof']})\n"
-    text += f"Prior 20-bar resistance {price(detail['breakout_level'])} | distance {percentage(detail['breakout_distance_pct'])}\n"
-    text += f"VSTOP {price(detail['vstop'])} | distance below signal close {percentage(detail['stop_distance_pct'])}\n"
-    text += f"Latest daily close vs 50-day MA: {percentage(detail['daily_ma50_distance_pct'])}"
+        text += '\u2139\ufe0f Last completed-period setup; not a fresh signal from today.\n'
+    text += f"\U0001f3af Trigger: {', '.join(signal['reasons'])}\n"
+    text += f"\U0001f4b5 Signal close {price(detail['close'])} | Market regime: {regime}\n"
+    text += line + '\n'
+    text += f"\U0001f5d3 MONTHLY\nTrend: {signal['monthly_trend']} {trend_icon(signal['monthly_trend'])} (as of {signal['monthly_asof']})\n"
+    text += line + '\n'
+    text += f"\U0001f4c6 WEEKLY\nTrend: {signal['weekly_trend']} {trend_icon(signal['weekly_trend'])} (as of {signal['weekly_asof']})\n"
+    text += line + '\n'
+    text += f"\U0001f4c8 DAILY\nClose vs 50-day MA: {percentage(detail['daily_ma50_distance_pct'])}\n"
     warning = extension_warning(detail['daily_ma50_distance_pct'])
     if warning:
-        text += '\n' + warning
+        text += warning + '\n'
+    text += line + '\n'
+    text += '\U0001f4cf LEVELS & RISK\n'
+    text += f"Prior 20-bar resistance {price(detail['breakout_level'])} | distance {percentage(detail['breakout_distance_pct'])}\n"
+    text += f"\U0001f6d1 VSTOP {price(detail['vstop'])} | distance below signal close {percentage(detail['stop_distance_pct'])}\n"
     if detail.get('vstop_multiplier') is not None:
-        text += f"\nDaily VSTOP: {detail['vstop_multiplier']:.1f}× ATR(30); {int(detail['vstop_confirm_sessions'])} closing breaches required"
+        text += f"VSTOP: {detail['vstop_multiplier']:.1f}\u00d7 ATR(30); {int(detail['vstop_confirm_sessions'])} closing breaches required"
         if detail.get('vstop_shield_eligible'):
             text += ' | mega-cap shield eligible'
-    text += f"\nRS vs SPY: {percentage(signal['rs_spy'])} | sector: {percentage(signal['rs_sector'])}"
-    text += f"\nWatchlist sector rank: {signal['sector_rank']}"
-    text += '\n' + describe_earnings(signal.get('earnings', {}))
+        text += '\n'
+    text += line + '\n'
+    text += '\u2696\ufe0f RELATIVE STRENGTH\n'
+    text += f"RS vs SPY: {percentage(signal['rs_spy'])} {signed_icon(signal['rs_spy'])} | Sector: {percentage(signal['rs_sector'])} {signed_icon(signal['rs_sector'])}\n"
+    text += f"Watchlist sector rank: {signal['sector_rank']}\n"
+    text += line + '\n'
+    text += '\U0001f4e3 ' + describe_earnings(signal.get('earnings', {}))
     return text
 
 
