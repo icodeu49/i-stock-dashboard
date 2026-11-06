@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T00:04:13.961451+00:00",
+    "last_sent": "2026-11-06T00:34:48.313367+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -580,6 +580,11 @@
             "url_key": "08ced7ec795b714e090b082f",
             "title_key": "powerint powi q3 2026 earnings call transcript",
             "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "d18af4d263ae80711739b1da": {
+            "url_key": "d18af4d263ae80711739b1da",
+            "title_key": "how to use ai and chatgpt to avoid falling victim to fraud or scams",
+            "sent_at": "2026-11-06T00:34:48.313367+00:00"
         }
     },
     "signal_ids": [
@@ -712,6 +717,16 @@
         "signal:SPOT:Weekly:2026-10-30:buy",
         "signal:AFRM:Weekly:2026-10-30:sell",
         "signal:VLO:Weekly:2026-10-30:sell",
-        "signal:NOW:Weekly:2026-10-30:sell"
+        "signal:NOW:Weekly:2026-10-30:sell",
+        "signal:PG:Weekly:2026-10-30:buy",
+        "signal:EL:Weekly:2026-10-30:buy",
+        "signal:LIN:Weekly:2026-10-30:buy",
+        "signal:CL:Weekly:2026-10-30:sell",
+        "signal:EXC:Weekly:2026-10-30:buy",
+        "signal:AMT:Weekly:2026-10-30:sell",
+        "signal:MA:Weekly:2026-10-30:buy",
+        "signal:LLY:Monthly:2026-10-30:buy",
+        "signal:FTGFF:Monthly:2026-10-30:buy",
+        "signal:AMGN:Monthly:2026-10-30:buy"
     ]
 }
