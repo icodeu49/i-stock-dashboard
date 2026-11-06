@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T03:58:17.058531+00:00",
+    "last_sent": "2026-11-06T04:05:58.034003+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -640,6 +640,11 @@
             "url_key": "ac41384b389626456eaa067f",
             "title_key": "can bloom energy stock jump 50",
             "sent_at": "2026-11-06T03:44:40.842852+00:00"
+        },
+        "86e3bb911533fa52140e58e0": {
+            "url_key": "86e3bb911533fa52140e58e0",
+            "title_key": "senator payano artificial intelligence is moving fast our laws need to keep up",
+            "sent_at": "2026-11-06T04:05:58.034003+00:00"
         }
     },
     "signal_ids": [
@@ -842,6 +847,16 @@
         "signal:AMT:Monthly:2026-10-30:buy",
         "signal:CCI:Monthly:2026-10-30:buy",
         "signal:FLEX:Daily:2026-11-05:sell",
-        "signal:VRT:Daily:2026-11-05:sell"
+        "signal:VRT:Daily:2026-11-05:sell",
+        "signal:PSX:Daily:2026-11-05:sell",
+        "signal:XOM:Daily:2026-11-05:sell",
+        "signal:WMB:Daily:2026-11-05:sell",
+        "signal:COST:Daily:2026-11-05:buy",
+        "signal:COP:Daily:2026-11-05:sell",
+        "signal:SO:Daily:2026-11-05:buy",
+        "signal:DUK:Daily:2026-11-05:buy",
+        "signal:SRE:Daily:2026-11-05:sell",
+        "signal:CVX:Daily:2026-11-05:sell",
+        "signal:EXC:Daily:2026-11-05:buy"
     ]
 }
