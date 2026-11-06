@@ -30,7 +30,7 @@ jobs:
       group: watchlist-state-main
       cancel-in-progress: false
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60  # broad Yahoo outages need paced per-ticker rescues; public repo, no minute cost
     steps:
       - name: Gate morning schedule to 11:18 London time
         id: gate
