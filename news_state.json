@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T00:34:48.313367+00:00",
+    "last_sent": "2026-11-06T01:41:34.653830+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -585,6 +585,26 @@
             "url_key": "d18af4d263ae80711739b1da",
             "title_key": "how to use ai and chatgpt to avoid falling victim to fraud or scams",
             "sent_at": "2026-11-06T00:34:48.313367+00:00"
+        },
+        "92f50b071fc845dc1c784922": {
+            "url_key": "92f50b071fc845dc1c784922",
+            "title_key": "some 40 of us planned data center capacity is in states wanting to hit pause",
+            "sent_at": "2026-11-06T01:41:34.653830+00:00"
+        },
+        "f5e986717eef0c73b3c06e4e": {
+            "url_key": "f5e986717eef0c73b3c06e4e",
+            "title_key": "on wall street democrats midterm victory bursts the ai bubble",
+            "sent_at": "2026-11-06T01:41:34.653830+00:00"
+        },
+        "1554a2d0aed604991540a233": {
+            "url_key": "1554a2d0aed604991540a233",
+            "title_key": "trump blames dumocrats for stock market slide following midterm results",
+            "sent_at": "2026-11-06T01:41:34.653830+00:00"
+        },
+        "d62fee1d1bbb158082a4c373": {
+            "url_key": "d62fee1d1bbb158082a4c373",
+            "title_key": "stock market tumbles following midterm elections as future is looked ahead",
+            "sent_at": "2026-11-06T01:41:34.653830+00:00"
         }
     },
     "signal_ids": [
@@ -727,6 +747,16 @@
         "signal:MA:Weekly:2026-10-30:buy",
         "signal:LLY:Monthly:2026-10-30:buy",
         "signal:FTGFF:Monthly:2026-10-30:buy",
-        "signal:AMGN:Monthly:2026-10-30:buy"
+        "signal:AMGN:Monthly:2026-10-30:buy",
+        "signal:ABBV:Monthly:2026-10-30:buy",
+        "signal:PM:Monthly:2026-10-30:buy",
+        "signal:MO:Monthly:2026-10-30:buy",
+        "signal:PFE:Monthly:2026-10-30:buy",
+        "signal:REGN:Monthly:2026-10-30:buy",
+        "signal:MA:Monthly:2026-10-30:buy",
+        "signal:V:Monthly:2026-10-30:buy",
+        "signal:BRK-B:Monthly:2026-10-30:buy",
+        "signal:U:Daily:2026-11-05:buy",
+        "signal:APLD:Monthly:2026-10-30:sell"
     ]
 }
