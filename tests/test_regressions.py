@@ -511,5 +511,119 @@ class MassiveFallbackTest(unittest.TestCase):
                 market_data.download_prices('TEST', attempts=1)
 
 
+class MassiveHistoryMergeTest(unittest.TestCase):
+    """Yahoo serves a truncated series (AVB-style provider outage): the bounded
+    Massive window fill must rebuild it on Yahoo's dividend-adjusted basis."""
+
+    def _reset(self):
+        market_data._MASSIVE_GROUPED.update({"date": None, "bars": None, "throttled": False, "failed_date": None})
+        market_data._MASSIVE_PACE["last_call"] = 0.0
+        market_data._YAHOO_LAG.update({"tickers": set(), "tripped": False})
+
+    def _window(self, end, periods=80, close=100.0):
+        idx = pd.bdate_range(end=end, periods=periods)
+        bars = [{'T': 'TEST', 'v': 1000, 'o': close, 'h': close + 1, 'l': close - 1,
+                 'c': close, 't': int(pd.Timestamp(d, tz='UTC').timestamp() * 1000)}
+                for d in idx]
+        return idx, {'status': 'OK', 'resultsCount': len(bars), 'results': bars}
+
+    def _router(self, window_payload, dividends):
+        def route(url, **kwargs):
+            response = Mock()
+            response.status_code = 200
+            if 'reference/dividends' in url:
+                response.json.return_value = {'status': 'OK', 'results': dividends}
+            else:
+                response.json.return_value = window_payload
+            response.text = ''
+            return response
+        return route
+
+    def test_truncated_yahoo_rebuilt_with_explicit_dividend_adjustment(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        idx, payload = self._window(cutoff)
+        ex = idx[40]  # dividend mid-window; pre-ex dates get factor 1 - 1/100 = 0.99
+        dividends = [{'ex_dividend_date': str(ex.date()), 'cash_amount': 1.0}]
+        # Yahoo stops 5 sessions before cutoff (not a one-session lag) and its last
+        # close already reflects the dividend adjustment (100 * 0.99 = 99).
+        yahoo_idx = idx[:35]
+        yahoo = pd.DataFrame({'Open': 99., 'High': 100., 'Low': 98., 'Close': 99.,
+                              'Volume': 1000.}, index=yahoo_idx)
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=yahoo), \
+             patch('requests.get', side_effect=self._router(payload, dividends)) as get, \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset()
+            df = market_data.download_prices('TEST', attempts=1)
+        self.assertEqual(df.index[-1], cutoff)
+        self.assertAlmostEqual(df.Close.iloc[-1], 100.0)          # post-ex: unadjusted by this dividend
+        self.assertAlmostEqual(df.Close.loc[idx[35]], 99.0)       # pre-ex: factor applied
+        self.assertAlmostEqual(df.Close.loc[yahoo_idx[-1]], 99.0)
+        self.assertEqual(get.call_count, 2)                       # bars + dividends, bounded
+        urls = [call.args[0] for call in get.call_args_list]
+        self.assertTrue(any('/range/1/day/' in u for u in urls))
+        self.assertTrue(any('reference/dividends' in u for u in urls))
+
+    def test_overlap_mismatch_fails_closed(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        idx, payload = self._window(cutoff)
+        yahoo_idx = idx[:35]
+        yahoo = pd.DataFrame({'Open': 95., 'High': 96., 'Low': 94., 'Close': 95.,
+                              'Volume': 1000.}, index=yahoo_idx)  # 5% off the Massive basis
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=yahoo), \
+             patch('requests.get', side_effect=self._router(payload, [])), \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset()
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', attempts=1)
+
+    def test_window_missing_cutoff_fails_closed(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        idx, payload = self._window(cutoff - pd.Timedelta(days=7))  # window itself stale
+        yahoo = pd.DataFrame({'Open': 99., 'High': 100., 'Low': 98., 'Close': 99.,
+                              'Volume': 1000.}, index=idx[:35])
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=yahoo), \
+             patch('requests.get', side_effect=self._router(payload, [])), \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset()
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', attempts=1)
+
+    def test_one_session_lag_does_not_trigger_history_merge(self):
+        # The rescue path (grouped/prev/cache) owns one-session lag; the history
+        # window must stay untouched there.
+        cutoff = pd.Timestamp('2026-10-08')
+        stale = pd.DataFrame({'Open': [10.], 'High': [11.], 'Low': [9.], 'Close': [10.5],
+                              'Volume': [1000.]}, index=[pd.Timestamp('2026-10-07')])
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=stale), \
+             patch.object(market_data, '_massive_history_merge') as merge, \
+             patch.dict('os.environ', {}, clear=True), \
+             patch('time.sleep'):
+            self._reset()
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', attempts=1)
+        merge.assert_not_called()
+
+    def test_no_key_truncated_still_raises(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        idx, _ = self._window(cutoff)
+        yahoo = pd.DataFrame({'Open': 99., 'High': 100., 'Low': 98., 'Close': 99.,
+                              'Volume': 1000.}, index=idx[:35])
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=yahoo), \
+             patch.dict('os.environ', {}, clear=True), \
+             patch('time.sleep'):
+            self._reset()
+            with self.assertRaises(market_data.DataQualityError):
+                market_data.download_prices('TEST', attempts=1)
+
+
+
 if __name__ == '__main__':
     unittest.main()
