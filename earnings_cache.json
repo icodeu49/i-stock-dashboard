@@ -109,8 +109,9 @@
     "PSX": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-05T23:49:52.251377+00:00",
+        "checked_at": "2026-11-06T20:00:33.428680+00:00",
         "source": "Yahoo Finance",
+        "days_until": 89,
         "within_7_days": false
     },
     "TMO": {
@@ -246,8 +247,9 @@
     "FLEX": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-05T23:49:51.359991+00:00",
+        "checked_at": "2026-11-06T20:00:32.931057+00:00",
         "source": "Yahoo Finance",
+        "days_until": 82,
         "within_7_days": false
     },
     "IOT": {
@@ -315,8 +317,9 @@
     "WMB": {
         "status": "provider_reported",
         "date": "2027-02-09",
-        "checked_at": "2026-11-05T23:49:52.787963+00:00",
+        "checked_at": "2026-11-06T20:00:33.875511+00:00",
         "source": "Yahoo Finance",
+        "days_until": 95,
         "within_7_days": false
     },
     "CSCO": {
@@ -949,8 +952,9 @@
     "HAL": {
         "status": "provider_reported",
         "date": "2027-01-20",
-        "checked_at": "2026-11-05T23:49:53.901605+00:00",
+        "checked_at": "2026-11-06T20:00:34.851176+00:00",
         "source": "Yahoo Finance",
+        "days_until": 75,
         "within_7_days": false
     },
     "AAL": {
@@ -983,10 +987,11 @@
     },
     "SRE": {
         "status": "provider_reported",
-        "date": "2026-11-05",
-        "checked_at": "2026-11-05T23:49:53.326757+00:00",
+        "date": "2027-02-25",
+        "checked_at": "2026-11-06T20:00:34.360289+00:00",
         "source": "Yahoo Finance",
-        "within_7_days": true
+        "days_until": 111,
+        "within_7_days": false
     },
     "VRT": {
         "status": "provider_reported",
