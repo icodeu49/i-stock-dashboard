@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T02:26:37.050955+00:00",
+    "last_sent": "2026-11-06T02:31:15.305128+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -620,6 +620,11 @@
             "url_key": "687c92ae0b492bee75c2eede",
             "title_key": "is cintas stock really expensive",
             "sent_at": "2026-11-06T02:26:37.050955+00:00"
+        },
+        "9d0a87b04c8794aff3da23b4": {
+            "url_key": "9d0a87b04c8794aff3da23b4",
+            "title_key": "tien phong securities tps macroeconomic pressures ease but the stock market struggles to find upward momentum",
+            "sent_at": "2026-11-06T02:31:15.305128+00:00"
         }
     },
     "signal_ids": [
@@ -782,6 +787,16 @@
         "signal:INTC:Monthly:2026-10-30:sell",
         "signal:IONQ:Monthly:2026-10-30:sell",
         "signal:IOT:Monthly:2026-10-30:buy",
-        "signal:META:Monthly:2026-10-30:sell"
+        "signal:META:Monthly:2026-10-30:sell",
+        "signal:MRVL:Monthly:2026-10-30:sell",
+        "signal:MU:Monthly:2026-10-30:sell",
+        "signal:NAK:Monthly:2026-10-30:sell",
+        "signal:NBIS:Monthly:2026-10-30:sell",
+        "signal:NVDA:Monthly:2026-10-30:sell",
+        "signal:NVTS:Monthly:2026-10-30:sell",
+        "signal:RGTI:Monthly:2026-10-30:sell",
+        "signal:AI:Monthly:2026-10-30:sell",
+        "signal:ALAB:Monthly:2026-10-30:sell",
+        "signal:CRDO:Monthly:2026-10-30:sell"
     ]
 }
