@@ -1696,10 +1696,9 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-21",
                     "last_selected_asof": "2026-11-05",
-                    "active": false,
+                    "active": true,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-8.92%)",
-                    "sector_etf": null,
-                    "inactive_asof": "2026-11-05"
+                    "sector_etf": null
                 }
             },
             "trends": {
@@ -2469,7 +2468,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #1 XLP; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #1 XLP; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bearish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "PSA": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2483,7 +2489,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "AMT": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2497,7 +2510,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "WY": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2511,7 +2531,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bearish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "O": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2525,7 +2552,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bearish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "PLD": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2539,7 +2573,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bearish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "CMG": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2553,7 +2594,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #4 XLY; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #4 XLY; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "MA": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2567,7 +2615,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "V": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2581,7 +2636,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "BRK-B": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2595,7 +2657,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "BLK": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2609,7 +2678,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         },
         "AXP": {
             "first_observed_at": "2026-11-06T00:20:22.649475+00:00",
@@ -2623,7 +2699,14 @@
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
-            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bearish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         }
     },
     "events": [
@@ -5313,5 +5396,5 @@
             "reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
         }
     ],
-    "updated_at": "2026-11-06T00:20:22.649475+00:00"
+    "updated_at": "2026-11-06T00:28:09.731870+00:00"
 }

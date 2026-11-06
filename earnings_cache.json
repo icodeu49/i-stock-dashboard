@@ -927,5 +927,47 @@
         "checked_at": "2026-11-06T00:13:05.306014+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
+    },
+    "AMT": {
+        "status": "provider_reported",
+        "date": "2027-02-23",
+        "checked_at": "2026-11-06T00:28:07.346719+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "MA": {
+        "status": "provider_reported",
+        "date": "2027-01-28",
+        "checked_at": "2026-11-06T00:28:07.799376+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "PSA": {
+        "status": "provider_reported",
+        "date": "2027-02-11",
+        "checked_at": "2026-11-06T00:28:08.152098+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "V": {
+        "status": "provider_reported",
+        "date": "2027-01-26",
+        "checked_at": "2026-11-06T00:28:08.492567+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
+    },
+    "BRK-B": {
+        "status": "provider_reported",
+        "date": "2026-11-07",
+        "checked_at": "2026-11-06T00:28:08.859948+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": true
+    },
+    "CMG": {
+        "status": "provider_reported",
+        "date": "2027-02-09",
+        "checked_at": "2026-11-06T00:28:09.333861+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
     }
 }

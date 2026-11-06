@@ -3112,8 +3112,24 @@
             "recorded_at": "2026-11-05T23:49:54.454362+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:AMT:Daily:2026-11-05:buy": {
+            "strategy": "Daily",
+            "ticker": "AMT",
+            "signal_date": "2026-11-05",
+            "recorded_at": "2026-11-06T00:28:09.748193+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CMG:Daily:2026-11-05:buy": {
+            "strategy": "Daily",
+            "ticker": "CMG",
+            "signal_date": "2026-11-05",
+            "recorded_at": "2026-11-06T00:28:09.748193+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-06T00:13:05.991953+00:00",
+    "updated_at": "2026-11-06T00:28:09.748193+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
