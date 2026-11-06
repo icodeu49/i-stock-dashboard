@@ -238,6 +238,39 @@ class PersistenceAndDeliveryTests(unittest.TestCase):
                 notifier.run_automated_scanner()
             self.assertIn('PARTIAL SCAN', send.call_args.args[0][-1][1])
 
+    def test_full_report_dispatch_string_force_sends(self):
+        # workflow_dispatch delivers the input as the string 'true'; that must engage full mode.
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.dict('os.environ', {'STOCK_SCANNER_FULL_REPORT': 'true'}), \
+             patch.object(notifier, 'SNAPSHOT_FILE', Path(directory) / 'scan_snapshot.json'), \
+             patch.object(notifier, 'ALERT_STATE_FILE', Path(directory) / 'alert_state.json'), \
+             patch.object(notifier, 'require_telegram_config'), \
+             patch.object(notifier, 'load_watchlist', return_value={'AAA': {}}), \
+             patch.object(notifier, 'download_prices', return_value=prices()), \
+             patch.object(notifier, 'last_completed_session', return_value=pd.Timestamp('2026-10-09')), \
+             patch.object(notifier, 'send_records') as send:
+            notifier.run_automated_scanner()
+            self.assertTrue(send.called)
+            self.assertTrue(send.call_args.kwargs.get('force'))
+            texts = [text for _, text in send.call_args.args[0]]
+            self.assertTrue(any('ONE-OFF FULL REPORT' in text for text in texts))
+
+    def test_full_report_with_failures_withheld_before_sending(self):
+        # A partial report is never sent as full: the raise happens before send_records.
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.dict('os.environ', {'STOCK_SCANNER_FULL_REPORT': 'true'}), \
+             patch.object(notifier, 'SNAPSHOT_FILE', Path(directory) / 'scan_snapshot.json'), \
+             patch.object(notifier, 'ALERT_STATE_FILE', Path(directory) / 'alert_state.json'), \
+             patch.object(notifier, 'require_telegram_config'), \
+             patch.object(notifier, 'load_watchlist', return_value={'AAA': {}}), \
+             patch.object(notifier, 'download_prices', side_effect=[prices(), RuntimeError('stale')]), \
+             patch.object(notifier, 'last_completed_session', return_value=pd.Timestamp('2026-10-09')), \
+             patch.object(notifier, 'send_records') as send:
+            with self.assertRaises(RuntimeError) as ctx:
+                notifier.run_automated_scanner()
+            self.assertIn('Full report withheld', str(ctx.exception))
+            send.assert_not_called()
+
 
 class NewsTests(unittest.TestCase):
     def test_link_ids_do_not_collide(self):
