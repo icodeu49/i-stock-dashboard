@@ -28,7 +28,7 @@ SECTOR_MAP = {
     "XLE": {"name": "Energy", "stocks": ["XOM", "CVX", "COP", "SLB", "EOG", "MPC", "PSX", "VLO", "WMB", "HAL"]},
     "XLB": {"name": "Materials", "stocks": ["LIN", "APD", "SHW", "FCX", "NEM", "ECL", "CTVA", "DOW", "NUE", "ALB"]},
     "XLU": {"name": "Utilities", "stocks": ["NEE", "SO", "DUK", "CEG", "AEP", "SRE", "D", "FE", "EXC", "PCG"]},
-    "XLRE": {"name": "Real Estate", "stocks": ["PLD", "AMT", "EQIX", "CCI", "WY", "PSA", "O", "IRM", "DLR", "AVB"]}
+    "XLRE": {"name": "Real Estate", "stocks": ["PLD", "AMT", "EQIX", "CCI", "WY", "PSA", "O", "IRM", "DLR", "VMRK"]}  # AVB delisted 2026-08-14 (AvalonBay + Equity Residential merged into Vivmark Residential, NYSE: VMRK)
 }
 
 GICS_NAMES = {"XLK": "Information Technology", "XLF": "Financials",
