@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-05T14:50:48.090027+00:00",
+    "last_sent": "2026-11-06T00:04:13.961451+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -515,6 +515,71 @@
             "url_key": "ba466d4a36d59b41b49abc54",
             "title_key": "par pacific holdings inc parr q3 2026 earnings call highlights record refining margins and",
             "sent_at": "2026-11-05T14:50:48.090027+00:00"
+        },
+        "b55d0126f0ef64d6a77919dc": {
+            "url_key": "b55d0126f0ef64d6a77919dc",
+            "title_key": "iren tops quarterly revenue estimates delays some microsoft ai infrastructure deliveries",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "eb0659387dbbf896c316a350": {
+            "url_key": "eb0659387dbbf896c316a350",
+            "title_key": "artificial intelligence points researchers toward new disease targets hidden in mitochondria",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "5fd523f66842e5eeecb3506a": {
+            "url_key": "5fd523f66842e5eeecb3506a",
+            "title_key": "stock market today nov 5 intel falls on weak fourth quarter sales outlook amid chip selloff",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "eb2a3199ab0f5273ad8434fa": {
+            "url_key": "eb2a3199ab0f5273ad8434fa",
+            "title_key": "after the midterms it s time to start rebalancing economic power",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "022e37c695c0f3cd0df7fda1": {
+            "url_key": "022e37c695c0f3cd0df7fda1",
+            "title_key": "ai data center energy deals 5 gw contracts 2026",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "13ffac344e06bc6ec9732cb7": {
+            "url_key": "13ffac344e06bc6ec9732cb7",
+            "title_key": "nextera energy vs duke energy which dividend utility wins the ai power boom",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "51d1c05293bede942ae1b025": {
+            "url_key": "51d1c05293bede942ae1b025",
+            "title_key": "nvidia details full stack co design for ai memory hbm capacity increases by only 3 while agent throughput per dollar rises by up to 30x",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "c8cd2690b7eec422502fb558": {
+            "url_key": "c8cd2690b7eec422502fb558",
+            "title_key": "more performance from every byte how full stack codesign solves ai s memory challenge",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "8a989bb9e174489d716e9b43": {
+            "url_key": "8a989bb9e174489d716e9b43",
+            "title_key": "beone medicines ltd onc q3 2026 earnings call highlights brukinsa tops 1 billion in u s",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "07b04ecf6096e0a59799e381": {
+            "url_key": "07b04ecf6096e0a59799e381",
+            "title_key": "air products apd q4 2026 earnings call transcript",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "f405697ffef04bc26d1932b0": {
+            "url_key": "f405697ffef04bc26d1932b0",
+            "title_key": "earnings live updates airbnb stock jumps as wall street cheers growth mode upbeat outlook",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "35f0c431ee47c2fdaa7c58b0": {
+            "url_key": "35f0c431ee47c2fdaa7c58b0",
+            "title_key": "philip morris international pm stock looks reasonably priced on earnings",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
+        },
+        "08ced7ec795b714e090b082f": {
+            "url_key": "08ced7ec795b714e090b082f",
+            "title_key": "powerint powi q3 2026 earnings call transcript",
+            "sent_at": "2026-11-06T00:04:13.961451+00:00"
         }
     },
     "signal_ids": [
@@ -637,6 +702,16 @@
         "signal:APD:Weekly:2026-10-30:buy",
         "signal:AMZN:Weekly:2026-10-30:sell",
         "signal:CDNS:Weekly:2026-10-30:buy",
-        "signal:ODFL:Weekly:2026-10-30:sell"
+        "signal:ODFL:Weekly:2026-10-30:sell",
+        "signal:REGN:Weekly:2026-10-30:buy",
+        "signal:RDDT:Weekly:2026-10-30:sell",
+        "signal:T:Weekly:2026-10-30:sell",
+        "signal:FTGFF:Weekly:2026-10-30:buy",
+        "signal:PARR:Weekly:2026-10-30:sell",
+        "signal:CARD:Weekly:2026-10-30:sell",
+        "signal:SPOT:Weekly:2026-10-30:buy",
+        "signal:AFRM:Weekly:2026-10-30:sell",
+        "signal:VLO:Weekly:2026-10-30:sell",
+        "signal:NOW:Weekly:2026-10-30:sell"
     ]
 }
