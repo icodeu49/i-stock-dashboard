@@ -2721,7 +2721,14 @@
                 }
             },
             "added_at": "2026-11-06T02:23:02.906373+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bullish"
+            },
+            "trend_asof": "2026-11-05",
+            "trend_policy": "daily-risk-v2"
         }
     },
     "events": [
@@ -5426,5 +5433,5 @@
             "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
         }
     ],
-    "updated_at": "2026-11-06T02:23:02.906373+00:00"
+    "updated_at": "2026-11-06T02:26:04.774864+00:00"
 }

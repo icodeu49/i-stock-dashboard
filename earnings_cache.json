@@ -969,5 +969,13 @@
         "checked_at": "2026-11-06T00:28:09.333861+00:00",
         "source": "Yahoo Finance",
         "within_7_days": false
+    },
+    "CCI": {
+        "status": "provider_reported",
+        "date": "2027-02-03",
+        "checked_at": "2026-11-06T02:26:04.197111+00:00",
+        "source": "Yahoo Finance",
+        "days_until": 90,
+        "within_7_days": false
     }
 }
