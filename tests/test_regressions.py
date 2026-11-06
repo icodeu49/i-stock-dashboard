@@ -275,24 +275,49 @@ class SectorMomentumTests(unittest.TestCase):
 
 
 class MassiveFallbackTest(unittest.TestCase):
-    def _stale_yahoo(self, cutoff):
-        good = pd.DataFrame({
+    def _stale_yahoo(self):
+        return pd.DataFrame({
             'Open': [10.0], 'High': [11.0], 'Low': [9.0], 'Close': [10.5], 'Volume': [1000.0],
         }, index=[pd.Timestamp('2026-10-07')])
-        return good
+
+    def _grouped_response(self, tickers=('TEST',)):
+        bars = [{'T': tick, 'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
+                 't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
+                for tick in tickers]
+        response = Mock()
+        response.status_code = 200
+        response.json.return_value = {'status': 'OK', 'resultsCount': len(bars), 'results': bars}
+        return response
+
+    def _reset_massive(self):
+        market_data._MASSIVE_GROUPED.update({"date": None, "bars": None, "throttled": False})
 
     def test_massive_supplies_lagging_bar(self):
         cutoff = pd.Timestamp('2026-10-08')
-        bar = {'T': 'TEST', 'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
-               't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
-        response = Mock()
-        response.status_code = 200
-        response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
-        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch('requests.get', return_value=response),              patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), patch('time.sleep'):
-            market_data._MASSIVE_CALLS.update({"made": 0, "last_at": 0.0, "throttled": False})
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+             patch('requests.get', return_value=self._grouped_response()) as get, \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset_massive()
             df = market_data.download_prices('TEST', attempts=1)
         self.assertEqual(df.index[-1], cutoff)
         self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
+        self.assertEqual(get.call_count, 1)
+
+    def test_grouped_cache_rescues_many_tickers_with_one_call(self):
+        # More laggards than any per-ticker budget: one grouped call covers them all.
+        cutoff = pd.Timestamp('2026-10-08')
+        tickers = tuple(f'LAG{i}' for i in range(6))
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+             patch('requests.get', return_value=self._grouped_response(tickers)) as get, \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset_massive()
+            frames = [market_data.download_prices(tick, attempts=1) for tick in tickers]
+        self.assertTrue(all(df.index[-1] == cutoff for df in frames))
+        self.assertEqual(get.call_count, 1)
 
     def test_nan_latest_row_triggers_fallback(self):
         # Yahoo returns today's row but with NaN values: validation removes it, leaving a lag.
@@ -301,20 +326,23 @@ class MassiveFallbackTest(unittest.TestCase):
             'Open': [10.0, np.nan], 'High': [11.0, np.nan], 'Low': [9.0, np.nan],
             'Close': [10.5, np.nan], 'Volume': [1000.0, np.nan],
         }, index=[pd.Timestamp('2026-10-07'), cutoff])
-        bar = {'T': 'TEST', 'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
-               't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
-        response = Mock()
-        response.status_code = 200
-        response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
-        with patch.object(market_data, 'last_completed_session', return_value=cutoff), patch.object(market_data, '_fetch_raw', return_value=raw), patch('requests.get', return_value=response), patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), patch('time.sleep'):
-            market_data._MASSIVE_CALLS.update({"made": 0, "last_at": 0.0, "throttled": False})
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=raw), \
+             patch('requests.get', return_value=self._grouped_response()), \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key'}), \
+             patch('time.sleep'):
+            self._reset_massive()
             df = market_data.download_prices('TEST', attempts=1)
         self.assertEqual(df.index[-1], cutoff)
         self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
 
     def test_no_key_still_raises(self):
         cutoff = pd.Timestamp('2026-10-08')
-        with patch.object(market_data, 'last_completed_session', return_value=cutoff),              patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo(cutoff)),              patch.dict('os.environ', {}, clear=True),              patch('time.sleep'):
+        with patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+             patch.dict('os.environ', {}, clear=True), \
+             patch('time.sleep'):
+            self._reset_massive()
             with self.assertRaises(market_data.DataQualityError):
                 market_data.download_prices('TEST', attempts=1)
 
