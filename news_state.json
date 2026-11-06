@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T01:41:34.653830+00:00",
+    "last_sent": "2026-11-06T02:26:37.050955+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -605,6 +605,21 @@
             "url_key": "d62fee1d1bbb158082a4c373",
             "title_key": "stock market tumbles following midterm elections as future is looked ahead",
             "sent_at": "2026-11-06T01:41:34.653830+00:00"
+        },
+        "f06c52538865919e626e6d9b": {
+            "url_key": "f06c52538865919e626e6d9b",
+            "title_key": "mindful of ai exposure wealth managers at hong kong summit urge balance in portfolios",
+            "sent_at": "2026-11-06T02:26:37.050955+00:00"
+        },
+        "5cc142f89d2ed1f99733d0f4": {
+            "url_key": "5cc142f89d2ed1f99733d0f4",
+            "title_key": "major tech stocks plunge as us midterms add to fears of ai slowdown",
+            "sent_at": "2026-11-06T02:26:37.050955+00:00"
+        },
+        "687c92ae0b492bee75c2eede": {
+            "url_key": "687c92ae0b492bee75c2eede",
+            "title_key": "is cintas stock really expensive",
+            "sent_at": "2026-11-06T02:26:37.050955+00:00"
         }
     },
     "signal_ids": [
@@ -757,6 +772,16 @@
         "signal:V:Monthly:2026-10-30:buy",
         "signal:BRK-B:Monthly:2026-10-30:buy",
         "signal:U:Daily:2026-11-05:buy",
-        "signal:APLD:Monthly:2026-10-30:sell"
+        "signal:APLD:Monthly:2026-10-30:sell",
+        "signal:MELI:Weekly:2026-10-30:sell",
+        "signal:CCI:Weekly:2026-10-30:buy",
+        "signal:ARM:Monthly:2026-10-30:sell",
+        "signal:BE:Monthly:2026-10-30:sell",
+        "signal:CRWV:Monthly:2026-10-30:sell",
+        "signal:GEV:Monthly:2026-10-30:sell",
+        "signal:INTC:Monthly:2026-10-30:sell",
+        "signal:IONQ:Monthly:2026-10-30:sell",
+        "signal:IOT:Monthly:2026-10-30:buy",
+        "signal:META:Monthly:2026-10-30:sell"
     ]
 }
