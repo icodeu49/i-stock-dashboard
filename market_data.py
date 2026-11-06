@@ -64,6 +64,48 @@ def _fetch_raw(ticker, period, use_history):
 
 
 _MASSIVE_GROUPED = {"date": None, "bars": None, "throttled": False}
+_MASSIVE_PACE = {"last_call": 0.0}
+_MASSIVE_MIN_GAP = 13.0  # free plan: 5 requests/minute across all endpoints
+
+
+def _massive_get(path, params):
+    """One Massive request: paced to the free-plan rate, errors logged without credentials.
+
+    Returns the decoded JSON on HTTP 200, else None. A 429 disables the fallback for the
+    rest of the run; other failures log the status and a sanitised body excerpt so the
+    cause (entitlement, quota, request shape) is visible in the workflow log.
+    """
+    import os
+    import requests
+    key = os.environ.get("MASSIVE_API_KEY")
+    if not key or _MASSIVE_GROUPED["throttled"]:
+        return None
+    gap = time.time() - _MASSIVE_PACE["last_call"]
+    if gap < _MASSIVE_MIN_GAP:
+        time.sleep(_MASSIVE_MIN_GAP - gap)
+    try:
+        resp = requests.get(f"https://api.massive.com{path}",
+                            params={**params, "apiKey": key}, timeout=30)
+    except Exception as exc:
+        print(f"::warning::Massive request failed ({type(exc).__name__})")
+        return None
+    finally:
+        _MASSIVE_PACE["last_call"] = time.time()
+    if resp.status_code == 429:
+        _MASSIVE_GROUPED["throttled"] = True
+        print("::warning::Massive rate limit hit; fallback disabled for the rest of this run")
+        return None
+    if resp.status_code != 200:
+        body = resp.text[:200].replace(key, "***")
+        print(f"::warning::Massive fallback unavailable (HTTP {resp.status_code}): {body}")
+        return None
+    return resp.json()
+
+
+def _bar_frame(bar, cutoff):
+    return pd.DataFrame(
+        {"Open": [bar["o"]], "High": [bar["h"]], "Low": [bar["l"]],
+         "Close": [bar["c"]], "Volume": [bar["v"]]}, index=[cutoff])
 
 
 def _massive_grouped_bar(ticker, cutoff):
@@ -76,36 +118,41 @@ def _massive_grouped_bar(ticker, cutoff):
     available the same evening after the US close; treat that as observed, not guaranteed -
     if the cutoff date has no bar the lookup declines and the caller still fails loudly.
     """
-    import os
-    import requests
-    key = os.environ.get("MASSIVE_API_KEY")
-    if not key or _MASSIVE_GROUPED["throttled"]:
-        return None
     if _MASSIVE_GROUPED["date"] != cutoff or _MASSIVE_GROUPED["bars"] is None:
-        try:
-            resp = requests.get(
-                f"https://api.massive.com/v2/aggs/grouped/locale/us/market/stocks/{cutoff.date()}",
-                params={"adjusted": "true", "apiKey": key}, timeout=30)
-            if resp.status_code == 429:
-                _MASSIVE_GROUPED["throttled"] = True
-                print(f"::warning::Massive rate limit hit; fallback disabled for the rest of this run")
-                return None
-            if resp.status_code != 200:
-                print(f"::warning::Massive fallback unavailable (HTTP {resp.status_code})")
-                return None
-            results = resp.json().get("results") or []
-            _MASSIVE_GROUPED["date"] = cutoff
-            _MASSIVE_GROUPED["bars"] = {item["T"]: item for item in results if "T" in item}
-        except Exception as exc:
-            print(f"::warning::Massive fallback failed ({type(exc).__name__})")
+        data = _massive_get(f"/v2/aggs/grouped/locale/us/market/stocks/{cutoff.date()}",
+                            {"adjusted": "true"})
+        if data is None:
             return None
+        results = data.get("results") or []
+        _MASSIVE_GROUPED["date"] = cutoff
+        _MASSIVE_GROUPED["bars"] = {item["T"]: item for item in results if "T" in item}
     bar = _MASSIVE_GROUPED["bars"].get(ticker)
     if bar is None:
         print(f"::warning::{ticker}: no Massive bar for {cutoff.date()} in grouped results")
         return None
-    return pd.DataFrame(
-        {"Open": [bar["o"]], "High": [bar["h"]], "Low": [bar["l"]],
-         "Close": [bar["c"]], "Volume": [bar["v"]]}, index=[cutoff])
+    return _bar_frame(bar, cutoff)
+
+
+def _massive_prev_bar(ticker, cutoff):
+    """Latest completed daily bar for one ticker from Massive's prev endpoint (free plan).
+
+    Used when the grouped call is unavailable (for example an HTTP 403). The bar is used
+    only when its date is exactly the cutoff - an older bar is never substituted silently;
+    the caller then still fails loudly.
+    """
+    data = _massive_get(f"/v2/aggs/ticker/{ticker}/prev", {"adjusted": "true"})
+    if data is None:
+        return None
+    results = data.get("results") or []
+    if not results:
+        print(f"::warning::{ticker}: Massive prev returned no bar")
+        return None
+    bar = results[0]
+    day = pd.Timestamp(bar["t"], unit="ms").normalize()
+    if day != cutoff:
+        print(f"::warning::{ticker}: Massive prev bar is {day.date()}, expected {cutoff.date()}")
+        return None
+    return _bar_frame(bar, cutoff)
 
 
 def _stale_diagnostic(raw, cutoff):
@@ -151,6 +198,8 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
                     _STALE_WAIT_BUDGET["left"] -= wait
                 if lag and attempt + 1 == attempts:
                     bar = _massive_grouped_bar(ticker, cutoff)
+                    if bar is None:
+                        bar = _massive_prev_bar(ticker, cutoff)
                     if bar is not None:
                         df = normalize_prices(pd.concat([df, bar]))
                         df = df.loc[df.index <= cutoff]
