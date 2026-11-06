@@ -169,6 +169,38 @@ class PersistenceAndDeliveryTests(unittest.TestCase):
                 notifications.send_records(records, path)
                 self.assertEqual(send.call_count, 1)
 
+    def test_force_report_resends_and_still_stamps_state(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(notifications, 'send_telegram') as send:
+            path = Path(directory) / 'state.json'
+            records = [('signal:AAPL:Daily:2026-10-09:buy', 'Example signal')]
+            notifications.send_records(records, path)
+            notifications.send_records(records, path, force=True)
+            self.assertEqual(send.call_count, 2)
+            notifications.send_records(records, path)
+            self.assertEqual(send.call_count, 2)
+
+    def test_earnings_same_day_wording_is_precise(self):
+        from earnings_context import describe_earnings
+        base = {'date': '2026-11-05'}
+        self.assertIn('⚠️ today', describe_earnings({**base, 'days_until': 0, 'within_7_days': True}))
+        self.assertIn('⚠️ tomorrow', describe_earnings({**base, 'days_until': 1, 'within_7_days': True}))
+        self.assertIn('⚠️ in 4 days', describe_earnings({**base, 'days_until': 4, 'within_7_days': True}))
+        self.assertNotIn('⚠️', describe_earnings({**base, 'days_until': 30, 'within_7_days': False}))
+        # Cache entries predating days_until keep the old flag wording.
+        self.assertIn('⚠️ within 7 days', describe_earnings({**base, 'within_7_days': True}))
+
+    def test_rs_line_names_its_horizon(self):
+        base = {'label': 'Confirmed price breakout', 'ticker': 'U', 'direction': 'buy', 'date': '2026-11-05',
+            'fresh_period': True, 'reasons': ['20-bar resistance breakout'], 'monthly_trend': 'bearish',
+            'monthly_asof': '2026-10-30', 'weekly_trend': 'bearish', 'weekly_asof': '2026-10-30',
+            'rs_spy': 19.43, 'rs_sector': 17.71, 'sector_rank': '2/18', 'earnings': {},
+            'context': {'close': 48.8, 'breakout_level': 47.77, 'breakout_distance_pct': 2.16,
+                'vstop': 42.44, 'stop_distance_pct': 13.03, 'daily_ma50_distance_pct': 15.29,
+                'vstop_multiplier': 3.0, 'vstop_confirm_sessions': 2, 'vstop_shield_eligible': False}}
+        for timeframe, horizon in [('Daily', '63 sessions'), ('Weekly', '13 weeks'), ('Monthly', '3 months')]:
+            text = notifier.format_signal({**base, 'timeframe': timeframe}, 'YELLOW')
+            self.assertIn(f'RS vs SPY ({horizon})', text)
+
     def test_telegram_rejection_propagates(self):
         response = Mock(status_code=400)
         response.json.return_value = {'ok': False}
@@ -204,7 +236,7 @@ class PersistenceAndDeliveryTests(unittest.TestCase):
              patch.object(notifier, 'send_records') as send:
             with self.assertRaises(RuntimeError):
                 notifier.run_automated_scanner()
-            self.assertIn('Partial', send.call_args.args[0][-1][1])
+            self.assertIn('PARTIAL SCAN', send.call_args.args[0][-1][1])
 
 
 class NewsTests(unittest.TestCase):
