@@ -73,8 +73,8 @@ def _fetch_massive_prev_bar(ticker, cutoff):
 
     Bounded for the free tier: at most a few calls per run, spaced so any 60-second window
     stays under 5 requests, and a 429 stops further fallback attempts for the run.
-    Note the free plan releases a day's bars only after midnight New York, so before then
-    the previous-day bar is the prior session and this declines with a warning.
+    If the previous-day bar is not yet released on the free tier, the date check below
+    declines with a warning instead of returning the wrong session.
     """
     import os
     import requests
