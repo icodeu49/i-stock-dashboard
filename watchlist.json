@@ -945,5 +945,12 @@
         "gics_sector": "Financials",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+    },
+    "CCI": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
     }
 }

@@ -2708,6 +2708,20 @@
             },
             "trend_asof": "2026-11-05",
             "trend_policy": "daily-risk-v2"
+        },
+        "CCI": {
+            "first_observed_at": "2026-11-06T02:23:02.906373+00:00",
+            "sources": {
+                "sector_scan": {
+                    "first_selected_asof": "2026-11-05",
+                    "last_selected_asof": "2026-11-05",
+                    "active": true,
+                    "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+                    "sector_etf": "XLRE"
+                }
+            },
+            "added_at": "2026-11-06T02:23:02.906373+00:00",
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
         }
     },
     "events": [
@@ -5402,7 +5416,15 @@
             "source": "momentum_scan",
             "asof": "2026-11-05",
             "observed_at": "2026-11-06T01:32:45.946200+00:00"
+        },
+        {
+            "type": "added",
+            "ticker": "CCI",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T02:23:02.906373+00:00",
+            "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
         }
     ],
-    "updated_at": "2026-11-06T02:07:41.312789+00:00"
+    "updated_at": "2026-11-06T02:23:02.906373+00:00"
 }
