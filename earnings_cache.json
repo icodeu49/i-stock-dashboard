@@ -920,5 +920,12 @@
         "checked_at": "2026-11-05T23:49:53.326757+00:00",
         "source": "Yahoo Finance",
         "within_7_days": true
+    },
+    "VRT": {
+        "status": "provider_reported",
+        "date": "2027-02-10",
+        "checked_at": "2026-11-06T00:13:05.306014+00:00",
+        "source": "Yahoo Finance",
+        "within_7_days": false
     }
 }
