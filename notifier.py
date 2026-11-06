@@ -177,7 +177,7 @@ def run_automated_scanner():
               f"{sum(item['status'] == 'complete' for item in forward['observations'].values())} mature.")
     except Exception as exc:
         print(f'::warning::Forward evaluation unavailable ({type(exc).__name__}); price alerts continue.')
-    full_report = os.getenv('STOCK_SCANNER_FULL_REPORT') == '1'
+    full_report = os.getenv('STOCK_SCANNER_FULL_REPORT', '').strip().lower() in ('1', 'true')
     if full_report and failures:
         # A one-off full report is only sent when every stock is accounted for;
         # a partial report labelled full would be worse than none.
