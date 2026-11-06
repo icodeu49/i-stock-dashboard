@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T02:31:55.607966+00:00",
+    "last_sent": "2026-11-06T03:44:40.842852+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -625,6 +625,21 @@
             "url_key": "9d0a87b04c8794aff3da23b4",
             "title_key": "tien phong securities tps macroeconomic pressures ease but the stock market struggles to find upward momentum",
             "sent_at": "2026-11-06T02:31:15.305128+00:00"
+        },
+        "bb2c745021da4b6dfe4e65b1": {
+            "url_key": "bb2c745021da4b6dfe4e65b1",
+            "title_key": "3 charged in scheme to use ai to impersonate ceos and attorneys to steal 129 million",
+            "sent_at": "2026-11-06T03:44:40.842852+00:00"
+        },
+        "f179ef251ce4f0b47ad31408": {
+            "url_key": "f179ef251ce4f0b47ad31408",
+            "title_key": "researchers teach football to ai models",
+            "sent_at": "2026-11-06T03:44:40.842852+00:00"
+        },
+        "ac41384b389626456eaa067f": {
+            "url_key": "ac41384b389626456eaa067f",
+            "title_key": "can bloom energy stock jump 50",
+            "sent_at": "2026-11-06T03:44:40.842852+00:00"
         }
     },
     "signal_ids": [
@@ -807,6 +822,16 @@
         "signal:SMCI:Monthly:2026-10-30:sell",
         "signal:SPOT:Monthly:2026-10-30:buy",
         "signal:MARA:Monthly:2026-10-30:sell",
-        "signal:DUOL:Monthly:2026-10-30:sell"
+        "signal:DUOL:Monthly:2026-10-30:sell",
+        "signal:COIN:Monthly:2026-10-30:sell",
+        "signal:HOOD:Monthly:2026-10-30:sell",
+        "signal:RIOT:Monthly:2026-10-30:sell",
+        "signal:VLO:Monthly:2026-10-30:sell",
+        "signal:NOW:Monthly:2026-10-30:sell",
+        "signal:EL:Monthly:2026-10-30:buy",
+        "signal:APD:Monthly:2026-10-30:buy",
+        "signal:SO:Monthly:2026-10-30:buy",
+        "signal:AEP:Monthly:2026-10-30:buy",
+        "signal:DUK:Monthly:2026-10-30:buy"
     ]
 }
