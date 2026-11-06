@@ -63,61 +63,49 @@ def _fetch_raw(ticker, period, use_history):
     )
 
 
-_MASSIVE_CALLS = {"made": 0, "last_at": 0.0, "throttled": False}
-_MASSIVE_MAX_CALLS_PER_RUN = 4  # free plan allows 5 requests/minute; keep headroom
-_MASSIVE_MIN_SPACING = 12.5     # seconds between fallback calls
+_MASSIVE_GROUPED = {"date": None, "bars": None, "throttled": False}
 
 
-def _fetch_massive_prev_bar(ticker, cutoff):
-    """Previous-day bar from Massive when Yahoo lags. Needs MASSIVE_API_KEY; free plan suffices.
+def _massive_grouped_bar(ticker, cutoff):
+    """Previous-day bar for one ticker from Massive's grouped daily endpoint.
 
-    Bounded for the free tier: at most a few calls per run, spaced so any 60-second window
-    stays under 5 requests, and a 429 stops further fallback attempts for the run.
-    If the previous-day bar is not yet released on the free tier, the date check below
-    declines with a warning instead of returning the wrong session.
+    One grouped call returns every US stock's bar for the cutoff date, so any number of
+    lagging tickers can be rescued with a single free-tier request (limit: 5/minute).
+    The result is cached per run; a 429 disables the fallback for the rest of the run.
+    Verified live on the free plan (5 Nov 2026 run): grouped and prev-bar data were
+    available the same evening after the US close; treat that as observed, not guaranteed -
+    if the cutoff date has no bar the lookup declines and the caller still fails loudly.
     """
     import os
     import requests
     key = os.environ.get("MASSIVE_API_KEY")
-    if not key or _MASSIVE_CALLS["throttled"]:
+    if not key or _MASSIVE_GROUPED["throttled"]:
         return None
-    if _MASSIVE_CALLS["made"] >= _MASSIVE_MAX_CALLS_PER_RUN:
-        print(f"::warning::{ticker}: Massive fallback skipped (per-run call budget reached)")
+    if _MASSIVE_GROUPED["date"] != cutoff or _MASSIVE_GROUPED["bars"] is None:
+        try:
+            resp = requests.get(
+                f"https://api.massive.com/v2/aggs/grouped/locale/us/market/stocks/{cutoff.date()}",
+                params={"adjusted": "true", "apiKey": key}, timeout=30)
+            if resp.status_code == 429:
+                _MASSIVE_GROUPED["throttled"] = True
+                print(f"::warning::Massive rate limit hit; fallback disabled for the rest of this run")
+                return None
+            if resp.status_code != 200:
+                print(f"::warning::Massive fallback unavailable (HTTP {resp.status_code})")
+                return None
+            results = resp.json().get("results") or []
+            _MASSIVE_GROUPED["date"] = cutoff
+            _MASSIVE_GROUPED["bars"] = {item["T"]: item for item in results if "T" in item}
+        except Exception as exc:
+            print(f"::warning::Massive fallback failed ({type(exc).__name__})")
+            return None
+    bar = _MASSIVE_GROUPED["bars"].get(ticker)
+    if bar is None:
+        print(f"::warning::{ticker}: no Massive bar for {cutoff.date()} in grouped results")
         return None
-    gap = time.time() - _MASSIVE_CALLS["last_at"]
-    if _MASSIVE_CALLS["made"] and gap < _MASSIVE_MIN_SPACING:
-        time.sleep(_MASSIVE_MIN_SPACING - gap)
-    _MASSIVE_CALLS["made"] += 1
-    _MASSIVE_CALLS["last_at"] = time.time()
-    try:
-        resp = requests.get(
-            f"https://api.massive.com/v2/aggs/ticker/{ticker}/prev",
-            params={"adjusted": "true", "apiKey": key}, timeout=15)
-        if resp.status_code == 429:
-            _MASSIVE_CALLS["throttled"] = True
-            print(f"::warning::{ticker}: Massive rate limit hit; fallback disabled for the rest of this run")
-            return None
-        if resp.status_code != 200:
-            print(f"::warning::{ticker}: Massive fallback unavailable (HTTP {resp.status_code})")
-            return None
-        results = resp.json().get("results") or []
-        if not results:
-            return None
-        bar = results[0]
-        stamp = pd.Timestamp(bar["t"], unit="ms", tz="UTC")
-        candidates = {stamp.normalize().tz_localize(None),
-                      stamp.tz_convert("America/New_York").normalize().tz_localize(None)}
-        if cutoff not in candidates:
-            days = sorted(str(d.date()) for d in candidates)
-            print(f"::warning::{ticker}: Massive previous-day bar is {'/'.join(days)}, expected {cutoff.date()}")
-            return None
-        day = cutoff
-        return pd.DataFrame(
-            {"Open": [bar["o"]], "High": [bar["h"]], "Low": [bar["l"]],
-             "Close": [bar["c"]], "Volume": [bar["v"]]}, index=[day])
-    except Exception as exc:
-        print(f"::warning::{ticker}: Massive fallback failed ({type(exc).__name__})")
-        return None
+    return pd.DataFrame(
+        {"Open": [bar["o"]], "High": [bar["h"]], "Low": [bar["l"]],
+         "Close": [bar["c"]], "Volume": [bar["v"]]}, index=[cutoff])
 
 
 def _stale_diagnostic(raw, cutoff):
@@ -138,8 +126,8 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
 
     Still raises DataQualityError when that session's bar is missing: stale data is never returned.
     Extra handling: a bar that is exactly one session behind (Yahoo lag after the close) is retried
-    with spaced waits, via the Ticker.history endpoint, and finally via the Massive previous-day
-    bar when MASSIVE_API_KEY is set, before failing.
+    with spaced waits, via the Ticker.history endpoint, and finally via a Massive grouped
+    previous-day bar when MASSIVE_API_KEY is set, before failing.
     """
     cutoff = last_completed_session(now)
     error = None
@@ -162,7 +150,7 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
                     wait = min(stale_retry_delay * (attempt + 1), _STALE_WAIT_BUDGET["left"])
                     _STALE_WAIT_BUDGET["left"] -= wait
                 if lag and attempt + 1 == attempts:
-                    bar = _fetch_massive_prev_bar(ticker, cutoff)
+                    bar = _massive_grouped_bar(ticker, cutoff)
                     if bar is not None:
                         df = normalize_prices(pd.concat([df, bar]))
                         df = df.loc[df.index <= cutoff]
