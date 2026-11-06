@@ -1,5 +1,5 @@
 {
-    "last_sent": "2026-11-06T03:44:40.842852+00:00",
+    "last_sent": "2026-11-06T03:58:17.058531+00:00",
     "seen": {
         "fb90454e5bcb5d645e9e6d02": {
             "url_key": "fb90454e5bcb5d645e9e6d02",
@@ -832,6 +832,16 @@
         "signal:APD:Monthly:2026-10-30:buy",
         "signal:SO:Monthly:2026-10-30:buy",
         "signal:AEP:Monthly:2026-10-30:buy",
-        "signal:DUK:Monthly:2026-10-30:buy"
+        "signal:DUK:Monthly:2026-10-30:buy",
+        "signal:UNH:Monthly:2026-10-30:buy",
+        "signal:EXC:Monthly:2026-10-30:buy",
+        "signal:SBUX:Monthly:2026-10-30:buy",
+        "signal:MDLZ:Monthly:2026-10-30:buy",
+        "signal:DOW:Monthly:2026-10-30:buy",
+        "signal:PSA:Monthly:2026-10-30:buy",
+        "signal:AMT:Monthly:2026-10-30:buy",
+        "signal:CCI:Monthly:2026-10-30:buy",
+        "signal:FLEX:Daily:2026-11-05:sell",
+        "signal:VRT:Daily:2026-11-05:sell"
     ]
 }
