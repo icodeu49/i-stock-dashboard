@@ -13,6 +13,11 @@ on:
     - cron: '18 10 * * 2-6'
     - cron: '18 11 * * 2-6'
   workflow_dispatch:
+    inputs:
+      full_report:
+        description: 'One-off full watchlist report: send every current signal, duplicate suppression bypassed for this run only (true/false)'
+        required: false
+        default: 'false'
   workflow_call:
 
 permissions:
@@ -74,6 +79,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          STOCK_SCANNER_FULL_REPORT: ${{ github.event.inputs.full_report || '' }}
         run: python notifier.py
       - name: Persist watchlist and confirmed deliveries
         if: always() && steps.gate.outputs.skip != 'true'
