@@ -6,9 +6,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -65,9 +66,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -343,9 +345,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #2 XLP; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLP"
+                    "sector_etf": "XLP",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -400,9 +403,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #2 XLP; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLP"
+                    "sector_etf": "XLP",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -419,9 +423,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLY"
+                    "sector_etf": "XLY",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -438,9 +443,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLY; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLY"
+                    "sector_etf": "XLY",
+                    "inactive_asof": "2026-11-05"
                 },
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-19",
@@ -1891,9 +1897,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-12",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-12T21:53:28.789201+00:00",
@@ -1933,9 +1940,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2019,9 +2027,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLB"
+                    "sector_etf": "XLB",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2040,9 +2049,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLB"
+                    "sector_etf": "XLB",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2083,9 +2093,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLB"
+                    "sector_etf": "XLB",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2104,9 +2115,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLU"
+                    "sector_etf": "XLU",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2125,9 +2137,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLU"
+                    "sector_etf": "XLU",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2168,9 +2181,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-16",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLU"
+                    "sector_etf": "XLU",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-19T19:30:33.247033+00:00",
@@ -2211,9 +2225,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-23",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-26T19:35:38.727780+00:00",
@@ -2253,9 +2268,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-23",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLV"
+                    "sector_etf": "XLV",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-26T19:35:38.727780+00:00",
@@ -2274,9 +2290,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-23",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLU"
+                    "sector_etf": "XLU",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-26T19:35:38.727780+00:00",
@@ -2295,9 +2312,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-23",
                     "last_selected_asof": "2026-10-23",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLU; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLU"
+                    "sector_etf": "XLU",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-26T19:35:38.727780+00:00",
@@ -2316,9 +2334,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-10-23",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #4 XLY; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLY"
+                    "sector_etf": "XLY",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-10-26T19:35:38.727780+00:00",
@@ -2379,9 +2398,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-11-02",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #2 XLP; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLP"
+                    "sector_etf": "XLP",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-11-02T22:29:13.370757+00:00",
@@ -2400,9 +2420,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-11-02",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLB"
+                    "sector_etf": "XLB",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-11-02T22:29:13.370757+00:00",
@@ -2421,9 +2442,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-11-02",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLB"
+                    "sector_etf": "XLB",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-11-02T22:29:13.370757+00:00",
@@ -2442,9 +2464,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-11-02",
                     "last_selected_asof": "2026-11-02",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLE"
+                    "sector_etf": "XLE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-11-02T22:29:13.370757+00:00",
@@ -2568,9 +2591,10 @@
                 "sector_scan": {
                     "first_selected_asof": "2026-11-05",
                     "last_selected_asof": "2026-11-05",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
-                    "sector_etf": "XLRE"
+                    "sector_etf": "XLRE",
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "added_at": "2026-11-06T00:20:22.649475+00:00",
@@ -5431,7 +5455,175 @@
             "asof": "2026-11-05",
             "observed_at": "2026-11-06T02:23:02.906373+00:00",
             "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "MPC",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "XOM",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "MO",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "COST",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "TJX",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "TSLA",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "EOG",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "COP",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "ECL",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "APD",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SHW",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SO",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "AEP",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "DUK",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "CVX",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "UNH",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "EXC",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "NEE",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SBUX",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "MDLZ",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "DOW",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "NUE",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "HAL",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "PLD",
+            "source": "sector_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T04:14:45.147836+00:00"
         }
     ],
-    "updated_at": "2026-11-06T04:02:44.919388+00:00"
+    "updated_at": "2026-11-06T04:14:45.147836+00:00"
 }
