@@ -25,8 +25,9 @@ def upcoming_earnings(ticker, now=None, cache=None):
             today = now.astimezone(ZoneInfo('America/New_York')).date()
             future = sorted({pd.Timestamp(date).date() for date in dates.index if pd.Timestamp(date).date() >= today})
             if future:
+                days_until = (future[0] - today).days
                 result.update(status='provider_reported', date=future[0].isoformat(),
-                              within_7_days=(future[0] - today).days <= 7)
+                              days_until=days_until, within_7_days=days_until <= 7)
     except Exception:
         pass
     cache[ticker] = result
@@ -35,6 +36,17 @@ def upcoming_earnings(ticker, now=None, cache=None):
 
 def describe_earnings(result):
     if result.get('date'):
-        flag = ' ⚠️ within 7 days' if result.get('within_7_days') else ''
+        days = result.get('days_until')
+        if days is None:
+            # Cache entries written before days_until existed: fall back to the flag.
+            flag = ' ⚠️ within 7 days' if result.get('within_7_days') else ''
+        elif days <= 0:
+            flag = ' ⚠️ today'
+        elif days == 1:
+            flag = ' ⚠️ tomorrow'
+        elif days <= 7:
+            flag = f' ⚠️ in {days} days'
+        else:
+            flag = ''
         return f"Earnings: {result['date']} (Yahoo calendar; date may change){flag}"
     return 'Earnings: date unavailable'
