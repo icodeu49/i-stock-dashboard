@@ -205,6 +205,97 @@ def _massive_prev_bar(ticker, cutoff):
     return _bar_frame(bar, cutoff)
 
 
+_PERIOD_DAYS = {"1mo": 40, "2mo": 70, "3mo": 100, "6mo": 200, "1y": 380,
+                "2y": 740, "5y": 740, "10y": 740, "ytd": 740, "max": 740}
+
+
+def _massive_dividends(ticker, start, cutoff):
+    """Cash dividends for one ticker over the window (free plan: all Stocks plans,
+    updated daily). Used to rebuild Yahoo's split+dividend adjusted basis explicitly."""
+    data = _massive_get("/v3/reference/dividends",
+                        {"ticker": ticker, "ex_dividend_date.gte": str(start),
+                         "ex_dividend_date.lte": str(cutoff.date()), "limit": 1000,
+                         "sort": "ex_dividend_date", "order": "asc"})
+    if data is None:
+        return None
+    return data.get("results") or []
+
+
+def _massive_history_merge(ticker, df, cutoff, period):
+    """Rebuild a truncated Yahoo series from Massive, on Yahoo's adjusted basis.
+
+    Engages ONLY when Yahoo's series is broken beyond a one-session lag (truncated or
+    empty) - the normal one-session lag path uses the rescued-bar fallbacks instead.
+    Massive aggregates are split-adjusted only, so dividends over the window are applied
+    explicitly (CRSP-style cumulative factor from source dividend records) to match
+    Yahoo's auto_adjust basis; the result is then verified against Yahoo's adjusted
+    closes on every shared session (up to 3 spread across the window, 0.5% tolerance).
+    Any unreconciled basis refuses the merge and the caller still fails loudly.
+    Two paced requests per affected ticker (bars + dividends), only on truncation.
+    """
+    days = _PERIOD_DAYS.get(str(period), 740)
+    start = (cutoff - pd.Timedelta(days=days)).date()
+    data = _massive_get(f"/v2/aggs/ticker/{ticker}/range/1/day/{start}/{cutoff.date()}",
+                        {"adjusted": "true", "sort": "asc", "limit": 5000})
+    if data is None:
+        return None
+    results = data.get("results") or []
+    if not results:
+        print(f"::warning::{ticker}: Massive history window returned no bars")
+        return None
+    frame = pd.DataFrame(
+        {"Open": [b["o"] for b in results], "High": [b["h"] for b in results],
+         "Low": [b["l"] for b in results], "Close": [b["c"] for b in results],
+         "Volume": [b["v"] for b in results]},
+        index=[pd.Timestamp(b["t"], unit="ms").normalize() for b in results])
+    frame = frame[~frame.index.duplicated(keep="last")].sort_index()
+
+    dividends = _massive_dividends(ticker, start, cutoff)
+    if dividends is None:
+        return None
+    factor = pd.Series(1.0, index=frame.index)
+    for div in dividends:
+        try:
+            ex = pd.Timestamp(div["ex_dividend_date"])
+            amount = float(div["cash_amount"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        prior = frame.Close.loc[frame.index < ex]
+        if prior.empty or amount <= 0:
+            continue
+        factor.loc[factor.index < ex] *= 1.0 - amount / float(prior.iloc[-1])
+    for col in ("Open", "High", "Low", "Close"):
+        frame[col] = frame[col] * factor
+
+    if not df.empty:
+        shared = [d for d in (df.index[0], df.index[len(df) // 2], df.index[-1])
+                  if d in frame.index]
+        if not shared:
+            print(f"::warning::{ticker}: no shared session to verify the "
+                  f"dividend-adjusted Massive window against Yahoo")
+            return None
+        for day in shared:
+            ref, alt = float(df.Close.loc[day]), float(frame.Close.loc[day])
+            if ref <= 0 or abs(alt / ref - 1) > 0.005:
+                print(f"::warning::{ticker}: adjusted Massive/Yahoo close mismatch on "
+                      f"{day.date()} ({alt:.4f} vs {ref:.4f}); refusing merge")
+                return None
+
+    merged = normalize_prices(pd.concat([df, frame]))
+    merged = merged.loc[merged.index <= cutoff]
+    if merged.empty or merged.index[-1] != cutoff:
+        latest = "none" if merged.empty else str(merged.index[-1].date())
+        print(f"::warning::{ticker}: Massive window still ends {latest}, "
+              f"expected {cutoff.date()}")
+        return None
+    kept = len(df.loc[df.index <= cutoff]) if not df.empty else 0
+    verified = len(shared) if not df.empty else 0
+    print(f"::notice::{ticker}: Yahoo history truncated; Massive window "
+          f"{start}..{cutoff.date()} dividend-adjusted and merged "
+          f"({len(merged) - kept} sessions filled, {verified} overlap closes verified)")
+    return merged
+
+
 def _stale_diagnostic(raw, cutoff):
     """Say why the newest bar is missing, without request URLs or credentials."""
     if raw is None or len(raw) == 0:
@@ -265,6 +356,10 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
                         if not df.empty and df.index[-1] == cutoff:
                             print(f"::notice::{ticker}: latest bar {cutoff.date()} supplied by Massive fallback")
                             return df
+                if not lag:
+                    merged = _massive_history_merge(ticker, df, cutoff, period)
+                    if merged is not None:
+                        return merged
                 raise DataQualityError(f"{ticker}: latest valid close {latest}; expected {cutoff.date()}")
             return df
         except Exception as exc:
