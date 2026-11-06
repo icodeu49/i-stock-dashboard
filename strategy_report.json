@@ -1,8 +1,8 @@
 {
-    "generated_at": "2026-11-05T23:58:44.435568+00:00",
+    "generated_at": "2026-11-06T00:28:41.784257+00:00",
     "asof": "2026-11-05",
     "policy": "daily-risk-v2",
-    "code_sha": "d879e8c8778311ae8c56b5ad1a83e710c18c9685",
+    "code_sha": "eecdd2f835de969f388a657765d951da3d0ab86d",
     "configuration": {
         "initial_capital": 100000.0,
         "allocation": 10000.0,
@@ -23,6 +23,7 @@
         "ALAB",
         "AMD",
         "AMGN",
+        "AMT",
         "AMZN",
         "APD",
         "APLD",
@@ -30,9 +31,12 @@
         "APP",
         "ARM",
         "AVGO",
+        "AXP",
         "BA",
         "BABA",
         "BE",
+        "BLK",
+        "BRK-B",
         "CARD",
         "CCJ",
         "CCL",
@@ -40,6 +44,7 @@
         "CEG",
         "CELH",
         "CL",
+        "CMG",
         "COIN",
         "COP",
         "COST",
@@ -77,6 +82,7 @@
         "LLY",
         "LOW",
         "LUMN",
+        "MA",
         "MARA",
         "MCD",
         "MDB",
@@ -100,6 +106,7 @@
         "NUE",
         "NVDA",
         "NVTS",
+        "O",
         "ODFL",
         "OKLO",
         "OKTA",
@@ -108,11 +115,14 @@
         "PANW",
         "PARR",
         "PATH",
+        "PEP",
         "PFE",
         "PG",
+        "PLD",
         "PLTR",
         "PM",
         "POWI",
+        "PSA",
         "PSX",
         "QUBT",
         "RBLX",
@@ -145,6 +155,7 @@
         "UNFI",
         "UNH",
         "UPST",
+        "V",
         "VLO",
         "VNET",
         "VRT",
@@ -152,6 +163,7 @@
         "WMB",
         "WMT",
         "WOLF",
+        "WY",
         "XOM",
         "ZS"
     ],
@@ -166,6 +178,7 @@
         "ALAB",
         "AMD",
         "AMGN",
+        "AMT",
         "AMZN",
         "APD",
         "APLD",
@@ -173,9 +186,12 @@
         "APP",
         "ARM",
         "AVGO",
+        "AXP",
         "BA",
         "BABA",
         "BE",
+        "BLK",
+        "BRK-B",
         "CARD",
         "CCJ",
         "CCL",
@@ -183,6 +199,7 @@
         "CEG",
         "CELH",
         "CL",
+        "CMG",
         "COIN",
         "COP",
         "COST",
@@ -219,6 +236,7 @@
         "LLY",
         "LOW",
         "LUMN",
+        "MA",
         "MARA",
         "MCD",
         "MDB",
@@ -240,6 +258,7 @@
         "NUE",
         "NVDA",
         "NVTS",
+        "O",
         "ODFL",
         "OKLO",
         "OKTA",
@@ -248,11 +267,14 @@
         "PANW",
         "PARR",
         "PATH",
+        "PEP",
         "PFE",
         "PG",
+        "PLD",
         "PLTR",
         "PM",
         "POWI",
+        "PSA",
         "PSX",
         "QUBT",
         "RBLX",
@@ -285,12 +307,14 @@
         "UNFI",
         "UNH",
         "UPST",
+        "V",
         "VLO",
         "VNET",
         "WING",
         "WMB",
         "WMT",
         "WOLF",
+        "WY",
         "XOM"
     ],
     "failures": {
@@ -303,14 +327,14 @@
     "coverage": "partial",
     "data_fingerprints": {
         "AAL": {
-            "sha256": "dc7074d63e6b3121e9075fd1d1359607b472a3dd66fa7d7d7e1bdaf80b881573",
+            "sha256": "d18cf67775940cb4534055a10913818207037b79bebd9248c3fe225f0f1a6b8b",
             "first_date": "2005-09-27",
             "rows": 5310
         },
         "AAPL": {
-            "sha256": "814d0de53fc3742b399e6d88ba945e9cd83d5af112d79729e42fa872ebd1e250",
+            "sha256": "792ee30b99fc8d9be349ef23301e6bd00a5d8fee1335335db14cf140a849e13a",
             "first_date": "1980-12-12",
-            "rows": 11552
+            "rows": 11556
         },
         "ABAT": {
             "sha256": "bb307456fb8cc47a870155925c2f59cc6eca84097a55f90fb7df419d9a75955b",
@@ -318,14 +342,14 @@
             "rows": 2692
         },
         "ABBV": {
-            "sha256": "5fa8f874a73584dd2023d1527c94a3648ed3958308f784c783f91811200d2902",
+            "sha256": "1a0b725bacff26eb8f4b826ab7946e90166e138157912d07a88ad550c1f2106b",
             "first_date": "2013-01-02",
-            "rows": 3483
+            "rows": 3482
         },
         "AEP": {
-            "sha256": "f4a0cb8004972fa99f6048e9d888f3cc20f505cc19bb628909ca31fdf2418f42",
+            "sha256": "a32151209a8dca88a98cf42ede258a02b13f50bef3576695d06306ed95921199",
             "first_date": "1962-01-02",
-            "rows": 16172
+            "rows": 16161
         },
         "AFRM": {
             "sha256": "88a3bee614c71e71cda2fed789a36d73b33d341dbad0df0a03347b9fa8eff5fb",
@@ -338,7 +362,7 @@
             "rows": 1484
         },
         "ALAB": {
-            "sha256": "f0ce3bcdc767c4c6a588bc20c45502daabc02dd16fa1013321475cbac5c199bd",
+            "sha256": "017fc3f9bc3ec58a08243ed256b49fd123bfa68924619df5e594ab6830edad29",
             "first_date": "2024-03-20",
             "rows": 661
         },
@@ -348,19 +372,24 @@
             "rows": 11756
         },
         "AMGN": {
-            "sha256": "53c15b8b40f18f789b0a3c59c924bf0a95db78f3fdbe6ac18eb298fdd0e15488",
+            "sha256": "915463b9ab7c58abf7afb0df07dbd47b3a46d28f3742182d6ac9e5120440e619",
             "first_date": "1983-06-17",
-            "rows": 10896
+            "rows": 10890
+        },
+        "AMT": {
+            "sha256": "677473e7e22a1f1f94055e2f980044f7830c181fbd7037822bac8fdae2aadd00",
+            "first_date": "1998-02-27",
+            "rows": 7206
         },
         "AMZN": {
-            "sha256": "9a11cc1ea5e4bcb7afb1c58b5a67cd8911dcb20312db333b3dbecc573968a1fc",
+            "sha256": "86ad3c0d67408acc908c71d5f692a250b35deca418092d9b695d715b5a6e0ae5",
             "first_date": "1997-05-15",
             "rows": 7416
         },
         "APD": {
-            "sha256": "457a9cb7899d8e9e7b233ad8c9a5457ac504a3a2e19e901aab90247b19604777",
+            "sha256": "d95bb3e0f4b1e672f47e03350cba4a0f7af8dc99168d9fe3ed7587dd504305d9",
             "first_date": "1980-03-17",
-            "rows": 11694
+            "rows": 11696
         },
         "APLD": {
             "sha256": "cd10a7bc7bd80aa969e7df3cdcb59c0827b5b4cff92f540d1947156400b1981b",
@@ -368,9 +397,9 @@
             "rows": 1146
         },
         "APO": {
-            "sha256": "ecc3ff79d14dd0ee3814cca43e31743b5bd88a85d1952c6a1d272bb5d7f12644",
+            "sha256": "c7f95524b49df51781016921cb3cae01a592b6bc3474661baee1ad644c4f3311",
             "first_date": "2011-03-30",
-            "rows": 3921
+            "rows": 3923
         },
         "APP": {
             "sha256": "9bc64b77420a53283a19651eac10c02d087c289e7a7825e9097517225d936fe5",
@@ -383,17 +412,22 @@
             "rows": 790
         },
         "AVGO": {
-            "sha256": "0dab44d430a26598fbdbd1ee755e8c90ed25928f8e4ddd8c50fcb24aa199cf0f",
+            "sha256": "ef14e262b0bc28b0d4e5a1744f59fb5a022ff47a35a2b1651e3c6646b86e7ae4",
             "first_date": "2009-08-06",
-            "rows": 4339
+            "rows": 4340
+        },
+        "AXP": {
+            "sha256": "5eca24109caa5bf697dae5a5ad43cb450d0a7e299e244ff7ce4469a513305b90",
+            "first_date": "1972-06-01",
+            "rows": 13495
         },
         "BA": {
-            "sha256": "d146302bb4748410866553fcae8376fc9e20ab380e8d08f29e6d430aa0e18511",
+            "sha256": "7d8344ffe367e34982e72b12ef9ef33b4cf047f358b1b3def3d3f4fafcc6a5c8",
             "first_date": "1962-01-02",
-            "rows": 16146
+            "rows": 16158
         },
         "BABA": {
-            "sha256": "bdea92cac50d32a9775d8c7687d46a4eb90c92d17bb1c1ca3d625190e75ec27e",
+            "sha256": "6d68a91ec0fddc0fba48b0a23f3fec7e6a28083eaba72fe22f71846a635d6f26",
             "first_date": "2014-09-19",
             "rows": 3051
         },
@@ -402,20 +436,30 @@
             "first_date": "2018-07-25",
             "rows": 2083
         },
+        "BLK": {
+            "sha256": "80b8040736885fc48db546b217474695add8a14e25c0f5c19a25f953489bdae2",
+            "first_date": "1999-10-01",
+            "rows": 6788
+        },
+        "BRK-B": {
+            "sha256": "441ae90c153b973b54c6d4560d9fe182e7cbf275bcddc9b369c1d461df0345fa",
+            "first_date": "1996-05-09",
+            "rows": 7673
+        },
         "CARD": {
             "sha256": "91eed231e7132dfa27477b5f1bde7336ecb606a0d6f3faf181d5b51ebe32e9d4",
             "first_date": "2024-07-11",
             "rows": 584
         },
         "CCJ": {
-            "sha256": "2af9b0a77326af8cd4baadbc8205c29659dfd1ef19f451bfd0979607a18bf617",
+            "sha256": "b985ea66ca840760f9a08eb4cbc0dde4e90ff6bbadade8bcbd7c4e3939b3f0e8",
             "first_date": "1996-03-14",
-            "rows": 7678
+            "rows": 7683
         },
         "CCL": {
-            "sha256": "94d285eca7e50fffbd54ef9da21aba437efcaa70565b9b2ec63097159622d1aa",
+            "sha256": "a611bfb2066462d2fe5c810135391ccbeb1bb3098d656c4cbfae0760cfdd1fe3",
             "first_date": "1987-07-24",
-            "rows": 9792
+            "rows": 9808
         },
         "CDNS": {
             "sha256": "671537800eca78ea78ca8000da4629e808a95f99ece7c0f6aff51b1804d99623",
@@ -423,7 +467,7 @@
             "rows": 9928
         },
         "CEG": {
-            "sha256": "592c55ae98f85e110c02ee81adaa69c053f922a897d93ab4168a6146ce31a90d",
+            "sha256": "df4818859e567260c203c844728d21f52b7a3cb08f9efa0b966074fe5ebe7e2d",
             "first_date": "2022-01-19",
             "rows": 1205
         },
@@ -433,9 +477,14 @@
             "rows": 4981
         },
         "CL": {
-            "sha256": "4cf03d7e622c2b8e5d36055d0281dcb15a885a314dee941c540fccb50d333814",
+            "sha256": "5b94dbfbff9e3844f0aa94eb0fcc959b1b05463d05349ab2ae378651d638439f",
             "first_date": "1973-05-02",
-            "rows": 13418
+            "rows": 13419
+        },
+        "CMG": {
+            "sha256": "3edc94da7f996901b8efb77ab0393e71f809b98f67c6fb879a979ba40e0e39a3",
+            "first_date": "2006-01-26",
+            "rows": 5228
         },
         "COIN": {
             "sha256": "c3319eff254d062e88d9f4837f944854a73d28f636724ee15805ee7f80a70ced",
@@ -443,14 +492,14 @@
             "rows": 1399
         },
         "COP": {
-            "sha256": "cc78258beb2139101291336c19c6c049edd86d8fd41844b75d9cfeec3653477a",
+            "sha256": "3a6e51b9a032e2768ead8e9e67051d258beaa945a941dffdc73b7f21bb6ef5f6",
             "first_date": "1981-12-31",
-            "rows": 11228
+            "rows": 11226
         },
         "COST": {
-            "sha256": "0f560a4524b2248f9f591f1bdb922aca24c667987c746b7664c79edd9668e847",
+            "sha256": "9e48bfc5eb4a737a94a3ad06e8a4bff5b353c87f7638c288e204c5e563a0494c",
             "first_date": "1986-07-09",
-            "rows": 10110
+            "rows": 10129
         },
         "CRDO": {
             "sha256": "c5e5970346b0a58335b4d255ce48a8db693a0360fc56c01de9d1017276975e36",
@@ -463,19 +512,19 @@
             "rows": 405
         },
         "CSCO": {
-            "sha256": "1c56243f71a388145b6e90e1530725a13c06a99a57680e9e8dcf83b4f90f4261",
+            "sha256": "effbf08c68379f50519b82c899bbfba911e6e9dae16ffff51ef8df8ca5513a94",
             "first_date": "1990-02-16",
-            "rows": 9224
+            "rows": 9221
         },
         "CTVA": {
-            "sha256": "a9b5d60e539831bab9c94451ed8fbf6114abfb531925aa8f02257ee317dd773c",
+            "sha256": "a0df707d0841ff101dd7d3c77a0e0d024fe93b6ece2361174601383f14a7a316",
             "first_date": "2019-05-24",
             "rows": 1874
         },
         "CVX": {
-            "sha256": "5bed240ffe3a304b1786ea8c118a9de0f3e71f162193959269ab1a5e29008ee1",
+            "sha256": "8e3760ac3787ba00d4975385f4d64ccf0fba75cc7b10bc5479cb8a9fde02da63",
             "first_date": "1962-01-02",
-            "rows": 16207
+            "rows": 16191
         },
         "DDOG": {
             "sha256": "f8d2362dea8cc4ed0dcb77402958bde5fdde1bbee0cf542ee716a2d070f1a542",
@@ -488,14 +537,14 @@
             "rows": 1832
         },
         "DOW": {
-            "sha256": "da30e4aa07719d2339862dd91c6fde611faae1224bf2d65d1b409c4920e5ca56",
+            "sha256": "4706c10c05dbd4a638a16a4e67c79a50c7e82673243525c1c55b7518ee0c3a87",
             "first_date": "2019-03-20",
             "rows": 1920
         },
         "DUK": {
-            "sha256": "61dae83f2224b243e90b7e7be3a14d7caab97faa1af44999c0723ad92d1baae0",
+            "sha256": "839d12885f8c7ce04d705426df5ecec85459f582fc5e5ff3e2fa6ba78dc8a1bf",
             "first_date": "1980-03-17",
-            "rows": 11658
+            "rows": 11650
         },
         "DUOL": {
             "sha256": "e77e1b303809b2d71ce64e9da0d8ae7970ad56a4bac2ae53f9d51d7faf0a0717",
@@ -503,29 +552,29 @@
             "rows": 1326
         },
         "ECL": {
-            "sha256": "68ac0f65aced46633e98cb7cf40898be089377ac15d0aa852ca181062a88dda4",
+            "sha256": "7141eabbd7c116f80e5589a6657e9bac554486562e9f492d3a8a4ec4fbfa18c8",
             "first_date": "1973-02-21",
-            "rows": 13096
+            "rows": 13058
         },
         "EL": {
-            "sha256": "481db55cd21fc929782fc38a42634721dc906c4adaf7780c9659d2c54fe975f3",
+            "sha256": "f3b172f6f6bd6e9a214098715b14eb70b5ea674f696caedcb400aa8c8144b868",
             "first_date": "1995-11-17",
-            "rows": 7783
+            "rows": 7780
         },
         "ENR": {
-            "sha256": "a4b7750e43f96efb52d8e81d1f2828a08610dc8f4cbb455c6db77ef307bd0d98",
+            "sha256": "b6590511060a19e5cb7429dc5f0703fb52e9ee4460d2bcfb7cea075a2f3cd755",
             "first_date": "2015-06-12",
-            "rows": 2866
+            "rows": 2868
         },
         "EOG": {
-            "sha256": "90097019f6f58b65b65299cc59c83bfd2e50b17d59c2399a33915569b8c4c354",
+            "sha256": "a19751978c0ab38e2cbd544dabea65af7575b91877e4fb894d219247a6d0eb11",
             "first_date": "1989-10-04",
-            "rows": 9229
+            "rows": 9236
         },
         "EXC": {
-            "sha256": "e7ce7f35a6b52c746f4d90cdb1989ec0a6ada1f48ac9d0e62faa77ae265cd0e9",
+            "sha256": "fba8942b17d80bd9d15d7dc330045e188800dd584a72fc10c21bfa4477ddc31d",
             "first_date": "1973-05-02",
-            "rows": 13313
+            "rows": 13322
         },
         "FLEX": {
             "sha256": "604a0d631a475845d2b6029cd6ebe78997a98b73d3f9ff4ee09f9c8452d01d48",
@@ -543,24 +592,24 @@
             "rows": 3549
         },
         "GEV": {
-            "sha256": "af0e372af71715f7932da4a5e9a900d9afdbcc4e68330b3b607edc266a718c87",
+            "sha256": "c8d47149bb4a743c91f9cc723b7b850758db2c43e3b7a35c04f068e3dfccb5fe",
             "first_date": "2024-03-27",
             "rows": 656
         },
         "GOOGL": {
-            "sha256": "06b7efe923fc99dc46f6e15741acec8783d785d3d51a8eac215ee08a1176cc96",
+            "sha256": "2ffcfbd98c3bf0b254dac0e2c810dd275b2580edb23988420739de6ee65a1ac5",
             "first_date": "2004-08-19",
             "rows": 5590
         },
         "HAL": {
-            "sha256": "a2a3be143d1a1af9cdc1e18979d7213fe218cad296d794a0f5927936801887fd",
+            "sha256": "942abd11d3777704aeca8a95bc42503efdb4e7b5870aaf260f3176e3fdad6a7b",
             "first_date": "1972-06-01",
-            "rows": 13611
+            "rows": 13613
         },
         "HD": {
-            "sha256": "60fcb239076d1e0ec0ee7b997e63387b2ed8c90182f413f1fe7428b5e6b683ec",
+            "sha256": "f45d620ad0b3b76e9582302d7dec0c2099167d70a616ce7682459a034233a710",
             "first_date": "1981-09-22",
-            "rows": 11175
+            "rows": 11159
         },
         "HOOD": {
             "sha256": "e895dde57772a8b321e6b76dcd0d7c744a369ea5629dadb03e9b84713f7b9953",
@@ -573,9 +622,9 @@
             "rows": 2490
         },
         "INTC": {
-            "sha256": "da483794afd7d18e9edf8e5bf1cc5662dd7d930c7dcf2ba8dfa2a1c460fa086e",
+            "sha256": "6adf51021f0b0d23efd75100252fcf8764a5de669cf49b52b314b6efe4eab79d",
             "first_date": "1980-03-17",
-            "rows": 11622
+            "rows": 11618
         },
         "IONQ": {
             "sha256": "7db821648ddc75728affc554451d54a3081079f60ac36c0f53fe70c38a96a4aa",
@@ -588,9 +637,9 @@
             "rows": 1228
         },
         "IRM": {
-            "sha256": "62a8df4a4ee710b36e0a91953c6f80b535151005584749b3e0b289f6f560d0ec",
+            "sha256": "b7222455f782041b35e51aafeb08db27a96aedfae0c8c1780761d03aeaa2ef18",
             "first_date": "1996-02-01",
-            "rows": 7727
+            "rows": 7720
         },
         "ISRG": {
             "sha256": "ae8c45f7baed80fd3af44b45d5fcf31ed02912551a153bf1f4ac7e34a38d0ebd",
@@ -598,24 +647,29 @@
             "rows": 6637
         },
         "LIN": {
-            "sha256": "be98a2ab047d3cc71b8f7da701bf2e344d181c7e4ed38601ea8f36aad6f4bdef",
+            "sha256": "a5b578af35b2b47093166a2cba3426d44e9baef7e1c06106225fd6f3b407653a",
             "first_date": "1992-06-17",
-            "rows": 8628
+            "rows": 8615
         },
         "LLY": {
-            "sha256": "767a432f4e34a8bc1ff020e9b3b405c1aa3939f254608eb88b64bf684c7b96a0",
+            "sha256": "f5fd1a13a94fb3a3cc8f8ddc9836ea27cc2560699bca477494e42110b5b60714",
             "first_date": "1972-06-01",
-            "rows": 13646
+            "rows": 13640
         },
         "LOW": {
-            "sha256": "c887cb8173991ebc3f8eaa86b1fd803c22d42ad74756dc49be621ab507bf7dc1",
+            "sha256": "e9edffb9a7bdb95a8b4906f15a3f61153a38f97bbd705fe3a12e1b3f838ec51d",
             "first_date": "1980-03-17",
-            "rows": 11584
+            "rows": 11586
         },
         "LUMN": {
-            "sha256": "9a12565379e096e13e5ff4e2de4da610474674ba8535fecb666c16dfcadbedf7",
+            "sha256": "7b25bcd63249261548e5318da76fc9c55517b676646cdfff7220361aac9818cc",
             "first_date": "1980-03-17",
-            "rows": 11615
+            "rows": 11624
+        },
+        "MA": {
+            "sha256": "ff3bbd6f633355540e49882ad4d8f63fd6934f7bb44b375daa24903b7843d2ee",
+            "first_date": "2006-05-25",
+            "rows": 5145
         },
         "MARA": {
             "sha256": "806a8c7fb65b4dbdd67901906170c8b2405ca89dd5caa0b4740334bbccf3b2f5",
@@ -623,9 +677,9 @@
             "rows": 3648
         },
         "MCD": {
-            "sha256": "97cfc07001e9581d8dbd9520accb1605bf83a01dca5c273cf422d15a84f0905f",
+            "sha256": "a72f1602a11daaada60630256e79b152a0a6cdce707b770ee5ffd89e8cc2eb01",
             "first_date": "1966-07-05",
-            "rows": 15099
+            "rows": 15116
         },
         "MDB": {
             "sha256": "ff13b79ede2d4c8ab897f602c0c17498e3e548ee700600bf0c4e713740bb5bea",
@@ -633,37 +687,37 @@
             "rows": 2274
         },
         "MDLZ": {
-            "sha256": "f488b6b49806536c839465fa55e7514daf1cd8d11234c48ae001de8bc992048b",
+            "sha256": "6c3d7dd7c7289008627f78567a473dd7776c79cd20345621bc60ddb652256972",
             "first_date": "2001-06-13",
-            "rows": 6387
+            "rows": 6384
         },
         "META": {
-            "sha256": "95a98f54f2a25d24b8da033c19bf6f07bea67cde05150db60690837f3cc8b58c",
+            "sha256": "a696a15a4e6f19cd88c95f2380e68c75ade908d9c1640cb7a7500132afa3f4bd",
             "first_date": "2012-05-18",
             "rows": 3638
         },
         "MO": {
-            "sha256": "955e12c9239cd622998cfc892f9314913de6e17fc2db34b045984eaa20f0e8ee",
+            "sha256": "15142606c3e3ad08fefcf423966da90aff05d8199bdc05b689ea0fd2e7688980",
             "first_date": "1962-01-02",
-            "rows": 16132
+            "rows": 16141
         },
         "MPC": {
-            "sha256": "8b79fc65fd0aec03dac7f591304baf64578162d836fbea446c0e00c48a7e92f6",
+            "sha256": "c4426a8118505be4b4136fba2767dc370cdb98d767a3a37a427f56277764fb2a",
             "first_date": "2011-06-24",
             "rows": 3864
         },
         "MRVL": {
-            "sha256": "a6015f153794c75ef9cf5de3825de8437d6efce71c63e1441add1992e7d43302",
+            "sha256": "ce233c3b5223e44b18fede920422260a1c50556b10d944cbf22b05376ac30b04",
             "first_date": "2000-06-30",
-            "rows": 6625
+            "rows": 6627
         },
         "MSFT": {
-            "sha256": "24d44b92f2214a8b2ed6f435e6b714ec58ec1128d80d6e5f76d429a2cf339ff9",
+            "sha256": "47dbcdff80ba58f0774fbeaf9dd9c89bffb8d7b4f084f3f05add3a3afa582a57",
             "first_date": "1986-03-13",
-            "rows": 10216
+            "rows": 10209
         },
         "MU": {
-            "sha256": "7c6f11c17523e3473ccb23614f0bc4a8342bb32f9619995a78b91ddff498f99a",
+            "sha256": "a5aafbdfebe25cf53719e61215d071dda0fc2c1f2d6f3130c856c9e0054755f1",
             "first_date": "1984-06-01",
             "rows": 10691
         },
@@ -683,9 +737,9 @@
             "rows": 3471
         },
         "NEE": {
-            "sha256": "fd1b4854b646b5f2ea7949a57a4fd3de6c99027161a4a1c1a6a002a9f9c1950d",
+            "sha256": "1273587b54b968cf2211ae4823ff6cdaaf4c1af66db2353fa78afa7d2864e3df",
             "first_date": "1973-02-21",
-            "rows": 13371
+            "rows": 13419
         },
         "NET": {
             "sha256": "efb0cc1f61d9346e992605a884b4cb4a100716046950c8260384d11c5f6f1eee",
@@ -698,9 +752,9 @@
             "rows": 6154
         },
         "NKE": {
-            "sha256": "631524cb62170025d3fa07c9057aafe934c3196a0b3386661d4ee1282606f834",
+            "sha256": "f14e3e6402f89f936346d66f69b1bc8e34fe91f5d61f39099da912fe99158e36",
             "first_date": "1980-12-02",
-            "rows": 11508
+            "rows": 11513
         },
         "NOW": {
             "sha256": "2ca4b3ad6d14953a7f112de183500fe336bc92f932095904c5fd09b89b0e662a",
@@ -708,24 +762,29 @@
             "rows": 3609
         },
         "NUE": {
-            "sha256": "41389d633323947bc50f676ca6fbdaebf9146e9be1611cd3ac5b5fc246ccf0b7",
+            "sha256": "eb6e5b75e664c1c903e24f9b3eda058a873c4c6db0ce13ac431c0535854e8e2a",
             "first_date": "1980-03-17",
-            "rows": 11738
+            "rows": 11737
         },
         "NVDA": {
-            "sha256": "691545f60c236d77fdeccdff8f719cf926c635829fd0f44510a44eabad262a13",
+            "sha256": "9b6140a537c421435ab36b753042770cb481a7342c4dc61c4762c3490b6b3e89",
             "first_date": "1999-01-22",
-            "rows": 6990
+            "rows": 6991
         },
         "NVTS": {
             "sha256": "4bee3d8019dac4714c3e31e85d4c699c9936ee276000b8345bf0bbfca348a560",
             "first_date": "2021-10-20",
             "rows": 1267
         },
+        "O": {
+            "sha256": "80a8f305ef4ccec8c43818960261cbe5f987d833a938329d7b6f071334d11c92",
+            "first_date": "1994-10-18",
+            "rows": 7988
+        },
         "ODFL": {
-            "sha256": "3c108637a7bfe7f628ce68ccefe3a7ac0ae8b390f909966b2d913537e2ce9e9e",
+            "sha256": "d1bee498639595a85d7ba8e63f5f5ca64e69f2d0203f93279540bf63f034356e",
             "first_date": "1991-10-24",
-            "rows": 8821
+            "rows": 8820
         },
         "OKLO": {
             "sha256": "3ae8622bf02b69a3f850c6e5d8843bafacf18b14772eb44943bfe7f62b703d47",
@@ -738,9 +797,9 @@
             "rows": 2409
         },
         "ORCL": {
-            "sha256": "6ceba4022be5edec409de347f2b53539df1af8f7069432452fbbaa9ca4af2e2e",
+            "sha256": "558b69b25bb592744fa854a03d725e638da1b4ba8225f5f78c807e8e9432a3c2",
             "first_date": "1986-03-12",
-            "rows": 10218
+            "rows": 10228
         },
         "OSCR": {
             "sha256": "5ac2f487e41184c54f421759c6cee93053659e09cb623749f5f4416955648394",
@@ -762,15 +821,25 @@
             "first_date": "2021-04-21",
             "rows": 1394
         },
-        "PFE": {
-            "sha256": "2accf0bc8bae308bce2cd2e96582c15d4cb582fbb43286c86dbd744c32fb122b",
+        "PEP": {
+            "sha256": "b7bfe52fa153537ae972cd766f53fbb398ad36b140a6a16af2e697b2858165ae",
             "first_date": "1972-06-01",
-            "rows": 13629
+            "rows": 13614
+        },
+        "PFE": {
+            "sha256": "d607b5d6d0e1ee8445fabe473e801a55b392e854bcf5debb49259d2dca3107a8",
+            "first_date": "1972-06-01",
+            "rows": 13612
         },
         "PG": {
-            "sha256": "674c58c80531b44b08fbf23b71ee00532479f0c95f4ba965ed2ea13f68215cbb",
+            "sha256": "2b9172e89e7fada1b216e381e2552d7ec8b6bb751220947c5feb0f7e86009cb0",
             "first_date": "1962-01-02",
-            "rows": 16203
+            "rows": 16230
+        },
+        "PLD": {
+            "sha256": "e9392dbb57abfd25913c141d03a7eb6d3a4eb371a3b3711a03a635a582de8d44",
+            "first_date": "1997-11-21",
+            "rows": 7237
         },
         "PLTR": {
             "sha256": "b23a513a96695b11d5c8a314562ef3e85f0d2753edf4c07733ee562296c9b109",
@@ -778,17 +847,22 @@
             "rows": 1533
         },
         "PM": {
-            "sha256": "e151b6c17f6dfc91721b9292e7f2a0a7c6af0e21895494a4f7d111170cbb3ebb",
+            "sha256": "caeaa1c804d839a1f645112a9bf20800c8ae3d71bff43a56cecd8f3970d3e3ff",
             "first_date": "2008-03-17",
             "rows": 4687
         },
         "POWI": {
-            "sha256": "abcb35e9bd5824d7185f1713741e592ecae2720b0c2416e98ffa80212cc8e471",
+            "sha256": "62879e63960c3d032788ad9544f9c695b7eb6916f91ba5003aeaddfa0dffba93",
             "first_date": "1997-12-12",
-            "rows": 7267
+            "rows": 7268
+        },
+        "PSA": {
+            "sha256": "b7b3b9699832c584d0ff9129d9acd86b659b52d5a703f3f22c41f616577c252e",
+            "first_date": "1980-11-18",
+            "rows": 11348
         },
         "PSX": {
-            "sha256": "8d0639fada759ee6ed08fb547ddff650bc15c94acc0a4bdb3b15215d03e08d0f",
+            "sha256": "c860f730a58635b37d09f03f301fa856f4b28a4c191628ede18564012c3e2520",
             "first_date": "2012-04-12",
             "rows": 3663
         },
@@ -803,9 +877,9 @@
             "rows": 1423
         },
         "RCL": {
-            "sha256": "364ee3c99d5bf40cad6d4937cc408703177b53a6a2231798453bb956b69db41a",
+            "sha256": "2af61c033068fee8474e2b408048a79b80f92503c4b3c9cf68bc1424fb5bf686",
             "first_date": "1993-04-28",
-            "rows": 8408
+            "rows": 8409
         },
         "RDDT": {
             "sha256": "cbc30b3b298533011050754661b84648cc0bfe588a99d8799cd4da72d1d56174",
@@ -813,7 +887,7 @@
             "rows": 660
         },
         "REGN": {
-            "sha256": "88c83d8be6135d151e993bbe9809499f2d87d8bbe643f8aa32eea5c584ccb8d4",
+            "sha256": "1b9db369c1e37f350238138ff5c8af6e2a167bb1dfdb041795d7bd309e1a5db0",
             "first_date": "1991-04-02",
             "rows": 8965
         },
@@ -828,9 +902,9 @@
             "rows": 2667
         },
         "SBUX": {
-            "sha256": "74c815dc0e0d6ee6b19522caf6a3ec9b5e795321aacd04da125e800552cdce18",
+            "sha256": "040f37f061e6ece9e901d22b633ce2f75c3f8e351fb3607a9ad5ff5e78e78323",
             "first_date": "1992-06-26",
-            "rows": 8644
+            "rows": 8637
         },
         "SHOP": {
             "sha256": "6f8470c2a9012cf6a0314f552a88ad809f6f5a2f43971f0d445743edf0408b8f",
@@ -838,12 +912,12 @@
             "rows": 2884
         },
         "SHW": {
-            "sha256": "c49688f8541be02ed657fbb49dde1a3b3c1c0a92481c5c4bc875f01868972f8f",
+            "sha256": "21d84ccb93761c812c98befa0809f1712d2df1bbc090e54472b50e8636a3e4fa",
             "first_date": "1980-03-17",
-            "rows": 11520
+            "rows": 11557
         },
         "SMCI": {
-            "sha256": "23e2147a0c543dce33f7dbc2f325edb06759100c7a532a851ac5dbeecfe437be",
+            "sha256": "caf3515bc9cf0a079b6858c9ed86de8cd6919046fd155a4cb5830ada754f8ea9",
             "first_date": "2007-03-29",
             "rows": 4934
         },
@@ -858,9 +932,9 @@
             "rows": 8736
         },
         "SO": {
-            "sha256": "454eee2a630cac9bca22f0189e43170e1fd36bc7f9046aa7eca54b7d308a457c",
+            "sha256": "08d3e3c042639828fe0cc6311a6427be8ec3e1aa28bb969fdaefb0f4783c40ee",
             "first_date": "1981-12-31",
-            "rows": 11176
+            "rows": 11206
         },
         "SOFI": {
             "sha256": "b8c06bca8c5afc771b2f86e331fb5d20941750f87657f73111540a8169082c48",
@@ -878,19 +952,19 @@
             "rows": 2162
         },
         "SPY": {
-            "sha256": "ce32ba823e744fb7b4df622d948984043a5f843d3627f84b69f4ef9b9b3a9e0b",
+            "sha256": "3456a8fc073141131418a1b077b88681c910cae764985cad6cc6f91b274d895f",
             "first_date": "1993-01-29",
-            "rows": 8466
+            "rows": 8478
         },
         "SRE": {
-            "sha256": "4192106e27f49cac27faba82868994481f08feefffd43d99598980e4d6f9bf24",
+            "sha256": "a37fc9ae3742d37128d531f4d43900b7daeff5e2503e6953e156eb3b020db306",
             "first_date": "1998-06-29",
-            "rows": 7124
+            "rows": 7119
         },
         "T": {
-            "sha256": "b756131158fb54356790bd0cb472dff306af595fdc9eff33564d7dc8a0dab837",
+            "sha256": "101a9a64ce6f443e93e3df954d2ca6e4c6cea7b535891303d5dd2fd02d827978",
             "first_date": "1983-11-21",
-            "rows": 10757
+            "rows": 10741
         },
         "TEAM": {
             "sha256": "64c7882b372568c934d13f21d5d7c8d3a46a41abe44caf777e03ecdde44461de",
@@ -898,19 +972,19 @@
             "rows": 2743
         },
         "TER": {
-            "sha256": "4d2b4b58245f247f1d2288f87c9f90bb3d5f249227c730802e0cc4c188d11791",
+            "sha256": "87f4878f81b58fa2bf90c7750d7978a67c997b1ce1383f9894550919d9118aba",
             "first_date": "1973-02-21",
-            "rows": 13542
+            "rows": 13541
         },
         "TJX": {
-            "sha256": "8d25773b95bf935a288f7da24f7bf481c442744199e257609fca94c13fcb5e1a",
+            "sha256": "176591ea0408c9ea413f4ae1976c7be23d12f4a1931b140e649790bef92fd1c5",
             "first_date": "1987-06-26",
-            "rows": 9849
+            "rows": 9859
         },
         "TMO": {
-            "sha256": "9719e6e62382a81c4a6f178ebd896d444a79ae4d5364a9f072330c712f025d4b",
+            "sha256": "c19747451da88ecc0ae98391704d4d214f4cff8f2e15fd6654dbc542d22ca95d",
             "first_date": "1980-03-17",
-            "rows": 11728
+            "rows": 11721
         },
         "TSLA": {
             "sha256": "b28c09696408f665b6579db9174847516bef0c59cb3461a51d0e7bf399c2800f",
@@ -918,9 +992,9 @@
             "rows": 4115
         },
         "TSM": {
-            "sha256": "8f9ffa7d23474a5d2a1bb7d0228939918220a82f2781ef06a83fc367a9fc128c",
+            "sha256": "5a10ee5995a93247e4d49e775dc3bb0b4b126a86e4698cc48071e02efbc3cf6a",
             "first_date": "1997-10-09",
-            "rows": 7306
+            "rows": 7308
         },
         "TTD": {
             "sha256": "588fe711041cab5534908492921bfec47faf2bbcd86f6eb15f61c247a15b642f",
@@ -938,19 +1012,24 @@
             "rows": 7550
         },
         "UNH": {
-            "sha256": "96aa560214e18c0769fc56b5718186ef5e4161d13ddbc5de51eca8594c5cc62b",
+            "sha256": "052e32869eb68605a501db96bdd7234a524dc6f04197a9f4f0a23f126725e625",
             "first_date": "1984-10-17",
-            "rows": 10564
+            "rows": 10559
         },
         "UPST": {
             "sha256": "3c4fc8b4d0df417a240cd754e832ab0f9fa5f82b31a7c77c363e9892a77140a7",
             "first_date": "2020-12-16",
             "rows": 1479
         },
+        "V": {
+            "sha256": "b4a0f9f7a846dca2d0600fc06b9bc9e62d50b59c96201152aab3b0d2a3d196f9",
+            "first_date": "2008-03-19",
+            "rows": 4688
+        },
         "VLO": {
-            "sha256": "bad252b77059167fcbecacb87848884dc79667454460deab3702c2b3fe184ce4",
+            "sha256": "23d8aba8e3d6cac3088249c4098f51c6f39ffbfaa870e907cec72915190895ea",
             "first_date": "1982-01-04",
-            "rows": 11065
+            "rows": 11091
         },
         "VNET": {
             "sha256": "9895abd1d0ab848cc36230456d88c517057a88d551c8cc9b2566258ad16c165c",
@@ -958,160 +1037,165 @@
             "rows": 3909
         },
         "WING": {
-            "sha256": "1b32d3d32fa21dec3758a49eaf7c7e1f34a2664193f431eab947e2acfd3dc3d9",
+            "sha256": "9f206a647e630da83c7225b4f2b177b4d3b1767dade678028fe85e0f56ece0ec",
             "first_date": "2015-06-12",
             "rows": 2868
         },
         "WMB": {
-            "sha256": "cd84d994df79d5cb6149ea487e239226c33f07c10faa71d800ac974372da85d7",
+            "sha256": "a750e9350df0749084e9439169ea3b6e05654e67db8b49ea035e75da9946764a",
             "first_date": "1981-12-31",
-            "rows": 11265
+            "rows": 11248
         },
         "WMT": {
-            "sha256": "17c9847b476aa4d42958491a4ec2aa4aacac2c17d23763ed0365de498b26297d",
+            "sha256": "70c4d0f4aaa1a7f0895f028b679da6c0ad79bac5a5705dc1bd7c42c38922882d",
             "first_date": "1972-08-25",
-            "rows": 13358
+            "rows": 13376
         },
         "WOLF": {
             "sha256": "2fed99ae2cafcad1136428b77238facc5f1ccf60d1cbc211fc96f301660da71b",
             "first_date": "2025-09-29",
             "rows": 279
         },
+        "WY": {
+            "sha256": "9056897d8acbbd9a197125e663b8e536edafec01c26c759f71d93f95fa1272bc",
+            "first_date": "1973-05-03",
+            "rows": 13314
+        },
         "XOM": {
-            "sha256": "5f4a297bdb6c373cedc188689d25a1b81d6d2e84ae5f733aaa1a314970dc35ac",
+            "sha256": "b2d775a09d8ee9469ce7e0dca96a571d99d19ed032b2051f1706fd7dc0869c52",
             "first_date": "1962-01-02",
-            "rows": 16196
+            "rows": 16205
         }
     },
     "holdout_start": "2025-05-05",
     "results": [
         {
-            "total_return_pct": 62.99584959599069,
-            "cagr_pct": 15.035014027626946,
-            "max_drawdown_pct": -26.83359807263609,
-            "trades": 356,
-            "period_end_valuations": 10,
-            "win_rate_pct": 33.42696629213483,
-            "average_trade_return_pct": 1.769546336966033,
-            "ending_value": 162995.8495959907,
-            "small_sample": false,
-            "window": "development",
-            "strategy": "Daily",
-            "start": "2021-11-05",
-            "end": "2025-05-02",
-            "spy_return_pct": 26.638996240940372
-        },
-        {
-            "total_return_pct": -15.226036747954929,
-            "cagr_pct": -4.62530070488204,
-            "max_drawdown_pct": -31.903668124709505,
-            "trades": 327,
-            "period_end_valuations": 7,
-            "win_rate_pct": 28.74617737003058,
-            "average_trade_return_pct": -0.465628035105656,
-            "ending_value": 84773.96325204507,
-            "small_sample": false,
-            "window": "development",
-            "strategy": "Weekly",
-            "start": "2021-11-05",
-            "end": "2025-05-02",
-            "spy_return_pct": 26.638996240940372
-        },
-        {
-            "total_return_pct": 20.717420513056872,
-            "cagr_pct": 5.546314118112838,
-            "max_drawdown_pct": -28.17259542501197,
-            "trades": 256,
+            "total_return_pct": 1.2405479850372103,
+            "cagr_pct": 0.35409692035737184,
+            "max_drawdown_pct": -35.40667231610167,
+            "trades": 354,
             "period_end_valuations": 9,
-            "win_rate_pct": 30.46875,
-            "average_trade_return_pct": 0.8092742387912886,
-            "ending_value": 120717.42051305687,
+            "win_rate_pct": 32.48587570621469,
+            "average_trade_return_pct": 0.03504372839088283,
+            "ending_value": 101240.5479850372,
+            "small_sample": false,
+            "window": "development",
+            "strategy": "Daily",
+            "start": "2021-11-05",
+            "end": "2025-05-02",
+            "spy_return_pct": 26.638987421763538
+        },
+        {
+            "total_return_pct": -4.349457161004688,
+            "cagr_pct": -1.2668082450157492,
+            "max_drawdown_pct": -31.59199753964903,
+            "trades": 333,
+            "period_end_valuations": 9,
+            "win_rate_pct": 28.22822822822823,
+            "average_trade_return_pct": -0.13061432915929966,
+            "ending_value": 95650.54283899532,
+            "small_sample": false,
+            "window": "development",
+            "strategy": "Weekly",
+            "start": "2021-11-05",
+            "end": "2025-05-02",
+            "spy_return_pct": 26.638987421763538
+        },
+        {
+            "total_return_pct": 8.75489803313856,
+            "cagr_pct": 2.435316195009962,
+            "max_drawdown_pct": -31.047373967978654,
+            "trades": 246,
+            "period_end_valuations": 9,
+            "win_rate_pct": 29.67479674796748,
+            "average_trade_return_pct": 0.3558901639487258,
+            "ending_value": 108754.89803313857,
             "small_sample": false,
             "window": "development",
             "strategy": "Monthly",
             "start": "2021-11-05",
             "end": "2025-05-02",
-            "spy_return_pct": 26.638996240940372
+            "spy_return_pct": 26.638987421763538
         },
         {
-            "total_return_pct": 39.22794391374072,
-            "cagr_pct": 9.952651629086384,
-            "max_drawdown_pct": -31.70324450428713,
-            "trades": 311,
+            "total_return_pct": 42.63423468031684,
+            "cagr_pct": 10.717240898665082,
+            "max_drawdown_pct": -33.644517222599426,
+            "trades": 314,
             "period_end_valuations": 10,
-            "win_rate_pct": 30.86816720257235,
-            "average_trade_return_pct": 1.2613486788984183,
-            "ending_value": 139227.94391374072,
+            "win_rate_pct": 30.573248407643312,
+            "average_trade_return_pct": 1.3577781745323858,
+            "ending_value": 142634.23468031685,
             "small_sample": false,
             "window": "development",
             "strategy": "Aligned daily",
             "start": "2021-11-05",
             "end": "2025-05-02",
-            "spy_return_pct": 26.638996240940372
+            "spy_return_pct": 26.638987421763538
         },
         {
-            "total_return_pct": 46.51950469765311,
-            "cagr_pct": 28.934852609668727,
-            "max_drawdown_pct": -24.41178153270328,
-            "trades": 212,
+            "total_return_pct": 63.53001390725312,
+            "cagr_pct": 38.709598917878594,
+            "max_drawdown_pct": -21.891066108084058,
+            "trades": 206,
             "period_end_valuations": 10,
-            "win_rate_pct": 29.71698113207547,
-            "average_trade_return_pct": 2.1943162593232657,
-            "ending_value": 146519.50469765312,
+            "win_rate_pct": 33.00970873786408,
+            "average_trade_return_pct": 3.083981257633647,
+            "ending_value": 163530.01390725313,
             "small_sample": false,
             "window": "historical_holdout",
             "strategy": "Daily",
             "start": "2025-05-05",
             "end": "2026-11-05",
-            "spy_return_pct": 32.05938767513625
+            "spy_return_pct": 32.05935859326361
         },
         {
-            "total_return_pct": 66.74193315376104,
-            "cagr_pct": 40.51624906691098,
-            "max_drawdown_pct": -22.169383043647727,
+            "total_return_pct": 65.62033108562892,
+            "cagr_pct": 39.88670161435701,
+            "max_drawdown_pct": -22.152814191768833,
             "trades": 178,
-            "period_end_valuations": 6,
-            "win_rate_pct": 32.58426966292135,
-            "average_trade_return_pct": 3.7495468063910775,
-            "ending_value": 166741.93315376106,
+            "period_end_valuations": 5,
+            "win_rate_pct": 33.146067415730336,
+            "average_trade_return_pct": 3.68653545424882,
+            "ending_value": 165620.33108562892,
             "small_sample": false,
             "window": "historical_holdout",
             "strategy": "Weekly",
             "start": "2025-05-05",
             "end": "2026-11-05",
-            "spy_return_pct": 32.05938767513625
+            "spy_return_pct": 32.05935859326361
         },
         {
-            "total_return_pct": 32.964548635145974,
-            "cagr_pct": 20.870839281397814,
-            "max_drawdown_pct": -29.73800290353911,
-            "trades": 131,
+            "total_return_pct": 33.54188979240522,
+            "cagr_pct": 21.219755364897953,
+            "max_drawdown_pct": -29.611656057734102,
+            "trades": 130,
             "period_end_valuations": 7,
-            "win_rate_pct": 31.297709923664126,
-            "average_trade_return_pct": 2.5163777584080957,
-            "ending_value": 132964.54863514597,
+            "win_rate_pct": 32.30769230769231,
+            "average_trade_return_pct": 2.5801453686465585,
+            "ending_value": 133541.8897924052,
             "small_sample": false,
             "window": "historical_holdout",
             "strategy": "Monthly",
             "start": "2025-05-05",
             "end": "2026-11-05",
-            "spy_return_pct": 32.05938767513625
+            "spy_return_pct": 32.05935859326361
         },
         {
-            "total_return_pct": 11.904540862512025,
-            "cagr_pct": 7.770130301145395,
-            "max_drawdown_pct": -31.648939063952607,
-            "trades": 199,
+            "total_return_pct": 16.22891745543411,
+            "cagr_pct": 10.52322991561736,
+            "max_drawdown_pct": -27.549157402341162,
+            "trades": 203,
             "period_end_valuations": 10,
-            "win_rate_pct": 27.63819095477387,
-            "average_trade_return_pct": 0.5982181337945767,
-            "ending_value": 111904.54086251203,
+            "win_rate_pct": 27.586206896551722,
+            "average_trade_return_pct": 0.7994540618440447,
+            "ending_value": 116228.9174554341,
             "small_sample": false,
             "window": "historical_holdout",
             "strategy": "Aligned daily",
             "start": "2025-05-05",
             "end": "2026-11-05",
-            "spy_return_pct": 32.05938767513625
+            "spy_return_pct": 32.05935859326361
         }
     ],
     "limitations": [
