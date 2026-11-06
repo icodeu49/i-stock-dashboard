@@ -1,5 +1,6 @@
 """All price breakouts, daily risk exits and weekly-led setup context."""
 import hashlib
+import os
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -66,7 +67,8 @@ def format_signal(signal, regime):
         text += '\n'
     text += line + '\n'
     text += '\u2696\ufe0f RELATIVE STRENGTH\n'
-    text += f"RS vs SPY: {percentage(signal['rs_spy'])} {signed_icon(signal['rs_spy'])} | Sector: {percentage(signal['rs_sector'])} {signed_icon(signal['rs_sector'])}\n"
+    horizon = {'Daily': '63 sessions', 'Weekly': '13 weeks', 'Monthly': '3 months'}.get(signal['timeframe'], '63 sessions')
+    text += f"RS vs SPY ({horizon}): {percentage(signal['rs_spy'])} {signed_icon(signal['rs_spy'])} | Sector: {percentage(signal['rs_sector'])} {signed_icon(signal['rs_sector'])}\n"
     text += f"Watchlist sector rank: {signal['sector_rank']}\n"
     text += line + '\n'
     text += '\U0001f4e3 ' + describe_earnings(signal.get('earnings', {}))
@@ -175,18 +177,28 @@ def run_automated_scanner():
               f"{sum(item['status'] == 'complete' for item in forward['observations'].values())} mature.")
     except Exception as exc:
         print(f'::warning::Forward evaluation unavailable ({type(exc).__name__}); price alerts continue.')
+    full_report = os.getenv('STOCK_SCANNER_FULL_REPORT') == '1'
+    if full_report and failures:
+        # A one-off full report is only sent when every stock is accounted for;
+        # a partial report labelled full would be worse than none.
+        raise RuntimeError(f'Full report withheld: {len(failures)} data failures; '
+                           'a partial report is never sent as full')
     delivered = read_json(ALERT_STATE_FILE, {'delivered': {}}).get('delivered', {})
     records = [(item['id'], format_signal(item, regime)) for item in signals if item['route'] == 'alert']
-    pending_digest = [item for item in signals if item['route'] == 'digest' and item['id'] not in delivered]
+    pending_digest = [item for item in signals if item['route'] == 'digest' and (full_report or item['id'] not in delivered)]
     acknowledgements = {}
     for start in range(0, len(pending_digest), 12):
         batch = pending_digest[start:start + 12]
         keys = [item['id'] for item in batch]
         digest = hashlib.sha256('|'.join(keys).encode()).hexdigest()[:12]
         key = f'daily-digest:{session}:{digest}'
-        text = f'📋 Daily setups — US close {session}\nWeekly/monthly bullish alignment is not confirmed.\n'
+        text = f'📋 DAILY SETUPS - US close {session}\n'
+        text += 'Weekly/monthly bullish alignment is not confirmed.\n'
+        text += '\u2500' * 18 + '\n'
         for item in batch:
-            text += f"{item['ticker']}: {item['label']} | W {item['weekly_trend']}, M {item['monthly_trend']}\n"
+            text += f"{item['ticker']} - {item['label']}\n"
+            text += (f"   Weekly {item['weekly_trend']} {trend_icon(item['weekly_trend'])} | "
+                     f"Monthly {item['monthly_trend']} {trend_icon(item['monthly_trend'])}\n")
             warning = extension_warning(item['context']['daily_ma50_distance_pct'])
             if warning:
                 text += warning + '\n'
@@ -196,21 +208,44 @@ def run_automated_scanner():
     for item in history.get('events', []):
         if item.get('type') == 'trend_changed' and item.get('policy') == POLICY_VERSION and item['to'] == 'bearish' and item['asof'] >= (pd.Timestamp(session) - pd.Timedelta(days=7)).date().isoformat():
             key = f"trend-change:{item['asof']}:{item['ticker']}:{item['timeframe']}:{item['to']}"
-            records.append((key, f"⚠️ Watchlist deterioration — {item['ticker']} | {item['timeframe']}\n"
-                                 f"{item['from']} → {item['to']} | US close {item['asof']}. Stock remains on your watchlist."))
+            records.append((key, f"⚠️ Watchlist deterioration - {item['ticker']} | {item['timeframe']}\n"
+                                 f"{item['from']} -> {item['to']} | US close {item['asof']}. Stock remains on your watchlist."))
     digest = hashlib.sha256('|'.join(failures + limited).encode()).hexdigest()[:12]
-    status = f"{'⚠️ Partial' if failures else '✅ Completed'} stock scan — US close {session}\n"
-    status += f'Analysed {scanned}/{len(watchlist)} stocks. Market regime: {regime}.\n'
-    status += f"{sum(s['route'] == 'alert' for s in signals)} individual-alert candidates; {sum(s['route'] == 'digest' for s in signals)} daily digest setups. Previously delivered signals are suppressed."
-    status += f'\nRisk policy: {POLICY_VERSION}; VSTOP confirmation uses daily closes on every view.'
-    status += f"\nSize metadata: {profile_coverage['available']}/{len(watchlist)} available; {profile_coverage['mega_caps']} verified mega-caps. Missing metadata uses normal two-close stops."
+    status = f"{'⚠️ PARTIAL SCAN' if failures else '✅ SCAN COMPLETE'} - US close {session}\n"
+    status += '\u2500' * 18 + '\n'
+    if full_report:
+        status += '📣 ONE-OFF FULL REPORT - every current signal, including ones already sent.\n'
+        status += '   Normal runs resume duplicate suppression after this.\n'
+        status += '\u2500' * 18 + '\n'
+    status += f'📊 Analysed {scanned}/{len(watchlist)} stocks | Market regime: {regime}\n'
+    status += (f"🔔 {sum(s['route'] == 'alert' for s in signals)} individual alerts | "
+               f"{sum(s['route'] == 'digest' for s in signals)} daily digest setups\n")
+    status += '   Signals already sent are not repeated.\n'
+    status += f'🛡 Risk policy {POLICY_VERSION} - VSTOP confirmed by daily closes on every timeframe\n'
+    status += (f"📏 Size metadata: {profile_coverage['available']}/{len(watchlist)} available; "
+               f"{profile_coverage['mega_caps']} mega-caps; others use standard two-close stops\n")
+    status += f'🗄 Prices: US close {session}; Yahoo Finance primary, Massive grouped daily fallback'
     if limited:
-        status += f'\nInsufficient history in {len(limited)} stock/timeframe combinations (see workflow log).'
+        status += f'\n⏳ Insufficient history in {len(limited)} stock/timeframe combinations (see workflow log).'
         print('Insufficient history:', ', '.join(limited))
     if failures:
-        status += '\nData failures: ' + '; '.join(failures)[:1500]
-    records.append((f'scan-status:{session}:{POLICY_VERSION}:{digest}', status))
-    send_records(records, acknowledgements=acknowledgements)
+        status += '\n❌ Data failures: ' + '; '.join(failures)[:1500]
+    status_record = (f'scan-status:{session}:{POLICY_VERSION}:{digest}', status)
+    if full_report:
+        quiet = [t for t in watchlist if (t, 'Daily') in results and t not in {item['ticker'] for item in signals}]
+        legend = ('📖 HOW TO READ THIS REPORT\n' + '\u2500' * 18 + '\n'
+            '🟢 buy candidate | 🔴 confirmed risk exit\n'
+            'VSTOP exits confirm only after the required closing breaches, never on a first touch.\n'
+            'Digest setups lack weekly/monthly bullish alignment; treat them as watch items.\n'
+            'RS compares each stock with SPY and its sector ETF over 63 sessions (daily view).\n'
+            'Signals are data, not recommendations.')
+        records = ([status_record, (f'full-legend:{session}', legend)]
+                   + [(f'full-roster:{session}:{i}', f'😴 NO NEW SIGNAL ({len(quiet)} of {len(watchlist)} stocks): '
+                       + ', '.join(chunk)) for i, chunk in enumerate([quiet[n:n + 60] for n in range(0, len(quiet), 60)])]
+                   + records)
+    else:
+        records.append(status_record)
+    send_records(records, acknowledgements=acknowledgements, force=full_report)
     print(f"Snapshot: {len(signals)} signals; {len(changes)} trend changes; coverage {snapshot['coverage']}.")
     if failures:
         raise RuntimeError(f'Scan incomplete: {len(failures)} data failures; valid alerts were delivered')
