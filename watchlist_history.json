@@ -1696,9 +1696,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-21",
                     "last_selected_asof": "2026-11-05",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-8.92%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-05"
                 }
             },
             "trends": {
@@ -5394,7 +5395,14 @@
             "asof": "2026-11-05",
             "observed_at": "2026-11-06T00:20:22.649475+00:00",
             "reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SOFI",
+            "source": "momentum_scan",
+            "asof": "2026-11-05",
+            "observed_at": "2026-11-06T01:32:45.946200+00:00"
         }
     ],
-    "updated_at": "2026-11-06T00:47:19.398366+00:00"
+    "updated_at": "2026-11-06T01:32:45.946200+00:00"
 }
