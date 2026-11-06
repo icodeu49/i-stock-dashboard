@@ -861,5 +861,89 @@
         "gics_sector": "Energy",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #5 XLE; ranked by 21-session RS vs SPY"
+    },
+    "PEP": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLP",
+        "gics_sector": "Consumer Staples",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #1 XLP; ranked by 21-session RS vs SPY"
+    },
+    "PSA": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "AMT": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "WY": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "O": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "PLD": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "CMG": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLY",
+        "gics_sector": "Consumer Discretionary",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #4 XLY; ranked by 21-session RS vs SPY"
+    },
+    "MA": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+    },
+    "V": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+    },
+    "BRK-B": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+    },
+    "BLK": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
+    },
+    "AXP": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY"
     }
 }
