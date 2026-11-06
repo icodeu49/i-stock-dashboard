@@ -19,6 +19,13 @@ from storage import load_watchlist, merge_candidates, read_json, write_json
 NOW = pd.Timestamp('2026-10-11T06:00:00Z')
 
 
+def setUpModule():
+    # The rescued-bar cache defaults to the working directory; never let a stale
+    # file from an earlier suite run leak into these tests.
+    for stale in Path('.').glob('.bar_cache_*.json'):
+        stale.unlink()
+
+
 def prices(count=756, end='2026-10-09'):
     close = np.linspace(50, 150, count)
     return pd.DataFrame({'Open': close, 'High': close + 1, 'Low': close - 1,
@@ -355,7 +362,11 @@ class MassiveFallbackTest(unittest.TestCase):
         return response
 
     def _reset_massive(self):
-        market_data._MASSIVE_GROUPED.update({"date": None, "bars": None, "throttled": False})
+        market_data._MASSIVE_GROUPED.update({"date": None, "bars": None, "throttled": False, "failed_date": None})
+        market_data._MASSIVE_PACE["last_call"] = 0.0
+        market_data._YAHOO_LAG.update({"tickers": set(), "tripped": False})
+        for stale in Path('.').glob('.bar_cache_*.json'):
+            stale.unlink()
 
     def test_massive_supplies_lagging_bar(self):
         cutoff = pd.Timestamp('2026-10-08')
@@ -398,6 +409,94 @@ class MassiveFallbackTest(unittest.TestCase):
              patch('time.sleep'):
             self._reset_massive()
             df = market_data.download_prices('TEST', attempts=1)
+        self.assertEqual(df.index[-1], cutoff)
+        self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
+
+    def _prev_response(self, tick='TEST'):
+        bar = {'v': 2000, 'o': 10.6, 'h': 11.1, 'l': 10.2, 'c': 10.9,
+               't': int(pd.Timestamp('2026-10-08', tz='UTC').timestamp() * 1000)}
+        response = Mock()
+        response.status_code = 200
+        response.json.return_value = {'status': 'OK', 'resultsCount': 1, 'results': [bar]}
+        return response
+
+    def _forbidden_grouped_then_prev(self, prev):
+        forbidden = Mock()
+        forbidden.status_code = 403
+        forbidden.text = '{"status":"NOT_AUTHORIZED","message":"Attempted to request today data before end of day."}'
+        return [forbidden, prev]
+
+    def test_grouped_403_circuit_breaks_to_prev(self):
+        # After one grouped 403, later tickers in the same run must not re-call grouped.
+        cutoff = pd.Timestamp('2026-10-08')
+        responses = self._forbidden_grouped_then_prev(self._prev_response('ONE')) + [self._prev_response('TWO')]
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key', 'BAR_CACHE_FILE': str(Path(directory) / 'cache.json')}), \
+             patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+             patch('requests.get', side_effect=responses) as get, \
+             patch('time.sleep'):
+            self._reset_massive()
+            one = market_data.download_prices('ONE', attempts=1)
+            two = market_data.download_prices('TWO', attempts=1)
+        self.assertEqual(one.index[-1], cutoff)
+        self.assertEqual(two.index[-1], cutoff)
+        paths = [call.args[0] for call in get.call_args_list]
+        self.assertEqual(sum('grouped' in p for p in paths), 1)
+        self.assertEqual(sum('/prev' in p for p in paths), 2)
+
+    def test_yahoo_breaker_gives_later_tickers_one_probe(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        with tempfile.TemporaryDirectory() as directory, \
+             patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key', 'BAR_CACHE_FILE': str(Path(directory) / 'cache.json')}), \
+             patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+             patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()) as fetch, \
+             patch('requests.get', return_value=self._prev_response()), \
+             patch('time.sleep'):
+            self._reset_massive()
+            for tick in ['A', 'B', 'C', 'D']:
+                market_data.download_prices(tick, attempts=3)
+        # A, B, C probe 3 times each until the breaker trips; D gets a single probe.
+        self.assertEqual(fetch.call_count, 3 + 3 + 3 + 1)
+        self.assertTrue(market_data._YAHOO_LAG['tripped'])
+        market_data._YAHOO_LAG.update({'tickers': set(), 'tripped': False})
+
+    def test_rescued_bar_cache_shared_without_new_requests(self):
+        # A bar rescued once is reused afterwards with no HTTP at all (second process in the job).
+        cutoff = pd.Timestamp('2026-10-08')
+        with tempfile.TemporaryDirectory() as directory:
+            cache = str(Path(directory) / 'cache.json')
+            with patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key', 'BAR_CACHE_FILE': cache}), \
+                 patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+                 patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+                 patch('requests.get', side_effect=self._forbidden_grouped_then_prev(self._prev_response())) as get, \
+                 patch('time.sleep'):
+                self._reset_massive()
+                market_data.download_prices('TEST', attempts=1)
+                self.assertEqual(get.call_count, 2)
+            with patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key', 'BAR_CACHE_FILE': cache}), \
+                 patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+                 patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+                 patch('requests.get') as get2, \
+                 patch('time.sleep'):
+                self._reset_massive()
+                df = market_data.download_prices('TEST', attempts=1)
+        self.assertEqual(df.index[-1], cutoff)
+        self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
+        get2.assert_not_called()
+
+    def test_wrong_date_cache_entry_is_never_served(self):
+        cutoff = pd.Timestamp('2026-10-08')
+        with tempfile.TemporaryDirectory() as directory:
+            cache = Path(directory) / 'cache.json'
+            cache.write_text(json.dumps({'TEST': {'date': '2026-10-07', 'o': 1, 'h': 1, 'l': 1, 'c': 1, 'v': 1, 'source': 'massive_prev'}}))
+            with patch.dict('os.environ', {'MASSIVE_API_KEY': 'test-key', 'BAR_CACHE_FILE': str(cache)}), \
+                 patch.object(market_data, 'last_completed_session', return_value=cutoff), \
+                 patch.object(market_data, '_fetch_raw', return_value=self._stale_yahoo()), \
+                 patch('requests.get', side_effect=self._forbidden_grouped_then_prev(self._prev_response())), \
+                 patch('time.sleep'):
+                self._reset_massive()
+                df = market_data.download_prices('TEST', attempts=1)
         self.assertEqual(df.index[-1], cutoff)
         self.assertAlmostEqual(df.Close.iloc[-1], 10.9)
 
