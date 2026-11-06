@@ -41,12 +41,15 @@ def send_telegram(message, attempts=3):
     raise RuntimeError("Telegram delivery failed after retries")
 
 
-def send_records(records, state_path=ALERT_STATE_FILE, acknowledgements=None):
-    """Each record is (stable_id, text). Persist IDs only after confirmed delivery."""
+def send_records(records, state_path=ALERT_STATE_FILE, acknowledgements=None, force=False):
+    """Each record is (stable_id, text). Persist IDs only after confirmed delivery.
+
+    force=True sends every record regardless of prior delivery (one-off full reports);
+    state is still stamped, so normal runs never repeat what the report delivered."""
     acknowledgements = acknowledgements or {}
     state = read_json(state_path, {"delivered": {}})
     delivered = state.setdefault("delivered", {})
-    pending = [(key, text) for key, text in records if key not in delivered]
+    pending = [(key, text) for key, text in records if force or key not in delivered]
     batches, batch, units = [], [], 0
     for key, text in pending:
         size = len(text.encode("utf-16-le")) // 2 + 2
