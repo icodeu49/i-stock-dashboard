@@ -1,6 +1,9 @@
 """Daily US-equity data with explicit freshness and exchange-session checks."""
 from functools import lru_cache
+import json
+import os
 import time
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -63,9 +66,51 @@ def _fetch_raw(ticker, period, use_history):
     )
 
 
-_MASSIVE_GROUPED = {"date": None, "bars": None, "throttled": False}
+_MASSIVE_GROUPED = {"date": None, "bars": None, "throttled": False, "failed_date": None}
 _MASSIVE_PACE = {"last_call": 0.0}
 _MASSIVE_MIN_GAP = 13.0  # free plan: 5 requests/minute across all endpoints
+_YAHOO_LAG = {"tickers": set(), "tripped": False}
+_YAHOO_BREAKER_TRIP_AT = 3  # distinct lagging tickers before Yahoo is treated as run-wide broken
+
+
+def _bar_cache_file(cutoff):
+    return Path(os.environ.get("BAR_CACHE_FILE", f".bar_cache_{cutoff.date()}.json"))
+
+
+def _bar_cache_read(cutoff):
+    """Rescued current-session bars shared by every scanner process in one job run.
+
+    Written by whichever process rescues a bar first (heatmap refresh or notifier); keyed
+    by ticker with the exact session date and source recorded. A cache entry is used only
+    when its date is exactly the cutoff - a stale or foreign entry is ignored, never served.
+    """
+    try:
+        return json.loads(_bar_cache_file(cutoff).read_text())
+    except Exception:
+        return {}
+
+
+def _bar_cache_add(cutoff, ticker, bar, source):
+    cache = _bar_cache_read(cutoff)
+    cache[ticker] = {"date": str(cutoff.date()), "o": bar["o"], "h": bar["h"],
+                     "l": bar["l"], "c": bar["c"], "v": bar["v"], "source": source}
+    try:
+        _bar_cache_file(cutoff).write_text(json.dumps(cache))
+    except Exception:
+        pass
+
+
+def _cached_bar(ticker, cutoff):
+    entry = _bar_cache_read(cutoff).get(ticker)
+    if entry is None or entry.get("date") != str(cutoff.date()):
+        return None
+    print(f"::notice::{ticker}: latest bar {cutoff.date()} reused from this run's rescued-bar cache "
+          f"(source={entry.get('source', 'unknown')})")
+    return pd.DataFrame(
+        {"Open": [entry["o"]], "High": [entry["h"]], "Low": [entry["l"]],
+         "Close": [entry["c"]], "Volume": [entry["v"]]}, index=[cutoff])
+
+
 
 
 def _massive_get(path, params):
@@ -118,10 +163,13 @@ def _massive_grouped_bar(ticker, cutoff):
     available the same evening after the US close; treat that as observed, not guaranteed -
     if the cutoff date has no bar the lookup declines and the caller still fails loudly.
     """
+    if _MASSIVE_GROUPED["failed_date"] == cutoff:
+        return None  # grouped already failed this run (403/429); go straight to per-ticker prev
     if _MASSIVE_GROUPED["date"] != cutoff or _MASSIVE_GROUPED["bars"] is None:
         data = _massive_get(f"/v2/aggs/grouped/locale/us/market/stocks/{cutoff.date()}",
                             {"adjusted": "true"})
         if data is None:
+            _MASSIVE_GROUPED["failed_date"] = cutoff
             return None
         results = data.get("results") or []
         _MASSIVE_GROUPED["date"] = cutoff
@@ -130,6 +178,7 @@ def _massive_grouped_bar(ticker, cutoff):
     if bar is None:
         print(f"::warning::{ticker}: no Massive bar for {cutoff.date()} in grouped results")
         return None
+    _bar_cache_add(cutoff, ticker, bar, "massive_grouped")
     return _bar_frame(bar, cutoff)
 
 
@@ -152,6 +201,7 @@ def _massive_prev_bar(ticker, cutoff):
     if day != cutoff:
         print(f"::warning::{ticker}: Massive prev bar is {day.date()}, expected {cutoff.date()}")
         return None
+    _bar_cache_add(cutoff, ticker, bar, "massive_prev")
     return _bar_frame(bar, cutoff)
 
 
@@ -179,6 +229,8 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
     cutoff = last_completed_session(now)
     error = None
     use_history = False
+    if _YAHOO_LAG["tripped"]:
+        attempts = 1  # provider already broken run-wide: one probe, then rescue paths
     for attempt in range(attempts):
         wait = 2 ** attempt
         try:
@@ -193,11 +245,18 @@ def download_prices(ticker, period="max", now=None, attempts=3, stale_retry_dela
                     print(f"::warning::{ticker}: bar for {cutoff.date()} not available yet "
                           f"(attempt {attempt + 1}/{attempts}, source={'history' if use_history else 'download'}, "
                           f"{_stale_diagnostic(raw, cutoff)})")
+                    _YAHOO_LAG["tickers"].add(ticker)
+                    if not _YAHOO_LAG["tripped"] and len(_YAHOO_LAG["tickers"]) >= _YAHOO_BREAKER_TRIP_AT:
+                        _YAHOO_LAG["tripped"] = True
+                        print("::warning::Yahoo is failing broadly this run; later tickers get one "
+                              "probe before the rescued-bar cache and Massive prev fallback")
                     use_history = not use_history  # alternate endpoints between attempts
                     wait = min(stale_retry_delay * (attempt + 1), _STALE_WAIT_BUDGET["left"])
                     _STALE_WAIT_BUDGET["left"] -= wait
                 if lag and attempt + 1 == attempts:
-                    bar = _massive_grouped_bar(ticker, cutoff)
+                    bar = _cached_bar(ticker, cutoff)
+                    if bar is None:
+                        bar = _massive_grouped_bar(ticker, cutoff)
                     if bar is None:
                         bar = _massive_prev_bar(ticker, cutoff)
                     if bar is not None:
