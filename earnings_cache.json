@@ -39,17 +39,17 @@
     "FTGFF": {
         "status": "provider_reported",
         "date": "2027-02-10",
-        "checked_at": "2026-11-06T18:01:17.277270+00:00",
+        "checked_at": "2026-11-07T16:53:22.015839+00:00",
         "source": "Yahoo Finance",
-        "days_until": 96,
+        "days_until": 95,
         "within_7_days": false
     },
     "U": {
         "status": "provider_reported",
         "date": "2027-02-10",
-        "checked_at": "2026-11-06T18:01:45.983359+00:00",
+        "checked_at": "2026-11-07T16:53:22.683510+00:00",
         "source": "Yahoo Finance",
-        "days_until": 96,
+        "days_until": 95,
         "within_7_days": false
     },
     "TEAM": {
@@ -111,17 +111,17 @@
     "VLO": {
         "status": "provider_reported",
         "date": "2027-01-28",
-        "checked_at": "2026-11-06T18:01:20.195673+00:00",
+        "checked_at": "2026-11-07T16:53:41.149706+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "PSX": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T20:00:33.428680+00:00",
+        "checked_at": "2026-11-07T16:53:23.893320+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "TMO": {
@@ -134,9 +134,9 @@
     "ABBV": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:21.528878+00:00",
+        "checked_at": "2026-11-07T16:53:42.395909+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "AMD": {
@@ -150,25 +150,25 @@
     "BE": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-06T18:01:27.851949+00:00",
+        "checked_at": "2026-11-07T16:53:30.793062+00:00",
         "source": "Yahoo Finance",
-        "days_until": 90,
+        "days_until": 89,
         "within_7_days": false
     },
     "IONQ": {
         "status": "provider_reported",
         "date": "2027-02-24",
-        "checked_at": "2026-11-06T18:01:29.918354+00:00",
+        "checked_at": "2026-11-07T16:53:32.070863+00:00",
         "source": "Yahoo Finance",
-        "days_until": 110,
+        "days_until": 109,
         "within_7_days": false
     },
     "META": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T18:01:31.128053+00:00",
+        "checked_at": "2026-11-07T16:53:33.178128+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "POWI": {
@@ -182,9 +182,9 @@
     "ICHR": {
         "status": "provider_reported",
         "date": "2027-02-08",
-        "checked_at": "2026-11-06T18:01:37.613310+00:00",
+        "checked_at": "2026-11-07T16:53:38.238507+00:00",
         "source": "Yahoo Finance",
-        "days_until": 94,
+        "days_until": 93,
         "within_7_days": false
     },
     "NCLH": {
@@ -204,17 +204,17 @@
     "AMZN": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-06T18:01:14.856995+00:00",
+        "checked_at": "2026-11-07T16:53:21.199951+00:00",
         "source": "Yahoo Finance",
-        "days_until": 90,
+        "days_until": 89,
         "within_7_days": false
     },
     "AI": {
         "status": "provider_reported",
         "date": "2026-12-09",
-        "checked_at": "2026-11-06T18:01:35.233333+00:00",
+        "checked_at": "2026-11-07T16:53:36.360757+00:00",
         "source": "Yahoo Finance",
-        "days_until": 33,
+        "days_until": 32,
         "within_7_days": false
     },
     "OSCR": {
@@ -236,41 +236,41 @@
     "XOM": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-06T18:01:46.477521+00:00",
+        "checked_at": "2026-11-07T16:53:24.319427+00:00",
         "source": "Yahoo Finance",
-        "days_until": 84,
+        "days_until": 83,
         "within_7_days": false
     },
     "MO": {
         "status": "provider_reported",
         "date": "2027-01-28",
-        "checked_at": "2026-11-06T18:01:21.985905+00:00",
+        "checked_at": "2026-11-07T16:53:43.100166+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "ARM": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:27.442407+00:00",
+        "checked_at": "2026-11-07T16:53:30.410423+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "FLEX": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T20:00:32.931057+00:00",
+        "checked_at": "2026-11-07T16:53:21.641147+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "IOT": {
         "status": "provider_reported",
         "date": "2026-12-03",
-        "checked_at": "2026-11-06T18:01:30.594888+00:00",
+        "checked_at": "2026-11-07T16:53:32.395660+00:00",
         "source": "Yahoo Finance",
-        "days_until": 27,
+        "days_until": 26,
         "within_7_days": false
     },
     "MVST": {
@@ -283,25 +283,25 @@
     "NVTS": {
         "status": "provider_reported",
         "date": "2027-02-22",
-        "checked_at": "2026-11-06T18:01:34.332249+00:00",
+        "checked_at": "2026-11-07T16:53:35.692799+00:00",
         "source": "Yahoo Finance",
-        "days_until": 108,
+        "days_until": 107,
         "within_7_days": false
     },
     "RGTI": {
         "status": "provider_reported",
         "date": "2026-11-10",
-        "checked_at": "2026-11-06T18:01:34.806514+00:00",
+        "checked_at": "2026-11-07T16:53:36.034860+00:00",
         "source": "Yahoo Finance",
-        "days_until": 4,
+        "days_until": 3,
         "within_7_days": true
     },
     "FLYW": {
         "status": "provider_reported",
         "date": "2027-02-23",
-        "checked_at": "2026-11-06T18:01:37.148231+00:00",
+        "checked_at": "2026-11-07T16:53:22.354058+00:00",
         "source": "Yahoo Finance",
-        "days_until": 109,
+        "days_until": 108,
         "within_7_days": false
     },
     "UNFI": {
@@ -322,17 +322,17 @@
     "SPOT": {
         "status": "provider_reported",
         "date": "2027-02-09",
-        "checked_at": "2026-11-06T18:01:19.235777+00:00",
+        "checked_at": "2026-11-07T16:53:23.116041+00:00",
         "source": "Yahoo Finance",
-        "days_until": 95,
+        "days_until": 94,
         "within_7_days": false
     },
     "WMB": {
         "status": "provider_reported",
         "date": "2027-02-09",
-        "checked_at": "2026-11-06T20:00:33.875511+00:00",
+        "checked_at": "2026-11-07T16:53:24.678965+00:00",
         "source": "Yahoo Finance",
-        "days_until": 95,
+        "days_until": 94,
         "within_7_days": false
     },
     "CSCO": {
@@ -361,17 +361,17 @@
     "INTC": {
         "status": "provider_reported",
         "date": "2027-01-28",
-        "checked_at": "2026-11-06T18:01:29.364172+00:00",
+        "checked_at": "2026-11-07T16:53:31.724956+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "LLY": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:15.376057+00:00",
+        "checked_at": "2026-11-07T16:53:32.808457+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "NET": {
@@ -415,9 +415,9 @@
     "ALAB": {
         "status": "provider_reported",
         "date": "2027-02-09",
-        "checked_at": "2026-11-06T18:01:35.799152+00:00",
+        "checked_at": "2026-11-07T16:53:36.705398+00:00",
         "source": "Yahoo Finance",
-        "days_until": 95,
+        "days_until": 94,
         "within_7_days": false
     },
     "PATH": {
@@ -431,9 +431,9 @@
     "TER": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T18:01:36.705482+00:00",
+        "checked_at": "2026-11-07T16:53:37.443497+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "AAPL": {
@@ -446,15 +446,15 @@
     "GOOGL": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:38.040065+00:00",
+        "checked_at": "2026-11-07T16:53:38.585219+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "CARD": {
         "status": "unavailable",
         "date": null,
-        "checked_at": "2026-11-06T18:01:18.186000+00:00",
+        "checked_at": "2026-11-07T16:53:38.908434+00:00",
         "source": "Yahoo Finance"
     },
     "DKNG": {
@@ -488,9 +488,9 @@
     "PM": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-06T18:01:41.589263+00:00",
+        "checked_at": "2026-11-07T16:53:42.733559+00:00",
         "source": "Yahoo Finance",
-        "days_until": 90,
+        "days_until": 89,
         "within_7_days": false
     },
     "EOG": {
@@ -504,9 +504,9 @@
     "NBIS": {
         "status": "provider_reported",
         "date": "2026-11-12",
-        "checked_at": "2026-11-06T18:01:33.379720+00:00",
+        "checked_at": "2026-11-07T16:53:34.858330+00:00",
         "source": "Yahoo Finance",
-        "days_until": 6,
+        "days_until": 5,
         "within_7_days": true
     },
     "TSM": {
@@ -520,9 +520,9 @@
     "PARR": {
         "status": "provider_reported",
         "date": "2027-02-23",
-        "checked_at": "2026-11-06T18:01:17.648512+00:00",
+        "checked_at": "2026-11-07T16:53:37.871411+00:00",
         "source": "Yahoo Finance",
-        "days_until": 109,
+        "days_until": 108,
         "within_7_days": false
     },
     "WOLF": {
@@ -535,57 +535,57 @@
     "CRWV": {
         "status": "provider_reported",
         "date": "2026-11-10",
-        "checked_at": "2026-11-06T18:01:28.352588+00:00",
+        "checked_at": "2026-11-07T16:53:31.112259+00:00",
         "source": "Yahoo Finance",
-        "days_until": 4,
+        "days_until": 3,
         "within_7_days": true
     },
     "MU": {
         "status": "provider_reported",
         "date": "2026-12-23",
-        "checked_at": "2026-11-06T18:01:32.128005+00:00",
+        "checked_at": "2026-11-07T16:53:33.908178+00:00",
         "source": "Yahoo Finance",
-        "days_until": 47,
+        "days_until": 46,
         "within_7_days": false
     },
     "SMCI": {
         "status": "provider_reported",
         "date": "2027-02-02",
-        "checked_at": "2026-11-06T18:01:38.524287+00:00",
+        "checked_at": "2026-11-07T16:53:39.194396+00:00",
         "source": "Yahoo Finance",
-        "days_until": 88,
+        "days_until": 87,
         "within_7_days": false
     },
     "DUOL": {
         "status": "provider_reported",
         "date": "2027-02-25",
-        "checked_at": "2026-11-06T18:01:39.588948+00:00",
+        "checked_at": "2026-11-07T16:53:23.462083+00:00",
         "source": "Yahoo Finance",
-        "days_until": 111,
+        "days_until": 110,
         "within_7_days": false
     },
     "NOW": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T18:01:20.697978+00:00",
+        "checked_at": "2026-11-07T16:53:41.565374+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "PG": {
         "status": "provider_reported",
         "date": "2027-01-21",
-        "checked_at": "2026-11-06T18:01:22.534165+00:00",
+        "checked_at": "2026-11-07T16:53:25.019977+00:00",
         "source": "Yahoo Finance",
-        "days_until": 76,
+        "days_until": 75,
         "within_7_days": false
     },
     "COST": {
         "status": "provider_reported",
         "date": "2026-12-10",
-        "checked_at": "2026-11-06T18:01:47.047443+00:00",
+        "checked_at": "2026-11-07T16:53:25.751704+00:00",
         "source": "Yahoo Finance",
-        "days_until": 34,
+        "days_until": 33,
         "within_7_days": false
     },
     "AVGO": {
@@ -599,17 +599,17 @@
     "GEV": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T18:01:28.802590+00:00",
+        "checked_at": "2026-11-07T16:53:31.422156+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "NVDA": {
         "status": "provider_reported",
         "date": "2026-11-17",
-        "checked_at": "2026-11-06T18:01:33.892374+00:00",
+        "checked_at": "2026-11-07T16:53:35.298415+00:00",
         "source": "Yahoo Finance",
-        "days_until": 11,
+        "days_until": 10,
         "within_7_days": false
     },
     "ENR": {
@@ -623,9 +623,9 @@
     "CRDO": {
         "status": "provider_reported",
         "date": "2026-11-30",
-        "checked_at": "2026-11-06T18:01:36.233343+00:00",
+        "checked_at": "2026-11-07T16:53:37.110798+00:00",
         "source": "Yahoo Finance",
-        "days_until": 24,
+        "days_until": 23,
         "within_7_days": false
     },
     "PANW": {
@@ -639,33 +639,33 @@
     "HOOD": {
         "status": "provider_reported",
         "date": "2027-02-10",
-        "checked_at": "2026-11-06T18:01:40.626630+00:00",
+        "checked_at": "2026-11-07T16:53:40.500223+00:00",
         "source": "Yahoo Finance",
-        "days_until": 96,
+        "days_until": 95,
         "within_7_days": false
     },
     "AMGN": {
         "status": "provider_reported",
         "date": "2027-02-02",
-        "checked_at": "2026-11-06T18:01:21.126213+00:00",
+        "checked_at": "2026-11-07T16:53:41.922522+00:00",
         "source": "Yahoo Finance",
-        "days_until": 88,
+        "days_until": 87,
         "within_7_days": false
     },
     "WMT": {
         "status": "provider_reported",
         "date": "2026-11-19",
-        "checked_at": "2026-11-06T18:01:23.058142+00:00",
+        "checked_at": "2026-11-07T16:53:25.373965+00:00",
         "source": "Yahoo Finance",
-        "days_until": 13,
+        "days_until": 12,
         "within_7_days": false
     },
     "MRVL": {
         "status": "provider_reported",
         "date": "2026-12-01",
-        "checked_at": "2026-11-06T18:01:31.663730+00:00",
+        "checked_at": "2026-11-07T16:53:33.566018+00:00",
         "source": "Yahoo Finance",
-        "days_until": 25,
+        "days_until": 24,
         "within_7_days": false
     },
     "CRWD": {
@@ -679,25 +679,25 @@
     "COP": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-06T18:01:47.520336+00:00",
+        "checked_at": "2026-11-07T16:53:26.201962+00:00",
         "source": "Yahoo Finance",
-        "days_until": 90,
+        "days_until": 89,
         "within_7_days": false
     },
     "EL": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:23.499359+00:00",
+        "checked_at": "2026-11-07T16:53:26.522161+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "PFE": {
         "status": "provider_reported",
         "date": "2027-02-02",
-        "checked_at": "2026-11-06T18:01:42.179603+00:00",
+        "checked_at": "2026-11-07T16:53:43.449311+00:00",
         "source": "Yahoo Finance",
-        "days_until": 88,
+        "days_until": 87,
         "within_7_days": false
     },
     "ECL": {
@@ -725,17 +725,17 @@
     "APD": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-06T18:01:24.878016+00:00",
+        "checked_at": "2026-11-07T16:53:43.775974+00:00",
         "source": "Yahoo Finance",
-        "days_until": 84,
+        "days_until": 83,
         "within_7_days": false
     },
     "COIN": {
         "status": "provider_reported",
         "date": "2027-02-11",
-        "checked_at": "2026-11-06T18:01:40.062449+00:00",
+        "checked_at": "2026-11-07T16:53:40.067386+00:00",
         "source": "Yahoo Finance",
-        "days_until": 97,
+        "days_until": 96,
         "within_7_days": false
     },
     "MDB": {
@@ -749,9 +749,9 @@
     "LIN": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-06T18:01:23.967397+00:00",
+        "checked_at": "2026-11-07T16:53:26.841130+00:00",
         "source": "Yahoo Finance",
-        "days_until": 90,
+        "days_until": 89,
         "within_7_days": false
     },
     "SHW": {
@@ -788,49 +788,49 @@
     "SO": {
         "status": "provider_reported",
         "date": "2027-02-25",
-        "checked_at": "2026-11-06T18:01:42.643378+00:00",
+        "checked_at": "2026-11-07T16:53:44.243484+00:00",
         "source": "Yahoo Finance",
-        "days_until": 111,
+        "days_until": 110,
         "within_7_days": false
     },
     "AEP": {
         "status": "provider_reported",
         "date": "2027-02-11",
-        "checked_at": "2026-11-06T18:01:43.047425+00:00",
+        "checked_at": "2026-11-07T16:53:44.670019+00:00",
         "source": "Yahoo Finance",
-        "days_until": 97,
+        "days_until": 96,
         "within_7_days": false
     },
     "DUK": {
         "status": "provider_reported",
         "date": "2027-02-09",
-        "checked_at": "2026-11-06T18:01:43.481936+00:00",
+        "checked_at": "2026-11-07T16:53:27.164497+00:00",
         "source": "Yahoo Finance",
-        "days_until": 95,
+        "days_until": 94,
         "within_7_days": false
     },
     "CVX": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-06T18:01:48.062289+00:00",
+        "checked_at": "2026-11-07T16:53:27.882492+00:00",
         "source": "Yahoo Finance",
-        "days_until": 84,
+        "days_until": 83,
         "within_7_days": false
     },
     "CL": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-06T18:01:25.430542+00:00",
+        "checked_at": "2026-11-07T16:53:28.209496+00:00",
         "source": "Yahoo Finance",
-        "days_until": 84,
+        "days_until": 83,
         "within_7_days": false
     },
     "SBUX": {
         "status": "provider_reported",
         "date": "2027-01-27",
-        "checked_at": "2026-11-06T18:01:44.457003+00:00",
+        "checked_at": "2026-11-07T16:53:45.743778+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 81,
         "within_7_days": false
     },
     "RDDT": {
@@ -866,9 +866,9 @@
     "ODFL": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-06T18:01:15.880997+00:00",
+        "checked_at": "2026-11-07T16:53:46.154959+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 88,
         "within_7_days": false
     },
     "IRM": {
@@ -882,49 +882,49 @@
     "EXC": {
         "status": "provider_reported",
         "date": "2027-02-11",
-        "checked_at": "2026-11-06T18:01:25.975536+00:00",
+        "checked_at": "2026-11-07T16:53:45.405664+00:00",
         "source": "Yahoo Finance",
-        "days_until": 97,
+        "days_until": 96,
         "within_7_days": false
     },
     "APLD": {
         "status": "provider_reported",
         "date": "2027-01-06",
-        "checked_at": "2026-11-06T18:01:26.845701+00:00",
+        "checked_at": "2026-11-07T16:53:30.073222+00:00",
         "source": "Yahoo Finance",
-        "days_until": 61,
+        "days_until": 60,
         "within_7_days": false
     },
     "NAK": {
         "status": "provider_reported",
         "date": "2026-11-16",
-        "checked_at": "2026-11-06T18:01:32.777542+00:00",
+        "checked_at": "2026-11-07T16:53:34.435297+00:00",
         "source": "Yahoo Finance",
-        "days_until": 10,
+        "days_until": 9,
         "within_7_days": false
     },
     "MARA": {
         "status": "provider_reported",
         "date": "2026-11-09",
-        "checked_at": "2026-11-06T18:01:39.082024+00:00",
+        "checked_at": "2026-11-07T16:53:39.548047+00:00",
         "source": "Yahoo Finance",
-        "days_until": 3,
+        "days_until": 2,
         "within_7_days": true
     },
     "RIOT": {
         "status": "provider_reported",
         "date": "2027-03-01",
-        "checked_at": "2026-11-06T18:01:41.091567+00:00",
+        "checked_at": "2026-11-07T16:53:40.810912+00:00",
         "source": "Yahoo Finance",
-        "days_until": 115,
+        "days_until": 114,
         "within_7_days": false
     },
     "UNH": {
         "status": "provider_reported",
         "date": "2027-01-12",
-        "checked_at": "2026-11-06T18:01:43.932140+00:00",
+        "checked_at": "2026-11-07T16:53:45.088310+00:00",
         "source": "Yahoo Finance",
-        "days_until": 67,
+        "days_until": 66,
         "within_7_days": false
     },
     "CCJ": {
@@ -952,25 +952,25 @@
     "REGN": {
         "status": "provider_reported",
         "date": "2027-01-28",
-        "checked_at": "2026-11-06T18:01:26.413087+00:00",
+        "checked_at": "2026-11-07T16:53:28.767863+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "MDLZ": {
         "status": "provider_reported",
         "date": "2027-02-02",
-        "checked_at": "2026-11-06T18:01:44.986560+00:00",
+        "checked_at": "2026-11-07T16:53:29.077461+00:00",
         "source": "Yahoo Finance",
-        "days_until": 88,
+        "days_until": 87,
         "within_7_days": false
     },
     "DOW": {
         "status": "provider_reported",
         "date": "2027-01-28",
-        "checked_at": "2026-11-06T18:01:45.553888+00:00",
+        "checked_at": "2026-11-07T16:53:29.414740+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "NUE": {
@@ -984,9 +984,9 @@
     "HAL": {
         "status": "provider_reported",
         "date": "2027-01-20",
-        "checked_at": "2026-11-06T20:00:34.851176+00:00",
+        "checked_at": "2026-11-07T16:53:29.759458+00:00",
         "source": "Yahoo Finance",
-        "days_until": 75,
+        "days_until": 74,
         "within_7_days": false
     },
     "AAL": {
@@ -1022,9 +1022,9 @@
     "SRE": {
         "status": "provider_reported",
         "date": "2027-02-25",
-        "checked_at": "2026-11-06T20:00:34.360289+00:00",
+        "checked_at": "2026-11-07T16:53:27.536081+00:00",
         "source": "Yahoo Finance",
-        "days_until": 111,
+        "days_until": 110,
         "within_7_days": false
     },
     "VRT": {
