@@ -952,5 +952,12 @@
         "gics_sector": "Real Estate",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "VMRK": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
     }
 }
