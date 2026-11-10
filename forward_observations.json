@@ -3962,8 +3962,32 @@
             "recorded_at": "2026-11-09T23:07:40.480346+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:LLY:Daily:2026-11-09:buy": {
+            "strategy": "Daily",
+            "ticker": "LLY",
+            "signal_date": "2026-11-09",
+            "recorded_at": "2026-11-10T13:02:33.584866+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:LLY:Daily:2026-11-09:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "LLY",
+            "signal_date": "2026-11-09",
+            "recorded_at": "2026-11-10T13:02:33.584866+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:VMRK:Daily:2026-11-09:buy": {
+            "strategy": "Daily",
+            "ticker": "VMRK",
+            "signal_date": "2026-11-09",
+            "recorded_at": "2026-11-10T13:02:33.584866+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-09T23:07:40.480346+00:00",
+    "updated_at": "2026-11-10T13:02:33.584866+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }

@@ -10480,6 +10480,14 @@
                 "market_cap": null,
                 "currency": null,
                 "quote_type": null
+            },
+            "2026-11-09": {
+                "observed_at": "2026-11-10T13:00:25.976377+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
             }
         }
     },
@@ -22738,6 +22746,26 @@
                 "source": "Yahoo Finance",
                 "status": "available",
                 "market_cap": 37697630208.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            },
+            "2026-11-09": {
+                "observed_at": "2026-11-10T13:02:28.396337+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 37370011648.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            }
+        }
+    },
+    "VMRK": {
+        "observations": {
+            "2026-11-09": {
+                "observed_at": "2026-11-10T13:02:30.154459+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 51150999552.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
             }

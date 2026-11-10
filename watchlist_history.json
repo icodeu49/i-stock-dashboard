@@ -1701,9 +1701,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-21",
                     "last_selected_asof": "2026-11-06",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.28%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-09"
                 }
             },
             "trends": {
@@ -1817,9 +1818,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-21",
                     "last_selected_asof": "2026-11-06",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.80%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-09"
                 }
             },
             "trends": {
@@ -2757,7 +2759,14 @@
                 }
             },
             "added_at": "2026-11-09T23:13:18.873698+00:00",
-            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+            "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
+            "trends": {
+                "Daily": "bullish",
+                "Weekly": "bullish",
+                "Monthly": "bearish"
+            },
+            "trend_asof": "2026-11-09",
+            "trend_policy": "daily-risk-v2"
         }
     },
     "events": [
@@ -6121,7 +6130,21 @@
             "asof": "2026-11-09",
             "observed_at": "2026-11-09T23:13:18.873698+00:00",
             "reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SOFI",
+            "source": "momentum_scan",
+            "asof": "2026-11-09",
+            "observed_at": "2026-11-10T12:59:11.319732+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "HOOD",
+            "source": "momentum_scan",
+            "asof": "2026-11-09",
+            "observed_at": "2026-11-10T12:59:11.319732+00:00"
         }
     ],
-    "updated_at": "2026-11-09T23:13:18.873698+00:00"
+    "updated_at": "2026-11-10T13:02:33.561535+00:00"
 }
