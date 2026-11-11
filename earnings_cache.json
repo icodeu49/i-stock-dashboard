@@ -355,8 +355,9 @@
     "APO": {
         "status": "provider_reported",
         "date": "2027-02-08",
-        "checked_at": "2026-11-05T20:46:20.301326+00:00",
+        "checked_at": "2026-11-11T13:03:00.977501+00:00",
         "source": "Yahoo Finance",
+        "days_until": 89,
         "within_7_days": false
     },
     "INTC": {
@@ -455,7 +456,7 @@
     "CARD": {
         "status": "unavailable",
         "date": null,
-        "checked_at": "2026-11-10T13:02:32.382435+00:00",
+        "checked_at": "2026-11-11T13:02:59.806491+00:00",
         "source": "Yahoo Finance"
     },
     "DKNG": {
@@ -1090,9 +1091,9 @@
     "CCI": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-10T13:02:32.886411+00:00",
+        "checked_at": "2026-11-11T13:03:00.275240+00:00",
         "source": "Yahoo Finance",
-        "days_until": 85,
+        "days_until": 84,
         "within_7_days": false
     },
     "TJX": {
@@ -1106,9 +1107,9 @@
     "VMRK": {
         "status": "provider_reported",
         "date": "2027-02-11",
-        "checked_at": "2026-11-10T13:02:31.797282+00:00",
+        "checked_at": "2026-11-11T13:02:59.084167+00:00",
         "source": "Yahoo Finance",
-        "days_until": 93,
+        "days_until": 92,
         "within_7_days": false
     }
 }
