@@ -458,7 +458,7 @@
     "CARD": {
         "status": "unavailable",
         "date": null,
-        "checked_at": "2026-11-12T13:03:08.344061+00:00",
+        "checked_at": "2026-11-13T13:02:50.329713+00:00",
         "source": "Yahoo Finance"
     },
     "DKNG": {
@@ -493,9 +493,9 @@
     "PM": {
         "status": "provider_reported",
         "date": "2027-02-04",
-        "checked_at": "2026-11-12T13:03:09.024210+00:00",
+        "checked_at": "2026-11-13T13:02:50.750010+00:00",
         "source": "Yahoo Finance",
-        "days_until": 84,
+        "days_until": 83,
         "within_7_days": false
     },
     "EOG": {
@@ -722,9 +722,10 @@
     },
     "CEG": {
         "status": "provider_reported",
-        "date": "2026-11-09",
-        "checked_at": "2026-10-30T18:42:06.286632+00:00",
+        "date": "2027-02-24",
+        "checked_at": "2026-11-13T13:02:51.605790+00:00",
         "source": "Yahoo Finance",
+        "days_until": 103,
         "within_7_days": false
     },
     "APD": {
@@ -1094,9 +1095,9 @@
     "CCI": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-12T13:03:09.558636+00:00",
+        "checked_at": "2026-11-13T13:02:51.179263+00:00",
         "source": "Yahoo Finance",
-        "days_until": 83,
+        "days_until": 82,
         "within_7_days": false
     },
     "TJX": {
@@ -1110,9 +1111,9 @@
     "VMRK": {
         "status": "provider_reported",
         "date": "2027-02-11",
-        "checked_at": "2026-11-12T13:03:07.811117+00:00",
+        "checked_at": "2026-11-13T13:02:49.861662+00:00",
         "source": "Yahoo Finance",
-        "days_until": 91,
+        "days_until": 90,
         "within_7_days": false
     },
     "PEP": {
@@ -1121,6 +1122,14 @@
         "checked_at": "2026-11-12T13:03:11.479402+00:00",
         "source": "Yahoo Finance",
         "days_until": 82,
+        "within_7_days": false
+    },
+    "AXP": {
+        "status": "provider_reported",
+        "date": "2027-01-29",
+        "checked_at": "2026-11-13T13:02:52.011468+00:00",
+        "source": "Yahoo Finance",
+        "days_until": 77,
         "within_7_days": false
     }
 }

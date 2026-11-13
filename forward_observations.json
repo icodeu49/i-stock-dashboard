@@ -1801,7 +1801,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 13.296544942986955,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -1.3455433450686671
         },
         "daily-risk-v2:Daily:signal:MSFT:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1809,7 +1814,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -3.6719526502470234,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -6.715192083549304
         },
         "daily-risk-v2:Aligned daily:signal:MSFT:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1817,7 +1827,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -3.6719526502470234,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -6.715192083549304
         },
         "daily-risk-v2:Daily:signal:ENR:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1825,7 +1840,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 9.484772665688169,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -2.8623401252333425
         },
         "daily-risk-v2:Daily:signal:AI:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1833,7 +1853,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -1.2810142602128982,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -10.082027729157428
         },
         "daily-risk-v2:Aligned daily:signal:AI:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1841,7 +1866,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -1.2810142602128982,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -10.082027729157428
         },
         "daily-risk-v2:Daily:signal:FLYW:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1849,7 +1879,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 10.73815779772891,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -6.259695236670593
         },
         "daily-risk-v2:Daily:signal:UNFI:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1857,7 +1892,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -2.0281034956201593,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -7.450981534582213
         },
         "daily-risk-v2:Daily:signal:TEAM:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1865,7 +1905,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -30.653660685608674,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -33.779398258023996
         },
         "daily-risk-v2:Aligned daily:signal:TEAM:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1873,7 +1918,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -30.653660685608674,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -33.779398258023996
         },
         "daily-risk-v2:Daily:signal:SHOP:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1881,7 +1931,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -17.654490876534968,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -23.669922802365985
         },
         "daily-risk-v2:Aligned daily:signal:SHOP:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1889,7 +1944,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -17.654490876534968,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -23.669922802365985
         },
         "daily-risk-v2:Daily:signal:DUOL:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1897,7 +1957,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 4.374842611749474,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -16.79190875209343
         },
         "daily-risk-v2:Aligned daily:signal:DUOL:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1905,7 +1970,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 4.374842611749474,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -16.79190875209343
         },
         "daily-risk-v2:Daily:signal:NOW:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1913,7 +1983,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -33.93991752051318,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -36.150604812324026
         },
         "daily-risk-v2:Aligned daily:signal:NOW:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1921,7 +1996,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": -33.93991752051318,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -36.150604812324026
         },
         "daily-risk-v2:Daily:signal:TMO:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1929,7 +2009,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 0.7345240817911769,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -4.472311203291701
         },
         "daily-risk-v2:Aligned daily:signal:TMO:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1937,7 +2022,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 0.7345240817911769,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -4.472311203291701
         },
         "daily-risk-v2:Daily:signal:AMGN:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1945,7 +2035,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 6.341981161713628,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -3.0030427673990445
         },
         "daily-risk-v2:Aligned daily:signal:AMGN:Daily:2026-10-15:buy": {
             "strategy": "Aligned daily",
@@ -1953,7 +2048,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 6.341981161713628,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -3.0030427673990445
         },
         "daily-risk-v2:Daily:signal:MO:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1961,7 +2061,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 4.277299873541063,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -2.953016037908973
         },
         "daily-risk-v2:Daily:signal:PG:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1969,7 +2074,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 6.900595436984447,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -0.6022148266391025
         },
         "daily-risk-v2:Daily:signal:WMT:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -1977,7 +2087,12 @@
             "signal_date": "2026-10-15",
             "recorded_at": "2026-10-15T23:45:28.521691+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-16",
+            "end_date": "2026-11-12",
+            "return_20_sessions_pct": 6.557127087737058,
+            "spy_return_20_sessions_pct": -2.378039452875813,
+            "adverse_excursion_pct": -1.2196175532550368
         },
         "daily-risk-v2:Daily:signal:ABBV:Daily:2026-10-15:buy": {
             "strategy": "Daily",
@@ -4258,8 +4373,32 @@
             "recorded_at": "2026-11-12T13:03:12.540121+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:AMD:Daily:2026-11-12:buy": {
+            "strategy": "Daily",
+            "ticker": "AMD",
+            "signal_date": "2026-11-12",
+            "recorded_at": "2026-11-13T13:02:52.423623+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:EOG:Daily:2026-11-12:buy": {
+            "strategy": "Daily",
+            "ticker": "EOG",
+            "signal_date": "2026-11-12",
+            "recorded_at": "2026-11-13T13:02:52.423623+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:CEG:Daily:2026-11-12:buy": {
+            "strategy": "Daily",
+            "ticker": "CEG",
+            "signal_date": "2026-11-12",
+            "recorded_at": "2026-11-13T13:02:52.423623+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-12T20:51:56.136120+00:00",
+    "updated_at": "2026-11-13T13:02:52.423623+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
