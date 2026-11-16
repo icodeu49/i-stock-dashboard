@@ -959,5 +959,33 @@
         "gics_sector": "Real Estate",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY"
+    },
+    "JNJ": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLV",
+        "gics_sector": "Health Care",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #2 XLV; ranked by 21-session RS vs SPY"
+    },
+    "MS": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLF",
+        "gics_sector": "Financials",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLF; ranked by 21-session RS vs SPY"
+    },
+    "D": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY"
+    },
+    "PCG": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY"
     }
 }
