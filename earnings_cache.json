@@ -159,9 +159,9 @@
     "IONQ": {
         "status": "provider_reported",
         "date": "2027-02-24",
-        "checked_at": "2026-11-14T17:09:43.931077+00:00",
+        "checked_at": "2026-11-17T13:02:33.675556+00:00",
         "source": "Yahoo Finance",
-        "days_until": 102,
+        "days_until": 99,
         "within_7_days": false
     },
     "META": {
@@ -821,9 +821,9 @@
     "CVX": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-14T17:09:40.464372+00:00",
+        "checked_at": "2026-11-17T13:02:32.462869+00:00",
         "source": "Yahoo Finance",
-        "days_until": 76,
+        "days_until": 73,
         "within_7_days": false
     },
     "CL": {
@@ -1132,6 +1132,22 @@
         "checked_at": "2026-11-16T22:59:14.211844+00:00",
         "source": "Yahoo Finance",
         "days_until": 74,
+        "within_7_days": false
+    },
+    "JNJ": {
+        "status": "provider_reported",
+        "date": "2027-01-26",
+        "checked_at": "2026-11-17T13:02:33.182270+00:00",
+        "source": "Yahoo Finance",
+        "days_until": 70,
+        "within_7_days": false
+    },
+    "D": {
+        "status": "provider_reported",
+        "date": "2027-02-22",
+        "checked_at": "2026-11-17T13:02:34.140379+00:00",
+        "source": "Yahoo Finance",
+        "days_until": 97,
         "within_7_days": false
     }
 }
