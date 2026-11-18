@@ -729,9 +729,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.64%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -748,9 +749,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.19%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -845,9 +847,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-1.50%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -943,9 +946,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-17",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.23%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -962,9 +966,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-0.05%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -1617,9 +1622,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-16",
+                    "last_selected_asof": "2026-11-17",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+14.47%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+11.81%)",
                     "sector_etf": null
                 }
             },
@@ -1755,9 +1760,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-11-02",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (+0.00%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -1833,9 +1839,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-28",
                     "last_selected_asof": "2026-11-16",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.40%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-17"
                 }
             },
             "trends": {
@@ -6816,7 +6823,56 @@
             "source": "sector_scan",
             "asof": "2026-11-16",
             "observed_at": "2026-11-16T23:02:27.938616+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "SNOW",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "MDB",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "DKNG",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "PANW",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "NET",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "MARA",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "RIOT",
+            "source": "momentum_scan",
+            "asof": "2026-11-17",
+            "observed_at": "2026-11-18T12:58:53.668787+00:00"
         }
     ],
-    "updated_at": "2026-11-17T21:54:28.514435+00:00"
+    "updated_at": "2026-11-18T13:01:20.124468+00:00"
 }

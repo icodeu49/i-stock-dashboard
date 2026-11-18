@@ -13408,6 +13408,14 @@
                 "market_cap": null,
                 "currency": null,
                 "quote_type": null
+            },
+            "2026-11-17": {
+                "observed_at": "2026-11-18T12:59:46.834712+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
             }
         }
     },
