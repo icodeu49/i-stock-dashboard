@@ -26,9 +26,9 @@
     "SNPS": {
         "status": "provider_reported",
         "date": "2026-12-08",
-        "checked_at": "2026-11-14T17:09:48.788479+00:00",
+        "checked_at": "2026-11-19T21:39:36.207510+00:00",
         "source": "Yahoo Finance",
-        "days_until": 24,
+        "days_until": 19,
         "within_7_days": false
     },
     "SPY": {
@@ -96,17 +96,17 @@
     "OKTA": {
         "status": "provider_reported",
         "date": "2026-12-01",
-        "checked_at": "2026-11-13T18:34:47.120468+00:00",
+        "checked_at": "2026-11-19T21:39:36.690070+00:00",
         "source": "Yahoo Finance",
-        "days_until": 18,
+        "days_until": 12,
         "within_7_days": false
     },
     "MPC": {
         "status": "provider_reported",
         "date": "2027-02-02",
-        "checked_at": "2026-11-13T18:34:49.013418+00:00",
+        "checked_at": "2026-11-19T21:39:37.179935+00:00",
         "source": "Yahoo Finance",
-        "days_until": 81,
+        "days_until": 75,
         "within_7_days": false
     },
     "VLO": {
@@ -120,9 +120,9 @@
     "PSX": {
         "status": "provider_reported",
         "date": "2027-02-03",
-        "checked_at": "2026-11-13T18:34:49.650233+00:00",
+        "checked_at": "2026-11-19T21:39:37.639568+00:00",
         "source": "Yahoo Finance",
-        "days_until": 82,
+        "days_until": 76,
         "within_7_days": false
     },
     "TMO": {
@@ -239,9 +239,9 @@
     "XOM": {
         "status": "provider_reported",
         "date": "2027-01-29",
-        "checked_at": "2026-11-14T17:09:37.693508+00:00",
+        "checked_at": "2026-11-19T21:39:38.138107+00:00",
         "source": "Yahoo Finance",
-        "days_until": 76,
+        "days_until": 71,
         "within_7_days": false
     },
     "MO": {
@@ -956,9 +956,10 @@
     },
     "HD": {
         "status": "provider_reported",
-        "date": "2026-11-17",
-        "checked_at": "2026-11-05T20:46:26.286502+00:00",
+        "date": "2027-02-23",
+        "checked_at": "2026-11-19T21:39:38.589617+00:00",
         "source": "Yahoo Finance",
+        "days_until": 96,
         "within_7_days": false
     },
     "REGN": {
