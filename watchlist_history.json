@@ -1423,7 +1423,7 @@
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
-                "Daily": "bullish",
+                "Daily": "bearish",
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
@@ -1627,7 +1627,7 @@
                     "first_selected_asof": "2026-10-12",
                     "last_selected_asof": "2026-11-18",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+11.35%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+11.52%)",
                     "sector_etf": null
                 }
             },
@@ -6909,5 +6909,5 @@
             "observed_at": "2026-11-18T21:26:48.322404+00:00"
         }
     ],
-    "updated_at": "2026-11-18T21:30:55.443943+00:00"
+    "updated_at": "2026-11-19T19:33:13.884127+00:00"
 }
