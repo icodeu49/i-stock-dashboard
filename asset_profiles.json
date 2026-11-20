@@ -10372,6 +10372,14 @@
                 "market_cap": 548024704.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-19": {
+                "observed_at": "2026-11-20T13:00:15.174371+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 539214016.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -12724,6 +12732,14 @@
                 "market_cap": 3116157952.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-19": {
+                "observed_at": "2026-11-20T13:00:26.018398+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 3007461888.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -14363,6 +14379,14 @@
             },
             "2026-11-18": {
                 "observed_at": "2026-11-18T21:28:21.041160+00:00",
+                "source": "Yahoo Finance",
+                "status": "unavailable",
+                "market_cap": null,
+                "currency": null,
+                "quote_type": null
+            },
+            "2026-11-19": {
+                "observed_at": "2026-11-20T13:00:33.169109+00:00",
                 "source": "Yahoo Finance",
                 "status": "unavailable",
                 "market_cap": null,
@@ -23800,6 +23824,14 @@
                 "market_cap": 382595727360.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
+            },
+            "2026-11-19": {
+                "observed_at": "2026-11-20T13:01:07.113316+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 373349810176.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
             }
         }
     },
@@ -30910,6 +30942,14 @@
                 "source": "Yahoo Finance",
                 "status": "available",
                 "market_cap": 97813053440.0,
+                "currency": "USD",
+                "quote_type": "EQUITY"
+            },
+            "2026-11-19": {
+                "observed_at": "2026-11-20T13:01:59.636324+00:00",
+                "source": "Yahoo Finance",
+                "status": "available",
+                "market_cap": 95517548544.0,
                 "currency": "USD",
                 "quote_type": "EQUITY"
             }
