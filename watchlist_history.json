@@ -14,10 +14,10 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "VLO": {
@@ -37,7 +37,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PSX": {
@@ -54,10 +54,10 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "XOM": {
@@ -74,10 +74,10 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "WMB": {
@@ -97,7 +97,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AMD": {
@@ -121,11 +121,11 @@
                 }
             },
             "trends": {
-                "Daily": "mixed",
-                "Weekly": "mixed",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CSCO": {
@@ -145,7 +145,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MSFT": {
@@ -161,18 +161,18 @@
                 },
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.54%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-7.33%)",
                     "sector_etf": null
                 }
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NOW": {
@@ -192,7 +192,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NVDA": {
@@ -220,7 +220,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ISRG": {
@@ -240,7 +240,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TMO": {
@@ -256,11 +256,11 @@
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "mixed",
+                "Weekly": "mixed",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AMGN": {
@@ -275,11 +275,11 @@
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ABBV": {
@@ -298,7 +298,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "LLY": {
@@ -317,7 +317,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PM": {
@@ -337,7 +337,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MO": {
@@ -353,11 +353,11 @@
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PG": {
@@ -376,7 +376,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "WMT": {
@@ -395,7 +395,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "COST": {
@@ -414,7 +414,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TJX": {
@@ -434,7 +434,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TSLA": {
@@ -450,18 +450,18 @@
                 },
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-19",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.80%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-11.38%)",
                     "sector_etf": null
                 }
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AMZN": {
@@ -477,18 +477,18 @@
                 },
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.77%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-7.44%)",
                     "sector_etf": null
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "mixed",
+                "Weekly": "mixed",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "HD": {
@@ -504,10 +504,10 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NKE": {
@@ -527,7 +527,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ZS": {
@@ -535,9 +535,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+6.46%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+1.22%)",
                     "sector_etf": null
                 }
             },
@@ -546,7 +546,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "WING": {
@@ -554,18 +554,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.76%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.61%)",
                     "sector_etf": null
                 }
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AFRM": {
@@ -585,7 +585,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SHOP": {
@@ -605,7 +605,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SPOT": {
@@ -613,9 +613,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-2.45%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.81%)",
                     "sector_etf": null
                 }
             },
@@ -624,7 +624,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MELI": {
@@ -632,11 +632,10 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-17",
-                    "active": false,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.58%)",
-                    "sector_etf": null,
-                    "inactive_asof": "2026-11-18"
+                    "last_selected_asof": "2026-11-20",
+                    "active": true,
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-9.15%)",
+                    "sector_etf": null
                 }
             },
             "trends": {
@@ -644,7 +643,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PLTR": {
@@ -661,10 +660,10 @@
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TEAM": {
@@ -672,11 +671,10 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-17",
-                    "active": false,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.13%)",
-                    "sector_etf": null,
-                    "inactive_asof": "2026-11-18"
+                    "last_selected_asof": "2026-11-20",
+                    "active": true,
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-10.23%)",
+                    "sector_etf": null
                 }
             },
             "trends": {
@@ -684,7 +682,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "OKTA": {
@@ -692,18 +690,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+13.32%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+4.70%)",
                     "sector_etf": null
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bearish",
+                "Daily": "mixed",
+                "Weekly": "mixed",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "RBLX": {
@@ -711,11 +709,10 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-12",
-                    "active": false,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+7.91%)",
-                    "sector_etf": null,
-                    "inactive_asof": "2026-11-13"
+                    "last_selected_asof": "2026-11-20",
+                    "active": true,
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-6.39%)",
+                    "sector_etf": null
                 }
             },
             "trends": {
@@ -723,7 +720,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SNOW": {
@@ -739,11 +736,11 @@
                 }
             },
             "trends": {
-                "Daily": "mixed",
-                "Weekly": "mixed",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MDB": {
@@ -763,7 +760,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "U": {
@@ -772,17 +769,18 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
                     "last_selected_asof": "2026-11-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-6.94%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-20"
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CELH": {
@@ -790,9 +788,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.67%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-12.21%)",
                     "sector_etf": null
                 }
             },
@@ -801,7 +799,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "DDOG": {
@@ -821,7 +819,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "UPST": {
@@ -841,7 +839,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "DKNG": {
@@ -861,7 +859,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "BABA": {
@@ -881,7 +879,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NFLX": {
@@ -889,9 +887,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-6.75%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-8.72%)",
                     "sector_etf": null
                 }
             },
@@ -900,7 +898,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AI": {
@@ -920,7 +918,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "DUOL": {
@@ -928,18 +926,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.11%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-12.27%)",
                     "sector_etf": null
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "mixed",
+                "Weekly": "mixed",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PANW": {
@@ -947,28 +945,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+12.11%)",
-                    "sector_etf": null
-                }
-            },
-            "trends": {
-                "Daily": "mixed",
-                "Weekly": "bearish",
-                "Monthly": "mixed"
-            },
-            "trend_asof": "2026-11-19",
-            "trend_policy": "daily-risk-v2"
-        },
-        "NET": {
-            "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
-            "sources": {
-                "momentum_scan": {
-                    "first_selected_asof": "2026-10-09",
-                    "last_selected_asof": "2026-11-19",
-                    "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.65%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+6.54%)",
                     "sector_etf": null
                 }
             },
@@ -977,7 +956,26 @@
                 "Weekly": "mixed",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
+            "trend_policy": "daily-risk-v2"
+        },
+        "NET": {
+            "first_observed_at": "2026-10-11T07:38:55.545326+00:00",
+            "sources": {
+                "momentum_scan": {
+                    "first_selected_asof": "2026-10-09",
+                    "last_selected_asof": "2026-11-20",
+                    "active": true,
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-10.09%)",
+                    "sector_etf": null
+                }
+            },
+            "trends": {
+                "Daily": "mixed",
+                "Weekly": "mixed",
+                "Monthly": "mixed"
+            },
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ABAT": {
@@ -988,7 +986,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "APLD": {
@@ -999,7 +997,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "APO": {
@@ -1007,10 +1005,10 @@
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ARM": {
@@ -1030,7 +1028,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AVGO": {
@@ -1038,9 +1036,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-27",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.86%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-12.28%)",
                     "sector_etf": null
                 }
             },
@@ -1049,7 +1047,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "BE": {
@@ -1060,7 +1058,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CCJ": {
@@ -1071,7 +1069,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CDNS": {
@@ -1082,7 +1080,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CRWV": {
@@ -1093,7 +1091,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "FLEX": {
@@ -1104,7 +1102,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "GEV": {
@@ -1124,7 +1122,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "INTC": {
@@ -1135,7 +1133,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "IONQ": {
@@ -1146,18 +1144,18 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "IOT": {
             "first_observed_at": "2026-10-11T07:41:05.240521+00:00",
             "sources": {},
             "trends": {
-                "Daily": "mixed",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "LUMN": {
@@ -1168,7 +1166,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "META": {
@@ -1177,17 +1175,18 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-13",
                     "last_selected_asof": "2026-11-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.39%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-20"
                 }
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MRVL": {
@@ -1198,7 +1197,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MU": {
@@ -1206,10 +1205,10 @@
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MVST": {
@@ -1220,7 +1219,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NAK": {
@@ -1231,7 +1230,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NBIS": {
@@ -1242,7 +1241,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NVTS": {
@@ -1253,7 +1252,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ODFL": {
@@ -1264,7 +1263,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "OKLO": {
@@ -1275,7 +1274,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ORCL": {
@@ -1286,7 +1285,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "POWI": {
@@ -1297,7 +1296,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "QUBT": {
@@ -1308,7 +1307,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "RDDT": {
@@ -1319,7 +1318,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "RGTI": {
@@ -1330,7 +1329,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SNPS": {
@@ -1338,10 +1337,10 @@
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SOUN": {
@@ -1352,7 +1351,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "T": {
@@ -1363,7 +1362,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TSM": {
@@ -1383,7 +1382,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "VRT": {
@@ -1394,7 +1393,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SPY": {
@@ -1402,10 +1401,10 @@
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "mixed",
+                "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ENR": {
@@ -1416,7 +1415,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "FTGFF": {
@@ -1424,10 +1423,10 @@
             "sources": {},
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ALAB": {
@@ -1438,7 +1437,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "BA": {
@@ -1449,7 +1448,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CRDO": {
@@ -1460,7 +1459,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "IRM": {
@@ -1471,7 +1470,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PATH": {
@@ -1491,7 +1490,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TER": {
@@ -1502,7 +1501,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "VNET": {
@@ -1513,7 +1512,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "FLYW": {
@@ -1524,7 +1523,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "UNFI": {
@@ -1535,7 +1534,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "OSCR": {
@@ -1546,7 +1545,7 @@
                 "Weekly": "bearish",
                 "Monthly": "mixed"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PARR": {
@@ -1557,7 +1556,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ICHR": {
@@ -1568,7 +1567,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "WOLF": {
@@ -1579,7 +1578,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AAPL": {
@@ -1587,9 +1586,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-1.60%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.85%)",
                     "sector_etf": null
                 }
             },
@@ -1598,7 +1597,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "GOOGL": {
@@ -1606,11 +1605,10 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-18",
-                    "active": false,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.75%)",
-                    "sector_etf": null,
-                    "inactive_asof": "2026-11-19"
+                    "last_selected_asof": "2026-11-20",
+                    "active": true,
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-10.31%)",
+                    "sector_etf": null
                 }
             },
             "trends": {
@@ -1618,7 +1616,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CARD": {
@@ -1626,18 +1624,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+12.02%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+22.44%)",
                     "sector_etf": null
                 }
             },
             "trends": {
                 "Daily": "bullish",
-                "Weekly": "bearish",
+                "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SMCI": {
@@ -1657,7 +1655,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NCLH": {
@@ -1665,9 +1663,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.48%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-10.97%)",
                     "sector_etf": null
                 }
             },
@@ -1676,7 +1674,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "TTD": {
@@ -1685,9 +1683,10 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-13",
                     "last_selected_asof": "2026-11-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.88%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-20"
                 }
             },
             "trends": {
@@ -1695,7 +1694,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SOFI": {
@@ -1715,7 +1714,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "RCL": {
@@ -1723,18 +1722,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-5.85%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-8.29%)",
                     "sector_etf": null
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CCL": {
@@ -1742,18 +1741,18 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-12",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-6.03%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-9.03%)",
                     "sector_etf": null
                 }
             },
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MARA": {
@@ -1773,7 +1772,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CRWD": {
@@ -1781,9 +1780,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-22",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+5.91%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (+1.25%)",
                     "sector_etf": null
                 }
             },
@@ -1792,7 +1791,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "COIN": {
@@ -1812,7 +1811,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "HOOD": {
@@ -1832,7 +1831,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "RIOT": {
@@ -1840,9 +1839,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-28",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-0.56%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-7.36%)",
                     "sector_etf": null
                 }
             },
@@ -1851,7 +1850,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AAL": {
@@ -1859,9 +1858,9 @@
             "sources": {
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-20",
-                    "last_selected_asof": "2026-11-19",
+                    "last_selected_asof": "2026-11-20",
                     "active": true,
-                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-4.43%)",
+                    "reason": "Top-25 five-session momentum in the configured 50-stock universe (-9.64%)",
                     "sector_etf": null
                 }
             },
@@ -1870,7 +1869,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "APP": {
@@ -1879,17 +1878,18 @@
                 "momentum_scan": {
                     "first_selected_asof": "2026-10-15",
                     "last_selected_asof": "2026-11-19",
-                    "active": true,
+                    "active": false,
                     "reason": "Top-25 five-session momentum in the configured 50-stock universe (-3.72%)",
-                    "sector_etf": null
+                    "sector_etf": null,
+                    "inactive_asof": "2026-11-20"
                 }
             },
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "EOG": {
@@ -1908,10 +1908,10 @@
             "addition_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
+                "Weekly": "mixed",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "LOW": {
@@ -1928,11 +1928,11 @@
             "added_at": "2026-10-12T21:53:28.789201+00:00",
             "addition_reason": "Top-five stock in sector #5 XLY; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bearish",
+                "Daily": "bullish",
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "COP": {
@@ -1951,10 +1951,10 @@
             "addition_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
+                "Weekly": "mixed",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "EL": {
@@ -1972,11 +1972,11 @@
             "added_at": "2026-10-19T19:30:33.247033+00:00",
             "addition_reason": "Top-five stock in sector #2 XLP; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "mixed",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PFE": {
@@ -1995,10 +1995,10 @@
             "addition_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "LIN": {
@@ -2020,7 +2020,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "ECL": {
@@ -2038,11 +2038,11 @@
             "added_at": "2026-10-19T19:30:33.247033+00:00",
             "addition_reason": "Top-five stock in sector #4 XLB; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "APD": {
@@ -2060,11 +2060,11 @@
             "added_at": "2026-10-19T19:30:33.247033+00:00",
             "addition_reason": "Top-five stock in sector #4 XLB; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CTVA": {
@@ -2086,7 +2086,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SHW": {
@@ -2104,11 +2104,11 @@
             "added_at": "2026-10-19T19:30:33.247033+00:00",
             "addition_reason": "Top-five stock in sector #4 XLB; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SO": {
@@ -2130,7 +2130,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AEP": {
@@ -2149,10 +2149,10 @@
             "addition_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CEG": {
@@ -2171,10 +2171,10 @@
             "addition_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "DUK": {
@@ -2195,7 +2195,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SRE": {
@@ -2217,7 +2217,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CVX": {
@@ -2236,10 +2236,10 @@
             "addition_reason": "Top-five stock in sector #1 XLE; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "mixed",
-                "Weekly": "bullish",
+                "Weekly": "mixed",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CL": {
@@ -2260,7 +2260,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "UNH": {
@@ -2279,10 +2279,10 @@
             "addition_reason": "Top-five stock in sector #3 XLV; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "EXC": {
@@ -2303,7 +2303,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NEE": {
@@ -2324,7 +2324,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "SBUX": {
@@ -2345,7 +2345,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MCD": {
@@ -2366,7 +2366,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "REGN": {
@@ -2387,7 +2387,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MDLZ": {
@@ -2409,7 +2409,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "DOW": {
@@ -2428,10 +2428,10 @@
             "addition_reason": "Top-five stock in sector #3 XLB; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "NUE": {
@@ -2453,7 +2453,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "HAL": {
@@ -2475,7 +2475,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PEP": {
@@ -2493,10 +2493,10 @@
             "addition_reason": "Top-five stock in sector #1 XLP; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PSA": {
@@ -2518,7 +2518,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AMT": {
@@ -2540,7 +2540,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "WY": {
@@ -2562,7 +2562,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "O": {
@@ -2584,7 +2584,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PLD": {
@@ -2606,7 +2606,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CMG": {
@@ -2627,7 +2627,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MA": {
@@ -2648,7 +2648,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "V": {
@@ -2666,10 +2666,10 @@
             "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "BRK-B": {
@@ -2690,7 +2690,7 @@
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "BLK": {
@@ -2707,11 +2707,11 @@
             "added_at": "2026-11-06T00:20:22.649475+00:00",
             "addition_reason": "Top-five stock in sector #5 XLF; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "AXP": {
@@ -2733,7 +2733,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "CCI": {
@@ -2752,10 +2752,10 @@
             "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "VMRK": {
@@ -2774,10 +2774,10 @@
             "addition_reason": "Top-five stock in sector #3 XLRE; ranked by 21-session RS vs SPY",
             "trends": {
                 "Daily": "bearish",
-                "Weekly": "bullish",
+                "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "JNJ": {
@@ -2794,11 +2794,11 @@
             "added_at": "2026-11-16T23:02:27.938616+00:00",
             "addition_reason": "Top-five stock in sector #2 XLV; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "mixed",
+                "Daily": "bullish",
                 "Weekly": "bullish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "MS": {
@@ -2819,7 +2819,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "D": {
@@ -2836,11 +2836,11 @@
             "added_at": "2026-11-16T23:02:27.938616+00:00",
             "addition_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY",
             "trends": {
-                "Daily": "bullish",
-                "Weekly": "bullish",
+                "Daily": "bearish",
+                "Weekly": "bearish",
                 "Monthly": "bullish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         },
         "PCG": {
@@ -2861,7 +2861,7 @@
                 "Weekly": "bearish",
                 "Monthly": "bearish"
             },
-            "trend_asof": "2026-11-19",
+            "trend_asof": "2026-11-20",
             "trend_policy": "daily-risk-v2"
         }
     },
@@ -6928,7 +6928,505 @@
             "source": "momentum_scan",
             "asof": "2026-11-19",
             "observed_at": "2026-11-20T12:59:23.693639+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "U",
+            "source": "momentum_scan",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T12:59:05.493501+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "META",
+            "source": "momentum_scan",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T12:59:05.493501+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "TTD",
+            "source": "momentum_scan",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T12:59:05.493501+00:00"
+        },
+        {
+            "type": "selection_lost",
+            "ticker": "APP",
+            "source": "momentum_scan",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T12:59:05.493501+00:00"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "AMD",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "AMZN",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "APO",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "IOT",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "META",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "MSFT",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "MU",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "PLTR",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "SNPS",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "SPY",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "FTGFF",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "CARD",
+            "timeframe": "Weekly",
+            "from": "bearish",
+            "to": "bullish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "U",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "SNOW",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "RCL",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "CCL",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "DUOL",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "PANW",
+            "timeframe": "Weekly",
+            "from": "bearish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "OKTA",
+            "timeframe": "Weekly",
+            "from": "bearish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "TSLA",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "WING",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "APP",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "MPC",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "PSX",
+            "timeframe": "Weekly",
+            "from": "mixed",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "XOM",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "TMO",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "AMGN",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "MO",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "HD",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "EOG",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "COP",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "EL",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "PFE",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "ECL",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "APD",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "SHW",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "AEP",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "CEG",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "CVX",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "mixed",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "UNH",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "DOW",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "PEP",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "V",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "BLK",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "CCI",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "VMRK",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
+        },
+        {
+            "type": "trend_changed",
+            "ticker": "D",
+            "timeframe": "Weekly",
+            "from": "bullish",
+            "to": "bearish",
+            "asof": "2026-11-20",
+            "observed_at": "2026-11-21T13:02:57.355810+00:00",
+            "policy": "daily-risk-v2"
         }
     ],
-    "updated_at": "2026-11-20T21:07:54.737990+00:00"
+    "updated_at": "2026-11-21T13:02:57.355810+00:00"
 }
