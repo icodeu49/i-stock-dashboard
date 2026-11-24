@@ -5502,8 +5502,16 @@
             "recorded_at": "2026-11-24T01:00:30.758737+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:V:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "V",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T13:02:36.282613+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-24T01:00:30.758737+00:00",
+    "updated_at": "2026-11-24T13:02:36.282613+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
