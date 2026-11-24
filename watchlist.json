@@ -987,5 +987,19 @@
         "gics_sector": "Utilities",
         "source": "sector_scan",
         "selection_reason": "Top-five stock in sector #5 XLU; ranked by 21-session RS vs SPY"
+    },
+    "FE": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLU",
+        "gics_sector": "Utilities",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #3 XLU; ranked by 21-session RS vs SPY"
+    },
+    "EQIX": {
+        "group": "Sector Leaders",
+        "sector_etf": "XLRE",
+        "gics_sector": "Real Estate",
+        "source": "sector_scan",
+        "selection_reason": "Top-five stock in sector #5 XLRE; ranked by 21-session RS vs SPY"
     }
 }
