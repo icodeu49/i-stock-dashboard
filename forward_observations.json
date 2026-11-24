@@ -3101,7 +3101,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": -13.247897092762695,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -29.242515790029234
         },
         "daily-risk-v2:Daily:signal:UNFI:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3109,7 +3114,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": 4.840076637285207,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -6.035207448539959
         },
         "daily-risk-v2:Daily:signal:PANW:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3117,7 +3127,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": -12.367380099914504,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -24.980081125387354
         },
         "daily-risk-v2:Daily:signal:CRWD:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3125,7 +3140,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": -22.270067657082336,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -25.855947232548893
         },
         "daily-risk-v2:Daily:signal:TSLA:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3133,7 +3153,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": -6.493154301738436,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -17.556565516550705
         },
         "daily-risk-v2:Daily:signal:RBLX:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3141,7 +3166,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": -2.1292522385960466,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -24.092497269890767
         },
         "daily-risk-v2:Daily:signal:EL:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3149,7 +3179,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": 0.3500818889754731,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -7.642184735316537
         },
         "daily-risk-v2:Daily:signal:SBUX:Daily:2026-10-26:buy": {
             "strategy": "Daily",
@@ -3157,7 +3192,12 @@
             "signal_date": "2026-10-26",
             "recorded_at": "2026-10-27T18:46:44.364592+00:00",
             "policy": "daily-risk-v2",
-            "status": "awaiting_future_prices"
+            "status": "complete",
+            "entry_date": "2026-10-28",
+            "end_date": "2026-11-24",
+            "return_20_sessions_pct": 3.4901286896025008,
+            "spy_return_20_sessions_pct": -7.104088931794228,
+            "adverse_excursion_pct": -0.8245220399894393
         },
         "daily-risk-v2:Daily:signal:CDNS:Daily:2026-10-27:buy": {
             "strategy": "Daily",
@@ -5510,8 +5550,72 @@
             "recorded_at": "2026-11-24T13:02:36.282613+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:FTGFF:Daily:2026-11-24:buy": {
+            "strategy": "Daily",
+            "ticker": "FTGFF",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ZS:Daily:2026-11-24:buy": {
+            "strategy": "Daily",
+            "ticker": "ZS",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ABBV:Daily:2026-11-24:buy": {
+            "strategy": "Daily",
+            "ticker": "ABBV",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:ABBV:Daily:2026-11-24:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "ABBV",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:WMT:Daily:2026-11-24:buy": {
+            "strategy": "Daily",
+            "ticker": "WMT",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:WMT:Daily:2026-11-24:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "WMT",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:EXC:Daily:2026-11-24:buy": {
+            "strategy": "Daily",
+            "ticker": "EXC",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:EXC:Daily:2026-11-24:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "EXC",
+            "signal_date": "2026-11-24",
+            "recorded_at": "2026-11-24T23:09:02.627449+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-24T21:15:40.733670+00:00",
+    "updated_at": "2026-11-24T23:09:02.627449+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }

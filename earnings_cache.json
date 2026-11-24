@@ -506,9 +506,9 @@
     "EOG": {
         "status": "provider_reported",
         "date": "2027-02-23",
-        "checked_at": "2026-11-18T19:26:56.100726+00:00",
+        "checked_at": "2026-11-24T23:09:02.118708+00:00",
         "source": "Yahoo Finance",
-        "days_until": 97,
+        "days_until": 91,
         "within_7_days": false
     },
     "NBIS": {
@@ -666,9 +666,9 @@
     "WMT": {
         "status": "provider_reported",
         "date": "2027-02-18",
-        "checked_at": "2026-11-21T13:02:55.515295+00:00",
+        "checked_at": "2026-11-24T23:09:01.681568+00:00",
         "source": "Yahoo Finance",
-        "days_until": 89,
+        "days_until": 86,
         "within_7_days": false
     },
     "MRVL": {
