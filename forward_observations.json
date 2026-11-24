@@ -5406,8 +5406,104 @@
             "recorded_at": "2026-11-21T13:02:57.372316+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:FLYW:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "FLYW",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:FLYW:Daily:2026-11-23:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "FLYW",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ZS:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "ZS",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:OKTA:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "OKTA",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:TSLA:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "TSLA",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:RBLX:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "RBLX",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:ABBV:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "ABBV",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:ABBV:Daily:2026-11-23:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "ABBV",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:PG:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "PG",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:PG:Daily:2026-11-23:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "PG",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:EXC:Daily:2026-11-23:buy": {
+            "strategy": "Daily",
+            "ticker": "EXC",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:EXC:Daily:2026-11-23:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "EXC",
+            "signal_date": "2026-11-23",
+            "recorded_at": "2026-11-24T01:00:30.758737+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-21T18:01:35.205976+00:00",
+    "updated_at": "2026-11-24T01:00:30.758737+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
