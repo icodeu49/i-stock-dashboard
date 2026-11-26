@@ -5753,8 +5753,24 @@
             "recorded_at": "2026-11-25T22:35:22.664001+00:00",
             "policy": "daily-risk-v2",
             "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Daily:signal:UNFI:Daily:2026-11-25:buy": {
+            "strategy": "Daily",
+            "ticker": "UNFI",
+            "signal_date": "2026-11-25",
+            "recorded_at": "2026-11-26T20:13:25.667554+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
+        },
+        "daily-risk-v2:Aligned daily:signal:UNFI:Daily:2026-11-25:buy": {
+            "strategy": "Aligned daily",
+            "ticker": "UNFI",
+            "signal_date": "2026-11-25",
+            "recorded_at": "2026-11-26T20:13:25.667554+00:00",
+            "policy": "daily-risk-v2",
+            "status": "awaiting_future_prices"
         }
     },
-    "updated_at": "2026-11-25T22:35:22.664001+00:00",
+    "updated_at": "2026-11-26T20:13:25.667554+00:00",
     "method": "First open after observation, 20-session close; fees 0.10% and slippage 0.05% each side. Cohorts may overlap; no portfolio allocation or stops."
 }
